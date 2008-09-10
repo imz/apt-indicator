@@ -11,7 +11,7 @@ License: GPL
 #include <QTranslator>
 #include <QLocale>
 #include <QLibraryInfo>
-#include <QDebug>
+#include <QTextStream>
 
 #include "agent.h"
 #include "config.h"
@@ -20,16 +20,16 @@ extern const char *__progname;
 
 void usage(int retcode)
 {
-	qDebug() << "Usage: " <<__progname<<" [-hva] [--help] [--version] [--autostart]";
-	qDebug() << "This is a simple applet both for Gnome and KDE which";
-	qDebug() <<  " made notifications for users that newer packages are available";
-	qDebug() << "  -h, --help             display help screen";
-	qDebug() << "  -v, --version          display version information";
-	qDebug() << "  -a, --autostart	       for running by Window Manager's autostart";
-	qDebug() << "";
-	qDebug() << "Report bugs to http://bugzilla.altlinux.ru";
-
-	exit(retcode);
+    QTextStream out(stdout);
+    out << "Usage: " <<__progname<<" [-hva] [--help] [--version] [--autostart]";
+    out << "This is a simple applet both for Gnome and KDE which";
+    out <<  " made notifications for users that newer packages are available";
+    out << "  -h, --help             display help screen";
+    out << "  -v, --version          display version information";
+    out << "  -a, --autostart	       for running by Window Manager's autostart";
+    out << "";
+    out << "Report bugs to http://bugzilla.altlinux.ru";
+    exit(retcode);
 }
 
 
