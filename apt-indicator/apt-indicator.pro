@@ -19,7 +19,7 @@ HEADERS += config_dialog.h info_window.h help_browser.h
 
 FORMS = config_dialog.ui info_window.ui help_browser.ui
 
-DATA = *.pro *.spec
+DATA = *.pro $$TARGET.desktop
 
 RESOURCES = pixmaps.qrc
 
@@ -27,3 +27,10 @@ TRANSLATIONS = \
     translations/apt_indicator_ru.ts \
     translations/apt_indicator_uk.ts \
     translations/untranslated.ts
+
+target.path = /usr/bin/
+INSTALLS += target
+
+trans.path = /usr/share/$$TARGET/translations
+trans.files = translations/apt_indicator_*.qm
+INSTALLS += trans
