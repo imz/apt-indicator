@@ -11,6 +11,7 @@ License: GPL
 #include <QTranslator>
 #include <QLocale>
 #include <QLibraryInfo>
+#include <QDebug>
 #include <QTextStream>
 
 #include "agent.h"
