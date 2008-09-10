@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="koi8-r"?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd"
+[
+
+<!ENTITY ALTCOMP "<ulink url='http://www.altlinux.ru'>ALT Linux</ulink>">
+<!ENTITY PROGRAM "<emphasis>APT Indicator</emphasis>">
+<!ENTITY PIXMAPSDIR "//usr/share/apt-indicator/pixmaps/">
+<!ENTITY SCREENSHOTSDIR "../../images/">
+
+]>
+
+<chapter id="apt-indicator" lang="ru">
+  <chapterinfo>
+    <author lang="en">
+      <firstname>Stanislav</firstname>
+      <surname>Ievlev</surname>
+      <affiliation>
+	<address>
+	  <email>inger@altlinux.org</email>
+	</address>
+      </affiliation>
+    </author>
+  </chapterinfo>
+  <title>Апплет &PROGRAM;</title>
+  <section>
+    <title>Введение</title>
+    <para>
+	Система обновлений <emphasis>APT</emphasis> подразумевает регулярное выполнение
+	пользователем процедуры получения списков доступных пакетов с сервера.
+	Конечно, можно проводить это автоматически с последующим автоматическим обновлением,
+	но для <quote>простых смертных</quote> пользователей это слишком сложно, кроме того, 
+	хотелось бы контролировать процесс обновлений и проводить их только тогда, когда 
+	это необходимо.
+    </para>
+    <para>
+	Для этих целей и создано небольшое приложение &PROGRAM;.
+	Оно размещается в области уведомлений менеджера окон в виде небольшой иконки,
+	отображающей текущее состояние.
+    </para>
+    <table>
+      <title>Возможные состояния</title>
+      <tgroup cols="2">
+	<thead>
+	  <row>
+	    <entry>Иконка</entry>
+	    <entry>Описание</entry>
+	  </row>
+	</thead>
+	<tbody>
+	  <row>
+	    <entry><graphic fileref="&PIXMAPSDIR;normal.png"/></entry>
+    	    <entry>Доступных обновлений нет</entry>
+	  </row>
+	  <row>
+	    <entry><graphic fileref="&PIXMAPSDIR;danger.png"/></entry>
+    	    <entry>
+		Есть обновления для системы. По умолчанию все дистрибутивы &ALTCOMP;
+		настроены на обновления, связанные с исправлением ошибок безопасности (security updates)
+		, поэтому мы настоятельно рекомендуем провести обновление.
+		Однократный щелчок мыши по иконке выведет информационное окно с подробным перечислением
+		приложений, подлежащих обновлению.
+	    </entry>
+	  </row>
+	  <row>
+	    <entry><graphic fileref="&PIXMAPSDIR;problem.png"/></entry>
+    	    <entry>
+		Возникли какие-то проблемы в приложении или системе <emphasis>APT</emphasis>.
+		Однократный щелчок мыши по иконке выведет информационное окно с описанием проблемы.
+	    </entry>
+	  </row>
+	  <row>
+	    <entry><graphic fileref="&PIXMAPSDIR;working.png"/></entry>
+    	    <entry>
+		В данный момент идёт получение списков обновлений.
+	    </entry>
+	  </row>
+	</tbody>
+      </tgroup>
+    </table>
+    <para>
+	Приложение работает c полномочиями пользователя,запустившего его, поэтому для выполнения 
+	реального обновления стоит вызвать привилегированное приложение. По-умолчанию, это 
+	<application>synaptic</application>.
+    </para>
+  </section>
+  <section>
+    <title>Настройка</title>
+    <para>
+	Приложение умеет автоматически помещать иконку на системную панель в оконных менеджерах
+	<emphasis>KDE</emphasis> и <emphasis>Gnome</emphasis>(при запущенном апплете 
+	<quote>Область уведомления</quote>, <application>notification-area</application>).
+	Для того, чтобы иконка попадала на системную панель менеджера <application>IceWM</application>,
+	необходимо добавить следующие строчки (если они, конечно, уже не добавлены авторами дистрибутива)
+	в файл <filename>~/.icewm/winoptions</filename>
+	<footnote>
+	    <para>
+		Если этот файл отсутствует, скопируйте его из системного каталога 
+		<filename>/usr/X11R6/lib/X11/icewm</filename>
+	    </para>
+	</footnote>
+	следующие строчки:
+    </para>
+    <screen>
+apt-indicator.trayicon.doNotCover: 0
+apt-indicator.trayicon.layer: AboveDock
+apt-indicator.trayicon.allWorkspaces: 1
+apt-indicator.trayicon.ignoreWinList: 1
+apt-indicator.trayicon.ignoreTaskBar: 1
+apt-indicator.trayicon.ignoreQuickSwitch: 1
+apt-indicator.trayicon.fMove: 0
+apt-indicator.trayicon.fResize: 0
+apt-indicator.trayicon.fClose: 0
+apt-indicator.trayicon.fMinimize: 0
+apt-indicator.trayicon.fMaximize: 0
+apt-indicator.trayicon.fHide: 0
+apt-indicator.trayicon.fRollup: 0
+apt-indicator.trayicon.dTitleBar: 0
+apt-indicator.trayicon.dSysMenu: 0
+apt-indicator.trayicon.dBorder: 0
+apt-indicator.trayicon.dResize: 0
+apt-indicator.trayicon.dClose: 0
+apt-indicator.trayicon.dMinimize: 0
+apt-indicator.trayicon.dMaximize: 0
+apt-indicator.trayicon.noFocusOnAppRaise: 0
+apt-indicator.trayicon.geometry: +1600+1200
+    </screen>
+    <para>
+	Основное меню &PROGRAM; вызывается нажатием
+	правой кнопки мыши на иконке.
+	<figure float="1">
+	    <title>Основное меню</title>
+	    <screenshot><graphic fileref="&SCREENSHOTSDIR;menu-ru.png"/></screenshot> 
+        </figure>
+	Вы можете выполнить следующие действия:
+    </para>
+    <glosslist>
+      <glossentry>
+	<glossterm>Обновить</glossterm>
+	<glossdef>
+	  <para>
+		Запускается выбранная пользователем привилегированная программа для
+		проведения обновлений. По умолчанию это <filename>/usr/bin/synaptic</filename>.
+		Вы можете указать другое приложение в диалоге настройки.
+	  </para>
+	</glossdef>
+      </glossentry>
+      <glossentry>
+	<glossterm>Настройка</glossterm>
+	<glossdef>
+	  <para>Запустить диалог тонкой подстройки параметров приложения</para>
+	</glossdef>
+      </glossentry>
+      <glossentry>
+	<glossterm>Проверить обновления</glossterm>
+	<glossdef>
+	  <para>
+		Выполнить внеочередную проверку на наличие доступных обновлений.
+		&PROGRAM; самостоятельно периодически проводит
+		подобные проверки с интервалом, указанным в диалоге настройки.
+		По умолчанию интервал равен одним суткам, и маловероятно, что вам потребуется
+		его изменять
+	  </para>
+	</glossdef>
+      </glossentry>
+      <glossentry>
+	<glossterm>Детальная информация</glossterm>
+	<glossdef>
+	  <para>
+		Вывести подробную информацию о текущем состоянии.
+		Например, список пакетов на обновление, причину ошибки и т.д.
+	  </para>
+	</glossdef>
+      </glossentry>
+      <glossentry>
+	<glossterm>О программе</glossterm>
+	<glossdef>
+	  <para>Запускается диалог с краткой информацией о приложении</para>
+	</glossdef>
+      </glossentry>
+      <glossentry>
+	<glossterm>Выход</glossterm>
+	<glossdef>
+	  <para>
+	    Завершить работу приложения. При выходе вас спросят, желаете ли вы в следующий
+	    раз запустить приложение автоматически при старте системы
+	    <footnote>
+		<para>
+		    В данный момент автоматический запуск приложения поддерживается
+		    только для оконного менеджера <literal>KDE</literal>.
+		</para>
+	    </footnote>
+	  </para>
+	</glossdef>
+      </glossentry>
+    </glosslist>
+    <para>
+	Рассмотрим подробнее диалог настройки
+	<figure float="1">
+	    <title>Диалог настройки</title>
+	    <screenshot><graphic fileref="&SCREENSHOTSDIR;config-ru.png"/></screenshot> 
+        </figure>
+	Во-первых, вы можете настроить <emphasis>интервал между проверками</emphasis>. Нужно указать
+	количество секунд (или минут,часов,дней,недель, месяцев), которое пройдёт
+	прежде чем произойдёт очередной запуск проверки на наличие обновлений.
+	Ещё один параметр - <emphasis>путь к программе обновлений</emphasis>. 
+	Если вы не помните точно местоположение файла, то нажмите на кнопку с изображением 
+	<quote>...</quote> для вызова стандартного диалога выбора файла.
+	Наконец, можно включить <emphasis>чувствительность к нарушенным зависимостям</emphasis>.
+	Если включён этот параметр, то приложение будет считать ошибкой 
+	<footnote>
+	    <para>и отобразит на панели соответствующую иконку</para>
+	</footnote>
+	нарушение межпакетных зависимостей в вашей системе
+	В противном случае, программа не будет обращать на это внимание. 
+	По умолчанию этот параметр выключен.
+	Наконец, параметр, который следует использовать только в исключительных ситуациях - 
+	<emphasis>Игнорировать проблемы dist-upgrade</emphasis>. Он полезен, если зависимости в
+	системе в порядке, но обновление не проходит из-за каких-либо проблем в зависимостях в
+	репозитарии. Это очень редкая и не желательная ситуация.
+    </para>
+    <para>
+	Наконец, окно с детальной информацией
+	<figure float="1">
+	    <title>Информационное окно</title>
+	    <screenshot><graphic fileref="&SCREENSHOTSDIR;info-ru.png"/></screenshot> 
+        </figure>
+	покажет вам подробности о текущем состоянии. Например, на иллюстрации объяснятся причина ошибки
+    </para>
+  </section>
+  <section>
+	<title>Сообщения об ошибках</title>
+	<para>
+	    Все сообщения об обнаруженных ошибках, а также пожелания 
+	    по работе приложения направляйте в систему отслеживания ошибок
+	    &ALTCOMP; (Bug Tracking System), размещающуюся по адресу
+	    <emphasis><ulink url='http://bugzilla.altlinux.ru'>http://bugzilla.altlinux.ru</ulink></emphasis>
+	</para>
+  </section>
+</chapter>

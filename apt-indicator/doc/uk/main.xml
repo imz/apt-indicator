@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="koi8-u"?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd"
+[
+
+<!ENTITY ALTCOMP "<ulink url='http://www.altlinux.com'>ALT Linux</ulink>">
+<!ENTITY PROGRAM "<emphasis>APT Indicator</emphasis>">
+<!ENTITY PIXMAPSDIR "//usr/share/apt-indicator/pixmaps/">
+<!ENTITY SCREENSHOTSDIR "../../images/">
+
+]>
+
+<chapter id="apt-indicator" lang="uk">
+  <chapterinfo>
+    <author lang="en">
+      <firstname>Stanislav</firstname>
+      <surname>Ievlev</surname>
+      <affiliation>
+	<address>
+	  <email>inger@altlinux.org</email>
+	</address>
+      </affiliation>
+    </author>
+  </chapterinfo>
+  <title>Аплет &PROGRAM;</title>
+  <section>
+    <title>Вступ</title>
+    <para>
+	    Система поновлень <emphasis>APT</emphasis> потребує регулярне виконання
+	    користувачем процедури отримання списків досяжних пакетів з серверу.
+	    Зрозуміло, це можна робити автоматично із наступним автоматичним поновленням,
+	    але для <quote>звичайних</quote> користувачів це надто складно та було б бажано
+	    контролювати процес поновлень та проводити їх тільки тоді, коли це необхідно.
+    </para>
+    <para>
+	    З цією метою й було створено невеличкий додаток &PROGRAM;.
+	    Він розташовується в області повідомлень менеджеру вікон у вигляді невеличкої іконки,
+	    яка відображає поточний стан.
+    </para>
+    <table>
+      <title>Можливі стани</title>
+      <tgroup cols="2">
+	<thead>
+	  <row>
+	    <entry>Іконка</entry>
+	    <entry>Опис</entry>
+	  </row>
+	</thead>
+	<tbody>
+	  <row>
+	    <entry><graphic fileref="&PIXMAPSDIR;normal.png"/></entry>
+    	    <entry>Досяжних поновлень нема</entry>
+	  </row>
+	  <row>
+	    <entry><graphic fileref="&PIXMAPSDIR;danger.png"/></entry>
+    	    <entry>
+		    Є поновлення для системи.  Типово усі дистрибутиви &ALTCOMP; налаштовані
+		    на поновлення, пов'язані із виправленням помилок безпеки (security updates), тому
+		    ми настійно рекомендуємо проводити поновлення у таких випадках.
+		    Клацніть один раз на іконці, щоб побачити інформаційне вікно із докладним 
+		    списком пакетів, що підлягають поновленню
+	    </entry>
+	  </row>
+	  <row>
+	    <entry><graphic fileref="&PIXMAPSDIR;problem.png"/></entry>
+    	    <entry>
+		    Виникли якісь проблеми у додатку або системі <emphasis>APT</emphasis>.
+		    Клацніть один раз на іконці, щоб побачити інформаційне вікно із описом проблеми.
+	    </entry>
+	  </row>
+	  <row>
+	    <entry><graphic fileref="&PIXMAPSDIR;working.png"/></entry>
+    	    <entry>
+		    В даний момент іде отримання списків поновлень
+	    </entry>
+	  </row>
+	</tbody>
+      </tgroup>
+    </table>
+    <para>
+	    Додаток працює із привілеями користувача, який його запустив, тому для проведення
+	    реального поновлення треба викликати привілейовану програму.  Типово це 
+	    <application>synaptic</application>.
+    </para>
+  </section>
+  <section>
+    <title>Налаштування</title>
+    <para>
+	    Додаток вміє автоматично розміщувати іконку на системній панелі середовищ
+	    <emphasis>KDE</emphasis> та <emphasis>Gnome</emphasis> (при запущенному аплеті
+	    <quote>Область повідомлень</quote>, <application>notification-area</application>).
+	    Щоб іконка була на системній панелі менеджеру вікон <application>IceWM</application>,
+	    треба додати наступні рядки (якщо їх там ще немає) у файл
+	    <filename>~/.icewm/winoptions</filename>
+	<footnote>
+	    <para>
+		    Якщо цей файл відсутній, скопіюйте його з системного каталогу
+		<filename>/usr/X11R6/lib/X11/icewm</filename>
+	    </para>
+	</footnote>
+	наступні рядки:
+    </para>
+    <screen>
+apt-indicator.trayicon.doNotCover: 0
+apt-indicator.trayicon.layer: AboveDock
+apt-indicator.trayicon.allWorkspaces: 1
+apt-indicator.trayicon.ignoreWinList: 1
+apt-indicator.trayicon.ignoreTaskBar: 1
+apt-indicator.trayicon.ignoreQuickSwitch: 1
+apt-indicator.trayicon.fMove: 0
+apt-indicator.trayicon.fResize: 0
+apt-indicator.trayicon.fClose: 0
+apt-indicator.trayicon.fMinimize: 0
+apt-indicator.trayicon.fMaximize: 0
+apt-indicator.trayicon.fHide: 0
+apt-indicator.trayicon.fRollup: 0
+apt-indicator.trayicon.dTitleBar: 0
+apt-indicator.trayicon.dSysMenu: 0
+apt-indicator.trayicon.dBorder: 0
+apt-indicator.trayicon.dResize: 0
+apt-indicator.trayicon.dClose: 0
+apt-indicator.trayicon.dMinimize: 0
+apt-indicator.trayicon.dMaximize: 0
+apt-indicator.trayicon.noFocusOnAppRaise: 0
+apt-indicator.trayicon.geometry: +1600+1200
+    </screen>
+    <para>
+	    Загальне меню &PROGRAM; викликається клацанням
+	    правої кнопки миші на іконці.
+	<figure float="1">
+	    <title>Загальне меню</title>
+	    <screenshot><graphic fileref="&SCREENSHOTSDIR;menu-uk.png"/></screenshot> 
+        </figure>
+        Ви можете виконувати наступні дії:
+    </para>
+    <glosslist>
+      <glossentry>
+	<glossterm>Поновити</glossterm>
+	<glossdef>
+            <para>
+		    Запускається обрана користувачем привелийована програма для
+		    проведення поновлень.  Типово це <filename>/usr/bin/synaptic</filename>.
+		    Ви можете вказати іншу програму у налаштуваннях.
+	  </para>
+	</glossdef>
+      </glossentry>
+      <glossentry>
+        <glossterm>Налаштування</glossterm>
+	<glossdef>
+	  <para>Запустити діалог тонкого налаштування параметрів додатку</para>
+	</glossdef>
+      </glossentry>
+      <glossentry>
+	<glossterm>Перевірити поновлення</glossterm>
+	<glossdef>
+		<para>
+			Виконати позапланову перевірку щодо наявності досяжних поновлень.
+			&PROGRAM; самостійно периодично виконує такі
+			перевірки із інтервалом, що вказаний у діалозі налаштування.
+			Типово він дорівнює одній добі та малоймовірно, що вам доведеться змінювати
+			це значення.
+	  </para>
+	</glossdef>
+      </glossentry>
+      <glossentry>
+	<glossterm>Докладна інформація</glossterm>
+	<glossdef>
+		<para>
+			Вивести докладну інформацію щодо поточного стану.
+			Наприклад, список пакетів для поновлення, причину помилки та т.і.
+	  </para>
+	</glossdef>
+      </glossentry>
+      <glossentry>
+	<glossterm>Про програму</glossterm>
+	<glossdef>
+	  <para>Запускається діалог із короткою інформацією щодо додатку</para>
+	</glossdef>
+      </glossentry>
+      <glossentry>
+	<glossterm>Вихід</glossterm>
+	<glossdef>
+		<para>
+			Завершити виконання додатку.  При цьому вас спитають, чи бажаєте ви
+			наступного разу завантажити додаток автоматично при старті системи.
+	    <footnote>
+		<para>
+			У даний момент автоматичний запуск підтримується тільки для
+		    	середовища <literal>KDE</literal>.
+		</para>
+	    </footnote>
+	  </para>
+	</glossdef>
+      </glossentry>
+    </glosslist>
+    <para>
+	    Роздивимось докладніше діалог налаштувань
+	<figure float="1">
+	    <title>Діалог налаштувань</title>
+	    <screenshot><graphic fileref="&SCREENSHOTSDIR;config-uk.png"/></screenshot> 
+        </figure>
+	Поперше, ви можете вказати <emphasis>інтервал між перевірками</emphasis>.  Треба вказати
+	кількість секунд (хвилин, часів, діб, тижнів, місяців), що пройде між черговими
+	запусками перевірки на наявність поновлень.
+	Ще один параметр - <emphasis>шлях до програми поновлень</emphasis>.
+	Якщо ви не пам'ятаєте, де вона, клацніть по кнопці з зображенням <quote>...</quote>
+	для виклику стандартного діалогу вибору файла.
+	Також можна увімкнути <emphasis>чутливість до порушених залежностей</emphasis>.
+	Якщо цей параметр ввімкнутий, додаток буде рахувати за помилку
+	<footnote>
+	    <para>та відобразить на панелі відповідну іконку</para>
+        </footnote>
+	порушення міжпакетних залежностей у вашій системі.
+	Інакше програма не буде звертати на це уваги.
+	Типово цей параметр вимкнений.
+    </para>
+    <para>
+	Вікно із докладною інформацією
+	<figure float="1">
+	    <title>Інформаційне вікно</title>
+	    <screenshot><graphic fileref="&SCREENSHOTSDIR;info-uk.png"/></screenshot> 
+        </figure>
+	розповість подробиці щодо поточного стану.  Наприклад, на ілюстрації
+	пояснюється причина помилки.
+    </para>
+  </section>
+  <section>
+	  <title>Повідомлення щодо помилок</title>
+	  <para>
+		  Усі повідомлення щодо знайдених помилок, а також побажання щодо
+		  роботи додатку надсилайте у систему відслідковування помилок
+		  &ALTCOMP; (Bug Tracking System) за адресою
+	    <emphasis><ulink url='http://bugzilla.altlinux.ru'>http://bugzilla.altlinux.ru</ulink></emphasis>
+	</para>
+  </section>
+</chapter>

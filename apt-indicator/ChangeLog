@@ -1,0 +1,174 @@
+2004-08-09 12:25  ievlev
+
+	* src/agent.cpp: auto commit 
+
+2004-08-05 12:56  ievlev
+
+	* Makefile: fix subtitution 
+
+2004-08-05 12:50  ievlev
+
+	* main.mak: auto commit 
+
+2004-08-05 12:49  ievlev
+
+	* NEWS, doc/en/main.xml, doc/images/config-en.png,
+	doc/images/config-ru.png, doc/images/config-uk.png,
+	doc/ru/main.xml, include/agent.h, src/agent.cpp,
+	translations/ru.ts, translations/uk.ts,
+	translations/untranslated.ts: apply patch from zerg (with fixes) -
+	hide info_window on second click, update documentation 
+
+2004-08-04 16:52  ievlev
+
+	* README, TODO: update contributor list 
+
+2004-08-04 12:41  ievlev
+
+	* TODO, include/config.h, include/dist_upgrade.h, src/agent.cpp,
+	src/config.cpp, src/config_dialog.ui, src/dist_upgrade.cpp: test3 
+
+2004-08-04 11:07  ievlev
+
+	* src/dist_upgrade.cpp: test2 
+
+2004-08-03 19:14  ievlev
+
+	* src/dist_upgrade.cpp: test1 
+
+2004-08-02 13:48  ievlev
+
+	* README: added missing requires for building 
+
+2004-08-02 12:37  ievlev
+
+	* README: auto commit 
+
+2004-08-02 12:01  ievlev
+
+	* README, src/config_dialog.ui.h: fix documentation, possible fixes
+	in config_dialog.ui.h 
+
+2004-04-28 14:49  ievlev
+
+	* spec: auto commit 
+
+2004-04-28 12:50  ievlev
+
+	* NEWS, README: added README file, fix typo in NEWS 
+
+2004-04-28 12:25  ievlev
+
+	* AUTHORS, NEWS, main.mak, src/Makefile, src/main.cpp: prepare to
+	release, added manpage and AUTHORS 
+
+2004-04-27 16:59  ievlev
+
+	* Makefile, doc/en/main.xml, doc/images/config-en.png,
+	doc/images/config-ru.png, doc/images/config-uk.png,
+	doc/images/config.png, doc/images/info-en.png,
+	doc/images/info-ru.png, doc/images/info-uk.png,
+	doc/images/info.png, doc/images/menu-en.png,
+	doc/images/menu-ru.png, doc/images/menu-uk.png,
+	doc/images/menu.png, doc/ru/main.xml, doc/uk/main.xml,
+	src/agent.cpp, src/help_browser.ui, src/info_window.ui,
+	translations/ru.ts: apply patches from zerg: new screenshots,
+	improve QMessageBox calling 
+
+2004-04-27 12:19  ievlev
+
+	* doc/en/main.xml: fix help documentation 
+
+2004-04-26 16:36  ievlev
+
+	* TODO, doc/Makefile, doc/en/main.xml, doc/ru/main.xml,
+	doc/uk/main.xml: added english translation 
+
+2004-04-26 14:40  ievlev
+
+	* pixmaps/cancel.png, pixmaps/ok.png, src/config_dialog.ui,
+	src/info_window.ui, src/main.cpp: apply patches from zerg: QT
+	translations, remove pixmap buttons 
+
+2004-04-23 17:22  ievlev
+
+	* src/agent.cpp: fix path to doc 
+
+2004-04-23 16:44  ievlev
+
+	* Makefile, src/agent.cpp: auto commit 
+
+2004-04-23 16:32  ievlev
+
+	* main.mak: auto commit 
+
+2004-04-23 16:30  ievlev
+
+	* include/agent.h, src/Makefile, src/about_dialog.ui,
+	src/agent.cpp: replace about dialog with standart widget 
+
+2004-04-23 15:26  ievlev
+
+	* include/config.h, include/local.h, pixmaps/critical.png,
+	pixmaps/information.png, pixmaps/warning.png, src/Makefile,
+	src/agent.cpp, src/config.cpp, src/yes_no_dialog.ui,
+	src/yes_no_dialog.ui.h: remove YesNoDialog, use standart QMessage 
+
+2004-04-23 13:41  ievlev
+
+	* kde.desktop, menu, spec, doc/Makefile, doc/ru/main.xml,
+	doc/uk/main.xml, src/Makefile, src/main.cpp, src/tray_icon.cpp: 
+	rename ALT update to APT indicator in documentation and sources 
+
+2004-04-23 13:19  ievlev
+
+	* doc/ru/main.xml, src/agent.cpp: added support for multi-language
+	help 
+
+2004-04-21 16:11  ievlev
+
+	* doc/: Makefile, uk/main.xml: added ukranian help 
+
+2004-04-09 11:50  ievlev
+
+	* ChangeLog, Makefile, main.mak: auto commit 
+
+2004-04-09 11:46  ievlev
+
+	* ChangeLog, COPYING, Makefile, NEWS, TODO, kde.desktop, main.mak,
+	menu, spec, doc/Makefile, doc/images/config.png,
+	doc/images/info.png, doc/images/menu.png, doc/ru/main.xml,
+	include/agent.h, include/assert.h, include/config.h,
+	include/dist_upgrade.h, include/local.h, include/run_program.h,
+	include/tray_icon.h, pixmaps/Makefile, pixmaps/backward.png,
+	pixmaps/cancel.png, pixmaps/critical.png, pixmaps/danger.png,
+	pixmaps/exit.png, pixmaps/forward.png, pixmaps/home.png,
+	pixmaps/information.png, pixmaps/normal.png, pixmaps/ok.png,
+	pixmaps/problem.png, pixmaps/warning.png, pixmaps/working.png,
+	src/Makefile, src/about_dialog.ui, src/agent.cpp, src/config.cpp,
+	src/config_dialog.ui, src/config_dialog.ui.h, src/dist_upgrade.cpp,
+	src/help_browser.ui, src/info_window.ui, src/main.cpp,
+	src/run_program.cpp, src/tray_icon.cpp, src/yes_no_dialog.ui,
+	src/yes_no_dialog.ui.h, translations/Makefile, translations/ru.ts,
+	translations/uk.ts, translations/untranslated.ts: 
+	 - imported 
+
+2004-04-09 11:46  ievlev
+
+	* ChangeLog, COPYING, Makefile, NEWS, TODO, kde.desktop, main.mak,
+	menu, spec, doc/Makefile, doc/images/config.png,
+	doc/images/info.png, doc/images/menu.png, doc/ru/main.xml,
+	include/agent.h, include/assert.h, include/config.h,
+	include/dist_upgrade.h, include/local.h, include/run_program.h,
+	include/tray_icon.h, pixmaps/Makefile, pixmaps/backward.png,
+	pixmaps/cancel.png, pixmaps/critical.png, pixmaps/danger.png,
+	pixmaps/exit.png, pixmaps/forward.png, pixmaps/home.png,
+	pixmaps/information.png, pixmaps/normal.png, pixmaps/ok.png,
+	pixmaps/problem.png, pixmaps/warning.png, pixmaps/working.png,
+	src/Makefile, src/about_dialog.ui, src/agent.cpp, src/config.cpp,
+	src/config_dialog.ui, src/config_dialog.ui.h, src/dist_upgrade.cpp,
+	src/help_browser.ui, src/info_window.ui, src/main.cpp,
+	src/run_program.cpp, src/tray_icon.cpp, src/yes_no_dialog.ui,
+	src/yes_no_dialog.ui.h, translations/Makefile, translations/ru.ts,
+	translations/uk.ts, translations/untranslated.ts: Initial revision 
+

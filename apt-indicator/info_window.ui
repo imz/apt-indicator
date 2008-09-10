@@ -1,0 +1,75 @@
+<ui version="4.0" >
+ <author>Sergey V Turchin &lt;zerg@altlinux.org&gt;</author>
+ <class>InfoWindowUI</class>
+ <widget class="QDialog" name="InfoWindowUI" >
+  <property name="geometry" >
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>525</width>
+    <height>349</height>
+   </rect>
+  </property>
+  <property name="minimumSize" >
+   <size>
+    <width>31</width>
+    <height>31</height>
+   </size>
+  </property>
+  <property name="windowTitle" >
+   <string>Information Window</string>
+  </property>
+  <layout class="QGridLayout" >
+   <item row="0" column="0" colspan="4" >
+    <widget class="QTextEdit" name="infoText" >
+     <property name="readOnly" >
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="3" >
+    <spacer name="spacer2_2" >
+     <property name="orientation" >
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="sizeType" >
+      <enum>QSizePolicy::Expanding</enum>
+     </property>
+     <property name="sizeHint" stdset="0" >
+      <size>
+       <width>100</width>
+       <height>20</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="1" column="0" >
+    <spacer name="spacer2" >
+     <property name="orientation" >
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="sizeType" >
+      <enum>QSizePolicy::Expanding</enum>
+     </property>
+     <property name="sizeHint" stdset="0" >
+      <size>
+       <width>110</width>
+       <height>20</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="1" column="1" >
+    <widget class="QPushButton" name="upgradeButton" >
+     <property name="text" >
+      <string>Upgrade</string>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <layoutdefault spacing="6" margin="11" />
+ <pixmapfunction>QPixmap</pixmapfunction>
+ <resources/>
+ <connections/>
+</ui>

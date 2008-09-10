@@ -1,0 +1,227 @@
+<?xml version="1.0"?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd"
+[
+
+<!ENTITY ALTCOMP "<ulink url='http://www.altlinux.com'>ALT Linux</ulink>">
+<!ENTITY PROGRAM "<emphasis>APT Indicator</emphasis>">
+<!ENTITY PIXMAPSDIR "//usr/share/apt-indicator/pixmaps/">
+<!ENTITY SCREENSHOTSDIR "../../images/">
+
+]>
+
+<chapter id="apt-indicator" lang="en">
+  <chapterinfo>
+    <author lang="en">
+      <firstname>Stanislav</firstname>
+      <surname>Ievlev</surname>
+      <affiliation>
+	<address>
+	  <email>inger@altlinux.org</email>
+	</address>
+      </affiliation>
+    </author>
+  </chapterinfo>
+  <title>&PROGRAM; system tray applet</title>
+  <section>
+    <title>Introduction</title>
+    <para>
+	When you use <emphasis>APT</emphasis> software management system,
+	you need regularly resynchronize the package index files from their sources.
+	It's normal for skilled admins, but unacceptable for ordinal users.
+	Also It would be desirable to control this synchronization and upgrade system 
+	only if nesessary.
+    </para>
+    <para>
+	Small applet &PROGRAM; was created as a solution of this problem.
+	It looks like a small icon in notification area of window manager.
+	Icon's picture depends of update status.
+    </para>
+    <table>
+      <title>Possible icons</title>
+      <tgroup cols="2">
+	<thead>
+	  <row>
+	    <entry>Icon</entry>
+	    <entry>Description</entry>
+	  </row>
+	</thead>
+	<tbody>
+	  <row>
+	    <entry><graphic fileref="&PIXMAPSDIR;normal.png"/></entry>
+    	    <entry>There are no new packages available for your system</entry>
+	  </row>
+	  <row>
+	    <entry><graphic fileref="&PIXMAPSDIR;danger.png"/></entry>
+    	    <entry>
+		Some new packages available.
+		<emphasis>APT</emphasis> looks for security updates by default, 
+		and we strongly recommend you to upgrade your system.
+		If you click on icon, you will window with detailed information about
+		new packages.
+	    </entry>
+	  </row>
+	  <row>
+	    <entry><graphic fileref="&PIXMAPSDIR;problem.png"/></entry>
+    	    <entry>
+		Some problems in application or <emphasis>APT</emphasis>.
+		Click on icon, and you will see window with detailed problem description.
+		If you can solve this problem write to Bug Tracking system.
+	    </entry>
+	  </row>
+	  <row>
+	    <entry><graphic fileref="&PIXMAPSDIR;working.png"/></entry>
+    	    <entry>
+		Applet is receiving index files now. Work still in progress.
+	    </entry>
+	  </row>
+	</tbody>
+      </tgroup>
+    </table>
+    <para>
+	This application works under non-privilegy user ,so you need to run 
+	external privilege application to upgrade your system.
+	By-default you will run <application>synaptic</application>.
+    </para>
+  </section>
+  <section>
+    <title>Configuring</title>
+    <para>
+	Applet can put it's icon to notification area of <emphasis>KDE</emphasis> or 
+	<emphasis>Gnome</emphasis> system tray (don't forget to run
+	<application>notification area</application> applet first).
+	If you want to use applet under <application>IceWM</application> window manager,
+	please add following lines to <filename>~/.icewm/winoptions</filename> file:
+	<footnote>
+	    <para>
+		If this file doesn't exist, copy it from <filename>/usr/X11R6/lib/X11/icewm</filename>
+		directory.
+	    </para>
+	</footnote>
+    </para>
+    <screen>
+apt-indicator.trayicon.doNotCover: 0
+apt-indicator.trayicon.layer: AboveDock
+apt-indicator.trayicon.allWorkspaces: 1
+apt-indicator.trayicon.ignoreWinList: 1
+apt-indicator.trayicon.ignoreTaskBar: 1
+apt-indicator.trayicon.ignoreQuickSwitch: 1
+apt-indicator.trayicon.fMove: 0
+apt-indicator.trayicon.fResize: 0
+apt-indicator.trayicon.fClose: 0
+apt-indicator.trayicon.fMinimize: 0
+apt-indicator.trayicon.fMaximize: 0
+apt-indicator.trayicon.fHide: 0
+apt-indicator.trayicon.fRollup: 0
+apt-indicator.trayicon.dTitleBar: 0
+apt-indicator.trayicon.dSysMenu: 0
+apt-indicator.trayicon.dBorder: 0
+apt-indicator.trayicon.dResize: 0
+apt-indicator.trayicon.dClose: 0
+apt-indicator.trayicon.dMinimize: 0
+apt-indicator.trayicon.dMaximize: 0
+apt-indicator.trayicon.noFocusOnAppRaise: 0
+apt-indicator.trayicon.geometry: +1600+1200
+    </screen>
+    <para>
+	Click right mouse button on icon to see &PROGRAM; main menu
+	<figure float="1">
+	    <title>Main menu</title>
+	    <screenshot><graphic fileref="&SCREENSHOTSDIR;menu-en.png"/></screenshot> 
+        </figure>
+	You can choose following actions:
+    </para>
+    <glosslist>
+      <glossentry>
+	<glossterm>Upgrade</glossterm>
+	<glossdef>
+	  <para>
+		Run external privilege application to upgrade your system.
+		By default <filename>/usr/bin/synaptic</filename> will start.
+		If you want to call other program, change this program name in Settings dialog.
+	  </para>
+	</glossdef>
+      </glossentry>
+      <glossentry>
+	<glossterm>Settings...</glossterm>
+	<glossdef>
+	  <para>Change applet settings, e.g., update interval</para>
+	</glossdef>
+      </glossentry>
+      <glossentry>
+	<glossterm>Check for updates</glossterm>
+	<glossdef>
+	  <para>
+		Check for updates available for your system. &PROGRAM; itself 
+		periodically checks for updates. Check interval equals 24 hours by default.
+		You can change this interval in Settings dialog.
+	  </para>
+	</glossdef>
+      </glossentry>
+      <glossentry>
+	<glossterm>Detailed info...</glossterm>
+	<glossdef>
+	  <para>
+		See detailed information about current program state.
+		For example, you can see a list of available new packages,
+		error description, etc.
+	  </para>
+	</glossdef>
+      </glossentry>
+      <glossentry>
+	<glossterm>About</glossterm>
+	<glossdef>
+	  <para>See applet's copyright information</para>
+	</glossdef>
+      </glossentry>
+      <glossentry>
+	<glossterm>Quit</glossterm>
+	<glossdef>
+	  <para>
+	    Exit application. You will asked, whether you wish to start 
+	    the applet automatically next time at window manager startup.
+	    <footnote>
+		<para>
+		    At this time autostart sample added only for <literal>KDE</literal>
+		    window manager. If your window manager supports autostart you can add
+		    &PROGRAM; there with command line <command>apt-indicator --autostart</command>
+		</para>
+	    </footnote>
+	  </para>
+	</glossdef>
+      </glossentry>
+    </glosslist>
+    <para>
+	Let's see Settings dialog now.
+	<figure float="1">
+	    <title>Settings dialog</title>
+	    <screenshot><graphic fileref="&SCREENSHOTSDIR;config-en.png"/></screenshot> 
+        </figure>
+	First, you can change check interval. You can set an interval as quantity of seconds,
+	minutes, hours,weeks or months between checks.
+	Second, you can change path to external utility for upgrades. If you can't remember
+	path to this program click <quote>...</quote> and use standard dialog for file choosing.
+	You can also turn on <emphasis>Be sensitive unmet dependecies</emphasis> option.
+	With this option enabled applet will inform you about broken package dependencies in your system.
+	This option is turned off by default.
+	There are also <emphasis>Ignore dist-upgrade errors</emphasis> option exist.
+	I not recomend to use it on most systems. If this option is turned on, then program 
+	will ignore problems during update set calculation.
+    </para>
+    <para>
+	Finally, Informaion dialog
+	<figure float="1">
+	    <title>Information</title>
+	    <screenshot><graphic fileref="&SCREENSHOTSDIR;info-en.png"/></screenshot> 
+        </figure>
+	will inform you about current program state.
+    </para>
+  </section>
+  <section>
+	<title>Bug reporting</title>
+	<para>
+	    All bug reports and ideas about this program send to &ALTCOMP;'s bug tracking system at
+	    <emphasis><ulink url='http://bugzilla.altlinux.ru'>http://bugzilla.altlinux.ru</ulink></emphasis>
+	</para>
+  </section>
+</chapter>

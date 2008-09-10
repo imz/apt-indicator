@@ -1,0 +1,35 @@
+APT Indicator is a small applet that looks like small icon on system tray of your window manager.
+This applet will notify you about available new packages for your system, e.g. security updates,
+using APT software management system.
+
+Authors
+-------
+Stanislav Ievlev <inger@altlinux.org>
+Sergey V Turchin <zerg@altlinux.org>
+Also big thanks to:
+    Thomas Boerkel <thomas@boerkel.de>
+
+Building
+--------
+You need following tools to build library:
+    o c++ compiler (gcc 3.2 or higher)
+    o Qt library (3.3 or higher)
+    o APT library (0.5.15cnc5 higher)
+    o GNU make (3.80 or higher)
+    o docbook xsl stylesheets and docbook 4.2 dtd's
+
+To compile without debug information just type 'export RPM_OPT_FLAGS="-DNDEBUG";make',
+
+Installing
+----------
+Type "make install" to install library with header files to your system.
+You also need to install help files to /usr/share/apt-indicator/doc directory.
+
+There are also some sample files:
+spec - sample spec file to build your own rpm package.
+menu - sample menu description file for Debian style menu system.
+kde.desktop - helps you to organize autostart of this applet in KDE window manager.
+
+Bug reporting
+------------
+Please report all bugs you find in the program directly to authors.
