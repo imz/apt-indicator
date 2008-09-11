@@ -294,6 +294,8 @@ bool Agent::event(QEvent *e)
 	case END_UPGRADE:
 		//setup report date and time
 		changeTrayIcon();
+		e->accept();
+		return true;
 		break;
 	case END_RUN:
 		if (run_thread_->status() != RunProgram::Good)
@@ -303,12 +305,13 @@ bool Agent::event(QEvent *e)
 						QMessageBox::Ok,Qt::NoButton);
 		}
 		doCheck();
+		e->accept();
+		return true;
 		break;
 	default:
 		break;
 	};
-	e->accept();
-	return true;
+	return false;
 }
 
 void Agent::onActivateSysTray(QSystemTrayIcon::ActivationReason reason)
