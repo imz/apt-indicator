@@ -22,6 +22,7 @@ License: GPL
  */
 class DistUpgrade : public QThread
 {
+Q_OBJECT
 public:
 	enum Status {Working, Normal, Danger, Problem, TryAgain};
 
@@ -32,6 +33,8 @@ public:
 
 	Status status() const; /**< read dist-upgrade status */
 	QString result() const; /**< read dist-upgrade results */
+signals:
+	void endDistUpgrade();
 	
 private:
 	void doChild();

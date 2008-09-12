@@ -23,7 +23,7 @@ License: GPL
 
 #define RETRY_INTERVAL 180 /**< interval between unsuccessful upgrades */
 
-#define END_UPGRADE  1001
-#define END_RUN  1002
+#define EVENT_END_UPGRADE  1001
+#define EVENT_END_RUN  1002
 
 #endif

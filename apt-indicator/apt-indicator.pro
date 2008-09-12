@@ -1,5 +1,5 @@
 
-TEMPLATE = app
+TEMPLATE = app subdirs
 QT += network
 QMAKE_CXXFLAGS += -pedantic $(RPM_OPT_FLAGS)
 LIBS += -lapt-pkg
@@ -19,7 +19,7 @@ HEADERS += config_dialog.h info_window.h help_browser.h
 
 FORMS = config_dialog.ui info_window.ui help_browser.ui
 
-DATA = *.pro $$TARGET.desktop
+DATA = $$TARGET.pro $$TARGET.desktop
 
 RESOURCES = pixmaps.qrc
 

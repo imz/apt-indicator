@@ -144,16 +144,16 @@ void Agent::doRun()
 		else
 		{
 			delete run_thread_;
-			run_thread_ = new RunProgram(this, cfg_->pathToUpgrader());
-			run_thread_->start();
+			run_thread_ = 0;
 		}
 	}
-	else
+
+	if (!run_thread_)
 	{
 		run_thread_ = new RunProgram(this, cfg_->pathToUpgrader());
+		connect(run_thread_, SIGNAL(endRun()), this, SLOT(onEndRun()));
 		run_thread_->start();
 	}
-
 }
 
 void Agent::doConfigure()
@@ -173,17 +173,15 @@ void Agent::doCheck()
 		if( upgrade_thread_->isFinished() )
 		{ //thread finish work
 			delete upgrade_thread_;
-			upgrade_thread_ = new DistUpgrade(this, homedir_,
-							  cfg_->showBroken(),cfg_->ignoreErrors());
-			status_ = DistUpgrade::Working; //change status
-			setTrayIcon();
-			upgrade_thread_->start(); //and run thread
+			upgrade_thread_ = 0;
 		}
 	}
-	else
+
+	if (!upgrade_thread_)
 	{
 		upgrade_thread_ = new DistUpgrade(this, homedir_, 
 						  cfg_->showBroken(),cfg_->ignoreErrors());
+		connect(upgrade_thread_, SIGNAL(endDistUpgrade()), this, SLOT(onEndDistUpgrade()));
 		status_ = DistUpgrade::Working; //change status
 		setTrayIcon();
 		upgrade_thread_->start(); //and run thread
@@ -287,31 +285,20 @@ void Agent::changeTrayIcon()
 	}
 }
 
-bool Agent::event(QEvent *e)
+void Agent::onEndDistUpgrade()
 {
-	switch (e->type())
-	{
-	case END_UPGRADE:
-		//setup report date and time
-		changeTrayIcon();
-		e->accept();
-		return true;
-		break;
-	case END_RUN:
-		if (run_thread_->status() != RunProgram::Good)
-		{
-			QMessageBox::critical(0,QObject::tr("Event processing"),
-						run_thread_->result(),
-						QMessageBox::Ok,Qt::NoButton);
-		}
-		doCheck();
-		e->accept();
-		return true;
-		break;
-	default:
-		break;
-	};
-	return false;
+    changeTrayIcon();
+}
+
+void Agent::onEndRun()
+{
+    if (run_thread_->status() != RunProgram::Good)
+    {
+	QMessageBox::critical(0,QObject::tr("Event processing"),
+	    run_thread_->result(),
+	    QMessageBox::Ok,Qt::NoButton);
+    }
+    doCheck();
 }
 
 void Agent::onActivateSysTray(QSystemTrayIcon::ActivationReason reason)

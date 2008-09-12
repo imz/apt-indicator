@@ -28,9 +28,6 @@ public:
 	Agent( QObject *parent = 0, const char *name = 0, const QString &homedir = "", bool autostart = false);
 	~Agent();
 
-protected:
-	virtual bool event(QEvent *event);
-
 private slots:
 	void startProgram();
 	void helpBrowser();
@@ -42,6 +39,8 @@ private slots:
 	void changeTrayIcon();
 	void doConfigure();
 	void onActivateSysTray(QSystemTrayIcon::ActivationReason);
+	void onEndDistUpgrade();
+	void onEndRun();
 
 private:
 	void setTrayIcon();

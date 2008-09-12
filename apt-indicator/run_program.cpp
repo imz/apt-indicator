@@ -68,6 +68,7 @@ void RunProgram::run()
 			status_ = Failed; //overwrite status
 		}
 
+		emit endRun();
 		sendEvent();
 		return ;
 	}
@@ -76,6 +77,6 @@ void RunProgram::run()
 //send event about end of work
 void RunProgram::sendEvent()
 {
-	QEvent *event = new QEvent((QEvent::Type)END_RUN);
+	QEvent *event = new QEvent((QEvent::Type)EVENT_END_RUN);
 	QCoreApplication::postEvent(receiver_, event);
 }

@@ -402,7 +402,10 @@ void DistUpgrade::run()
 				status_ = Problem; //overwrite status
 			}
 			if (status_ != TryAgain)
-				sendEvent(); //send notification about end of work
+			{
+			    emit endDistUpgrade();
+			    sendEvent(); //send notification about end of work
+			}
 			else
 				sleep(RETRY_INTERVAL); //wait for the next retry
 		
@@ -418,6 +421,6 @@ void DistUpgrade::run()
  */
 void DistUpgrade::sendEvent()
 {
-	QEvent *event = new QEvent((QEvent::Type)END_UPGRADE);
+	QEvent *event = new QEvent((QEvent::Type)EVENT_END_UPGRADE);
 	QCoreApplication::postEvent(receiver_, event);
 }

@@ -13,14 +13,16 @@ License: GPL
 
 class RunProgram: public QThread
 {
+Q_OBJECT
 public:
 	typedef enum Status {Good = 0, Failed = 77};
 
 	RunProgram(QObject *_receiver, const QString &progname);
 	virtual void run();
-
 	Status	status() const;
 	QString	result() const;
+signals:
+	void endRun();
 private:
 	void	sendEvent();
 
