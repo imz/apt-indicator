@@ -24,24 +24,19 @@ Agent::Agent( QObject *parent, const char *name , const QString &homedir, bool a
 		QObject(parent),
 		homedir_(homedir),
 		cfg_(),
-		status_(DistUpgrade::Working),
 		timer_(),
 		autostart_(autostart),
 		upgrade_thread_(0),
 		upgrader_proc(0)
 {
 	setObjectName(name);
+	status_ = DistUpgrade::Normal;
 	info_window_ = 0;
 	cfg_ = new Configuration(this);
 	tray_icon_ = new QSystemTrayIcon(this);
+	setTrayIcon();
 	tray_icon_->show();
 	connect(tray_icon_, SIGNAL(activated(QSystemTrayIcon::ActivationReason)), this, SLOT(onActivateSysTray(QSystemTrayIcon::ActivationReason)));
-
-	QPixmap pix;
-	if (pix.load(":/pixmaps/normal.png"))
-	{
-	    tray_icon_->setIcon(pix);
-	}
 
 	menu_ = new QMenu();
 	menu_->addAction( tr("&Upgrade..."), this, SLOT(doRun()));
@@ -77,8 +72,6 @@ void Agent::startProgram()
 		QCoreApplication::quit();
 		return;
 	}
-
-	setTrayIcon();
 
 	//connect timer with update method
 	connect( &timer_, SIGNAL( timeout() ), this, SLOT( doCheck() ) );

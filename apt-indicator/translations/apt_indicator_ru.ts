@@ -1,4 +1,6 @@
-<!DOCTYPE TS><TS>
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS><TS version="1.1" language="ru_RU">
+<defaultcodec></defaultcodec>
 <context>
     <name>@default</name>
     <message>
@@ -270,7 +272,7 @@ when you login?</source>
     </message>
     <message>
         <source>Ignore dist-upgrade errors</source>
-        <translation type="unfinished">Игнорировать проблемы dist-upgrade</translation>
+        <translation>Игнорировать проблемы dist-upgrade</translation>
     </message>
 </context>
 <context>
@@ -476,66 +478,66 @@ Following packages will be removed:
     </message>
     <message>
         <source>&amp;Upgrade...</source>
-        <translation type="unfinished">Об&amp;новить...</translation>
+        <translation>Об&amp;новить...</translation>
     </message>
     <message>
         <source>Chec&amp;k for updates</source>
-        <translation type="unfinished">&amp;Проверить обновления</translation>
+        <translation>&amp;Проверить наличие обновлений</translation>
     </message>
     <message>
         <source>D&amp;etailed info...</source>
-        <translation type="unfinished">&amp;Детальная информация...</translation>
+        <translation>&amp;Детальная информация...</translation>
     </message>
     <message>
         <source>&amp;Settings...</source>
-        <translation type="unfinished">&amp;Настройки...</translation>
+        <translation>&amp;Настройки...</translation>
     </message>
     <message>
         <source>&amp;Help</source>
-        <translation type="unfinished">&amp;Помощь</translation>
+        <translation>&amp;Справка</translation>
     </message>
     <message>
         <source>&amp;About</source>
-        <translation type="unfinished">&amp;О программе</translation>
+        <translation>&amp;О программе</translation>
     </message>
     <message>
         <source>&amp;Quit</source>
-        <translation type="unfinished">&amp;Выход</translation>
+        <translation>&amp;Выход</translation>
     </message>
     <message>
         <source>Report at %1 %2</source>
-        <translation type="unfinished"></translation>
+        <translation>Отчет за %1 %2</translation>
     </message>
     <message>
         <source>Nothing to update...</source>
-        <translation type="unfinished">Обновлений нет...</translation>
+        <translation>Обновлений нет...</translation>
     </message>
     <message>
         <source>Checking in progress...</source>
-        <translation type="unfinished">Идет проверка обновлений...</translation>
+        <translation>Идет проверка обновлений...</translation>
     </message>
     <message>
         <source>No status info available</source>
-        <translation type="unfinished">Нет информации о статусе</translation>
+        <translation>Нет информации о статусе</translation>
     </message>
     <message>
         <source>Run upgrade process</source>
-        <translation type="unfinished">Запустить процесс обновления</translation>
+        <translation>Запустить процесс обновления</translation>
     </message>
     <message>
         <source>Program already running</source>
-        <translation type="unfinished">Программа уже запущена</translation>
+        <translation>Программа уже запущена</translation>
     </message>
     <message>
         <source>Help Browser</source>
-        <translation type="unfinished">Обозреватель помощи</translation>
+        <translation>Обозреватель справки</translation>
     </message>
     <message>
         <source>This program make notification of updates.
 Copyright (C) 2003-2004 ALT Linux Team
 
 Written by Stanislav Ievlev and Sergey V. Turchin</source>
-        <translation type="unfinished">Эта программа оповещает о наличии обновлений.
+        <translation>Эта программа оповещает о наличии обновлений.
 Copyright (C) 2003-2004 ALT Linux Team
 
 Авторы: Станислав Иевлев, Сергей В. Турчин</translation>
@@ -543,56 +545,56 @@ Copyright (C) 2003-2004 ALT Linux Team
     <message>
         <source>Should &lt;b&gt;%1&lt;/b&gt; start automatically 
 when you login?</source>
-        <translation type="unfinished">Должен ли &lt;b&gt;%1&lt;/b&gt; запускаться автоматически 
+        <translation>Должен ли &lt;b&gt;%1&lt;/b&gt; запускаться автоматически 
 при входе в систему?</translation>
     </message>
     <message>
         <source>Exit program</source>
-        <translation type="unfinished">Выход из программы</translation>
+        <translation>Выход из программы</translation>
     </message>
     <message>
         <source>There are updates for your system available...</source>
-        <translation type="unfinished">Доступны обновления для вашей системы...</translation>
+        <translation>Доступны обновления для вашей системы...</translation>
     </message>
     <message>
         <source>Nothing to update</source>
-        <translation type="unfinished">Нет обновлений</translation>
+        <translation>Нет обновлений</translation>
     </message>
     <message>
         <source>Problems with Dist-Upgrade</source>
-        <translation type="unfinished">Ошибки при проверке обновлений</translation>
+        <translation>Ошибки при проверке обновлений</translation>
     </message>
     <message>
         <source>Working...</source>
-        <translation type="unfinished">В работе...</translation>
+        <translation>В работе...</translation>
     </message>
     <message>
         <source>Unknown status</source>
-        <translation type="unfinished">Неопределенный статус</translation>
+        <translation>Неопределенный статус</translation>
     </message>
     <message>
         <source>setting Icon</source>
-        <translation type="unfinished">установка пикторраммы</translation>
+        <translation>установка пикторраммы</translation>
     </message>
     <message>
         <source>Could not load the icon file %1</source>
-        <translation type="unfinished">Не могу загрузить файл пиктограммы - %1</translation>
+        <translation>Не могу загрузить файл пиктограммы - %1</translation>
     </message>
     <message>
         <source>Event processing</source>
-        <translation type="unfinished">Обработка события</translation>
+        <translation>Обработка событий</translation>
     </message>
     <message>
         <source>Unknown custom event type: %1</source>
-        <translation type="unfinished">Неизвестный тип custom event: %1</translation>
+        <translation>Неизвестный тип custom event: %1</translation>
     </message>
     <message>
         <source>select program dialog</source>
-        <translation type="unfinished">диалог выбора программы</translation>
+        <translation>диалог выбора программы</translation>
     </message>
     <message>
         <source>Choose a program</source>
-        <translation type="unfinished">Выбор программы</translation>
+        <translation>Выбор программы</translation>
     </message>
 </context>
 <context>
