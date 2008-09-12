@@ -17,7 +17,7 @@
 #define RUN_ASSERT(expr) \
 if ( (expr) ) \
 { \
-    result_ = QObject::tr(#expr); \
+    result_ = tr(#expr); \
     emit endRun(); \
     return; \
 }
@@ -63,15 +63,15 @@ void RunProgram::run()
 			if (status_)
 			{
 			    if (status_ == Failed)
-				result_ = QObject::tr("execution of program failed");
+				result_ = tr("execution of program failed");
 			    else
-				result_ = QString(QObject::tr("child was exited with code %1")).arg(status_);
+				result_ = QString(tr("child was exited with code %1")).arg(status_);
 			}
 		}
 
 		if (WIFSIGNALED (child_status))
 		{
-			result_ = QString(QObject::tr("child was terminated with signal %1")).arg(WTERMSIG (child_status));
+			result_ = QString(tr("child was terminated with signal %1")).arg(WTERMSIG (child_status));
 			status_ = Failed; //overwrite status
 		}
 

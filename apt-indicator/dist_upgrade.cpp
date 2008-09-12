@@ -36,7 +36,7 @@ License: GPL
 #define DIST_UPGRADE_ASSERT(expr) \
 if ( (expr) ) \
 { \
-    result_ = QObject::tr(#expr); \
+    result_ = tr(#expr); \
     emit endDistUpgrade(); \
     return; \
 }
@@ -55,7 +55,7 @@ namespace
 #define APT_UPDATE_ASSERT(expr) \
 if ( (expr) ) \
 { \
-    warning(QObject::tr(#expr)); \
+    warning(tr(#expr)); \
     _config->Set("Dir::State", old_state_dir); \
     _config->Set("Dir::Cache", old_cache_dir); \
     return false ; \
@@ -149,7 +149,7 @@ bool DistUpgrade::update()
 {
 	if (workdir_.empty())
 	{
-		warning(QObject::tr("unable to determine user's home: skip update stage"));
+		warning(tr("unable to determine user's home: skip update stage"));
 		return true;
 	}
 
@@ -192,7 +192,7 @@ bool DistUpgrade::update()
 			continue;
 		(*I)->Finished();
 		Failed = true;
-		warning(QObject::tr("Release files for some repositories could not be retrieved or authenticated"));
+		warning(tr("Release files for some repositories could not be retrieved or authenticated"));
 	}
 
 	//read list for indexes
@@ -214,7 +214,7 @@ bool DistUpgrade::update()
 	if (!Fetcher.Clean(_config->FindDir("Dir::State::lists")) ||
 	    !Fetcher.Clean(_config->FindDir("Dir::State::lists") + "partial/"))
 	{
-		warning(QObject::tr("nothing to clean\n"));
+		warning(tr("nothing to clean\n"));
 	}
 
 	// Prepare the cache
@@ -234,7 +234,7 @@ void DistUpgrade::dist_upgrade()
 
 	if (pkgDistUpgrade(*Cache) == false && !ignore_errors_)
 	{
-		result_ = QObject::tr("DistUpgrade failed. Please, check your APT system");
+		result_ = tr("DistUpgrade failed. Please, check your APT system");
 		return ;
 	}
 
@@ -276,7 +276,7 @@ void DistUpgrade::dist_upgrade()
 		}
 		if (show_broken_ && !broken.isEmpty())
 		{
-			result_ += QObject::tr("<b>The following packages have unmet dependencies:</b><br/>\n");
+			result_ += tr("<b>The following packages have unmet dependencies:</b><br/>\n");
 			result_ += broken;
 			result_ += "<br/>";
 			status_ = Problem;
@@ -284,19 +284,19 @@ void DistUpgrade::dist_upgrade()
 		}
 		if (!to_upgrade.isEmpty())
 		{
-			result_ += QObject::tr("\n<b>Following packages will be upgraded:</b><br/>\n");
+			result_ += tr("\n<b>Following packages will be upgraded:</b><br/>\n");
 			result_ += to_upgrade;
 			result_ += "<br/>";
 		}
 		if (!to_install.isEmpty())
 		{
-			result_ += QObject::tr("\n<b>Following packages will be installed:</b><br/>\n");
+			result_ += tr("\n<b>Following packages will be installed:</b><br/>\n");
 			result_ += to_install;
 			result_ += "<br/>";
 		}
 		if (!to_remove.isEmpty())
 		{
-			result_ += QObject::tr("\n<b>Following packages will be removed:</b><br/>\n");
+			result_ += tr("\n<b>Following packages will be removed:</b><br/>\n");
 			result_ += to_remove;
 			result_ += "<br/>";
 		}
@@ -319,7 +319,7 @@ void DistUpgrade::doChild()
 	int fd = GetLock(lockfile);
 	if (fd < 0 )
 	{
-		result_ = QObject::tr("unable to get exclusive lock");
+		result_ = tr("unable to get exclusive lock");
 		return ;
 	}
 
@@ -327,7 +327,7 @@ void DistUpgrade::doChild()
 
 	if (!pkgInitConfig(*_config) || !pkgInitSystem(*_config, _system))
 	{
-		result_ = QObject::tr("Problems with APT initialization");
+		result_ = tr("Problems with APT initialization");
 		return ;
 	}
 
@@ -404,7 +404,7 @@ void DistUpgrade::run()
 
 			if (WIFSIGNALED (child_status))
 			{
-				result_ = QString(QObject::tr("child was terminated with signal %1")).arg(WTERMSIG (child_status));
+				result_ = QString(tr("child was terminated with signal %1")).arg(WTERMSIG (child_status));
 				status_ = Problem; //overwrite status
 			}
 			if (status_ != TryAgain)

@@ -44,16 +44,16 @@ Agent::Agent( QObject *parent, const char *name , const QString &homedir, bool a
 	}
 
 	menu_ = new QMenu();
-	menu_->addAction( QObject::tr("&Upgrade..."), this, SLOT(doRun()));
-	menu_->addAction( QObject::tr("Chec&k for updates"), this, SLOT(doCheck()));
-	menu_->addAction( QObject::tr("D&etailed info..."), this, SLOT(doInfo()));
+	menu_->addAction( tr("&Upgrade..."), this, SLOT(doRun()));
+	menu_->addAction( tr("Chec&k for updates"), this, SLOT(doCheck()));
+	menu_->addAction( tr("D&etailed info..."), this, SLOT(doInfo()));
 	menu_->addSeparator();
-	menu_->addAction( QObject::tr("&Settings..."), this, SLOT(doConfigure()));
+	menu_->addAction( tr("&Settings..."), this, SLOT(doConfigure()));
 	menu_->addSeparator();
-	menu_->addAction( QObject::tr("&Help"), this, SLOT(helpBrowser()));
-	menu_->addAction( QObject::tr("&About"), this, SLOT(aboutProgram()));
+	menu_->addAction( tr("&Help"), this, SLOT(helpBrowser()));
+	menu_->addAction( tr("&About"), this, SLOT(aboutProgram()));
 	menu_->addSeparator();
-	menu_->addAction( QObject::tr("&Quit"), this, SLOT(exitProgram()));
+	menu_->addAction( tr("&Quit"), this, SLOT(exitProgram()));
 	tray_icon_->setContextMenu(menu_);
 
 	QTimer::singleShot(0, this, SLOT(startProgram()));
@@ -98,7 +98,7 @@ void Agent::doInfo()
     info_window_ = new InfoWindow(0);
     connect(info_window_->ui.upgradeButton, SIGNAL(pressed()), this, SLOT(doRun()));
 
-    QString title = QObject::tr("Report at %1 %2")
+    QString title = tr("Report at %1 %2")
 	.arg(QDate::currentDate().toString(Qt::LocalDate))
 	.arg(QTime::currentTime().toString(Qt::LocalDate));
     info_window_->setWindowTitle(title);
@@ -136,8 +136,8 @@ void Agent::doRun()
 	{
 		if (run_thread_->isRunning())
 		{
-			QMessageBox::warning(0,QObject::tr("Run upgrade process"),
-					       QObject::tr("Program already running"),
+			QMessageBox::warning(0,tr("Run upgrade process"),
+					       tr("Program already running"),
 					       QMessageBox::Ok, Qt::NoButton);
 			return;
 		}
@@ -215,15 +215,15 @@ void Agent::helpBrowser()
 void Agent::aboutProgram()
 {
 	QMessageBox::about(0,objectName() + QString(" - ") + QString(VERSION),
-			    QObject::tr("This program make notification of updates.\n"
+			    tr("This program make notification of updates.\n"
 			       "Copyright (C) 2003-2004 ALT Linux Team\n\n"
 			       "Written by Stanislav Ievlev and Sergey V. Turchin"));
 }
 
 void Agent::exitProgram()
 {
-	const QString message = QObject::tr("Should <b>%1</b> start automatically \nwhen you login?").arg(PROGRAM_NAME);
-	const int res = QMessageBox::information(0,QObject::tr("Exit program"),message,
+	const QString message = tr("Should <b>%1</b> start automatically \nwhen you login?").arg(PROGRAM_NAME);
+	const int res = QMessageBox::information(0,tr("Exit program"),message,
 				QMessageBox::Yes|QMessageBox::Default,
 				QMessageBox::No,
 				Qt::NoButton
@@ -240,30 +240,30 @@ void Agent::setTrayIcon()
 	{
 	case DistUpgrade::Danger:
 		iconname = ":/pixmaps/danger.png";
-		tip = QObject::tr("There are updates for your system available...");
+		tip = tr("There are updates for your system available...");
 		break;
 	case DistUpgrade::Normal:
 		iconname = ":/pixmaps/normal.png";
-		tip = QObject::tr("Nothing to update");
+		tip = tr("Nothing to update");
 		break;
 	case DistUpgrade::Problem:
 		iconname = ":/pixmaps/problem.png";
-		tip = QObject::tr("Problems with Dist-Upgrade");
+		tip = tr("Problems with Dist-Upgrade");
 		break;
 	case DistUpgrade::Working:
 		iconname = ":/pixmaps/working.png";
-		tip = QObject::tr("Working...");
+		tip = tr("Working...");
 		break;
 	default:
 		iconname = ":/pixmaps/working.png";
-		tip = QObject::tr("Unknown status");
+		tip = tr("Unknown status");
 	};
 
 	QPixmap pix;
 	if (!pix.load(iconname))
 	{
-		QMessageBox::warning(0,QObject::tr("setting Icon"),
-			    	       QString(QObject::tr("Could not load the icon file %1")).arg(iconname),
+		QMessageBox::warning(0,tr("setting Icon"),
+			    	       QString(tr("Could not load the icon file %1")).arg(iconname),
 			    	       QMessageBox::Ok,Qt::NoButton);
 		QCoreApplication::quit();
 	}
@@ -294,7 +294,7 @@ void Agent::onEndRun()
 {
     if (run_thread_->status() != RunProgram::Good)
     {
-	QMessageBox::critical(0,QObject::tr("Event processing"),
+	QMessageBox::critical(0,tr("Event processing"),
 	    run_thread_->result(),
 	    QMessageBox::Ok,Qt::NoButton);
     }

@@ -12,7 +12,7 @@ ConfigDialog::ConfigDialog(QWidget *parent):
 void ConfigDialog::fileSelect()
 {
     QString fileName;
-    fileName = QFileDialog::getOpenFileName( this, QObject::tr("Choose a program"), "/usr/bin", "Programs (*)");
+    fileName = QFileDialog::getOpenFileName( this, tr("Choose a program"), "/usr/bin", "Programs (*)");
     if ( ! fileName.isEmpty() )
 	ui.pathLineEdit->setText(fileName);
 }
