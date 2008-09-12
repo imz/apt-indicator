@@ -12,10 +12,9 @@ License: GPL
 #include <QSystemTrayIcon>
 #include <QTimer>
 #include <QDateTime>
-#include <QEvent>
+#include <QProcess>
 
 #include "dist_upgrade.h"
-#include "run_program.h"
 #include "configuration.h"
 
 class InfoWindow;//forward declaration
@@ -40,7 +39,8 @@ private slots:
 	void doConfigure();
 	void onActivateSysTray(QSystemTrayIcon::ActivationReason);
 	void onEndDistUpgrade();
-	void onEndRun();
+	void onEndRun(int, QProcess::ExitStatus);
+	void onEndRunError(QProcess::ProcessError);
 
 private:
 	void setTrayIcon();
@@ -57,7 +57,7 @@ private:
 	bool	autostart_; /**< are we in autostart mode */
 
 	DistUpgrade *upgrade_thread_;
-	RunProgram *run_thread_;
+	QProcess *upgrader_proc;
 };
 
 #endif

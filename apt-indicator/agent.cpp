@@ -28,7 +28,7 @@ Agent::Agent( QObject *parent, const char *name , const QString &homedir, bool a
 		timer_(),
 		autostart_(autostart),
 		upgrade_thread_(0),
-		run_thread_(0)
+		upgrader_proc(0)
 {
 	setObjectName(name);
 	info_window_ = 0;
@@ -132,27 +132,36 @@ void Agent::doRun()
 	if ( timer_.isActive() )
 		timer_.stop();
 	
-	if (run_thread_)
+	if (upgrader_proc)
 	{
-		if (run_thread_->isRunning())
+		if(upgrader_proc->pid() > 0)
 		{
-			QMessageBox::warning(0,tr("Run upgrade process"),
-					       tr("Program already running"),
-					       QMessageBox::Ok, Qt::NoButton);
+			QMessageBox::information(0,tr("Run upgrade process"), tr("Program already running"));
 			return;
 		}
 		else
 		{
-			delete run_thread_;
-			run_thread_ = 0;
+			delete upgrader_proc;
+			upgrader_proc = 0;
 		}
 	}
 
-	if (!run_thread_)
+	if (!upgrader_proc)
 	{
-		run_thread_ = new RunProgram(this, cfg_->pathToUpgrader());
-		connect(run_thread_, SIGNAL(endRun()), this, SLOT(onEndRun()));
-		run_thread_->start();
+		QStringList arguments(cfg_->pathToUpgrader().split(" ", QString::SkipEmptyParts));
+		QString program(arguments.takeAt(0));
+		if( !program.isEmpty() )
+		{
+		    upgrader_proc = new QProcess(this);
+		    connect(upgrader_proc, SIGNAL(finished(int, QProcess::ExitStatus)), this, SLOT(onEndRun(int, QProcess::ExitStatus)));
+		    connect(upgrader_proc, SIGNAL(error(QProcess::ProcessError)), this, SLOT(onEndRunError(QProcess::ProcessError)));
+		    upgrader_proc->start(program, arguments, QIODevice::ReadOnly);
+		}
+		else
+		{
+		    QMessageBox::critical(0,tr("Run upgrade process"),  tr("No upgrade program configured"), QMessageBox::Ok, Qt::NoButton);
+		    //doConfigure();
+		}
 	}
 }
 
@@ -290,14 +299,25 @@ void Agent::onEndDistUpgrade()
     changeTrayIcon();
 }
 
-void Agent::onEndRun()
+void Agent::onEndRunError(QProcess::ProcessError error)
 {
-    if (run_thread_->status() != RunProgram::Good)
+    QString msg;
+    switch(error)
     {
-	QMessageBox::critical(0,tr("Event processing"),
-	    run_thread_->result(),
-	    QMessageBox::Ok,Qt::NoButton);
+	case QProcess::FailedToStart:
+	    msg = tr("Failed to start upgrade program");
+	case QProcess::Crashed:
+	    msg = tr("Program crashed");
+	default:
+	    msg = tr("Execution of program failed");
     }
+    QMessageBox::critical(0, tr("Run upgrade process"), msg);
+}
+
+void Agent::onEndRun(int exitCode, QProcess::ExitStatus exitState)
+{
+    if( exitState == QProcess::NormalExit && exitCode != 0 )
+	QMessageBox::warning(0, tr("Run upgrade process"), tr("child was exited with code %1").arg(exitCode));
     doCheck();
 }
 
