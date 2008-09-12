@@ -27,7 +27,7 @@ public:
 	enum Status {Working, Normal, Danger, Problem, TryAgain};
 
 	explicit
-	DistUpgrade(QObject *o, const QString &homedir, bool show_broken,bool ignore_errors);
+	DistUpgrade(QObject *parent, const QString &homedir, bool show_broken,bool ignore_errors);
 	virtual ~DistUpgrade();
 	virtual void run();
 

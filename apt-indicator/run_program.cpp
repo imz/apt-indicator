@@ -22,7 +22,8 @@ if ( (expr) ) \
     return; \
 }
 
-RunProgram::RunProgram(QObject *receiver, const QString &progname):
+RunProgram::RunProgram(QObject *parent, const QString &progname):
+    QThread(parent),
     progname_(progname),
     status_(Failed)
 {}

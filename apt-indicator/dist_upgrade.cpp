@@ -110,7 +110,8 @@ if ( (expr) ) \
 /**
  * @todo use mkdir -p (make_path)
  */
-DistUpgrade::DistUpgrade(QObject *o, const QString &homedir, bool broken,bool errors):
+DistUpgrade::DistUpgrade(QObject *parent, const QString &homedir, bool broken,bool errors):
+		QThread(parent),
 		status_(Problem),     //problems by default
 		show_broken_(broken),
 		ignore_errors_(errors),
