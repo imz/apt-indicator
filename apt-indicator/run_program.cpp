@@ -13,10 +13,16 @@
 
 #include "run_program.h"
 #include "config.h"
-#include "assert.h"
+
+#define RUN_ASSERT(expr) \
+if ( (expr) ) \
+{ \
+    result_ = QObject::tr(#expr); \
+    emit endRun(); \
+    return; \
+}
 
 RunProgram::RunProgram(QObject *receiver, const QString &progname):
-    receiver_(receiver),
     progname_(progname),
     status_(Failed)
 {}
@@ -33,7 +39,7 @@ QString RunProgram::result() const
 
 void RunProgram::run()
 {
-	SYSTEM_ASSERT((child_pid_ = fork())<0);
+	RUN_ASSERT((child_pid_ = fork())<0);
 
 	//run subprocess ...
 	if (!child_pid_)
@@ -47,7 +53,7 @@ void RunProgram::run()
 	{ //father
 		int	child_status;
 		
-		SYSTEM_ASSERT(waitpid (child_pid_, &child_status, 0) != child_pid_);
+		RUN_ASSERT(waitpid (child_pid_, &child_status, 0) != child_pid_);
 
 		//then process child retcode
 		if (WIFEXITED (child_status))
@@ -68,15 +74,7 @@ void RunProgram::run()
 			status_ = Failed; //overwrite status
 		}
 
-		emit endRun();
-		sendEvent();
+		emit endRun(); // send event about end of work
 		return ;
 	}
-}
-
-//send event about end of work
-void RunProgram::sendEvent()
-{
-	QEvent *event = new QEvent((QEvent::Type)EVENT_END_RUN);
-	QCoreApplication::postEvent(receiver_, event);
 }

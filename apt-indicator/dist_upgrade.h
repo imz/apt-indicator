@@ -42,10 +42,8 @@ private:
 
 	bool update();
 	void dist_upgrade();
-	void sendEvent();
 
 	std::string	workdir_;
-	QObject *receiver_;
 	Status status_;
 	QString result_; /**< dist-upgrade result for Information window*/
 	bool show_broken_;

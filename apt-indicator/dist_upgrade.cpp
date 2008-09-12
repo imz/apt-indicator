@@ -32,8 +32,14 @@ License: GPL
 
 #include "dist_upgrade.h"
 #include "config.h"
-#include "assert.h"
 
+#define DIST_UPGRADE_ASSERT(expr) \
+if ( (expr) ) \
+{ \
+    result_ = QObject::tr(#expr); \
+    emit endDistUpgrade(); \
+    return; \
+}
 
 namespace
 {
@@ -105,7 +111,6 @@ if ( (expr) ) \
  * @todo use mkdir -p (make_path)
  */
 DistUpgrade::DistUpgrade(QObject *o, const QString &homedir, bool broken,bool errors):
-		receiver_(o),
 		status_(Problem),     //problems by default
 		show_broken_(broken),
 		ignore_errors_(errors),
@@ -359,8 +364,8 @@ void DistUpgrade::run()
 {
 	do
 	{
-		SYSTEM_ASSERT(pipe(pipes) < 0); //create connection pipe
-		SYSTEM_ASSERT((child_pid_ = fork()) < 0) //fork subprocess
+		DIST_UPGRADE_ASSERT(pipe(pipes) < 0); //create connection pipe
+		DIST_UPGRADE_ASSERT((child_pid_ = fork()) < 0) //fork subprocess
 
 		if (!child_pid_) //run subprocess ...
 		{ //child
@@ -390,7 +395,7 @@ void DistUpgrade::run()
 			doFather(); //read pipes here
 
 			//wait when child finish it's work
-			SYSTEM_ASSERT(waitpid(child_pid_, &child_status, 0) != child_pid_);
+			DIST_UPGRADE_ASSERT(waitpid(child_pid_, &child_status, 0) != child_pid_);
 
 			//get status from child via exit code
 			if ((WIFEXITED (child_status)))
@@ -403,8 +408,7 @@ void DistUpgrade::run()
 			}
 			if (status_ != TryAgain)
 			{
-			    emit endDistUpgrade();
-			    sendEvent(); //send notification about end of work
+			    emit endDistUpgrade(); //send notification about end of work
 			}
 			else
 				sleep(RETRY_INTERVAL); //wait for the next retry
@@ -414,13 +418,4 @@ void DistUpgrade::run()
 
 	}
 	while (status_ == TryAgain);
-}
-
-/**
- * send event about end of work
- */
-void DistUpgrade::sendEvent()
-{
-	QEvent *event = new QEvent((QEvent::Type)EVENT_END_UPGRADE);
-	QCoreApplication::postEvent(receiver_, event);
 }

@@ -24,9 +24,6 @@ public:
 signals:
 	void endRun();
 private:
-	void	sendEvent();
-
-	QObject	*receiver_;
 	QString progname_;
 	Status	status_;
 	QString	result_;
