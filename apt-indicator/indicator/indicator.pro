@@ -1,5 +1,6 @@
 
-TEMPLATE = app subdirs
+TARGET=../apt-indicator
+TEMPLATE = app
 QT += network
 QMAKE_CXXFLAGS += -pedantic $(RPM_OPT_FLAGS)
 LIBS += -lapt-pkg
