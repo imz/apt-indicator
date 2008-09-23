@@ -44,10 +44,6 @@ private slots:
 	void onCheckerEnd(int, QProcess::ExitStatus);
 	void onCheckerEndError(QProcess::ProcessError);
 	void onCheckerOutput();
-#if 0
-	void changeTrayIcon();
-	void onEndDistUpgrade();
-#endif
 
 private:
 	void setTrayIcon();

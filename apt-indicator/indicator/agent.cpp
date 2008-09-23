@@ -355,26 +355,6 @@ void Agent::onCheckerEndError(QProcess::ProcessError error)
     }
 }
 
-#if 0
-void Agent::changeTrayIcon()
-{
-	result_ = upgrade_thread_->result(); //fetch processing result
-
-	//check if we need do uprade system
-	const DistUpgrade::Status new_status = upgrade_thread_->status();
-	if (status_ != new_status) //change icon if we need it
-	{
-		status_ = new_status;
-		setTrayIcon();
-	}
-}
-
-void Agent::onEndDistUpgrade()
-{
-    changeTrayIcon();
-}
-#endif
-
 void Agent::onEndRunError(QProcess::ProcessError error)
 {
     QString msg;
