@@ -10,7 +10,7 @@ License: GPL
 #include <QDebug>
 #include <QTextStream>
 
-#include "../config.h"
+#include "../indicator/config.h"
 #include "checker.h"
 
 int main( int argc, char **argv )

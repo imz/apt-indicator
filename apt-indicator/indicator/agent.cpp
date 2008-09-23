@@ -26,11 +26,11 @@ Agent::Agent( QObject *parent, const char *name , const QString &homedir, bool a
 		cfg_(),
 		timer_(),
 		autostart_(autostart),
-		upgrade_thread_(0),
+		checker_proc(0),
 		upgrader_proc(0)
 {
 	setObjectName(name);
-	status_ = DistUpgrade::Normal;
+	status_ = Normal;
 	info_window_ = 0;
 	cfg_ = new Configuration(this);
 	tray_icon_ = new QSystemTrayIcon(this);
@@ -56,13 +56,13 @@ Agent::Agent( QObject *parent, const char *name , const QString &homedir, bool a
 
 Agent::~Agent()
 {
-	//close all active threads: let's synaptic continue it's work, but close dist-upgrade thread
-	if (upgrade_thread_ && upgrade_thread_->isRunning())
+#if 0
+	// close all active threads: let's synaptic continue it's work, but close dist-upgrade thread
+	if (checker_proc && checker_proc->pid() > 0)
 	{
-	    upgrade_thread_->terminate();
-	    upgrade_thread_->wait();
+	    checker_proc->terminate();
 	}
-	delete upgrade_thread_;
+#endif
 }
 
 void Agent::startProgram()
@@ -99,10 +99,10 @@ void Agent::doInfo()
     QString info_window_text;
     switch (status_)
     {
-	case DistUpgrade::Normal:
+	case Normal:
 	    info_window_text = tr("Nothing to update...");
 	    break;
-	case DistUpgrade::Working:
+	case Working:
 	    info_window_text = result_.isEmpty() ? tr("Checking in progress...") : result_;
 	    break;
 	default:
@@ -111,7 +111,7 @@ void Agent::doInfo()
     }
     info_window_->ui.infoText->setText(info_window_text);
 
-    if ( status_ != DistUpgrade::Danger && status_ != DistUpgrade::Problem )
+    if ( status_ != Danger && status_ != Problem )
 	info_window_->ui.upgradeButton->hide();
     else
 	info_window_->ui.upgradeButton->show();
@@ -170,23 +170,30 @@ void Agent::doCheck()
 		timer_.stop(); //stop timer during this stage
 
 	//check if tread exist
-	if (upgrade_thread_)
+	if (checker_proc)
 	{
-		if( upgrade_thread_->isFinished() )
-		{ //thread finish work
-			delete upgrade_thread_;
-			upgrade_thread_ = 0;
+		if(checker_proc->pid() == 0)
+		{ // checker finish work
+			delete checker_proc;
+			checker_proc = 0;
 		}
 	}
 
-	if (!upgrade_thread_)
+	if (!checker_proc)
 	{
-		upgrade_thread_ = new DistUpgrade(this, homedir_, 
-						  cfg_->showBroken(),cfg_->ignoreErrors());
-		connect(upgrade_thread_, SIGNAL(endDistUpgrade()), this, SLOT(onEndDistUpgrade()));
-		status_ = DistUpgrade::Working; //change status
+		QString program(QApplication::instance()->applicationDirPath() + "/apt-indicator-checker");
+		QStringList arguments;
+		if( cfg_->showBroken() )
+		    arguments << "--show-broken";
+		if( cfg_->ignoreErrors() )
+		    arguments << "--ignore-errors";
+		checker_proc = new QProcess(this);
+		connect(checker_proc, SIGNAL(finished(int, QProcess::ExitStatus)), this, SLOT(onCheckerEnd(int, QProcess::ExitStatus)));
+		connect(checker_proc, SIGNAL(error(QProcess::ProcessError)), this, SLOT(onCheckerEndError(QProcess::ProcessError)));
+		connect(checker_proc, SIGNAL(readyReadStandardOutput()), this, SLOT(onCheckerOutput()));
+		status_ = Working; //change status
 		setTrayIcon();
-		upgrade_thread_->start(); //and run thread
+		checker_proc->start(program, arguments, QIODevice::ReadOnly); // and run checker
 	}
 
 	timer_.start( cfg_->checkInterval()*1000 );
@@ -240,19 +247,19 @@ void Agent::setTrayIcon()
 	QString	tip;
 	switch (status_)
 	{
-	case DistUpgrade::Danger:
+	case Danger:
 		iconname = ":/pixmaps/danger.png";
 		tip = tr("There are updates for your system available...");
 		break;
-	case DistUpgrade::Normal:
+	case Normal:
 		iconname = ":/pixmaps/normal.png";
 		tip = tr("Nothing to update");
 		break;
-	case DistUpgrade::Problem:
+	case Problem:
 		iconname = ":/pixmaps/problem.png";
 		tip = tr("Problems with Dist-Upgrade");
 		break;
-	case DistUpgrade::Working:
+	case Working:
 		iconname = ":/pixmaps/working.png";
 		tip = tr("Working...");
 		break;
@@ -274,6 +281,37 @@ void Agent::setTrayIcon()
 	tray_icon_->setToolTip(tip);
 }
 
+void Agent::onCheckerOutput()
+{
+    if( checker_proc )
+    {
+	QByteArray out = checker_proc->readAllStandardOutput();
+	qDebug("OUT:\n%s", out.data());
+    }
+}
+
+void Agent::onCheckerEnd(int exitCode, QProcess::ExitStatus exitState)
+{
+    if( exitState == QProcess::NormalExit && exitCode != 0 )
+	qWarning(PROGRAM_NAME ": checker was exited with code %d", exitCode);
+    else if( exitState == QProcess::CrashExit )
+	qWarning(PROGRAM_NAME ": checker crashed");
+}
+
+void Agent::onCheckerEndError(QProcess::ProcessError error)
+{
+    switch(error)
+    {
+	case QProcess::FailedToStart:
+	    qWarning(PROGRAM_NAME ": failed to start checking program");
+	case QProcess::Crashed:
+	    qWarning(PROGRAM_NAME ": checker crashed");
+	default:
+	    qWarning(PROGRAM_NAME ": execution of checking program failed");
+    }
+}
+
+#if 0
 void Agent::changeTrayIcon()
 {
 	result_ = upgrade_thread_->result(); //fetch processing result
@@ -291,6 +329,7 @@ void Agent::onEndDistUpgrade()
 {
     changeTrayIcon();
 }
+#endif
 
 void Agent::onEndRunError(QProcess::ProcessError error)
 {

@@ -1,8 +1,9 @@
 
 #include <QCoreApplication>
 #include <QTimer>
+#include <QTextStream>
 
-#include "../config.h"
+#include "../indicator/config.h"
 #include "checker.h"
 
 Checker::Checker(QObject *parent):
@@ -10,7 +11,7 @@ Checker::Checker(QObject *parent):
 {
     dist_upgrade = new DistUpgrade(this, "", true, true);
     connect(dist_upgrade, SIGNAL(endDistUpgrade()), this, SLOT(onEndDistUpgrade()));
-
+    QTimer::singleShot(0, this, SLOT(startProgram()));
 }
 
 Checker::~Checker()
@@ -25,16 +26,17 @@ void Checker::startProgram()
 void Checker::onEndDistUpgrade()
 {
     QString stat_str;
-		// FIXME
-		qDebug("EVENT_END_UPGRADE");
-		switch( dist_upgrade->status() )
-		{
-		    case DistUpgrade::Working: stat_str = "Working"; break;
-		    case DistUpgrade::Normal: stat_str = "Normal"; break;
-		    case DistUpgrade::Danger: stat_str = "Danger"; break;
-		    case DistUpgrade::Problem: stat_str = "Problem"; break;
-		    case DistUpgrade::TryAgain: stat_str = "TryAgain"; break;
-		    default: stat_str = "__undefined__"; break;
-		}
-		qDebug("Status: %s\nResult:\n%s", qPrintable(stat_str), qPrintable(dist_upgrade->result()));
+    switch( dist_upgrade->status() )
+    {
+        case DistUpgrade::Working: stat_str = "WORKING"; break;
+        case DistUpgrade::Normal: stat_str = "NORMAL"; break;
+        case DistUpgrade::Danger: stat_str = "DANGER"; break;
+        case DistUpgrade::Problem: stat_str = "PROBLEM"; break;
+        default: stat_str = "__undefined__"; break;
+    }
+    QTextStream out(stdout, QIODevice::WriteOnly);
+    out << "CHECKER_STATUS:" << stat_str << "\n";
+    out << "CHECKER_RESULT:" << dist_upgrade->result() << "\n";
+
+    QCoreApplication::quit();
 }

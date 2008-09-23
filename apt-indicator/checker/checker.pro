@@ -11,10 +11,10 @@ RCC_DIR = .rcc
 UI_DIR = .uic
 
 SOURCES = main.cpp
-SOURCES += checker.cpp ../indicator/dist_upgrade.cpp
+SOURCES += checker.cpp dist_upgrade.cpp
 
 HEADERS = ../indicator/config.h
-HEADERS += checker.h ../indicator/dist_upgrade.h
+HEADERS += checker.h dist_upgrade.h
 
 DATA = $$TARGET.pro
 

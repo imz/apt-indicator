@@ -14,7 +14,6 @@ License: GPL
 #include <QDateTime>
 #include <QProcess>
 
-#include "dist_upgrade.h"
 #include "configuration.h"
 
 class InfoWindow;//forward declaration
@@ -23,6 +22,8 @@ class Agent : public QObject
 {
 	Q_OBJECT
 public:
+	enum UpgradeStatus {Working, Normal, Danger, Problem, TryAgain};
+
 	explicit
 	Agent( QObject *parent = 0, const char *name = 0, const QString &homedir = "", bool autostart = false);
 	~Agent();
@@ -35,12 +36,17 @@ private slots:
 	void doCheck();
 	void doInfo();
 	void doRun();
-	void changeTrayIcon();
 	void doConfigure();
 	void onActivateSysTray(QSystemTrayIcon::ActivationReason);
-	void onEndDistUpgrade();
 	void onEndRun(int, QProcess::ExitStatus);
 	void onEndRunError(QProcess::ProcessError);
+	void onCheckerEnd(int, QProcess::ExitStatus);
+	void onCheckerEndError(QProcess::ProcessError);
+	void onCheckerOutput();
+#if 0
+	void changeTrayIcon();
+	void onEndDistUpgrade();
+#endif
 
 private:
 	void setTrayIcon();
@@ -48,7 +54,7 @@ private:
 	QMenu *menu_;
 	QString homedir_; /**< user's home directory */
 	Configuration *cfg_;
-	DistUpgrade::Status status_; /**< semaphore: Are we have any files for update */
+	UpgradeStatus status_; /**< semaphore: Are we have any files for update */
 
 	InfoWindow *info_window_; /**< information window */
 	QSystemTrayIcon *tray_icon_; /**< icon on the tray */
@@ -56,7 +62,7 @@ private:
 	QString result_; /**< result in information window */
 	bool	autostart_; /**< are we in autostart mode */
 
-	DistUpgrade *upgrade_thread_;
+	QProcess *checker_proc;
 	QProcess *upgrader_proc;
 };
 
