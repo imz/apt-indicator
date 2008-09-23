@@ -13,6 +13,7 @@ License: GPL
 #include <QTimer>
 #include <QDateTime>
 #include <QProcess>
+#include <QDateTime>
 
 #include "configuration.h"
 
@@ -60,6 +61,7 @@ private:
 	QSystemTrayIcon *tray_icon_; /**< icon on the tray */
 	QTimer timer_; /**< update timer */
 	QString result_; /**< result in information window */
+	QDateTime last_report_time_; /**< time of last report */
 	bool	autostart_; /**< are we in autostart mode */
 
 	QProcess *checker_proc;

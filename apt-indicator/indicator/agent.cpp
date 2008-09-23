@@ -30,6 +30,7 @@ Agent::Agent( QObject *parent, const char *name , const QString &homedir, bool a
 		upgrader_proc(0)
 {
 	setObjectName(name);
+	last_report_time_ = QDateTime::currentDateTime();
 	status_ = Normal;
 	info_window_ = 0;
 	cfg_ = new Configuration(this);
@@ -92,8 +93,8 @@ void Agent::doInfo()
     connect(info_window_->ui.upgradeButton, SIGNAL(pressed()), this, SLOT(doRun()));
 
     QString title = tr("Report at %1 %2")
-	.arg(QDate::currentDate().toString(Qt::LocalDate))
-	.arg(QTime::currentTime().toString(Qt::LocalDate));
+	.arg(last_report_time_.date().toString(Qt::LocalDate))
+	.arg(last_report_time_.time().toString(Qt::LocalDate));
     info_window_->setWindowTitle(title);
 
     QString info_window_text;
@@ -283,11 +284,54 @@ void Agent::setTrayIcon()
 
 void Agent::onCheckerOutput()
 {
-    if( checker_proc )
-    {
-	QByteArray out = checker_proc->readAllStandardOutput();
-	qDebug("OUT:\n%s", out.data());
-    }
+    if( !checker_proc ) return;
+
+	UpgradeStatus new_status = status_;
+	QStringList new_result;
+	int read_state = 0;
+	while( !checker_proc->atEnd() && checker_proc->canReadLine() )
+	{
+	    QByteArray line = checker_proc->readLine();
+	    line.truncate(line.size()-1);
+	    if(line == "CHECKER_STATUS") {
+		read_state = 1; continue;
+	    } else if(line == "CHECKER_RESULT") {
+		read_state = 2; continue;
+	    }
+	    switch( read_state )
+	    {
+		case 1:
+		{
+		    if( line == "WORKING" )
+			new_status = Working;
+		    else if( line == "NORMAL" )
+			new_status = Normal;
+		    else if( line == "DANGER" )
+			new_status = Danger;
+		    else
+			new_status = Problem;
+		    //qDebug("status: %s", line.data());
+		    read_state = 0;
+		    break;
+		}
+		case 2:
+		{
+		    new_result << QString::fromLocal8Bit(line);
+		    break;
+		}
+		default:
+		    break;
+	    }
+	}
+
+	if (status_ != new_status) //change icon if we need it
+	{
+	    status_ = new_status;
+	    last_report_time_ = QDateTime::currentDateTime();
+	    setTrayIcon();
+	}
+	result_ = new_result.join("\n");
+	//qDebug("result<%d>: %s", new_result.size(), qPrintable(result_));
 }
 
 void Agent::onCheckerEnd(int exitCode, QProcess::ExitStatus exitState)
