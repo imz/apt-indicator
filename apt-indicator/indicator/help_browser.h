@@ -8,13 +8,14 @@
 
 class HelpBrowser: public QDialog
 {
+Q_OBJECT
 public:
     HelpBrowser(QWidget *);
 
-    void init();
-    void execLink(const QString&);
-
     Ui::HelpBrowserUI ui;
+
+public slots:
+    void execLink(const QUrl&);
 };
 
 #endif

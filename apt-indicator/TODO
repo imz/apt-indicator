@@ -5,6 +5,5 @@
 to the 0.1.0:
 - "wait for package" feature
 - WindowMaker support
-- self dist-upgrade separate little program
 - move GUI to plugin
 - move utility code possible to plugin
