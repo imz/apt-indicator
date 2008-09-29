@@ -12,7 +12,6 @@ HelpBrowser::HelpBrowser(QWidget *parent):
 
 void HelpBrowser::execLink( const QUrl &url )
 {
-    qDebug("HelpBrowser::execLink");
     QString prog_command;
     if( url.scheme() == "http" )
     {
