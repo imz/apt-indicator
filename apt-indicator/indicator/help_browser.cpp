@@ -49,6 +49,6 @@ void HelpBrowser::execLink( const QString& link )
     
     QProcess *prog_proc = new QProcess(this);
     QStringList prog_args = prog_command.split(" ", QString::SkipEmptyParts);
-    QString prog_name = prog_args.takeAt(0);
+    QString prog_name = prog_args.takeFirst();
     prog_proc->start(prog_name, prog_args);
 }
