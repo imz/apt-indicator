@@ -68,7 +68,7 @@ Agent::~Agent()
 
 void Agent::startProgram()
 {
-	if (autostart_ && cfg_->skipAutostart())
+	if (autostart_ && !cfg_->getBool(Configuration::Autostart))
 	{
 		QCoreApplication::quit();
 		return;
@@ -142,7 +142,7 @@ void Agent::doRun()
 
 	if (!upgrader_proc)
 	{
-		QStringList arguments(cfg_->pathToUpgrader().split(" ", QString::SkipEmptyParts));
+		QStringList arguments(cfg_->getString(Configuration::PathUpgrader).split(" ", QString::SkipEmptyParts));
 		QString program(arguments.takeAt(0));
 		if( !program.isEmpty() )
 		{
@@ -162,7 +162,7 @@ void Agent::doRun()
 void Agent::doConfigure()
 {
 	cfg_->showDialog(); //run dialog
-	timer_.setInterval(cfg_->checkInterval()*1000); //then update change interval
+	timer_.setInterval(cfg_->getInt(Configuration::CheckInterval)*1000); //then update change interval
 }
 
 void Agent::doCheck()
@@ -184,9 +184,9 @@ void Agent::doCheck()
 	{
 		QString program(QApplication::instance()->applicationDirPath() + "/apt-indicator-checker");
 		QStringList arguments;
-		if( cfg_->showBroken() )
+		if( cfg_->getBool(Configuration::ShowBroken) )
 		    arguments << "--show-broken";
-		if( cfg_->ignoreErrors() )
+		if( cfg_->getBool(Configuration::IgnoreAptErrors) )
 		    arguments << "--ignore-errors";
 		checker_proc = new QProcess(this);
 		connect(checker_proc, SIGNAL(finished(int, QProcess::ExitStatus)), this, SLOT(onCheckerEnd(int, QProcess::ExitStatus)));
@@ -197,7 +197,7 @@ void Agent::doCheck()
 		checker_proc->start(program, arguments, QIODevice::ReadOnly); // and run checker
 	}
 
-	timer_.start( cfg_->checkInterval()*1000 );
+	timer_.start( cfg_->getInt(Configuration::CheckInterval)*1000 );
 }
 
 void Agent::helpBrowser()
@@ -232,13 +232,15 @@ void Agent::aboutProgram()
 
 void Agent::exitProgram()
 {
+#if 0
 	const QString message = tr("Should <b>%1</b> start automatically \nwhen you login?").arg(PROGRAM_NAME);
 	const int res = QMessageBox::information(0,tr("Exit program"),message,
 				QMessageBox::Yes|QMessageBox::Default,
 				QMessageBox::No,
 				Qt::NoButton
 				);
-	cfg_->setSkipAutostart(QMessageBox::No == res);
+	cfg_->setParam(Configuration::Autostart, QMessageBox::Yes == res);
+#endif
 	QCoreApplication::quit();
 }
 

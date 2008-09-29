@@ -18,42 +18,98 @@ Configuration::Configuration(QObject *parent):
     iperiods[3] = 86400;
     iperiods[4] = 604800;
     iperiods[5] = 2592000;
-    cfg_ = new QSettings(QSettings::IniFormat, QSettings::UserScope, "ALT_Linux", PROGRAM_NAME, this);
-    cfg_->setFallbacksEnabled(false);
-    //cfg_->beginGroup("");
+
+    load();
 }
 
 Configuration::~Configuration()
-{}
-
-QString Configuration::pathToUpgrader() const
 {
-    return cfg_->value("path_to_upgrader", DEF_UPGRADER_PATH).toString();
 }
 
-int Configuration::checkInterval() const
+void Configuration::load()
 {
-	return cfg_->value("check_interval", DEF_CHECK_INTERVAL).toInt();
+    QSettings cfg(QSettings::IniFormat, QSettings::UserScope, "ALT_Linux", PROGRAM_PKG_NAME, this);
+    cfg.setFallbacksEnabled(false);
+    //cfg_.beginGroup("");
+    path_upgrader_ = cfg.value("path_upgrader", DEF_UPGRADER_PATH).toString();
+    check_interval_ = cfg.value("check_interval", DEF_CHECK_INTERVAL).toInt();
+    show_broken_ = cfg.value("show_broken", false).toBool();
+    ignore_apt_errors_ = cfg.value("ignore_apt_errors", false).toBool();
+    autostart_ = cfg.value("autostart", true).toBool();
 }
 
-bool Configuration::showBroken() const
+void Configuration::save()
 {
-	return cfg_->value("show_broken", false).toBool();
+    QSettings cfg(QSettings::IniFormat, QSettings::UserScope, "ALT_Linux", PROGRAM_PKG_NAME, this);
+    cfg.setFallbacksEnabled(false);
+    //cfg_.beginGroup("");
+    cfg.setValue("path_upgrader", path_upgrader_);
+    cfg.setValue("check_interval", check_interval_);
+    cfg.setValue("show_broken", show_broken_);
+    cfg.setValue("ignore_apt_errors", ignore_apt_errors_);
+    cfg.setValue("autostart", autostart_);
 }
 
-bool Configuration::ignoreErrors() const
+bool Configuration::setParam(Param param, const QString &value)
 {
-	return cfg_->value("ingore_apt_errors", false).toBool();
+    bool changed = getString(param) != value;
+    if( param == PathUpgrader )
+	path_upgrader_ = value;
+    else
+	changed = false;
+    return changed;
 }
 
-bool Configuration::skipAutostart() const
+bool Configuration::setParam(Param param, bool value)
 {
-	return cfg_->value("skip_autostart", false).toBool();
+    bool changed = getBool(param) != value;
+    switch(param)
+    {
+	case ShowBroken: { show_broken_ = value; break; }
+	case IgnoreAptErrors: { ignore_apt_errors_ = value; break; }
+	case Autostart: { autostart_ = value; break; }
+	default: { changed = false; break; }
+    }
+    return changed;
 }
 
-void Configuration::setSkipAutostart(bool value)
+bool Configuration::setParam(Param param, int value)
 {
-	cfg_->setValue("skip_autostart", value);
+    bool changed = getInt(param) != value;
+    if( param == CheckInterval )
+	check_interval_ = value;
+    else
+	changed = false;
+    return changed;
+}
+
+QString Configuration::getString(Param param)
+{
+    QString ret;
+    if( param == PathUpgrader )
+	ret = path_upgrader_;
+    return ret;
+}
+
+int Configuration::getInt(Param param)
+{
+    int ret = 0;
+    if( param == CheckInterval )
+	ret = check_interval_;
+    return ret;
+}
+
+bool Configuration::getBool(Param param)
+{
+    bool ret = false;
+    switch(param)
+    {
+	case ShowBroken: { ret = show_broken_; break; }
+	case IgnoreAptErrors: { ret = ignore_apt_errors_ ; break; }
+	case Autostart: { ret = autostart_ ; break; }
+	default: break;
+    }
+    return ret;
 }
 
 Configuration::update_period Configuration::toPeriod(int interval) const
@@ -83,21 +139,25 @@ int Configuration::toInterval(const update_period& per) const
 void Configuration::showDialog()
 {
 	ConfigDialog cfgDlg(0);
-	update_period per = toPeriod(checkInterval());
+	update_period per = toPeriod(getInt(CheckInterval));
 
 	cfgDlg.ui.timesSpinBox->setValue(per.time_);
 	cfgDlg.ui.periodComboBox->setCurrentIndex(per.period_);
-	cfgDlg.ui.pathLineEdit->setText(pathToUpgrader());
-	cfgDlg.ui.showBrokenCheck->setChecked(showBroken());
-	cfgDlg.ui.ignoreErrors->setChecked(ignoreErrors());
+	cfgDlg.ui.pathLineEdit->setText(getString(PathUpgrader));
+	cfgDlg.ui.showBrokenCheck->setChecked(getBool(ShowBroken));
+	cfgDlg.ui.ignoreErrors->setChecked(getBool(IgnoreAptErrors));
+	cfgDlg.ui.autostartCheck->setChecked(getBool(Autostart));
 
 	if ( cfgDlg.exec() == QDialog::Accepted )
 	{
-		per.time_ = cfgDlg.ui.timesSpinBox->value();
-		per.period_ = cfgDlg.ui.periodComboBox->currentIndex();
-		cfg_->setValue("path_to_upgrader", cfgDlg.ui.pathLineEdit->text());
-		cfg_->setValue("check_interval", toInterval(per));
-		cfg_->setValue("show_broken", (bool)cfgDlg.ui.showBrokenCheck->isChecked());
-		cfg_->setValue("ingore_apt_errors", (bool)cfgDlg.ui.ignoreErrors->isChecked());
+	    per.time_ = cfgDlg.ui.timesSpinBox->value();
+	    per.period_ = cfgDlg.ui.periodComboBox->currentIndex();
+	    int chk_interval = toInterval(per);
+	    if(    setParam(PathUpgrader,    cfgDlg.ui.pathLineEdit->text())
+		|| setParam(CheckInterval,   chk_interval)
+		|| setParam(ShowBroken,      cfgDlg.ui.showBrokenCheck->isChecked())
+		|| setParam(IgnoreAptErrors, cfgDlg.ui.ignoreErrors->isChecked())
+		|| setParam(Autostart,       cfgDlg.ui.autostartCheck->isChecked()))
+		save();
 	}
 }

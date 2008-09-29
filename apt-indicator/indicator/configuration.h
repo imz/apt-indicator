@@ -14,29 +14,42 @@ License: GPL
 
 class Configuration: public QObject
 {
+Q_OBJECT
+public:
+	enum Param { CheckInterval, PathUpgrader, ShowBroken, IgnoreAptErrors, Autostart };
+
+	Configuration(QObject *);
+	~Configuration();
+
+	void load();
+	void save();
+
+	void showDialog();
+
+	QString getString(Param);
+	bool getBool(Param);
+	int getInt(Param);
+	bool setParam(Param, const QString&);
+	bool setParam(Param, bool);
+	bool setParam(Param, int);
+
+private:
 	struct update_period
 	{
 		int time_; /**< how many times*/
 		int period_; /**< what period */
 	};
-public:
-	Configuration(QObject *);
-	~Configuration();
 
-	void showDialog();
-
-	int checkInterval() const;
-	QString pathToUpgrader() const;
-	bool showBroken() const;
-	bool ignoreErrors() const;
-	void setSkipAutostart(bool value = true);
-	bool skipAutostart() const;
-private:
 	update_period toPeriod(int interval) const; /**< convert interval in sec's to period */
 	int toInterval(const update_period& per) const; /**< convert period to interval in sec's */
 
-	QSettings *cfg_; /**< QT Settings object */
 	QMap<int,int> iperiods;
+
+	QString path_upgrader_;
+	int check_interval_;
+	bool show_broken_;
+	bool ignore_apt_errors_;
+	bool autostart_;
 };
 
 #endif

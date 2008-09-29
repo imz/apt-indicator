@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>466</width>
-    <height>326</height>
+    <height>391</height>
    </rect>
   </property>
   <property name="windowTitle" >
@@ -134,24 +134,25 @@
         <property name="title" >
          <string>Advanced</string>
         </property>
-        <layout class="QGridLayout" name="gridLayout_3" >
-         <item row="0" column="0" >
+        <layout class="QVBoxLayout" name="verticalLayout" >
+         <item>
           <widget class="QCheckBox" name="showBrokenCheck" >
            <property name="text" >
             <string>Be sensitive unmet dependecies</string>
            </property>
-           <property name="checked" >
-            <bool>false</bool>
-           </property>
           </widget>
          </item>
-         <item row="1" column="0" >
+         <item>
           <widget class="QCheckBox" name="ignoreErrors" >
            <property name="text" >
             <string>Ignore dist-upgrade errors</string>
            </property>
-           <property name="checked" >
-            <bool>false</bool>
+          </widget>
+         </item>
+         <item>
+          <widget class="QCheckBox" name="autostartCheck" >
+           <property name="text" >
+            <string>Autostart</string>
            </property>
           </widget>
          </item>
@@ -228,12 +229,6 @@
   <tabstop>okButton</tabstop>
   <tabstop>cancelButton</tabstop>
  </tabstops>
- <includes>
-  <include location="local" >qlineedit.h</include>
-  <include location="local" >qcombobox.h</include>
-  <include location="local" >qspinbox.h</include>
-  <include location="local" >qcheckbox.h</include>
- </includes>
  <resources/>
  <connections>
   <connection>
