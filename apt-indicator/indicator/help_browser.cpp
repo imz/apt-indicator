@@ -13,7 +13,7 @@ HelpBrowser::HelpBrowser(QWidget *parent):
 void HelpBrowser::execLink( const QUrl &url )
 {
     QString prog_command;
-    if( url.scheme() == "http" )
+    if( url.scheme() == "http" || url.scheme() == "https" )
     {
 	prog_command = getenv("HELP_BROWSER");
 	if( prog_command.isEmpty() )
@@ -29,10 +29,6 @@ void HelpBrowser::execLink( const QUrl &url )
 	prog_command = getenv("MAILER");
 	if( prog_command.isEmpty() )
 	    qWarning("%s", qPrintable(tr("MAILER environment variable is empty")));
-    }
-    else
-    {
-	return;
     }
     ui.helpText->reload();
     
