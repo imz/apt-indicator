@@ -1,6 +1,6 @@
 Name: apt-indicator
 Version: 0.1.0
-Release: alt0.6
+Release: alt1
 
 Summary: Applet for indication that newer packages are available
 License: GPL
@@ -48,12 +48,18 @@ mkdir -p %buildroot/%_datadir/autostart/
 install -m644 %name.desktop %buildroot/%_datadir/autostart/%name.desktop
 mkdir -p %buildroot/%_datadir/applications/
 install -m644 %name.desktop %buildroot/%_datadir/applications/%name.desktop
+
+# docs
 ln -sf %_docdir/%name-%version/html %buildroot/%_datadir/%name/doc
+mkdir -p %buildroot/%_datadir/%name/pixmaps
+install -m644 pixmaps/* %buildroot/%_datadir/%name/pixmaps
+
 
 %post
 %update_menus
 %postun
 %clean_menus
+
 
 %files
 %doc doc/html doc/images NEWS ChangeLog TODO README
@@ -64,6 +70,9 @@ ln -sf %_docdir/%name-%version/html %buildroot/%_datadir/%name/doc
 %_datadir/autostart/%name.desktop
 
 %changelog
+* Mon Nov 10 2008 Sergey V Turchin <zerg at altlinux dot org> 0.1.0-alt1
+- port to Qt4
+
 * Wed Apr 28 2004 Stanislav Ievlev <inger@altlinux.org> 0.0.4-alt1
 - 0.0.4 rc1
 
