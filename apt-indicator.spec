@@ -1,6 +1,6 @@
 Name: apt-indicator
 Version: 0.1.0
-Release: alt0.0.2
+Release: alt0.6
 
 Summary: Applet for indication that newer packages are available
 License: GPL
@@ -27,14 +27,14 @@ made notifications for users that newer packages are available.
 
 %prep
 %setup -q -n %name-%version
-qmake-qt4
+qmake-qt4 apt-indicator.pro
 
 %build
 %add_optflags -DNDEBUG
 %make 
 %make -C doc
 lrelease-qt4 %name.pro
-help2man --output=apt-indicator.1 --no-info apt-indicator
+help2man --output=apt-indicator.1 --no-info apt-indicator ||:
 
 %install
 %make INSTALL_ROOT=%buildroot install
@@ -42,14 +42,13 @@ help2man --output=apt-indicator.1 --no-info apt-indicator
 mkdir -p %buildroot/%_datadir/%name/translations/
 install -m644 translations/apt_indicator_*.qm %buildroot/%_datadir/%name/translations/
 mkdir -p %buildroot/%_man1dir/
-install -m644 %{name}.1 %buildroot/%_man1dir/
+[ -f %{name}.1 ] \
+    && install -m644 %{name}.1 %buildroot/%_man1dir/
 mkdir -p %buildroot/%_datadir/autostart/
 install -m644 %name.desktop %buildroot/%_datadir/autostart/%name.desktop
 mkdir -p %buildroot/%_datadir/applications/
 install -m644 %name.desktop %buildroot/%_datadir/applications/%name.desktop
-
-#hack for RC
-#ln -sf ../doc/%name-%version/html $RPM_BUILD_ROOT%_datadir/%name/doc 
+ln -sf %_docdir/%name-%version/html %buildroot/%_datadir/%name/doc
 
 %post
 %update_menus
@@ -59,7 +58,7 @@ install -m644 %name.desktop %buildroot/%_datadir/applications/%name.desktop
 %files
 %doc doc/html doc/images NEWS ChangeLog TODO README
 %_bindir/*
-%_man1dir/*
+#%_man1dir/*
 %_datadir/%name
 %_datadir/applications/%name.desktop
 %_datadir/autostart/%name.desktop

@@ -15,19 +15,19 @@ SOURCES += agent.cpp configuration.cpp help_browser.cpp config_dialog.cpp
 SOURCES += info_window.cpp
 
 HEADERS = config.h
-HEADERS += config.h agent.h configuration.h
-HEADERS += config_dialog.h info_window.h help_browser.h
+HEADERS += agent.h configuration.h help_browser.h config_dialog.h
+HEADERS += info_window.h
 
 FORMS = config_dialog.ui info_window.ui help_browser.ui
 
-DATA = $$TARGET.pro $$TARGET.desktop
+TRANSLATIONS = \
+    ../translations/apt_indicator_ru.ts \
+    ../translations/apt_indicator_uk.ts \
+    ../translations/untranslated.ts
+
+DATA = $$TARGET.pro
 
 RESOURCES = pixmaps.qrc
-
-TRANSLATIONS = \
-    translations/apt_indicator_ru.ts \
-    translations/apt_indicator_uk.ts \
-    translations/untranslated.ts
 
 target.path = /usr/bin/
 INSTALLS += target
