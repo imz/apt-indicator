@@ -406,6 +406,7 @@ void DistUpgrade::run()
 			if (status_ != TryAgain)
 			{
 			    emit endDistUpgrade(); //send notification about end of work
+			    quit();
 			}
 			else
 				sleep(RETRY_INTERVAL); //wait for the next retry
