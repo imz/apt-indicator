@@ -28,6 +28,7 @@ Checker::Checker(QObject *parent):
 
 Checker::~Checker()
 {
+    dist_upgrade->wait();
 }
 
 void Checker::startProgram()
