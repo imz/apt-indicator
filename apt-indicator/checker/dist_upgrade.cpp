@@ -10,10 +10,7 @@ License: GPL
 #include <sys/wait.h>
 #include <errno.h>
 
-#ifndef NDEBUG
-#include <iostream>
-#endif
-
+#include <cstring>
 #include <apt-pkg/init.h>
 #include <apt-pkg/cachefile.h>
 #include <apt-pkg/algorithms.h>
@@ -47,7 +44,7 @@ namespace
 	void warning(const QString& str)
 	{
 #ifndef NDEBUG
-		std::cerr << "debug: " << str.toStdString() << std::endl;
+		qDebug("debug: %s", qPrintable(str));
 #endif
 	}
 
