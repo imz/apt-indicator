@@ -57,13 +57,11 @@ Agent::Agent( QObject *parent, const char *name , const QString &homedir, bool a
 
 Agent::~Agent()
 {
-#if 0
-	// close all active threads: let's synaptic continue it's work, but close dist-upgrade thread
-	if (checker_proc && checker_proc->pid() > 0)
-	{
-	    checker_proc->terminate();
-	}
-#endif
+    // terminate dist-upgrade process
+    if (checker_proc && checker_proc->pid() > 0)
+    {
+        checker_proc->terminate();
+    }
 }
 
 void Agent::startProgram()
