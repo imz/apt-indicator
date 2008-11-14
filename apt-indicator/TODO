@@ -2,7 +2,6 @@
 - use separate apt.conf and source.list (to notifications only about security updates)
   (How about being able to configure which entries to use (comment in/out) 
   from sources.list, like Synaptic allows?)
-to the 0.1.0:
 - "wait for package" feature
 - WindowMaker support
 - move GUI to plugin
