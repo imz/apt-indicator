@@ -1,6 +1,6 @@
 Name: apt-indicator
 Version: 0.1.0
-Release: alt1
+Release: alt1.1
 
 Summary: Applet for indication that newer packages are available
 License: GPL
@@ -63,6 +63,10 @@ install -m644 pixmaps/* %buildroot/%_datadir/%name/pixmaps
 %_datadir/autostart/%name.desktop
 
 %changelog
+* Fri Dec 12 2008 Dmitry V. Levin <ldv@altlinux.org> 0.1.0-alt1.1
+- Removed obsolete %%update_menus/%%clean_menus calls.
+- Built with libapt-pkg-libc6.9-6.so.2.
+
 * Mon Nov 10 2008 Sergey V Turchin <zerg at altlinux dot org> 0.1.0-alt1
 - port to Qt4
 
