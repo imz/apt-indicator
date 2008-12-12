@@ -54,13 +54,6 @@ ln -sf %_docdir/%name-%version/html %buildroot/%_datadir/%name/doc
 mkdir -p %buildroot/%_datadir/%name/pixmaps
 install -m644 pixmaps/* %buildroot/%_datadir/%name/pixmaps
 
-
-%post
-%update_menus
-%postun
-%clean_menus
-
-
 %files
 %doc doc/html doc/images NEWS ChangeLog TODO README
 %_bindir/*
