@@ -379,7 +379,6 @@ void Agent::onEndRun(int exitCode, QProcess::ExitStatus exitState)
 	{
 	    delete info_window_;
 	    info_window_ = 0;
-	    return;
 	}
     }
     doCheck();
