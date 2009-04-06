@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS><TS version="1.1">
+<!DOCTYPE TS>
+<TS version="2.0">
 <context>
     <name>Agent</name>
     <message>
@@ -38,42 +39,45 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../indicator/agent.cpp" line="96"/>
+        <location filename="../indicator/agent.cpp" line="93"/>
         <source>Report at %1 %2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../indicator/agent.cpp" line="104"/>
+        <location filename="../indicator/agent.cpp" line="102"/>
         <source>Nothing to update...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../indicator/agent.cpp" line="107"/>
+        <location filename="../indicator/agent.cpp" line="105"/>
         <source>Checking in progress...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../indicator/agent.cpp" line="110"/>
+        <location filename="../indicator/agent.cpp" line="108"/>
         <source>No status info available</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../indicator/agent.cpp" line="378"/>
+        <location filename="../indicator/agent.cpp" line="131"/>
+        <location filename="../indicator/agent.cpp" line="154"/>
+        <location filename="../indicator/agent.cpp" line="370"/>
+        <location filename="../indicator/agent.cpp" line="376"/>
         <source>Run upgrade process</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../indicator/agent.cpp" line="133"/>
+        <location filename="../indicator/agent.cpp" line="131"/>
         <source>Program already running</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../indicator/agent.cpp" line="156"/>
+        <location filename="../indicator/agent.cpp" line="154"/>
         <source>No upgrade program configured</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../indicator/agent.cpp" line="230"/>
+        <location filename="../indicator/agent.cpp" line="226"/>
         <source>This program make notification of updates.
 Copyright (C) 2003-2004 ALT Linux Team
 
@@ -81,68 +85,68 @@ Written by Stanislav Ievlev and Sergey V. Turchin</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../indicator/agent.cpp" line="236"/>
+        <location filename="../indicator/agent.cpp" line="234"/>
         <source>Should &lt;b&gt;%1&lt;/b&gt; start automatically 
 when you login?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../indicator/agent.cpp" line="237"/>
+        <location filename="../indicator/agent.cpp" line="235"/>
         <source>Exit program</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../indicator/agent.cpp" line="255"/>
+        <location filename="../indicator/agent.cpp" line="253"/>
         <source>There are updates for your system available...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../indicator/agent.cpp" line="259"/>
+        <location filename="../indicator/agent.cpp" line="257"/>
         <source>Nothing to update</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../indicator/agent.cpp" line="263"/>
+        <location filename="../indicator/agent.cpp" line="261"/>
         <source>Problems with Dist-Upgrade</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../indicator/agent.cpp" line="267"/>
+        <location filename="../indicator/agent.cpp" line="265"/>
         <source>Working...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../indicator/agent.cpp" line="271"/>
+        <location filename="../indicator/agent.cpp" line="269"/>
         <source>Unknown status</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../indicator/agent.cpp" line="277"/>
+        <location filename="../indicator/agent.cpp" line="275"/>
         <source>setting Icon</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../indicator/agent.cpp" line="278"/>
+        <location filename="../indicator/agent.cpp" line="276"/>
         <source>Could not load the icon file %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../indicator/agent.cpp" line="366"/>
+        <location filename="../indicator/agent.cpp" line="364"/>
         <source>Failed to start upgrade program</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../indicator/agent.cpp" line="368"/>
+        <location filename="../indicator/agent.cpp" line="366"/>
         <source>Program crashed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../indicator/agent.cpp" line="370"/>
+        <location filename="../indicator/agent.cpp" line="368"/>
         <source>Execution of program failed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../indicator/agent.cpp" line="378"/>
+        <location filename="../indicator/agent.cpp" line="376"/>
         <source>child was exited with code %1</source>
         <translation type="unfinished"></translation>
     </message>
