@@ -89,6 +89,13 @@ void Agent::doInfo()
 
     info_window_ = new InfoWindow(0);
     connect(info_window_->ui.upgradeButton, SIGNAL(pressed()), this, SLOT(doRun()));
+    updateInfoWindow();
+    info_window_->show();
+}
+
+void Agent::updateInfoWindow()
+{
+    if( !info_window_ ) return;
 
     QString title = tr("Report at %1 %2")
 	.arg(last_report_time_.date().toString(Qt::LocalDate))
@@ -114,8 +121,6 @@ void Agent::doInfo()
 	info_window_->ui.upgradeButton->hide();
     else
 	info_window_->ui.upgradeButton->show();
-
-    info_window_->show();
 }
 
 void Agent::doRun()
@@ -331,6 +336,7 @@ void Agent::onCheckerOutput()
 	    setTrayIcon();
 	}
 	result_ = new_result.join("\n");
+	updateInfoWindow();
 	//qDebug("result<%d>: %s", new_result.size(), qPrintable(result_));
 }
 

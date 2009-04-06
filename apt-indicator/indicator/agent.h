@@ -47,6 +47,7 @@ private slots:
 
 private:
 	void setTrayIcon();
+	void updateInfoWindow();
 
 	QMenu *menu_;
 	QString homedir_; /**< user's home directory */
