@@ -61,7 +61,6 @@ ln -sf %_docdir/%name-%version/html %buildroot/%_datadir/%name/doc
 mkdir -p %buildroot/%_datadir/%name/pixmaps
 install -m644 pixmaps/* %buildroot/%_datadir/%name/pixmaps
 
-
 %files
 %doc doc/html doc/images NEWS ChangeLog TODO README
 %_bindir/*
@@ -76,8 +75,11 @@ install -m644 pixmaps/* %buildroot/%_datadir/%name/pixmaps
 - fix menu translations
 - update info window if shown
 - close info window on upgrade program exit
-- don't use deprecated macroses in specfile
 - add xdg autostart entry
+
+* Fri Dec 12 2008 Dmitry V. Levin <ldv@altlinux.org> 0.1.0-alt1.1
+- Removed obsolete %%update_menus/%%clean_menus calls.
+- Built with libapt-pkg-libc6.9-6.so.2.
 
 * Mon Nov 10 2008 Sergey V Turchin <zerg at altlinux dot org> 0.1.0-alt1
 - port to Qt4

@@ -172,7 +172,7 @@ void Configuration::showDialog()
 	    per_new.time_ = cfgDlg.ui.timesSpinBox->value();
 	    per_new.period_ = cfgDlg.ui.periodComboBox->currentIndex();
 	    int chk_interval = toInterval(per_new);
-	    bool changed;
+	    bool changed = false;
 	    changed = setParam(PathUpgrader,    cfgDlg.ui.pathLineEdit->text()) || changed;
 	    changed = setParam(CheckInterval,   chk_interval) || changed;
 	    changed = setParam(ShowBroken,      cfgDlg.ui.showBrokenCheck->isChecked()) || changed;
