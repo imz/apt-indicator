@@ -5,9 +5,10 @@ Release: alt1
 Summary: Applet for indication that newer packages are available
 License: GPL
 Group: System/Configuration/Packaging
-
 Url: http://apt-indicator.sourceforge.net/
 Packager: Sergey V Turchin <zerg@altlinux.org>
+
+Requires: libqt4-core >= %{get_version libqt4-core}
 
 Source: %name-%version.tar
 
@@ -15,7 +16,8 @@ Provides: egg = %version-%release, alt-update = %version-%release
 Obsoletes: egg < %version-%release, alt-update < %version-%release
 Requires: synaptic-usermode
 
-BuildRequires: xorg-devel gcc-c++ libqt4-devel libstdc++-devel
+BuildRequires(pre): libqt4-devel
+BuildRequires: xorg-devel gcc-c++ libstdc++-devel
 BuildRequires: docbook-dtds docbook-style-xsl help2man libapt-devel
 BuildRequires: xml-common xsltproc
 BuildRequires: libdb4.4-devel
