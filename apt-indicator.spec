@@ -1,5 +1,5 @@
 Name: apt-indicator
-Version: 0.1.0
+Version: 0.1.1
 Release: alt1
 
 Summary: Applet for indication that newer packages are available
@@ -55,12 +55,6 @@ mkdir -p %buildroot/%_datadir/%name/pixmaps
 install -m644 pixmaps/* %buildroot/%_datadir/%name/pixmaps
 
 
-%post
-%update_menus
-%postun
-%clean_menus
-
-
 %files
 %doc doc/html doc/images NEWS ChangeLog TODO README
 %_bindir/*
@@ -70,6 +64,12 @@ install -m644 pixmaps/* %buildroot/%_datadir/%name/pixmaps
 %_datadir/autostart/%name.desktop
 
 %changelog
+* Mon Apr 06 2009 Sergey V Turchin <zerg at altlinux dot org> 0.1.1-alt1
+- fix menu translations
+- update info window if shown
+- close info window on upgrade program exit
+- don't use deprecated macroses in specfile
+
 * Mon Nov 10 2008 Sergey V Turchin <zerg at altlinux dot org> 0.1.0-alt1
 - port to Qt4
 
