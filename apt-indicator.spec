@@ -46,10 +46,15 @@ install -m644 translations/apt_indicator_*.qm %buildroot/%_datadir/%name/transla
 mkdir -p %buildroot/%_man1dir/
 [ -f %{name}.1 ] \
     && install -m644 %{name}.1 %buildroot/%_man1dir/
-mkdir -p %buildroot/%_datadir/autostart/
-install -m644 %name.desktop %buildroot/%_datadir/autostart/%name.desktop
 mkdir -p %buildroot/%_datadir/applications/
 install -m644 %name.desktop %buildroot/%_datadir/applications/%name.desktop
+
+for d in %_datadir/autostart %_sysconfdir/xdg/autostart
+do
+mkdir -p %buildroot/$d/
+install -m644 %name.desktop %buildroot/$d/%name.desktop
+sed -i 's|\(^Exec=.*\)|\1 --autostart|' %buildroot/$d/%name.desktop
+done
 
 # docs
 ln -sf %_docdir/%name-%version/html %buildroot/%_datadir/%name/doc
@@ -64,6 +69,7 @@ install -m644 pixmaps/* %buildroot/%_datadir/%name/pixmaps
 %_datadir/%name
 %_datadir/applications/%name.desktop
 %_datadir/autostart/%name.desktop
+%_sysconfdir/xdg/autostart/apt-indicator.desktop
 
 %changelog
 * Mon Apr 06 2009 Sergey V Turchin <zerg at altlinux dot org> 0.1.1-alt1
@@ -71,6 +77,7 @@ install -m644 pixmaps/* %buildroot/%_datadir/%name/pixmaps
 - update info window if shown
 - close info window on upgrade program exit
 - don't use deprecated macroses in specfile
+- add xdg autostart entry
 
 * Mon Nov 10 2008 Sergey V Turchin <zerg at altlinux dot org> 0.1.0-alt1
 - port to Qt4
