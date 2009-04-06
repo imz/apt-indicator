@@ -74,12 +74,10 @@ int main( int argc, char **argv )
 	Q_INIT_RESOURCE(pixmaps);
 	QApplication app( argc, argv );
 	app.setQuitOnLastWindowClosed(false);
-	Agent agent(0, PROGRAM_NAME, QString(getenv("HOME")), autostart );
 
-	QTranslator translator(&agent);
-	QTranslator qt_translator(&agent);
+	QTranslator translator(&app);
+	QTranslator qt_translator(&app);
 	QString lang = QLocale::system().name();
-
 #ifndef NDEBUG
 	translator.load( "apt_indicator_" + lang, "./translations" );
 #else
@@ -88,6 +86,8 @@ int main( int argc, char **argv )
 	qt_translator.load("qt_" + lang, QLibraryInfo::location(QLibraryInfo::TranslationsPath));
 	app.installTranslator( &qt_translator );
 	app.installTranslator( &translator );
+
+	Agent agent(0, PROGRAM_NAME, QString(getenv("HOME")), autostart );
 
 	return app.exec();
 }
