@@ -1,6 +1,6 @@
 Name: apt-indicator
 Version: 0.1.1
-Release: alt1
+Release: alt0.M50.1
 
 Summary: Applet for indication that newer packages are available
 License: GPL
@@ -71,6 +71,9 @@ install -m644 pixmaps/* %buildroot/%_datadir/%name/pixmaps
 %_sysconfdir/xdg/autostart/apt-indicator.desktop
 
 %changelog
+* Tue Apr 07 2009 Sergey V Turchin <zerg at altlinux dot org> 0.1.1-alt0.M50.1
+- built for M50
+
 * Mon Apr 06 2009 Sergey V Turchin <zerg at altlinux dot org> 0.1.1-alt1
 - fix menu translations
 - update info window if shown
