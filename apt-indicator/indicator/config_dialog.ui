@@ -1,8 +1,9 @@
-<ui version="4.0" >
- <author>Sergey V Turchin &lt;zerg@altlinux.org></author>
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <author>Sergey V Turchin &lt;zerg@altlinux.org&gt;</author>
  <class>ConfigDialogUI</class>
- <widget class="QDialog" name="ConfigDialogUI" >
-  <property name="geometry" >
+ <widget class="QDialog" name="ConfigDialogUI">
+  <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
@@ -10,73 +11,73 @@
     <height>391</height>
    </rect>
   </property>
-  <property name="windowTitle" >
+  <property name="windowTitle">
    <string>Configuration</string>
   </property>
-  <layout class="QGridLayout" >
-   <item row="0" column="0" >
-    <widget class="QGroupBox" name="groupBox1" >
-     <property name="title" >
+  <layout class="QGridLayout">
+   <item row="0" column="0">
+    <widget class="QGroupBox" name="groupBox1">
+     <property name="title">
       <string>Options</string>
      </property>
-     <layout class="QGridLayout" name="gridLayout_4" >
-      <item row="0" column="0" colspan="5" >
-       <widget class="QGroupBox" name="groupBox3" >
-        <property name="title" >
+     <layout class="QGridLayout" name="gridLayout_4">
+      <item row="0" column="0" colspan="5">
+       <widget class="QGroupBox" name="groupBox3">
+        <property name="title">
          <string>Check Interval</string>
         </property>
-        <layout class="QGridLayout" name="gridLayout_2" >
-         <item row="0" column="0" >
-          <widget class="QSpinBox" name="timesSpinBox" >
-           <property name="sizePolicy" >
-            <sizepolicy vsizetype="Fixed" hsizetype="Minimum" >
+        <layout class="QGridLayout" name="gridLayout_2">
+         <item row="0" column="0">
+          <widget class="QSpinBox" name="timesSpinBox">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
              <horstretch>0</horstretch>
              <verstretch>0</verstretch>
             </sizepolicy>
            </property>
-           <property name="minimum" >
+           <property name="minimum">
             <number>1</number>
            </property>
-           <property name="value" >
+           <property name="value">
             <number>1</number>
            </property>
           </widget>
          </item>
-         <item row="0" column="1" >
-          <widget class="QComboBox" name="periodComboBox" >
-           <property name="sizePolicy" >
-            <sizepolicy vsizetype="Fixed" hsizetype="MinimumExpanding" >
+         <item row="0" column="1">
+          <widget class="QComboBox" name="periodComboBox">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
              <horstretch>0</horstretch>
              <verstretch>0</verstretch>
             </sizepolicy>
            </property>
            <item>
-            <property name="text" >
+            <property name="text">
              <string>Seconds</string>
             </property>
            </item>
            <item>
-            <property name="text" >
+            <property name="text">
              <string>Minutes</string>
             </property>
            </item>
            <item>
-            <property name="text" >
+            <property name="text">
              <string>Hours</string>
             </property>
            </item>
            <item>
-            <property name="text" >
+            <property name="text">
              <string>Days</string>
             </property>
            </item>
            <item>
-            <property name="text" >
+            <property name="text">
              <string>Weeks</string>
             </property>
            </item>
            <item>
-            <property name="text" >
+            <property name="text">
              <string>Months</string>
             </property>
            </item>
@@ -85,43 +86,43 @@
         </layout>
        </widget>
       </item>
-      <item row="1" column="0" colspan="5" >
-       <widget class="QGroupBox" name="groupBox5" >
-        <property name="title" >
-         <string>Path to Synaptic</string>
+      <item row="1" column="0" colspan="5">
+       <widget class="QGroupBox" name="groupBox5">
+        <property name="title">
+         <string>Update program</string>
         </property>
-        <layout class="QGridLayout" name="gridLayout" >
-         <item row="0" column="0" >
-          <widget class="QLineEdit" name="pathLineEdit" >
-           <property name="sizePolicy" >
-            <sizepolicy vsizetype="Fixed" hsizetype="Expanding" >
+        <layout class="QGridLayout" name="gridLayout">
+         <item row="0" column="0">
+          <widget class="QLineEdit" name="pathLineEdit">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
              <horstretch>0</horstretch>
              <verstretch>0</verstretch>
             </sizepolicy>
            </property>
-           <property name="text" >
+           <property name="text">
             <string/>
            </property>
           </widget>
          </item>
-         <item row="0" column="1" >
-          <widget class="QPushButton" name="fileSelectButton" >
-           <property name="minimumSize" >
+         <item row="0" column="1">
+          <widget class="QPushButton" name="fileSelectButton">
+           <property name="minimumSize">
             <size>
              <width>31</width>
              <height>31</height>
             </size>
            </property>
-           <property name="maximumSize" >
+           <property name="maximumSize">
             <size>
              <width>31</width>
              <height>31</height>
             </size>
            </property>
-           <property name="text" >
+           <property name="text">
             <string>...</string>
            </property>
-           <property name="autoDefault" >
+           <property name="autoDefault">
             <bool>false</bool>
            </property>
           </widget>
@@ -129,29 +130,29 @@
         </layout>
        </widget>
       </item>
-      <item row="2" column="0" colspan="5" >
-       <widget class="QGroupBox" name="groupBox4" >
-        <property name="title" >
+      <item row="2" column="0" colspan="5">
+       <widget class="QGroupBox" name="groupBox4">
+        <property name="title">
          <string>Advanced</string>
         </property>
-        <layout class="QVBoxLayout" name="verticalLayout" >
+        <layout class="QVBoxLayout" name="verticalLayout">
          <item>
-          <widget class="QCheckBox" name="showBrokenCheck" >
-           <property name="text" >
+          <widget class="QCheckBox" name="showBrokenCheck">
+           <property name="text">
             <string>Be sensitive unmet dependecies</string>
            </property>
           </widget>
          </item>
          <item>
-          <widget class="QCheckBox" name="ignoreErrors" >
-           <property name="text" >
+          <widget class="QCheckBox" name="ignoreErrors">
+           <property name="text">
             <string>Ignore dist-upgrade errors</string>
            </property>
           </widget>
          </item>
          <item>
-          <widget class="QCheckBox" name="autostartCheck" >
-           <property name="text" >
+          <widget class="QCheckBox" name="autostartCheck">
+           <property name="text">
             <string>Autostart</string>
            </property>
           </widget>
@@ -159,12 +160,12 @@
         </layout>
        </widget>
       </item>
-      <item row="3" column="0" >
-       <spacer name="horizontalSpacer_2" >
-        <property name="orientation" >
+      <item row="3" column="0">
+       <spacer name="horizontalSpacer_2">
+        <property name="orientation">
          <enum>Qt::Horizontal</enum>
         </property>
-        <property name="sizeHint" stdset="0" >
+        <property name="sizeHint" stdset="0">
          <size>
           <width>40</width>
           <height>20</height>
@@ -172,19 +173,19 @@
         </property>
        </spacer>
       </item>
-      <item row="3" column="1" >
-       <widget class="QPushButton" name="okButton" >
-        <property name="text" >
+      <item row="3" column="1">
+       <widget class="QPushButton" name="okButton">
+        <property name="text">
          <string>Ok</string>
         </property>
        </widget>
       </item>
-      <item row="3" column="2" >
-       <spacer name="horizontalSpacer" >
-        <property name="orientation" >
+      <item row="3" column="2">
+       <spacer name="horizontalSpacer">
+        <property name="orientation">
          <enum>Qt::Horizontal</enum>
         </property>
-        <property name="sizeHint" stdset="0" >
+        <property name="sizeHint" stdset="0">
          <size>
           <width>40</width>
           <height>20</height>
@@ -192,19 +193,19 @@
         </property>
        </spacer>
       </item>
-      <item row="3" column="3" >
-       <widget class="QPushButton" name="cancelButton" >
-        <property name="text" >
+      <item row="3" column="3">
+       <widget class="QPushButton" name="cancelButton">
+        <property name="text">
          <string>Cancel</string>
         </property>
        </widget>
       </item>
-      <item row="3" column="4" >
-       <spacer name="horizontalSpacer_3" >
-        <property name="orientation" >
+      <item row="3" column="4">
+       <spacer name="horizontalSpacer_3">
+        <property name="orientation">
          <enum>Qt::Horizontal</enum>
         </property>
-        <property name="sizeHint" stdset="0" >
+        <property name="sizeHint" stdset="0">
          <size>
           <width>40</width>
           <height>20</height>
@@ -217,7 +218,7 @@
    </item>
   </layout>
  </widget>
- <layoutdefault spacing="6" margin="11" />
+ <layoutdefault spacing="6" margin="11"/>
  <pixmapfunction>QPixmap</pixmapfunction>
  <tabstops>
   <tabstop>timesSpinBox</tabstop>
@@ -237,11 +238,11 @@
    <receiver>ConfigDialogUI</receiver>
    <slot>fileSelect()</slot>
    <hints>
-    <hint type="sourcelabel" >
+    <hint type="sourcelabel">
      <x>20</x>
      <y>20</y>
     </hint>
-    <hint type="destinationlabel" >
+    <hint type="destinationlabel">
      <x>20</x>
      <y>20</y>
     </hint>
@@ -253,11 +254,11 @@
    <receiver>ConfigDialogUI</receiver>
    <slot>accept()</slot>
    <hints>
-    <hint type="sourcelabel" >
+    <hint type="sourcelabel">
      <x>20</x>
      <y>20</y>
     </hint>
-    <hint type="destinationlabel" >
+    <hint type="destinationlabel">
      <x>20</x>
      <y>20</y>
     </hint>
@@ -269,11 +270,11 @@
    <receiver>ConfigDialogUI</receiver>
    <slot>reject()</slot>
    <hints>
-    <hint type="sourcelabel" >
+    <hint type="sourcelabel">
      <x>20</x>
      <y>20</y>
     </hint>
-    <hint type="destinationlabel" >
+    <hint type="destinationlabel">
      <x>20</x>
      <y>20</y>
     </hint>
