@@ -60,9 +60,9 @@
     </message>
     <message>
         <location filename="../indicator/agent.cpp" line="136"/>
-        <location filename="../indicator/agent.cpp" line="182"/>
-        <location filename="../indicator/agent.cpp" line="399"/>
-        <location filename="../indicator/agent.cpp" line="405"/>
+        <location filename="../indicator/agent.cpp" line="184"/>
+        <location filename="../indicator/agent.cpp" line="401"/>
+        <location filename="../indicator/agent.cpp" line="407"/>
         <source>Run upgrade process</source>
         <translation type="unfinished"></translation>
     </message>
@@ -72,12 +72,12 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../indicator/agent.cpp" line="182"/>
-        <source>No upgrade program configured</source>
+        <location filename="../indicator/agent.cpp" line="184"/>
+        <source>No upgrade program found</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../indicator/agent.cpp" line="254"/>
+        <location filename="../indicator/agent.cpp" line="256"/>
         <source>This program make notification of updates.
 Copyright (C) 2003-2004 ALT Linux Team
 
@@ -85,68 +85,68 @@ Written by Stanislav Ievlev and Sergey V. Turchin</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../indicator/agent.cpp" line="262"/>
+        <location filename="../indicator/agent.cpp" line="264"/>
         <source>Should &lt;b&gt;%1&lt;/b&gt; start automatically 
 when you login?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../indicator/agent.cpp" line="263"/>
+        <location filename="../indicator/agent.cpp" line="265"/>
         <source>Exit program</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../indicator/agent.cpp" line="281"/>
+        <location filename="../indicator/agent.cpp" line="283"/>
         <source>There are updates for your system available...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../indicator/agent.cpp" line="285"/>
+        <location filename="../indicator/agent.cpp" line="287"/>
         <source>Nothing to update</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../indicator/agent.cpp" line="289"/>
+        <location filename="../indicator/agent.cpp" line="291"/>
         <source>Problems with Dist-Upgrade</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../indicator/agent.cpp" line="293"/>
+        <location filename="../indicator/agent.cpp" line="295"/>
         <source>Working...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../indicator/agent.cpp" line="297"/>
+        <location filename="../indicator/agent.cpp" line="299"/>
         <source>Unknown status</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../indicator/agent.cpp" line="303"/>
+        <location filename="../indicator/agent.cpp" line="305"/>
         <source>setting Icon</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../indicator/agent.cpp" line="304"/>
+        <location filename="../indicator/agent.cpp" line="306"/>
         <source>Could not load the icon file %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../indicator/agent.cpp" line="393"/>
+        <location filename="../indicator/agent.cpp" line="395"/>
         <source>Failed to start upgrade program</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../indicator/agent.cpp" line="395"/>
+        <location filename="../indicator/agent.cpp" line="397"/>
         <source>Program crashed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../indicator/agent.cpp" line="397"/>
+        <location filename="../indicator/agent.cpp" line="399"/>
         <source>Execution of program failed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../indicator/agent.cpp" line="405"/>
+        <location filename="../indicator/agent.cpp" line="407"/>
         <source>child was exited with code %1</source>
         <translation type="unfinished"></translation>
     </message>
