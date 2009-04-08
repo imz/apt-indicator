@@ -1,11 +1,18 @@
 [Desktop Entry]
-Name=APT Indicator
-GenericName=Updates Indicator
-Comment=Applet for indication that newer packages are available
 Encoding=UTF-8
+Version=1.0
+Name=APT Indicator
 Type=Application
 Exec=apt-indicator
 Icon=altlinux
-Terminal=0
+Terminal=false
+StartupNotify=false
+X-KDE-autostart-phase=1
 X-KDE-autostart-after=panel
 X-KDE-StartupNotify=false
+X-DBUS-StartupType=none
+Categories=Qt;System;
+GenericName=Updates Indicator
+GenericName[ru]=Индикатор обновлений
+Comment=Applet for indication that newer packages are available
+Comment[ru]=Аплет для отображения доступности новых пакетов
