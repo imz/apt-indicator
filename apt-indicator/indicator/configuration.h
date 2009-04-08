@@ -16,7 +16,7 @@ class Configuration: public QObject
 {
 Q_OBJECT
 public:
-	enum Param { CheckInterval, PathUpgrader, ShowBroken, IgnoreAptErrors, Autostart };
+	enum Param { CheckInterval, UpgraderCommand, ShowBroken, IgnoreAptErrors, Autostart };
 
 	Configuration(QObject *);
 	~Configuration();
@@ -45,7 +45,7 @@ private:
 
 	QMap<int,int> iperiods;
 
-	QString path_upgrader_;
+	QString upgrader_command_;
 	int check_interval_;
 	bool show_broken_;
 	bool ignore_apt_errors_;

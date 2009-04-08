@@ -145,7 +145,30 @@ void Agent::doRun()
 
 	if (!upgrader_proc)
 	{
-		QStringList arguments(cfg_->getString(Configuration::PathUpgrader).split(" ", QString::SkipEmptyParts));
+		QString command;
+		QStringList entries = cfg_->getString(Configuration::UpgraderCommand).split(";", QString::SkipEmptyParts);
+		foreach(QString entry, entries)
+		{
+		    QStringList entry_paths = entry.split(":", QString::KeepEmptyParts);
+		    if( entry_paths.size() == 2 && !entry_paths[0].isEmpty() )
+		    {
+			bool check_exists = true;
+			QStringList check_paths = entry_paths[1].split(",", QString::SkipEmptyParts);
+			foreach(QString path,check_paths)
+			{
+			    QFileInfo finfo(path);
+			    if(!finfo.exists())
+				check_exists = false;
+			}
+			if( check_exists )
+			{
+			    command = entry_paths[0];
+			    break;
+			}
+		    }
+		}
+		
+		QStringList arguments(command.split(" ", QString::SkipEmptyParts));
 		QString program(arguments.takeAt(0));
 		if( !program.isEmpty() )
 		{

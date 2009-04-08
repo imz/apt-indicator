@@ -36,7 +36,7 @@ void Configuration::load()
     QSettings cfg(QSettings::IniFormat, QSettings::UserScope, "ALT_Linux", PROGRAM_PKG_NAME, this);
     cfg.setFallbacksEnabled(false);
     //cfg_.beginGroup("");
-    setParam(PathUpgrader,    cfg.value("path_upgrader", DEF_UPGRADER_PATH).toString());
+    setParam(UpgraderCommand,    cfg.value("upgrader_command", DEF_UPGRADER).toString());
     setParam(CheckInterval,   cfg.value("check_interval", DEF_CHECK_INTERVAL).toInt());
     setParam(ShowBroken,      cfg.value("show_broken", false).toBool());
     setParam(IgnoreAptErrors, cfg.value("ignore_apt_errors", false).toBool());
@@ -48,7 +48,7 @@ void Configuration::save()
     QSettings cfg(QSettings::IniFormat, QSettings::UserScope, "ALT_Linux", PROGRAM_PKG_NAME, this);
     cfg.setFallbacksEnabled(false);
     //cfg_.beginGroup("");
-    cfg.setValue("path_upgrader", getString(PathUpgrader));
+    cfg.setValue("upgrader_command", getString(UpgraderCommand));
     cfg.setValue("check_interval", getInt(CheckInterval));
     cfg.setValue("show_broken", getBool(ShowBroken));
     cfg.setValue("ignore_apt_errors", getBool(IgnoreAptErrors));
@@ -60,7 +60,7 @@ bool Configuration::setParam(Param param, const QString &value)
     bool changed = false;
     switch(param)
     {
-	case PathUpgrader: { changed = getString(param) != value; path_upgrader_ = value; break; }
+	case UpgraderCommand: { changed = getString(param) != value; upgrader_command_ = value; break; }
 	default: { changed = false; break; }
     }
     return changed;
@@ -94,8 +94,8 @@ QString Configuration::getString(Param param)
 {
     switch(param)
     {
-	case PathUpgrader:
-	    return path_upgrader_;
+	case UpgraderCommand:
+	    return upgrader_command_;
 	default:
 	    { qDebug("Configuration::getString(unknown)"); break; }
     }
@@ -161,7 +161,7 @@ void Configuration::showDialog()
 
 	cfgDlg.ui.timesSpinBox->setValue(per.time_);
 	cfgDlg.ui.periodComboBox->setCurrentIndex(per.period_);
-	cfgDlg.ui.pathLineEdit->setText(getString(PathUpgrader));
+	cfgDlg.ui.pathLineEdit->setText(getString(UpgraderCommand));
 	cfgDlg.ui.showBrokenCheck->setChecked(getBool(ShowBroken));
 	cfgDlg.ui.ignoreErrors->setChecked(getBool(IgnoreAptErrors));
 	cfgDlg.ui.autostartCheck->setChecked(getBool(Autostart));
@@ -173,7 +173,7 @@ void Configuration::showDialog()
 	    per_new.period_ = cfgDlg.ui.periodComboBox->currentIndex();
 	    int chk_interval = toInterval(per_new);
 	    bool changed = false;
-	    changed = setParam(PathUpgrader,    cfgDlg.ui.pathLineEdit->text()) || changed;
+	    changed = setParam(UpgraderCommand,    cfgDlg.ui.pathLineEdit->text()) || changed;
 	    changed = setParam(CheckInterval,   chk_interval) || changed;
 	    changed = setParam(ShowBroken,      cfgDlg.ui.showBrokenCheck->isChecked()) || changed;
 	    changed = setParam(IgnoreAptErrors, cfgDlg.ui.ignoreErrors->isChecked()) || changed;
