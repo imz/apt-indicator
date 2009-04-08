@@ -169,7 +169,9 @@ void Agent::doRun()
 		}
 		
 		QStringList arguments(command.split(" ", QString::SkipEmptyParts));
-		QString program(arguments.takeAt(0));
+		QString program;
+		if( arguments.size() >= 1 )
+		    program = arguments.takeAt(0);
 		if( !program.isEmpty() )
 		{
 		    upgrader_proc = new QProcess(this);
@@ -179,7 +181,7 @@ void Agent::doRun()
 		}
 		else
 		{
-		    QMessageBox::critical(0,tr("Run upgrade process"),  tr("No upgrade program configured"), QMessageBox::Ok, Qt::NoButton);
+		    QMessageBox::critical(0,tr("Run upgrade process"),  tr("No upgrade program found"), QMessageBox::Ok, Qt::NoButton);
 		    //doConfigure();
 		}
 	}
