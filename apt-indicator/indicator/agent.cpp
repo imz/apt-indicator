@@ -38,6 +38,7 @@ Agent::Agent( QObject *parent, const char *name , const QString &homedir, bool a
 	setTrayIcon();
 	tray_icon_->show();
 	connect(tray_icon_, SIGNAL(activated(QSystemTrayIcon::ActivationReason)), this, SLOT(onActivateSysTray(QSystemTrayIcon::ActivationReason)));
+	connect(tray_icon_, SIGNAL(messageClicked()), this, SLOT(onClickTrayMessage()));
 
 	menu_ = new QMenu();
 	menu_->addAction( tr("&Upgrade..."), this, SLOT(doRun()));
@@ -359,6 +360,15 @@ void Agent::onCheckerOutput()
 	    status_ = new_status;
 	    last_report_time_ = QDateTime::currentDateTime();
 	    setTrayIcon();
+	    switch(status_)
+	    {
+		case Danger:
+		{
+		    tray_icon_->showMessage(PROGRAM_NAME, tr("There are updates for your system available..."), QSystemTrayIcon::Warning, 30000); break;
+		}
+		default:
+		    break;
+	    }
 	}
 	result_ = new_result.join("\n");
 	updateInfoWindow();
@@ -419,4 +429,17 @@ void Agent::onActivateSysTray(QSystemTrayIcon::ActivationReason reason)
 {
     if( reason == QSystemTrayIcon::Trigger )
 	doInfo();
+}
+
+void Agent::onClickTrayMessage()
+{
+    switch(status_)
+    {
+	case Danger:
+	{
+	    doRun(); break;
+	}
+	default:
+	    break;
+    }
 }

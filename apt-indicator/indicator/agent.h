@@ -39,6 +39,7 @@ private slots:
 	void doRun();
 	void doConfigure();
 	void onActivateSysTray(QSystemTrayIcon::ActivationReason);
+	void onClickTrayMessage();
 	void onEndRun(int, QProcess::ExitStatus);
 	void onEndRunError(QProcess::ProcessError);
 	void onCheckerEnd(int, QProcess::ExitStatus);
