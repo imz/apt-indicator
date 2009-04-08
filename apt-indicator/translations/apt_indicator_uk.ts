@@ -345,41 +345,46 @@ when you login?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../indicator/config_dialog.ui" line="104"/>
+        <source>Format: command with arguments:/check/file/exists1,/check/file/exists2;command2:/path/1,/path/2,/path/3</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>Path to Synaptic</source>
         <translation type="obsolete">Путь до Synaptic</translation>
     </message>
     <message>
-        <location filename="../indicator/config_dialog.ui" line="123"/>
+        <location filename="../indicator/config_dialog.ui" line="126"/>
         <source>...</source>
         <translation type="unfinished">...</translation>
     </message>
     <message>
-        <location filename="../indicator/config_dialog.ui" line="136"/>
+        <location filename="../indicator/config_dialog.ui" line="139"/>
         <source>Advanced</source>
         <translation type="unfinished">Додатково</translation>
     </message>
     <message>
-        <location filename="../indicator/config_dialog.ui" line="142"/>
+        <location filename="../indicator/config_dialog.ui" line="145"/>
         <source>Be sensitive unmet dependecies</source>
         <translation type="unfinished">Чутливість до порушених залежностей</translation>
     </message>
     <message>
-        <location filename="../indicator/config_dialog.ui" line="149"/>
+        <location filename="../indicator/config_dialog.ui" line="152"/>
         <source>Ignore dist-upgrade errors</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../indicator/config_dialog.ui" line="156"/>
+        <location filename="../indicator/config_dialog.ui" line="159"/>
         <source>Autostart</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../indicator/config_dialog.ui" line="179"/>
+        <location filename="../indicator/config_dialog.ui" line="182"/>
         <source>Ok</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../indicator/config_dialog.ui" line="199"/>
+        <location filename="../indicator/config_dialog.ui" line="202"/>
         <source>Cancel</source>
         <translation type="unfinished">Відмінити</translation>
     </message>

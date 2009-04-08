@@ -381,41 +381,46 @@ when you login?</source>
         <translation>Программа обновления</translation>
     </message>
     <message>
+        <location filename="../indicator/config_dialog.ui" line="104"/>
+        <source>Format: command with arguments:/check/file/exists1,/check/file/exists2;command2:/path/1,/path/2,/path/3</source>
+        <translation>Формат: команда с аргументами:/проверка/на/файл1,/проверка/на/файл2;команда2:/файл/1,/файл/2,/файл/3</translation>
+    </message>
+    <message>
         <source>Path to Synaptic</source>
         <translation type="obsolete">Путь к Synaptic</translation>
     </message>
     <message>
-        <location filename="../indicator/config_dialog.ui" line="123"/>
+        <location filename="../indicator/config_dialog.ui" line="126"/>
         <source>...</source>
         <translation>...</translation>
     </message>
     <message>
-        <location filename="../indicator/config_dialog.ui" line="136"/>
+        <location filename="../indicator/config_dialog.ui" line="139"/>
         <source>Advanced</source>
         <translation>Дополнительно</translation>
     </message>
     <message>
-        <location filename="../indicator/config_dialog.ui" line="142"/>
+        <location filename="../indicator/config_dialog.ui" line="145"/>
         <source>Be sensitive unmet dependecies</source>
         <translation>Чувствительность к нарушенным зависимостям</translation>
     </message>
     <message>
-        <location filename="../indicator/config_dialog.ui" line="149"/>
+        <location filename="../indicator/config_dialog.ui" line="152"/>
         <source>Ignore dist-upgrade errors</source>
         <translation>Игнорировать проблемы dist-upgrade</translation>
     </message>
     <message>
-        <location filename="../indicator/config_dialog.ui" line="156"/>
+        <location filename="../indicator/config_dialog.ui" line="159"/>
         <source>Autostart</source>
         <translation>Автозапуск</translation>
     </message>
     <message>
-        <location filename="../indicator/config_dialog.ui" line="179"/>
+        <location filename="../indicator/config_dialog.ui" line="182"/>
         <source>Ok</source>
         <translation>Ok</translation>
     </message>
     <message>
-        <location filename="../indicator/config_dialog.ui" line="199"/>
+        <location filename="../indicator/config_dialog.ui" line="202"/>
         <source>Cancel</source>
         <translation>Отмена</translation>
     </message>
