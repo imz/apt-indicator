@@ -6,6 +6,7 @@
    <file>../pixmaps/forward.png</file>
    <file>../pixmaps/home.png</file>
    <file>../pixmaps/normal.png</file>
+   <file>../pixmaps/nothing.png</file>
    <file>../pixmaps/problem.png</file>
    <file>../pixmaps/working.png</file>
 </qresource>
