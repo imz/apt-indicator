@@ -314,7 +314,7 @@ void DistUpgrade::dist_upgrade()
 		}
 		if (show_broken_ && !broken.isEmpty())
 		{
-			result_ += tr("<b>The following packages have unmet dependencies:</b><br/>\n");
+			result_ += tr("<b>Following packages have unmet dependencies:</b><br/>\n");
 			result_ += broken;
 			result_ += "<br/>";
 			status_ = Problem;
