@@ -1,6 +1,6 @@
 Name: apt-indicator
 Version: 0.1.3
-Release: alt0.M50.1
+Release: alt1.1
 
 Summary: Applet for indication that newer packages are available
 License: GPL

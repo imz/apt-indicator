@@ -41,6 +41,7 @@ void Configuration::load()
     setParam(ShowBroken,      cfg.value("show_broken", false).toBool());
     setParam(IgnoreAptErrors, cfg.value("ignore_apt_errors", false).toBool());
     setParam(Autostart,       cfg.value("autostart", true).toBool());
+    setParam(PopupTray,       cfg.value("popup_systray", true).toBool());
 }
 
 void Configuration::save()
@@ -53,6 +54,7 @@ void Configuration::save()
     cfg.setValue("show_broken", getBool(ShowBroken));
     cfg.setValue("ignore_apt_errors", getBool(IgnoreAptErrors));
     cfg.setValue("autostart", getBool(Autostart));
+    cfg.setValue("popup_systray", getBool(PopupTray));
 }
 
 bool Configuration::setParam(Param param, const QString &value)
@@ -74,6 +76,7 @@ bool Configuration::setParam(Param param, bool value)
 	case ShowBroken: { changed = getBool(param) != value; show_broken_ = value; break; }
 	case IgnoreAptErrors: { changed = getBool(param) != value; ignore_apt_errors_ = value; break; }
 	case Autostart: { changed = getBool(param) != value; autostart_ = value; break; }
+	case PopupTray: { changed = getBool(param) != value; popup_tray_ = value; break; }
 	default: { changed = false; break; }
     }
     return changed;
@@ -124,6 +127,8 @@ bool Configuration::getBool(Param param)
 	    return ignore_apt_errors_;
 	case Autostart:
 	    return autostart_;
+	case PopupTray:
+	    return popup_tray_;
 	default:
 	    { qDebug("Configuration::getBool(unknown)"); break; }
     }
@@ -165,6 +170,7 @@ void Configuration::showDialog()
 	cfgDlg.ui.showBrokenCheck->setChecked(getBool(ShowBroken));
 	cfgDlg.ui.ignoreErrors->setChecked(getBool(IgnoreAptErrors));
 	cfgDlg.ui.autostartCheck->setChecked(getBool(Autostart));
+	cfgDlg.ui.popupTrayCheck->setChecked(getBool(PopupTray));
 
 	if ( cfgDlg.exec() == QDialog::Accepted )
 	{
@@ -178,6 +184,7 @@ void Configuration::showDialog()
 	    changed = setParam(ShowBroken,      cfgDlg.ui.showBrokenCheck->isChecked()) || changed;
 	    changed = setParam(IgnoreAptErrors, cfgDlg.ui.ignoreErrors->isChecked()) || changed;
 	    changed = setParam(Autostart,       cfgDlg.ui.autostartCheck->isChecked()) || changed;
+	    changed = setParam(PopupTray,       cfgDlg.ui.popupTrayCheck->isChecked()) || changed;
 	    if( changed )
 		save();
 	}

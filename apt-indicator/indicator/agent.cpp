@@ -364,7 +364,9 @@ void Agent::onCheckerOutput()
 	    {
 		case Danger:
 		{
-		    tray_icon_->showMessage(PROGRAM_NAME, tr("There are updates for your system available..."), QSystemTrayIcon::Warning, 30000); break;
+		    if( cfg_->getBool(Configuration::PopupTray) )
+			tray_icon_->showMessage(PROGRAM_NAME, tr("There are updates for your system available..."), QSystemTrayIcon::Warning, 30000);
+		    break;
 		}
 		default:
 		    break;
