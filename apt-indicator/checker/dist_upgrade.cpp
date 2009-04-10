@@ -141,12 +141,14 @@ QString DistUpgrade::result() const
  * first try in home dir, on problems rollback to system cache
  * @todo use mkdir -p (make_path)
  */
-bool DistUpgrade::update()
+DistUpgrade::UpdateResult DistUpgrade::update()
 {
+	UpdateResult upd_result = UpdNormal;
+
 	if (workdir_.empty())
 	{
-		warning(tr("unable to determine user's home: skip update stage"));
-		return true;
+	    result_ = tr("unable to determine user's home: skip update stage");
+	    return UpdProblem;
 	}
 
 	//listdir infrastructure
@@ -172,28 +174,46 @@ bool DistUpgrade::update()
 
 	//read /etc/apt/sources.list for releases
 	pkgSourceList List;
-	APT_UPDATE_ASSERT(!List.ReadMainList());
+	//APT_UPDATE_ASSERT(!List.ReadMainList());
+	if( !List.ReadMainList() )
+	{
+	    result_ = tr("Failed to read sources lists");
+	    return UpdProblem;
+	}
 
 	// Create the download object
 	AcqTextStatus Stat;
 	pkgAcquire Fetcher(&Stat);
-	APT_UPDATE_ASSERT(!List.GetReleases(&Fetcher));
+	//APT_UPDATE_ASSERT(!List.GetReleases(&Fetcher));
+	if( !List.GetReleases(&Fetcher) )
+	{
+	    result_ = tr("Failed to get package releases");
+	    return UpdProblem;
+	}
 	Fetcher.Run();
-
-	bool Failed = false;
 
 	for (pkgAcquire::ItemIterator I = Fetcher.ItemsBegin(); I != Fetcher.ItemsEnd(); I++)
 	{
 		if ((*I)->Status == pkgAcquire::Item::StatDone)
 			continue;
 		(*I)->Finished();
-		Failed = true;
-		warning(tr("Release files for some repositories could not be retrieved or authenticated"));
+		upd_result = UpdTryAgain;
+		result_ = tr("Release files for some repositories could not be retrieved or authenticated");
 	}
 
 	//read list for indexes
-	APT_UPDATE_ASSERT(!List.GetIndexes(&Fetcher));
-	APT_UPDATE_ASSERT(Fetcher.Run() == pkgAcquire::Failed);
+	//APT_UPDATE_ASSERT(!List.GetIndexes(&Fetcher));
+	if( !List.GetIndexes(&Fetcher) )
+	{
+	    result_ = tr("Failed to get package indexes");
+	    return UpdProblem;
+	}
+	//APT_UPDATE_ASSERT(Fetcher.Run() == pkgAcquire::Failed);
+	if( Fetcher.Run() == pkgAcquire::Failed )
+	{
+	    result_ = tr("Failed to fetch packages information");
+	    return UpdProblem;
+	}
 
 	for (pkgAcquire::ItemIterator I = Fetcher.ItemsBegin(); I != Fetcher.ItemsEnd(); I++)
 	{
@@ -203,8 +223,11 @@ bool DistUpgrade::update()
 		(*I)->Finished();
 
 		//warning(tr("Failed to fetch ") + (*I)->DescURI() + "  " + (*I)->ErrorText);
-		Failed = true;
+		result_ += tr("Failed to fetch %1 %2\n").arg(QString::fromStdString((*I)->DescURI())).arg(QString::fromStdString((*I)->ErrorText));
+		upd_result = UpdProblem;
 	}
+	if( upd_result == UpdProblem )
+	    return UpdProblem;
 
 	// Clean out any old list files
 	if (!Fetcher.Clean(_config->FindDir("Dir::State::lists")) ||
@@ -216,9 +239,14 @@ bool DistUpgrade::update()
 	// Prepare the cache
 	pkgCacheFile Cache;
 	OpTextStatus Prog;
-	APT_UPDATE_ASSERT(!Cache.BuildCaches(Prog, false));
+	//APT_UPDATE_ASSERT(!Cache.BuildCaches(Prog, false));
+	if( !Cache.BuildCaches(Prog, false) )
+	{
+	    result_ = tr("Failed to build package caches");
+	    return UpdProblem;
+	}
 
-	return !Failed;
+	return upd_result;
 }
 
 //apt-get dist-upgrade
@@ -327,10 +355,14 @@ void DistUpgrade::doChild()
 		return ;
 	}
 
-	if (!update())
-		status_ = TryAgain;
-	else
+	switch( update() )
+	{
+	    case UpdTryAgain: { status_ = TryAgain; break; }
+	    case UpdProblem: { status_ = Problem; return; }
+	    case UpdNormal:
+	    default:
 		dist_upgrade(); //then dist-upgrade
+	}
 }
 
 /**

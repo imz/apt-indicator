@@ -25,6 +25,7 @@ class DistUpgrade : public QThread
 Q_OBJECT
 public:
 	enum Status {Working, Normal, Danger, Problem, TryAgain};
+	enum UpdateResult {UpdNormal, UpdProblem, UpdTryAgain};
 
 	explicit
 	DistUpgrade(QObject *parent, const QString &homedir, bool show_broken,bool ignore_errors);
@@ -40,7 +41,7 @@ private:
 	void doChild();
 	void doFather();
 
-	bool update();
+	UpdateResult update();
 	void dist_upgrade();
 
 	std::string	workdir_;
