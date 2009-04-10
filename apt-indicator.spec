@@ -35,7 +35,8 @@ qmake-qt4 apt-indicator.pro
 %add_optflags -DNDEBUG
 %make 
 %make -C doc
-lrelease-qt4 %name.pro
+lrelease-qt4 checker/checker.pro
+lrelease-qt4 indicator/indicator.pro
 help2man --output=apt-indicator.1 --no-info apt-indicator ||:
 
 %install
@@ -72,7 +73,10 @@ install -m644 pixmaps/* %buildroot/%_datadir/%name/pixmaps
 
 %changelog
 * Fri Apr 10 2009 Sergey V Turchin <zerg at altlinux dot org> 0.1.4-alt1
-- 
+- allow to switch off popup messages
+- fix to don't change state when sources.list-s not configured
+- fix help browser behavior
+- update Russian translation
 
 * Wed Apr 08 2009 Sergey V Turchin <zerg at altlinux dot org> 0.1.3-alt0.M50.1
 - built for M50
