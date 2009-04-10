@@ -1,6 +1,6 @@
 Name: apt-indicator
 Version: 0.1.4
-Release: alt1
+Release: alt0.M50.1
 
 Summary: Applet for indication that newer packages are available
 License: GPL
@@ -72,6 +72,9 @@ install -m644 pixmaps/* %buildroot/%_datadir/%name/pixmaps
 %_sysconfdir/xdg/autostart/apt-indicator.desktop
 
 %changelog
+* Fri Apr 10 2009 Sergey V Turchin <zerg at altlinux dot org> 0.1.4-alt0.M50.1
+- built for M50
+
 * Fri Apr 10 2009 Sergey V Turchin <zerg at altlinux dot org> 0.1.4-alt1
 - allow to switch off popup messages
 - fix to don't change state when sources.list-s not configured
