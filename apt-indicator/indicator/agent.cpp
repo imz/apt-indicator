@@ -281,7 +281,7 @@ void Agent::setTrayIcon()
 	{
 	case Nothing:
 		iconname = ":/pixmaps/nothing.png";
-		tip = "";
+		tip = tr("Waiting mode");
 		break;
 	case Danger:
 		iconname = ":/pixmaps/danger.png";
