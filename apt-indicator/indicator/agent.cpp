@@ -357,8 +357,8 @@ void Agent::onCheckerOutput()
 
 	if (status_ != new_status) //change icon if we need it
 	{
-	    status_ = new_status;
 	    last_report_time_ = QDateTime::currentDateTime();
+	    status_ = new_status;
 	    setTrayIcon();
 	    switch(status_)
 	    {
