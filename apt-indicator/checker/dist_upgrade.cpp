@@ -155,7 +155,7 @@ DistUpgrade::UpdateResult DistUpgrade::update()
 
 	if (workdir_.empty())
 	{
-	    result_ = tr("unable to determine user's home: skip update stage");
+	    result_ = tr("Unable to determine user's home: skip update stage.");
 	    return UpdProblem;
 	}
 
@@ -185,7 +185,7 @@ DistUpgrade::UpdateResult DistUpgrade::update()
 	if( !List.ReadMainList() )
 	{
 	    APT_UPDATE_RESET;
-	    result_ = tr("Failed to read sources lists");
+	    result_ = tr("Failed to read sources lists.");
 	    return UpdProblem;
 	}
 
@@ -195,7 +195,7 @@ DistUpgrade::UpdateResult DistUpgrade::update()
 	if( !List.GetReleases(&Fetcher) )
 	{
 	    APT_UPDATE_RESET;
-	    result_ = tr("Failed to get package releases");
+	    result_ = tr("Failed to get package releases.");
 	    return UpdProblem;
 	}
 	Fetcher.Run();
@@ -206,7 +206,7 @@ DistUpgrade::UpdateResult DistUpgrade::update()
 			continue;
 		(*I)->Finished();
 		upd_result = UpdTryAgain;
-		result_ = tr("Release files for some repositories could not be retrieved or authenticated");
+		result_ = tr("Release files for some repositories could not be retrieved or authenticated.\n");
 	}
 
 	//read list for indexes
@@ -250,7 +250,7 @@ DistUpgrade::UpdateResult DistUpgrade::update()
 	if( !Cache.BuildCaches(Prog, false) )
 	{
 	    APT_UPDATE_RESET;
-	    result_ = tr("Failed to build package caches");
+	    result_ = tr("Failed to build package caches.");
 	    return UpdProblem;
 	}
 
@@ -306,6 +306,12 @@ void DistUpgrade::dist_upgrade()
 				to_upgrade += " ";
 			}
 		}
+		if (!to_remove.isEmpty())
+		{
+			result_ += tr("\n<font color='red'><b>Following packages will be removed:</b></font><br/>\n");
+			result_ += to_remove;
+			result_ += "<br/>";
+		}
 		if (show_broken_ && !broken.isEmpty())
 		{
 			result_ += tr("<b>The following packages have unmet dependencies:</b><br/>\n");
@@ -324,12 +330,6 @@ void DistUpgrade::dist_upgrade()
 		{
 			result_ += tr("\n<b>Following packages will be installed:</b><br/>\n");
 			result_ += to_install;
-			result_ += "<br/>";
-		}
-		if (!to_remove.isEmpty())
-		{
-			result_ += tr("\n<b>Following packages will be removed:</b><br/>\n");
-			result_ += to_remove;
 			result_ += "<br/>";
 		}
 	}
