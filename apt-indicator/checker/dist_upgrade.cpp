@@ -59,6 +59,13 @@ if ( (expr) ) \
     return false ; \
 }
 
+#define APT_UPDATE_RESET \
+if ( (expr) ) \
+{ \
+    _config->Set("Dir::State", old_state_dir); \
+    _config->Set("Dir::Cache", old_cache_dir); \
+}
+
 	/** progress class for Fetcher */
 	class AcqTextStatus : public pkgAcquireStatus
 	{
@@ -176,9 +183,9 @@ DistUpgrade::UpdateResult DistUpgrade::update()
 
 	//read /etc/apt/sources.list for releases
 	pkgSourceList List;
-	//APT_UPDATE_ASSERT(!List.ReadMainList());
 	if( !List.ReadMainList() )
 	{
+	    APT_UPDATE_RESET;
 	    result_ = tr("Failed to read sources lists");
 	    return UpdProblem;
 	}
@@ -186,9 +193,9 @@ DistUpgrade::UpdateResult DistUpgrade::update()
 	// Create the download object
 	AcqTextStatus Stat;
 	pkgAcquire Fetcher(&Stat);
-	//APT_UPDATE_ASSERT(!List.GetReleases(&Fetcher));
 	if( !List.GetReleases(&Fetcher) )
 	{
+	    APT_UPDATE_RESET;
 	    result_ = tr("Failed to get package releases");
 	    return UpdProblem;
 	}
@@ -204,15 +211,15 @@ DistUpgrade::UpdateResult DistUpgrade::update()
 	}
 
 	//read list for indexes
-	//APT_UPDATE_ASSERT(!List.GetIndexes(&Fetcher));
 	if( !List.GetIndexes(&Fetcher) )
 	{
+	    APT_UPDATE_RESET;
 	    result_ = tr("Failed to get package indexes");
 	    return UpdProblem;
 	}
-	//APT_UPDATE_ASSERT(Fetcher.Run() == pkgAcquire::Failed);
 	if( Fetcher.Run() == pkgAcquire::Failed )
 	{
+	    APT_UPDATE_RESET;
 	    result_ = tr("Failed to fetch packages information");
 	    return UpdProblem;
 	}
@@ -241,9 +248,9 @@ DistUpgrade::UpdateResult DistUpgrade::update()
 	// Prepare the cache
 	pkgCacheFile Cache;
 	OpTextStatus Prog;
-	//APT_UPDATE_ASSERT(!Cache.BuildCaches(Prog, false));
 	if( !Cache.BuildCaches(Prog, false) )
 	{
+	    APT_UPDATE_RESET;
 	    result_ = tr("Failed to build package caches");
 	    return UpdProblem;
 	}
