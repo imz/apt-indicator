@@ -411,13 +411,70 @@ when you login?</source>
         <translation type="obsolete">Файли релізу для деяких репозиторіїв не можуть бути отримані чи аутентифіковані</translation>
     </message>
     <message>
-        <source>nothing to clean
-</source>
-        <translation type="obsolete">нема чого чистити</translation>
+        <location filename="../checker/dist_upgrade.cpp" line="158"/>
+        <source>Unable to determine user&apos;s home: skip update stage.</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../checker/dist_upgrade.cpp" line="188"/>
+        <source>Failed to read sources lists.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../checker/dist_upgrade.cpp" line="198"/>
+        <source>Failed to get package releases.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../checker/dist_upgrade.cpp" line="209"/>
+        <source>Release files for some repositories could not be retrieved or authenticated.
+</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../checker/dist_upgrade.cpp" line="216"/>
+        <source>Failed to get package indexes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../checker/dist_upgrade.cpp" line="222"/>
+        <source>Failed to fetch packages information</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../checker/dist_upgrade.cpp" line="234"/>
+        <source>Failed to fetch %1 %2
+</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../checker/dist_upgrade.cpp" line="244"/>
+        <source>nothing to clean
+</source>
+        <translation type="unfinished">нема чого чистити</translation>
+    </message>
+    <message>
+        <location filename="../checker/dist_upgrade.cpp" line="253"/>
+        <source>Failed to build package caches.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../checker/dist_upgrade.cpp" line="269"/>
         <source>DistUpgrade failed. Please, check your APT system</source>
-        <translation type="obsolete">DistUpgrade не проведений.  Будь ласка, перевірте працездатність APT</translation>
+        <translation type="unfinished">DistUpgrade не проведений.  Будь ласка, перевірте працездатність APT</translation>
+    </message>
+    <message>
+        <location filename="../checker/dist_upgrade.cpp" line="311"/>
+        <source>
+&lt;font color=&apos;red&apos;&gt;&lt;b&gt;Following packages will be removed:&lt;/b&gt;&lt;/font&gt;&lt;br/&gt;
+</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../checker/dist_upgrade.cpp" line="317"/>
+        <source>&lt;b&gt;Following packages have unmet dependencies:&lt;/b&gt;&lt;br/&gt;
+</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>&lt;b&gt;The following packages have unmet dependencies:&lt;/b&gt;&lt;br/&gt;
@@ -425,16 +482,18 @@ when you login?</source>
         <translation type="obsolete">&lt;b&gt;Наступні пакети мають незадовільнені залежності: &lt;/b&gt;&lt;br/&gt;</translation>
     </message>
     <message>
+        <location filename="../checker/dist_upgrade.cpp" line="325"/>
         <source>
 &lt;b&gt;Following packages will be upgraded:&lt;/b&gt;&lt;br/&gt;
 </source>
-        <translation type="obsolete">&lt;b&gt;Наступні пакети буде поновлено:&lt;/b&gt;&lt;br/&gt;</translation>
+        <translation type="unfinished">&lt;b&gt;Наступні пакети буде поновлено:&lt;/b&gt;&lt;br/&gt;</translation>
     </message>
     <message>
+        <location filename="../checker/dist_upgrade.cpp" line="331"/>
         <source>
 &lt;b&gt;Following packages will be installed:&lt;/b&gt;&lt;br/&gt;
 </source>
-        <translation type="obsolete">&lt;b&gt;Наступні пакети буде встановлено:&lt;/b&gt;&lt;br/&gt;</translation>
+        <translation type="unfinished">&lt;b&gt;Наступні пакети буде встановлено:&lt;/b&gt;&lt;br/&gt;</translation>
     </message>
     <message>
         <source>
@@ -443,16 +502,19 @@ when you login?</source>
         <translation type="obsolete">&lt;b&gt;Наступні пакети буде видалено:&lt;/b&gt;&lt;br/&gt;</translation>
     </message>
     <message>
+        <location filename="../checker/dist_upgrade.cpp" line="354"/>
         <source>unable to get exclusive lock</source>
-        <translation type="obsolete">неможливо отримати ексклюзивне блокування</translation>
+        <translation type="unfinished">неможливо отримати ексклюзивне блокування</translation>
     </message>
     <message>
+        <location filename="../checker/dist_upgrade.cpp" line="362"/>
         <source>Problems with APT initialization</source>
-        <translation type="obsolete">Проблеми з ініціалізацією APT</translation>
+        <translation type="unfinished">Проблеми з ініціалізацією APT</translation>
     </message>
     <message>
+        <location filename="../checker/dist_upgrade.cpp" line="443"/>
         <source>child was terminated with signal %1</source>
-        <translation type="obsolete">дочірній процес завершився із сигналом %1</translation>
+        <translation type="unfinished">дочірній процес завершився із сигналом %1</translation>
     </message>
 </context>
 <context>
