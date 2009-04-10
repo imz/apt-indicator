@@ -23,7 +23,7 @@ class Agent : public QObject
 {
 	Q_OBJECT
 public:
-	enum UpgradeStatus {Working, Normal, Danger, Problem, TryAgain};
+	enum UpgradeStatus {Nothing, Working, Normal, Danger, Problem, TryAgain};
 
 	explicit
 	Agent( QObject *parent = 0, const char *name = 0, const QString &homedir = "", bool autostart = false);

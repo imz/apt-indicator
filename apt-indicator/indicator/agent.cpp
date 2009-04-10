@@ -31,7 +31,7 @@ Agent::Agent( QObject *parent, const char *name , const QString &homedir, bool a
 {
 	setObjectName(name);
 	last_report_time_ = QDateTime::currentDateTime();
-	status_ = Normal;
+	status_ = Nothing;
 	info_window_ = 0;
 	cfg_ = new Configuration(this);
 	tray_icon_ = new QSystemTrayIcon(this);
@@ -279,6 +279,10 @@ void Agent::setTrayIcon()
 	QString	tip;
 	switch (status_)
 	{
+	case Nothing:
+		iconname = ":/pixmaps/nothing.png";
+		tip = "";
+		break;
 	case Danger:
 		iconname = ":/pixmaps/danger.png";
 		tip = tr("There are updates for your system available...");
