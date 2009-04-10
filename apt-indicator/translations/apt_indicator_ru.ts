@@ -433,105 +433,125 @@ when you login?</source>
 <context>
     <name>DistUpgrade</name>
     <message>
-        <location filename="../checker/dist_upgrade.cpp" line="158"/>
         <source>unable to determine user&apos;s home: skip update stage</source>
-        <translation type="unfinished">не получилось определить домашний каталог пользователя: пропуск секции update</translation>
+        <translation type="obsolete">не получилось определить домашний каталог пользователя: пропуск секции update</translation>
+    </message>
+    <message>
+        <source>Release files for some repositories could not be retrieved or authenticated</source>
+        <translation type="obsolete">Не удалось загрузить либо проверить файлы версий для некоторых репозиториев </translation>
+    </message>
+    <message>
+        <location filename="../checker/dist_upgrade.cpp" line="158"/>
+        <source>Unable to determine user&apos;s home: skip update stage.</source>
+        <translation>Не удалось определить домашний каталог пользователя: пропуск секции update.</translation>
     </message>
     <message>
         <location filename="../checker/dist_upgrade.cpp" line="188"/>
-        <source>Failed to read sources lists</source>
-        <translation type="unfinished"></translation>
+        <source>Failed to read sources lists.</source>
+        <translation>Не удалось прочесть списки источников пакетов.</translation>
     </message>
     <message>
         <location filename="../checker/dist_upgrade.cpp" line="198"/>
-        <source>Failed to get package releases</source>
-        <translation type="unfinished"></translation>
+        <source>Failed to get package releases.</source>
+        <translation>Не удалось получить файлы релизов.</translation>
     </message>
     <message>
         <location filename="../checker/dist_upgrade.cpp" line="209"/>
-        <source>Release files for some repositories could not be retrieved or authenticated</source>
-        <translation type="unfinished">Не удалось загрузить либо проверить файлы версий для некоторых репозиториев </translation>
+        <source>Release files for some repositories could not be retrieved or authenticated.
+</source>
+        <translation>Не удалось загрузить либо проверить файлы версий для некоторых репозиториев.
+</translation>
     </message>
     <message>
         <location filename="../checker/dist_upgrade.cpp" line="216"/>
         <source>Failed to get package indexes</source>
-        <translation type="unfinished"></translation>
+        <translation>Не удалось получить файлы индексов</translation>
     </message>
     <message>
         <location filename="../checker/dist_upgrade.cpp" line="222"/>
         <source>Failed to fetch packages information</source>
-        <translation type="unfinished"></translation>
+        <translation>Не удалось получить информацию о пакетах</translation>
     </message>
     <message>
         <location filename="../checker/dist_upgrade.cpp" line="234"/>
         <source>Failed to fetch %1 %2
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Failed to fetch %1 %2
+</translation>
     </message>
     <message>
         <location filename="../checker/dist_upgrade.cpp" line="244"/>
         <source>nothing to clean
 </source>
-        <translation type="unfinished">нет ничего для очистки</translation>
+        <translation>нет ничего для очистки
+</translation>
     </message>
     <message>
         <location filename="../checker/dist_upgrade.cpp" line="253"/>
-        <source>Failed to build package caches</source>
-        <translation type="unfinished"></translation>
+        <source>Failed to build package caches.</source>
+        <translation>Не удалось построить кэши пакетов.</translation>
     </message>
     <message>
         <location filename="../checker/dist_upgrade.cpp" line="269"/>
         <source>DistUpgrade failed. Please, check your APT system</source>
-        <translation type="unfinished">Проверка обновлений прервана. Проверьте пожалуйста работу APT</translation>
+        <translation>Проверка обновлений прервана. Проверьте, пожалуйста, работу APT</translation>
     </message>
     <message>
         <location filename="../checker/dist_upgrade.cpp" line="311"/>
-        <source>&lt;b&gt;The following packages have unmet dependencies:&lt;/b&gt;&lt;br/&gt;
+        <source>
+&lt;font color=&apos;red&apos;&gt;&lt;b&gt;Following packages will be removed:&lt;/b&gt;&lt;/font&gt;&lt;br/&gt;
 </source>
-        <translation type="unfinished">&lt;b&gt;Следующие пакеты имеют неудовлетворенные зависимости:&lt;/b&gt;&lt;br/&gt;
+        <translation>
+&lt;font color=&apos;red&apos;&gt;&lt;b&gt;Следующие пакеты будут удалены:&lt;/b&gt;&lt;/font&gt;&lt;br/&gt;
 </translation>
     </message>
     <message>
-        <location filename="../checker/dist_upgrade.cpp" line="319"/>
-        <source>
-&lt;b&gt;Following packages will be upgraded:&lt;/b&gt;&lt;br/&gt;
+        <location filename="../checker/dist_upgrade.cpp" line="317"/>
+        <source>&lt;b&gt;The following packages have unmet dependencies:&lt;/b&gt;&lt;br/&gt;
 </source>
-        <translation type="unfinished">
-&lt;b&gt;Следующие пакеты будут обновлены:&lt;/b&gt;&lt;br/&gt;
+        <translation>&lt;b&gt;Следующие пакеты имеют неудовлетворенные зависимости:&lt;/b&gt;&lt;br/&gt;
 </translation>
     </message>
     <message>
         <location filename="../checker/dist_upgrade.cpp" line="325"/>
         <source>
-&lt;b&gt;Following packages will be installed:&lt;/b&gt;&lt;br/&gt;
+&lt;b&gt;Following packages will be upgraded:&lt;/b&gt;&lt;br/&gt;
 </source>
-        <translation type="unfinished">
-&lt;b&gt;Следующие пакеты будут установлены:&lt;/b&gt;&lt;br/&gt;
+        <translation>
+&lt;b&gt;Следующие пакеты будут обновлены:&lt;/b&gt;&lt;br/&gt;
 </translation>
     </message>
     <message>
         <location filename="../checker/dist_upgrade.cpp" line="331"/>
         <source>
+&lt;b&gt;Following packages will be installed:&lt;/b&gt;&lt;br/&gt;
+</source>
+        <translation>
+&lt;b&gt;Следующие пакеты будут установлены:&lt;/b&gt;&lt;br/&gt;
+</translation>
+    </message>
+    <message>
+        <source>
 &lt;b&gt;Following packages will be removed:&lt;/b&gt;&lt;br/&gt;
 </source>
-        <translation type="unfinished">
+        <translation type="obsolete">
 &lt;b&gt;Следующие пакеты будут удалены:&lt;/b&gt;&lt;br/&gt;
 </translation>
     </message>
     <message>
         <location filename="../checker/dist_upgrade.cpp" line="354"/>
         <source>unable to get exclusive lock</source>
-        <translation type="unfinished">не могу получить эксклюзивную блокировку</translation>
+        <translation>не удалось получить эксклюзивную блокировку</translation>
     </message>
     <message>
         <location filename="../checker/dist_upgrade.cpp" line="362"/>
         <source>Problems with APT initialization</source>
-        <translation type="unfinished">Проблемы с инициализацией APT</translation>
+        <translation>Проблемы с инициализацией APT</translation>
     </message>
     <message>
         <location filename="../checker/dist_upgrade.cpp" line="443"/>
         <source>child was terminated with signal %1</source>
-        <translation type="unfinished">дочерний процесс завершился с сигналом %1</translation>
+        <translation>дочерний процесс завершился с сигналом %1</translation>
     </message>
 </context>
 <context>

@@ -257,22 +257,23 @@ when you login?</source>
     <name>DistUpgrade</name>
     <message>
         <location filename="../checker/dist_upgrade.cpp" line="158"/>
-        <source>unable to determine user&apos;s home: skip update stage</source>
+        <source>Unable to determine user&apos;s home: skip update stage.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../checker/dist_upgrade.cpp" line="188"/>
-        <source>Failed to read sources lists</source>
+        <source>Failed to read sources lists.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../checker/dist_upgrade.cpp" line="198"/>
-        <source>Failed to get package releases</source>
+        <source>Failed to get package releases.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../checker/dist_upgrade.cpp" line="209"/>
-        <source>Release files for some repositories could not be retrieved or authenticated</source>
+        <source>Release files for some repositories could not be retrieved or authenticated.
+</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -299,7 +300,7 @@ when you login?</source>
     </message>
     <message>
         <location filename="../checker/dist_upgrade.cpp" line="253"/>
-        <source>Failed to build package caches</source>
+        <source>Failed to build package caches.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -309,28 +310,28 @@ when you login?</source>
     </message>
     <message>
         <location filename="../checker/dist_upgrade.cpp" line="311"/>
-        <source>&lt;b&gt;The following packages have unmet dependencies:&lt;/b&gt;&lt;br/&gt;
+        <source>
+&lt;font color=&apos;red&apos;&gt;&lt;b&gt;Following packages will be removed:&lt;/b&gt;&lt;/font&gt;&lt;br/&gt;
 </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../checker/dist_upgrade.cpp" line="319"/>
-        <source>
-&lt;b&gt;Following packages will be upgraded:&lt;/b&gt;&lt;br/&gt;
+        <location filename="../checker/dist_upgrade.cpp" line="317"/>
+        <source>&lt;b&gt;The following packages have unmet dependencies:&lt;/b&gt;&lt;br/&gt;
 </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../checker/dist_upgrade.cpp" line="325"/>
         <source>
-&lt;b&gt;Following packages will be installed:&lt;/b&gt;&lt;br/&gt;
+&lt;b&gt;Following packages will be upgraded:&lt;/b&gt;&lt;br/&gt;
 </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../checker/dist_upgrade.cpp" line="331"/>
         <source>
-&lt;b&gt;Following packages will be removed:&lt;/b&gt;&lt;br/&gt;
+&lt;b&gt;Following packages will be installed:&lt;/b&gt;&lt;br/&gt;
 </source>
         <translation type="unfinished"></translation>
     </message>
