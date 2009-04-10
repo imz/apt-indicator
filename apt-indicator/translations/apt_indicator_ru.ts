@@ -76,27 +76,32 @@
     </message>
     <message>
         <location filename="../indicator/agent.cpp" line="284"/>
-        <location filename="../indicator/agent.cpp" line="367"/>
+        <source>Waiting mode</source>
+        <translation>Режим ожидания</translation>
+    </message>
+    <message>
+        <location filename="../indicator/agent.cpp" line="288"/>
+        <location filename="../indicator/agent.cpp" line="372"/>
         <source>There are updates for your system available...</source>
         <translation>Доступны обновления для вашей системы...</translation>
     </message>
     <message>
-        <location filename="../indicator/agent.cpp" line="288"/>
+        <location filename="../indicator/agent.cpp" line="292"/>
         <source>Nothing to update</source>
         <translation>Нет обновлений</translation>
     </message>
     <message>
-        <location filename="../indicator/agent.cpp" line="292"/>
+        <location filename="../indicator/agent.cpp" line="296"/>
         <source>Problems with Dist-Upgrade</source>
         <translation>Ошибки при проверке обновлений</translation>
     </message>
     <message>
-        <location filename="../indicator/agent.cpp" line="296"/>
+        <location filename="../indicator/agent.cpp" line="300"/>
         <source>Working...</source>
         <translation>В работе...</translation>
     </message>
     <message>
-        <location filename="../indicator/agent.cpp" line="300"/>
+        <location filename="../indicator/agent.cpp" line="304"/>
         <source>Unknown status</source>
         <translation>Неопределенный статус</translation>
     </message>
@@ -130,7 +135,7 @@
         <translation>Программа уже запущена</translation>
     </message>
     <message>
-        <location filename="../indicator/agent.cpp" line="307"/>
+        <location filename="../indicator/agent.cpp" line="311"/>
         <source>Could not load the icon file %1</source>
         <translation>Не могу загрузить файл пиктограммы - %1</translation>
     </message>
@@ -194,8 +199,8 @@ when you login?</source>
     <message>
         <location filename="../indicator/agent.cpp" line="137"/>
         <location filename="../indicator/agent.cpp" line="185"/>
-        <location filename="../indicator/agent.cpp" line="411"/>
         <location filename="../indicator/agent.cpp" line="417"/>
+        <location filename="../indicator/agent.cpp" line="423"/>
         <source>Run upgrade process</source>
         <translation>Запустить процесс обновления</translation>
     </message>
@@ -223,7 +228,7 @@ when you login?</source>
         <translation>Выход из программы</translation>
     </message>
     <message>
-        <location filename="../indicator/agent.cpp" line="306"/>
+        <location filename="../indicator/agent.cpp" line="310"/>
         <source>setting Icon</source>
         <translation>установка пикторраммы</translation>
     </message>
@@ -241,22 +246,22 @@ when you login?</source>
         <translation type="obsolete">Программа обновления не указана в настройках</translation>
     </message>
     <message>
-        <location filename="../indicator/agent.cpp" line="405"/>
+        <location filename="../indicator/agent.cpp" line="411"/>
         <source>Failed to start upgrade program</source>
         <translation>Не удалось запустить программу</translation>
     </message>
     <message>
-        <location filename="../indicator/agent.cpp" line="407"/>
+        <location filename="../indicator/agent.cpp" line="413"/>
         <source>Program crashed</source>
         <translation>Программа упала</translation>
     </message>
     <message>
-        <location filename="../indicator/agent.cpp" line="409"/>
+        <location filename="../indicator/agent.cpp" line="415"/>
         <source>Execution of program failed</source>
         <translation>Не удалось выполнить программу</translation>
     </message>
     <message>
-        <location filename="../indicator/agent.cpp" line="417"/>
+        <location filename="../indicator/agent.cpp" line="423"/>
         <source>child was exited with code %1</source>
         <translation>дочерний процесс завершился с кодом %1</translation>
     </message>
@@ -420,12 +425,17 @@ when you login?</source>
         <translation>Автозапуск</translation>
     </message>
     <message>
-        <location filename="../indicator/config_dialog.ui" line="182"/>
+        <location filename="../indicator/config_dialog.ui" line="166"/>
+        <source>Popup system tray messages</source>
+        <translation>Всплывающие сообщения системного лотка</translation>
+    </message>
+    <message>
+        <location filename="../indicator/config_dialog.ui" line="189"/>
         <source>Ok</source>
         <translation>Ok</translation>
     </message>
     <message>
-        <location filename="../indicator/config_dialog.ui" line="202"/>
+        <location filename="../indicator/config_dialog.ui" line="209"/>
         <source>Cancel</source>
         <translation>Отмена</translation>
     </message>
