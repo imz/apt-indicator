@@ -41,7 +41,7 @@ namespace
 {
 
 	inline
-	void warning(const QString& str)
+	void dbg_msg(const QString& str)
 	{
 #ifndef NDEBUG
 		qDebug("debug: %s", qPrintable(str));
@@ -53,14 +53,13 @@ namespace
 #define APT_UPDATE_ASSERT(expr) \
 if ( (expr) ) \
 { \
-    warning(tr(#expr)); \
+    dbg_msg(tr(#expr)); \
     _config->Set("Dir::State", old_state_dir); \
     _config->Set("Dir::Cache", old_cache_dir); \
     return false ; \
 }
 
 #define APT_UPDATE_RESET \
-if ( (expr) ) \
 { \
     _config->Set("Dir::State", old_state_dir); \
     _config->Set("Dir::Cache", old_cache_dir); \
@@ -231,7 +230,7 @@ DistUpgrade::UpdateResult DistUpgrade::update()
 
 		(*I)->Finished();
 
-		//warning(tr("Failed to fetch ") + (*I)->DescURI() + "  " + (*I)->ErrorText);
+		//dbg_msg(tr("Failed to fetch ") + (*I)->DescURI() + "  " + (*I)->ErrorText);
 		result_ += tr("Failed to fetch %1 %2\n").arg(QString::fromStdString((*I)->DescURI())).arg(QString::fromStdString((*I)->ErrorText));
 		upd_result = UpdProblem;
 	}
@@ -242,7 +241,7 @@ DistUpgrade::UpdateResult DistUpgrade::update()
 	if (!Fetcher.Clean(_config->FindDir("Dir::State::lists")) ||
 	    !Fetcher.Clean(_config->FindDir("Dir::State::lists") + "partial/"))
 	{
-		warning(tr("nothing to clean\n"));
+		dbg_msg(tr("nothing to clean\n"));
 	}
 
 	// Prepare the cache
