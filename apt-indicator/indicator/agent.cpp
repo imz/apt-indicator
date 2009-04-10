@@ -437,7 +437,7 @@ void Agent::onClickTrayMessage()
     {
 	case Danger:
 	{
-	    doRun(); break;
+	    doInfo(); break;
 	}
 	default:
 	    break;
