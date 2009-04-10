@@ -9,6 +9,7 @@ License: GPL
 #include <QLibraryInfo>
 #include <QDebug>
 #include <QTextStream>
+#include <QTranslator>
 
 #include "../indicator/config.h"
 #include "checker.h"
@@ -18,6 +19,15 @@ int main( int argc, char **argv )
 
 	QCoreApplication app( argc, argv );
 	Checker checker;
+
+	QTranslator translator(&app);
+	QString lang = QLocale::system().name();
+#ifndef NDEBUG
+	translator.load( "apt_indicator_" + lang, "./translations" );
+#else
+	translator.load( "apt_indicator_" + lang, DATADIR"/translations" );
+#endif
+	app.installTranslator( &translator );
 
 	return app.exec();
 }
