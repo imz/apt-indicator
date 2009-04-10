@@ -9,6 +9,7 @@ License: GPL
 #include <QLibraryInfo>
 #include <QDebug>
 #include <QTextStream>
+#include <QLocale>
 #include <QTranslator>
 
 #include "../indicator/config.h"
