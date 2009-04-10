@@ -20,3 +20,8 @@ DATA = $$TARGET.pro
 
 target.path = /usr/bin/
 INSTALLS += target
+
+TRANSLATIONS = \
+    ../translations/apt_indicator_ru.ts \
+    ../translations/apt_indicator_uk.ts \
+    ../translations/untranslated.ts

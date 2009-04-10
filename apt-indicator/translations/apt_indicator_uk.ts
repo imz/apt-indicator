@@ -27,32 +27,32 @@
         <translation type="obsolete">&amp;Налаштування...</translation>
     </message>
     <message>
-        <location filename="../indicator/agent.cpp" line="44"/>
+        <location filename="../indicator/agent.cpp" line="45"/>
         <source>Chec&amp;k for updates</source>
         <translation>П&amp;еревірити поновлення</translation>
     </message>
     <message>
-        <location filename="../indicator/agent.cpp" line="50"/>
+        <location filename="../indicator/agent.cpp" line="51"/>
         <source>&amp;About</source>
         <translation>Пр&amp;о програму</translation>
     </message>
     <message>
-        <location filename="../indicator/agent.cpp" line="52"/>
+        <location filename="../indicator/agent.cpp" line="53"/>
         <source>&amp;Quit</source>
         <translation>&amp;Вихід</translation>
     </message>
     <message>
-        <location filename="../indicator/agent.cpp" line="43"/>
+        <location filename="../indicator/agent.cpp" line="44"/>
         <source>&amp;Upgrade...</source>
         <translation>&amp;Поновити...</translation>
     </message>
     <message>
-        <location filename="../indicator/agent.cpp" line="45"/>
+        <location filename="../indicator/agent.cpp" line="46"/>
         <source>D&amp;etailed info...</source>
         <translation>Де&amp;тальніше...</translation>
     </message>
     <message>
-        <location filename="../indicator/agent.cpp" line="109"/>
+        <location filename="../indicator/agent.cpp" line="110"/>
         <source>Nothing to update...</source>
         <translation>Нема поновлень...</translation>
     </message>
@@ -61,12 +61,12 @@
         <translation type="obsolete">Виконується поновлення...</translation>
     </message>
     <message>
-        <location filename="../indicator/agent.cpp" line="115"/>
+        <location filename="../indicator/agent.cpp" line="116"/>
         <source>No status info available</source>
         <translation>Немає інформації про статус</translation>
     </message>
     <message>
-        <location filename="../indicator/agent.cpp" line="136"/>
+        <location filename="../indicator/agent.cpp" line="137"/>
         <source>Program already running</source>
         <translation>Програму вже запущено</translation>
     </message>
@@ -81,32 +81,33 @@ when you login?</source>
 при вході в систему?</translation>
     </message>
     <message>
-        <location filename="../indicator/agent.cpp" line="283"/>
+        <location filename="../indicator/agent.cpp" line="284"/>
+        <location filename="../indicator/agent.cpp" line="367"/>
         <source>There are updates for your system available...</source>
         <translation>Наявні поновлення для вашої системи...</translation>
     </message>
     <message>
-        <location filename="../indicator/agent.cpp" line="287"/>
+        <location filename="../indicator/agent.cpp" line="288"/>
         <source>Nothing to update</source>
         <translation>Нема поновлень</translation>
     </message>
     <message>
-        <location filename="../indicator/agent.cpp" line="291"/>
+        <location filename="../indicator/agent.cpp" line="292"/>
         <source>Problems with Dist-Upgrade</source>
         <translation>Помилки протягом dist-upgrade</translation>
     </message>
     <message>
-        <location filename="../indicator/agent.cpp" line="295"/>
+        <location filename="../indicator/agent.cpp" line="296"/>
         <source>Working...</source>
         <translation>Працюю...</translation>
     </message>
     <message>
-        <location filename="../indicator/agent.cpp" line="299"/>
+        <location filename="../indicator/agent.cpp" line="300"/>
         <source>Unknown status</source>
         <translation>Невідомий статус</translation>
     </message>
     <message>
-        <location filename="../indicator/agent.cpp" line="306"/>
+        <location filename="../indicator/agent.cpp" line="307"/>
         <source>Could not load the icon file %1</source>
         <translation>Не можу завантажити файл піктограми %1</translation>
     </message>
@@ -115,7 +116,7 @@ when you login?</source>
         <translation type="obsolete">Невідомий тип події: %1</translation>
     </message>
     <message>
-        <location filename="../indicator/agent.cpp" line="49"/>
+        <location filename="../indicator/agent.cpp" line="50"/>
         <source>&amp;Help</source>
         <translation>&amp;Довідка</translation>
     </message>
@@ -148,35 +149,35 @@ when you login?</source>
         <translation type="obsolete">Звіт на</translation>
     </message>
     <message>
-        <location filename="../indicator/agent.cpp" line="112"/>
+        <location filename="../indicator/agent.cpp" line="113"/>
         <source>Checking in progress...</source>
         <translation>Перевірка триває...</translation>
     </message>
     <message>
-        <location filename="../indicator/agent.cpp" line="47"/>
+        <location filename="../indicator/agent.cpp" line="48"/>
         <source>&amp;Settings...</source>
         <translation>&amp;Налаштування...</translation>
     </message>
     <message>
-        <location filename="../indicator/agent.cpp" line="100"/>
+        <location filename="../indicator/agent.cpp" line="101"/>
         <source>Report at %1 %2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../indicator/agent.cpp" line="136"/>
-        <location filename="../indicator/agent.cpp" line="184"/>
-        <location filename="../indicator/agent.cpp" line="401"/>
-        <location filename="../indicator/agent.cpp" line="407"/>
+        <location filename="../indicator/agent.cpp" line="137"/>
+        <location filename="../indicator/agent.cpp" line="185"/>
+        <location filename="../indicator/agent.cpp" line="411"/>
+        <location filename="../indicator/agent.cpp" line="417"/>
         <source>Run upgrade process</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../indicator/agent.cpp" line="184"/>
+        <location filename="../indicator/agent.cpp" line="185"/>
         <source>No upgrade program found</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../indicator/agent.cpp" line="256"/>
+        <location filename="../indicator/agent.cpp" line="257"/>
         <source>This program make notification of updates.
 Copyright (C) 2003-2004 ALT Linux Team
 
@@ -184,38 +185,38 @@ Written by Stanislav Ievlev and Sergey V. Turchin</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../indicator/agent.cpp" line="264"/>
+        <location filename="../indicator/agent.cpp" line="265"/>
         <source>Should &lt;b&gt;%1&lt;/b&gt; start automatically 
 when you login?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../indicator/agent.cpp" line="265"/>
+        <location filename="../indicator/agent.cpp" line="266"/>
         <source>Exit program</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../indicator/agent.cpp" line="305"/>
+        <location filename="../indicator/agent.cpp" line="306"/>
         <source>setting Icon</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../indicator/agent.cpp" line="395"/>
+        <location filename="../indicator/agent.cpp" line="405"/>
         <source>Failed to start upgrade program</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../indicator/agent.cpp" line="397"/>
+        <location filename="../indicator/agent.cpp" line="407"/>
         <source>Program crashed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../indicator/agent.cpp" line="399"/>
+        <location filename="../indicator/agent.cpp" line="409"/>
         <source>Execution of program failed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../indicator/agent.cpp" line="407"/>
+        <location filename="../indicator/agent.cpp" line="417"/>
         <source>child was exited with code %1</source>
         <translation type="unfinished">нащадок повернув код %1</translation>
     </message>
@@ -387,6 +388,103 @@ when you login?</source>
         <location filename="../indicator/config_dialog.ui" line="202"/>
         <source>Cancel</source>
         <translation type="unfinished">Відмінити</translation>
+    </message>
+</context>
+<context>
+    <name>DistUpgrade</name>
+    <message>
+        <location filename="../checker/dist_upgrade.cpp" line="158"/>
+        <source>unable to determine user&apos;s home: skip update stage</source>
+        <translation type="unfinished">неможливо визначити домашній каталог користувача: пропуск секції update</translation>
+    </message>
+    <message>
+        <location filename="../checker/dist_upgrade.cpp" line="188"/>
+        <source>Failed to read sources lists</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../checker/dist_upgrade.cpp" line="198"/>
+        <source>Failed to get package releases</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../checker/dist_upgrade.cpp" line="209"/>
+        <source>Release files for some repositories could not be retrieved or authenticated</source>
+        <translation type="unfinished">Файли релізу для деяких репозиторіїв не можуть бути отримані чи аутентифіковані</translation>
+    </message>
+    <message>
+        <location filename="../checker/dist_upgrade.cpp" line="216"/>
+        <source>Failed to get package indexes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../checker/dist_upgrade.cpp" line="222"/>
+        <source>Failed to fetch packages information</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../checker/dist_upgrade.cpp" line="234"/>
+        <source>Failed to fetch %1 %2
+</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../checker/dist_upgrade.cpp" line="244"/>
+        <source>nothing to clean
+</source>
+        <translation type="unfinished">нема чого чистити</translation>
+    </message>
+    <message>
+        <location filename="../checker/dist_upgrade.cpp" line="253"/>
+        <source>Failed to build package caches</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../checker/dist_upgrade.cpp" line="269"/>
+        <source>DistUpgrade failed. Please, check your APT system</source>
+        <translation type="unfinished">DistUpgrade не проведений.  Будь ласка, перевірте працездатність APT</translation>
+    </message>
+    <message>
+        <location filename="../checker/dist_upgrade.cpp" line="311"/>
+        <source>&lt;b&gt;The following packages have unmet dependencies:&lt;/b&gt;&lt;br/&gt;
+</source>
+        <translation type="unfinished">&lt;b&gt;Наступні пакети мають незадовільнені залежності: &lt;/b&gt;&lt;br/&gt;</translation>
+    </message>
+    <message>
+        <location filename="../checker/dist_upgrade.cpp" line="319"/>
+        <source>
+&lt;b&gt;Following packages will be upgraded:&lt;/b&gt;&lt;br/&gt;
+</source>
+        <translation type="unfinished">&lt;b&gt;Наступні пакети буде поновлено:&lt;/b&gt;&lt;br/&gt;</translation>
+    </message>
+    <message>
+        <location filename="../checker/dist_upgrade.cpp" line="325"/>
+        <source>
+&lt;b&gt;Following packages will be installed:&lt;/b&gt;&lt;br/&gt;
+</source>
+        <translation type="unfinished">&lt;b&gt;Наступні пакети буде встановлено:&lt;/b&gt;&lt;br/&gt;</translation>
+    </message>
+    <message>
+        <location filename="../checker/dist_upgrade.cpp" line="331"/>
+        <source>
+&lt;b&gt;Following packages will be removed:&lt;/b&gt;&lt;br/&gt;
+</source>
+        <translation type="unfinished">&lt;b&gt;Наступні пакети буде видалено:&lt;/b&gt;&lt;br/&gt;</translation>
+    </message>
+    <message>
+        <location filename="../checker/dist_upgrade.cpp" line="354"/>
+        <source>unable to get exclusive lock</source>
+        <translation type="unfinished">неможливо отримати ексклюзивне блокування</translation>
+    </message>
+    <message>
+        <location filename="../checker/dist_upgrade.cpp" line="362"/>
+        <source>Problems with APT initialization</source>
+        <translation type="unfinished">Проблеми з ініціалізацією APT</translation>
+    </message>
+    <message>
+        <location filename="../checker/dist_upgrade.cpp" line="443"/>
+        <source>child was terminated with signal %1</source>
+        <translation type="unfinished">дочірній процес завершився із сигналом %1</translation>
     </message>
 </context>
 <context>
