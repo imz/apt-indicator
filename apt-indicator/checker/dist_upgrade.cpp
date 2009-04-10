@@ -45,6 +45,8 @@ namespace
 	{
 #ifndef NDEBUG
 		qDebug("debug: %s", qPrintable(str));
+#else
+		if( str.isEmpty() ) return;
 #endif
 	}
 
