@@ -21,7 +21,7 @@ DATA = $$TARGET.pro
 target.path = /usr/bin/
 INSTALLS += target
 
-#TRANSLATIONS = \
-#    ../translations/apt_indicator_checker_ru.ts \
-#    ../translations/apt_indicator_checker_uk.ts \
-#    ../translations/untranslated_checker.ts
+TRANSLATIONS = \
+    ../translations/apt_indicator_checker_ru.ts \
+    ../translations/apt_indicator_checker_uk.ts \
+    ../translations/untranslated_checker.ts
