@@ -55,88 +55,72 @@
         <translation type="obsolete">&amp;Настройка...</translation>
     </message>
     <message>
-        <location filename="../indicator/agent.cpp" line="45"/>
         <source>Chec&amp;k for updates</source>
-        <translation>&amp;Проверить обновления</translation>
+        <translation type="obsolete">&amp;Проверить обновления</translation>
     </message>
     <message>
-        <location filename="../indicator/agent.cpp" line="51"/>
         <source>&amp;About</source>
-        <translation>&amp;О программе</translation>
+        <translation type="obsolete">&amp;О программе</translation>
     </message>
     <message>
-        <location filename="../indicator/agent.cpp" line="53"/>
         <source>&amp;Quit</source>
-        <translation>&amp;Выход</translation>
+        <translation type="obsolete">&amp;Выход</translation>
     </message>
     <message>
-        <location filename="../indicator/agent.cpp" line="185"/>
         <source>No upgrade program found</source>
-        <translation>Программа обновлений не найдена</translation>
+        <translation type="obsolete">Программа обновлений не найдена</translation>
     </message>
     <message>
         <source>Waiting mode</source>
         <translation type="obsolete">Режим ожидания</translation>
     </message>
     <message>
-        <location filename="../indicator/agent.cpp" line="288"/>
-        <location filename="../indicator/agent.cpp" line="372"/>
         <source>There are updates for your system available...</source>
-        <translation>Доступны обновления для вашей системы...</translation>
+        <translation type="obsolete">Доступны обновления для вашей системы...</translation>
     </message>
     <message>
-        <location filename="../indicator/agent.cpp" line="292"/>
         <source>Nothing to update</source>
-        <translation>Нет обновлений</translation>
+        <translation type="obsolete">Нет обновлений</translation>
     </message>
     <message>
-        <location filename="../indicator/agent.cpp" line="296"/>
         <source>Problems with Dist-Upgrade</source>
-        <translation>Ошибки при проверке обновлений</translation>
+        <translation type="obsolete">Ошибки при проверке обновлений</translation>
     </message>
     <message>
-        <location filename="../indicator/agent.cpp" line="300"/>
         <source>Working...</source>
-        <translation>В работе...</translation>
+        <translation type="obsolete">В работе...</translation>
     </message>
     <message>
-        <location filename="../indicator/agent.cpp" line="304"/>
         <source>Unknown status</source>
-        <translation>Неопределенный статус</translation>
+        <translation type="obsolete">Неопределенный статус</translation>
     </message>
     <message>
-        <location filename="../indicator/agent.cpp" line="44"/>
         <source>&amp;Upgrade...</source>
-        <translation>Об&amp;новить...</translation>
+        <translation type="obsolete">Об&amp;новить...</translation>
     </message>
     <message>
-        <location filename="../indicator/agent.cpp" line="46"/>
         <source>D&amp;etailed info...</source>
-        <translation>&amp;Детальная информация...</translation>
+        <translation type="obsolete">&amp;Детальная информация...</translation>
     </message>
     <message>
-        <location filename="../indicator/agent.cpp" line="110"/>
         <source>Nothing to update...</source>
-        <translation>Обновлений нет...</translation>
+        <translation type="obsolete">Обновлений нет...</translation>
     </message>
     <message>
         <source>Updating in progress...</source>
         <translation type="obsolete">Обновление в процессе...</translation>
     </message>
     <message>
-        <location filename="../indicator/agent.cpp" line="116"/>
         <source>No status info available</source>
-        <translation>Нет информации о статусе</translation>
+        <translation type="obsolete">Нет информации о статусе</translation>
     </message>
     <message>
-        <location filename="../indicator/agent.cpp" line="137"/>
         <source>Program already running</source>
-        <translation>Программа уже запущена</translation>
+        <translation type="obsolete">Программа уже запущена</translation>
     </message>
     <message>
-        <location filename="../indicator/agent.cpp" line="311"/>
         <source>Could not load the icon file %1</source>
-        <translation>Не могу загрузить файл пиктограммы - %1</translation>
+        <translation type="obsolete">Не могу загрузить файл пиктограммы - %1</translation>
     </message>
     <message>
         <source>Unknown custom event type: %1</source>
@@ -153,9 +137,8 @@ when you login?</source>
 при входе в систему?</translation>
     </message>
     <message>
-        <location filename="../indicator/agent.cpp" line="50"/>
         <source>&amp;Help</source>
-        <translation>&amp;Помощь</translation>
+        <translation type="obsolete">&amp;Помощь</translation>
     </message>
     <message>
         <source>Ok</source>
@@ -186,88 +169,72 @@ when you login?</source>
         <translation type="obsolete">Отчёт от</translation>
     </message>
     <message>
-        <location filename="../indicator/agent.cpp" line="113"/>
         <source>Checking in progress...</source>
-        <translation>Идет проверка обновлений...</translation>
+        <translation type="obsolete">Идет проверка обновлений...</translation>
     </message>
     <message>
-        <location filename="../indicator/agent.cpp" line="48"/>
         <source>&amp;Settings...</source>
-        <translation>&amp;Настройки...</translation>
+        <translation type="obsolete">&amp;Настройки...</translation>
     </message>
     <message>
-        <location filename="../indicator/agent.cpp" line="137"/>
-        <location filename="../indicator/agent.cpp" line="185"/>
-        <location filename="../indicator/agent.cpp" line="417"/>
-        <location filename="../indicator/agent.cpp" line="423"/>
         <source>Run upgrade process</source>
-        <translation>Запустить процесс обновления</translation>
+        <translation type="obsolete">Запустить процесс обновления</translation>
     </message>
     <message>
-        <location filename="../indicator/agent.cpp" line="257"/>
         <source>This program make notification of updates.
 Copyright (C) 2003-2004 ALT Linux Team
 
 Written by Stanislav Ievlev and Sergey V. Turchin</source>
-        <translation>Эта программа оповещает о наличии обновлений.
+        <translation type="obsolete">Эта программа оповещает о наличии обновлений.
 Copyright (C) 2003-2004 ALT Linux Team
 
 Авторы: Станислав Иевлев, Сергей В. Турчин</translation>
     </message>
     <message>
-        <location filename="../indicator/agent.cpp" line="265"/>
         <source>Should &lt;b&gt;%1&lt;/b&gt; start automatically 
 when you login?</source>
-        <translation>Должен ли &lt;b&gt;%1&lt;/b&gt; запускаться автоматически 
+        <translation type="obsolete">Должен ли &lt;b&gt;%1&lt;/b&gt; запускаться автоматически 
 при входе в систему?</translation>
     </message>
     <message>
-        <location filename="../indicator/agent.cpp" line="266"/>
         <source>Exit program</source>
-        <translation>Выход из программы</translation>
+        <translation type="obsolete">Выход из программы</translation>
     </message>
     <message>
-        <location filename="../indicator/agent.cpp" line="284"/>
         <source>Waiting...</source>
-        <translation>Режим ожидания...</translation>
+        <translation type="obsolete">Режим ожидания...</translation>
     </message>
     <message>
-        <location filename="../indicator/agent.cpp" line="310"/>
         <source>setting Icon</source>
-        <translation>установка пикторраммы</translation>
+        <translation type="obsolete">установка пикторраммы</translation>
     </message>
     <message>
         <source>Event processing</source>
         <translation type="obsolete">Обработка события</translation>
     </message>
     <message>
-        <location filename="../indicator/agent.cpp" line="101"/>
         <source>Report at %1 %2</source>
-        <translation>Отчет за %1 %2</translation>
+        <translation type="obsolete">Отчет за %1 %2</translation>
     </message>
     <message>
         <source>No upgrade program configured</source>
         <translation type="obsolete">Программа обновления не указана в настройках</translation>
     </message>
     <message>
-        <location filename="../indicator/agent.cpp" line="411"/>
         <source>Failed to start upgrade program</source>
-        <translation>Не удалось запустить программу</translation>
+        <translation type="obsolete">Не удалось запустить программу</translation>
     </message>
     <message>
-        <location filename="../indicator/agent.cpp" line="413"/>
         <source>Program crashed</source>
-        <translation>Программа упала</translation>
+        <translation type="obsolete">Программа упала</translation>
     </message>
     <message>
-        <location filename="../indicator/agent.cpp" line="415"/>
         <source>Execution of program failed</source>
-        <translation>Не удалось выполнить программу</translation>
+        <translation type="obsolete">Не удалось выполнить программу</translation>
     </message>
     <message>
-        <location filename="../indicator/agent.cpp" line="423"/>
         <source>child was exited with code %1</source>
-        <translation>дочерний процесс завершился с кодом %1</translation>
+        <translation type="obsolete">дочерний процесс завершился с кодом %1</translation>
     </message>
 </context>
 <context>
@@ -325,9 +292,8 @@ when you login?</source>
         <translation type="obsolete">диалог выбора программы</translation>
     </message>
     <message>
-        <location filename="../indicator/config_dialog.cpp" line="15"/>
         <source>Choose a program</source>
-        <translation>Выбор программы</translation>
+        <translation type="obsolete">Выбор программы</translation>
     </message>
     <message>
         <source>Advanced</source>
@@ -345,103 +311,84 @@ when you login?</source>
 <context>
     <name>ConfigDialogUI</name>
     <message>
-        <location filename="../indicator/config_dialog.ui" line="15"/>
         <source>Configuration</source>
-        <translation>Настройка</translation>
+        <translation type="obsolete">Настройка</translation>
     </message>
     <message>
-        <location filename="../indicator/config_dialog.ui" line="21"/>
         <source>Options</source>
-        <translation>Опции</translation>
+        <translation type="obsolete">Опции</translation>
     </message>
     <message>
-        <location filename="../indicator/config_dialog.ui" line="27"/>
         <source>Check Interval</source>
-        <translation>Интервал проверки</translation>
+        <translation type="obsolete">Интервал проверки</translation>
     </message>
     <message>
-        <location filename="../indicator/config_dialog.ui" line="56"/>
         <source>Seconds</source>
-        <translation>Секунд</translation>
+        <translation type="obsolete">Секунд</translation>
     </message>
     <message>
-        <location filename="../indicator/config_dialog.ui" line="61"/>
         <source>Minutes</source>
-        <translation>Минут</translation>
+        <translation type="obsolete">Минут</translation>
     </message>
     <message>
-        <location filename="../indicator/config_dialog.ui" line="66"/>
         <source>Hours</source>
-        <translation>Часов</translation>
+        <translation type="obsolete">Часов</translation>
     </message>
     <message>
-        <location filename="../indicator/config_dialog.ui" line="71"/>
         <source>Days</source>
-        <translation>Дней</translation>
+        <translation type="obsolete">Дней</translation>
     </message>
     <message>
-        <location filename="../indicator/config_dialog.ui" line="76"/>
         <source>Weeks</source>
-        <translation>Недель</translation>
+        <translation type="obsolete">Недель</translation>
     </message>
     <message>
-        <location filename="../indicator/config_dialog.ui" line="81"/>
         <source>Months</source>
-        <translation>Месяцев</translation>
+        <translation type="obsolete">Месяцев</translation>
     </message>
     <message>
-        <location filename="../indicator/config_dialog.ui" line="92"/>
         <source>Update program</source>
-        <translation>Программа обновления</translation>
+        <translation type="obsolete">Программа обновления</translation>
     </message>
     <message>
-        <location filename="../indicator/config_dialog.ui" line="104"/>
         <source>Format: command with arguments:/check/file/exists1,/check/file/exists2;command2:/path/1,/path/2,/path/3</source>
-        <translation>Формат: команда с аргументами:/проверка/на/файл1,/проверка/на/файл2;команда2:/файл/1,/файл/2,/файл/3</translation>
+        <translation type="obsolete">Формат: команда с аргументами:/проверка/на/файл1,/проверка/на/файл2;команда2:/файл/1,/файл/2,/файл/3</translation>
     </message>
     <message>
         <source>Path to Synaptic</source>
         <translation type="obsolete">Путь к Synaptic</translation>
     </message>
     <message>
-        <location filename="../indicator/config_dialog.ui" line="126"/>
         <source>...</source>
-        <translation>...</translation>
+        <translation type="obsolete">...</translation>
     </message>
     <message>
-        <location filename="../indicator/config_dialog.ui" line="139"/>
         <source>Advanced</source>
-        <translation>Дополнительно</translation>
+        <translation type="obsolete">Дополнительно</translation>
     </message>
     <message>
-        <location filename="../indicator/config_dialog.ui" line="145"/>
         <source>Be sensitive unmet dependecies</source>
-        <translation>Чувствительность к нарушенным зависимостям</translation>
+        <translation type="obsolete">Чувствительность к нарушенным зависимостям</translation>
     </message>
     <message>
-        <location filename="../indicator/config_dialog.ui" line="152"/>
         <source>Ignore dist-upgrade errors</source>
-        <translation>Игнорировать проблемы dist-upgrade</translation>
+        <translation type="obsolete">Игнорировать проблемы dist-upgrade</translation>
     </message>
     <message>
-        <location filename="../indicator/config_dialog.ui" line="159"/>
         <source>Autostart</source>
-        <translation>Автозапуск</translation>
+        <translation type="obsolete">Автозапуск</translation>
     </message>
     <message>
-        <location filename="../indicator/config_dialog.ui" line="166"/>
         <source>Popup system tray messages</source>
-        <translation>Всплывающие сообщения системного лотка</translation>
+        <translation type="obsolete">Всплывающие сообщения системного лотка</translation>
     </message>
     <message>
-        <location filename="../indicator/config_dialog.ui" line="189"/>
         <source>Ok</source>
-        <translation>Ok</translation>
+        <translation type="obsolete">Ok</translation>
     </message>
     <message>
-        <location filename="../indicator/config_dialog.ui" line="209"/>
         <source>Cancel</source>
-        <translation>Отмена</translation>
+        <translation type="obsolete">Отмена</translation>
     </message>
 </context>
 <context>
@@ -612,24 +559,20 @@ when you login?</source>
 <context>
     <name>HelpBrowserUI</name>
     <message>
-        <location filename="../indicator/help_browser.ui" line="17"/>
         <source>Help Browser</source>
-        <translation>Браузер справки</translation>
+        <translation type="obsolete">Браузер справки</translation>
     </message>
     <message>
-        <location filename="../indicator/help_browser.ui" line="35"/>
         <source>Backward</source>
-        <translation>Назад</translation>
+        <translation type="obsolete">Назад</translation>
     </message>
     <message>
-        <location filename="../indicator/help_browser.ui" line="67"/>
         <source>Forward</source>
-        <translation>Вперед</translation>
+        <translation type="obsolete">Вперед</translation>
     </message>
     <message>
-        <location filename="../indicator/help_browser.ui" line="96"/>
         <source>Home</source>
-        <translation>К началу</translation>
+        <translation type="obsolete">К началу</translation>
     </message>
 </context>
 <context>
@@ -650,14 +593,12 @@ when you login?</source>
 <context>
     <name>InfoWindowUI</name>
     <message>
-        <location filename="../indicator/info_window.ui" line="20"/>
         <source>Information Window</source>
-        <translation>Информационное окно</translation>
+        <translation type="obsolete">Информационное окно</translation>
     </message>
     <message>
-        <location filename="../indicator/info_window.ui" line="65"/>
         <source>Upgrade</source>
-        <translation>Обновить</translation>
+        <translation type="obsolete">Обновить</translation>
     </message>
 </context>
 <context>
