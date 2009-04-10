@@ -23,9 +23,9 @@ int main( int argc, char **argv )
 	QTranslator translator(&app);
 	QString lang = QLocale::system().name();
 #ifndef NDEBUG
-	translator.load( "apt_indicator_" + lang, "./translations" );
+	translator.load( "apt_indicator_checker_" + lang, "./translations" );
 #else
-	translator.load( "apt_indicator_" + lang, DATADIR"/translations" );
+	translator.load( "apt_indicator_checker_" + lang, DATADIR"/translations" );
 #endif
 	app.installTranslator( &translator );
 
