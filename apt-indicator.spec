@@ -1,5 +1,5 @@
 Name: apt-indicator
-Version: 0.1.5
+Version: 0.1.6
 Release: alt1
 
 Summary: Applet for indication that newer packages are available
@@ -72,6 +72,9 @@ install -m644 pixmaps/* %buildroot/%_datadir/%name/pixmaps
 %_sysconfdir/xdg/autostart/apt-indicator.desktop
 
 %changelog
+* Mon Apr 13 2009 Sergey V Turchin <zerg at altlinux dot org> 0.1.6-alt1
+- ask for autostart at exit
+
 * Mon Apr 13 2009 Sergey V Turchin <zerg at altlinux dot org> 0.1.5-alt1
 - ignore fetch cdrom errors
 
