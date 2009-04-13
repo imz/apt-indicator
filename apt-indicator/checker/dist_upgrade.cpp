@@ -230,8 +230,11 @@ DistUpgrade::UpdateResult DistUpgrade::update()
 
 		(*I)->Finished();
 
-		//dbg_msg(tr("Failed to fetch ") + (*I)->DescURI() + "  " + (*I)->ErrorText);
-		result_ += tr("Failed to fetch %1 %2\n").arg(QString::fromStdString((*I)->DescURI())).arg(QString::fromStdString((*I)->ErrorText));
+		QString desc_uri = QString::fromStdString((*I)->DescURI());
+		if( desc_uri.startsWith("cdrom:") )
+		    continue;
+
+		result_ += tr("Failed to fetch %1 %2\n").arg(desc_uri).arg(QString::fromStdString((*I)->ErrorText));
 		upd_result = UpdProblem;
 	}
 	if( upd_result == UpdProblem )
