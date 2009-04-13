@@ -253,7 +253,7 @@ void Agent::helpBrowser()
 
 void Agent::aboutProgram()
 {
-	QMessageBox::about(0,objectName() + QString(" - ") + QString(VERSION),
+	QMessageBox::about(0, QString(PROGRAM_NAME) + QString(" - ") + QString(VERSION),
 			    tr("This program make notification of updates.\n"
 			       "Copyright (C) 2003-2004 ALT Linux Team\n\n"
 			       "Written by Stanislav Ievlev and Sergey V. Turchin"));
@@ -261,15 +261,14 @@ void Agent::aboutProgram()
 
 void Agent::exitProgram()
 {
-#if 0
 	const QString message = tr("Should <b>%1</b> start automatically \nwhen you login?").arg(PROGRAM_NAME);
 	const int res = QMessageBox::information(0,tr("Exit program"),message,
-				QMessageBox::Yes|QMessageBox::Default,
+				QMessageBox::Yes,
 				QMessageBox::No,
 				Qt::NoButton
 				);
-	cfg_->setParam(Configuration::Autostart, QMessageBox::Yes == res);
-#endif
+	if( cfg_->setParam(Configuration::Autostart, QMessageBox::Yes == res) )
+	    cfg_->save();
 	QCoreApplication::quit();
 }
 
