@@ -263,13 +263,16 @@ void Agent::exitProgram()
 {
 	const QString message = tr("Should <b>%1</b> start automatically \nwhen you login?").arg(PROGRAM_NAME);
 	const int res = QMessageBox::information(0,tr("Exit program"),message,
-				QMessageBox::Yes,
-				QMessageBox::No,
-				Qt::NoButton
+				QMessageBox::Yes|QMessageBox::No|QMessageBox::Cancel,
+				QMessageBox::Yes
 				);
-	if( cfg_->setParam(Configuration::Autostart, QMessageBox::Yes == res) )
-	    cfg_->save();
-	QCoreApplication::quit();
+	if( QMessageBox::Yes == res || QMessageBox::No == res )
+	{
+	    if( cfg_->setParam(Configuration::Autostart, QMessageBox::Yes == res) )
+		cfg_->save();
+	}
+	if( QMessageBox::Cancel != res )
+	    QCoreApplication::quit();
 }
 
 void Agent::setTrayIcon()
