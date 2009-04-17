@@ -315,6 +315,12 @@ void DistUpgrade::dist_upgrade()
 			result_ += to_remove;
 			result_ += "<br/>";
 		}
+		if (!to_install.isEmpty())
+		{
+			result_ += tr("\n<b>Following packages will be installed:</b><br/>\n");
+			result_ += to_install;
+			result_ += "<br/>";
+		}
 		if (show_broken_ && !broken.isEmpty())
 		{
 			result_ += tr("<b>Following packages have unmet dependencies:</b><br/>\n");
@@ -327,12 +333,6 @@ void DistUpgrade::dist_upgrade()
 		{
 			result_ += tr("\n<b>Following packages will be upgraded:</b><br/>\n");
 			result_ += to_upgrade;
-			result_ += "<br/>";
-		}
-		if (!to_install.isEmpty())
-		{
-			result_ += tr("\n<b>Following packages will be installed:</b><br/>\n");
-			result_ += to_install;
 			result_ += "<br/>";
 		}
 	}
