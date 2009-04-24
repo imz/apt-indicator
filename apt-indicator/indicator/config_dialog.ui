@@ -101,7 +101,7 @@
             </sizepolicy>
            </property>
            <property name="toolTip">
-            <string>Format: command with arguments:/check/file/exists1,/check/file/exists2;command2:/path/1,/path/2,/path/3</string>
+            <string>Format: upgrade command:repo config command:/check/file/exists1,/check/file/exists2;command2:/path/1,/path/2,/path/3</string>
            </property>
            <property name="text">
             <string/>
