@@ -35,66 +35,59 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../checker/dist_upgrade.cpp" line="234"/>
+        <location filename="../checker/dist_upgrade.cpp" line="237"/>
         <source>Failed to fetch %1 %2
 </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../checker/dist_upgrade.cpp" line="244"/>
+        <location filename="../checker/dist_upgrade.cpp" line="247"/>
         <source>nothing to clean
 </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../checker/dist_upgrade.cpp" line="253"/>
+        <location filename="../checker/dist_upgrade.cpp" line="256"/>
         <source>Failed to build package caches.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../checker/dist_upgrade.cpp" line="269"/>
+        <location filename="../checker/dist_upgrade.cpp" line="272"/>
         <source>DistUpgrade failed. Please, check your APT system</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../checker/dist_upgrade.cpp" line="311"/>
-        <source>
-&lt;font color=&apos;red&apos;&gt;&lt;b&gt;Following packages will be removed:&lt;/b&gt;&lt;/font&gt;&lt;br/&gt;
-</source>
+        <location filename="../checker/dist_upgrade.cpp" line="310"/>
+        <source>Following packages have unmet dependencies</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../checker/dist_upgrade.cpp" line="317"/>
-        <source>&lt;b&gt;Following packages have unmet dependencies:&lt;/b&gt;&lt;br/&gt;
-</source>
+        <location filename="../checker/dist_upgrade.cpp" line="319"/>
+        <source>Following packages will be removed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../checker/dist_upgrade.cpp" line="325"/>
-        <source>
-&lt;b&gt;Following packages will be upgraded:&lt;/b&gt;&lt;br/&gt;
-</source>
+        <location filename="../checker/dist_upgrade.cpp" line="326"/>
+        <source>Following packages will be installed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../checker/dist_upgrade.cpp" line="331"/>
-        <source>
-&lt;b&gt;Following packages will be installed:&lt;/b&gt;&lt;br/&gt;
-</source>
+        <location filename="../checker/dist_upgrade.cpp" line="333"/>
+        <source>Following packages will be upgraded</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../checker/dist_upgrade.cpp" line="354"/>
+        <location filename="../checker/dist_upgrade.cpp" line="357"/>
         <source>unable to get exclusive lock</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../checker/dist_upgrade.cpp" line="362"/>
+        <location filename="../checker/dist_upgrade.cpp" line="365"/>
         <source>Problems with APT initialization</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../checker/dist_upgrade.cpp" line="443"/>
+        <location filename="../checker/dist_upgrade.cpp" line="446"/>
         <source>child was terminated with signal %1</source>
         <translation type="unfinished"></translation>
     </message>

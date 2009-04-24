@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
 <TS version="2.0" language="ru_RU">
-<defaultcodec></defaultcodec>
 <context>
     <name>@default</name>
     <message>
@@ -434,43 +433,61 @@ when you login?</source>
         <translation>Не удалось получить информацию о пакетах</translation>
     </message>
     <message>
-        <location filename="../checker/dist_upgrade.cpp" line="234"/>
+        <location filename="../checker/dist_upgrade.cpp" line="237"/>
         <source>Failed to fetch %1 %2
 </source>
         <translation>Failed to fetch %1 %2
 </translation>
     </message>
     <message>
-        <location filename="../checker/dist_upgrade.cpp" line="244"/>
+        <location filename="../checker/dist_upgrade.cpp" line="247"/>
         <source>nothing to clean
 </source>
         <translation>нет ничего для очистки
 </translation>
     </message>
     <message>
-        <location filename="../checker/dist_upgrade.cpp" line="253"/>
+        <location filename="../checker/dist_upgrade.cpp" line="256"/>
         <source>Failed to build package caches.</source>
         <translation>Не удалось построить кэши пакетов.</translation>
     </message>
     <message>
-        <location filename="../checker/dist_upgrade.cpp" line="269"/>
+        <location filename="../checker/dist_upgrade.cpp" line="272"/>
         <source>DistUpgrade failed. Please, check your APT system</source>
         <translation>Проверка обновлений прервана. Проверьте, пожалуйста, работу APT</translation>
     </message>
     <message>
-        <location filename="../checker/dist_upgrade.cpp" line="311"/>
+        <location filename="../checker/dist_upgrade.cpp" line="310"/>
+        <source>Following packages have unmet dependencies</source>
+        <translation>Следующие пакеты имеют неудовлетворенные зависимости</translation>
+    </message>
+    <message>
+        <location filename="../checker/dist_upgrade.cpp" line="319"/>
+        <source>Following packages will be removed</source>
+        <translation>Следующие пакеты будут удалены</translation>
+    </message>
+    <message>
+        <location filename="../checker/dist_upgrade.cpp" line="326"/>
+        <source>Following packages will be installed</source>
+        <translation>Следующие пакеты будут установлены</translation>
+    </message>
+    <message>
+        <location filename="../checker/dist_upgrade.cpp" line="333"/>
+        <source>Following packages will be upgraded</source>
+        <translation>Следующие пакеты будут обновлены</translation>
+    </message>
+    <message>
         <source>
 &lt;font color=&apos;red&apos;&gt;&lt;b&gt;Following packages will be removed:&lt;/b&gt;&lt;/font&gt;&lt;br/&gt;
 </source>
-        <translation>
+        <translation type="obsolete">
 &lt;font color=&apos;red&apos;&gt;&lt;b&gt;Следующие пакеты будут удалены:&lt;/b&gt;&lt;/font&gt;&lt;br/&gt;
 </translation>
     </message>
     <message>
-        <location filename="../checker/dist_upgrade.cpp" line="317"/>
         <source>&lt;b&gt;Following packages have unmet dependencies:&lt;/b&gt;&lt;br/&gt;
 </source>
-        <translation>&lt;b&gt;Следующие пакеты имеют неудовлетворенные зависимости:&lt;/b&gt;&lt;br/&gt;
+        <translation type="obsolete">&lt;b&gt;Следующие пакеты имеют неудовлетворенные зависимости:&lt;/b&gt;&lt;br/&gt;
 </translation>
     </message>
     <message>
@@ -480,20 +497,18 @@ when you login?</source>
 </translation>
     </message>
     <message>
-        <location filename="../checker/dist_upgrade.cpp" line="325"/>
         <source>
 &lt;b&gt;Following packages will be upgraded:&lt;/b&gt;&lt;br/&gt;
 </source>
-        <translation>
+        <translation type="obsolete">
 &lt;b&gt;Следующие пакеты будут обновлены:&lt;/b&gt;&lt;br/&gt;
 </translation>
     </message>
     <message>
-        <location filename="../checker/dist_upgrade.cpp" line="331"/>
         <source>
 &lt;b&gt;Following packages will be installed:&lt;/b&gt;&lt;br/&gt;
 </source>
-        <translation>
+        <translation type="obsolete">
 &lt;b&gt;Следующие пакеты будут установлены:&lt;/b&gt;&lt;br/&gt;
 </translation>
     </message>
@@ -506,17 +521,17 @@ when you login?</source>
 </translation>
     </message>
     <message>
-        <location filename="../checker/dist_upgrade.cpp" line="354"/>
+        <location filename="../checker/dist_upgrade.cpp" line="357"/>
         <source>unable to get exclusive lock</source>
         <translation>не удалось получить эксклюзивную блокировку</translation>
     </message>
     <message>
-        <location filename="../checker/dist_upgrade.cpp" line="362"/>
+        <location filename="../checker/dist_upgrade.cpp" line="365"/>
         <source>Problems with APT initialization</source>
         <translation>Проблемы с инициализацией APT</translation>
     </message>
     <message>
-        <location filename="../checker/dist_upgrade.cpp" line="443"/>
+        <location filename="../checker/dist_upgrade.cpp" line="446"/>
         <source>child was terminated with signal %1</source>
         <translation>дочерний процесс завершился с сигналом %1</translation>
     </message>
