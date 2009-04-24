@@ -81,33 +81,33 @@ when you login?</source>
 при вході в систему?</translation>
     </message>
     <message>
-        <location filename="../indicator/agent.cpp" line="288"/>
-        <location filename="../indicator/agent.cpp" line="372"/>
+        <location filename="../indicator/agent.cpp" line="267"/>
+        <location filename="../indicator/agent.cpp" line="351"/>
         <source>There are updates for your system available...</source>
         <translation>Наявні поновлення для вашої системи...</translation>
     </message>
     <message>
-        <location filename="../indicator/agent.cpp" line="292"/>
+        <location filename="../indicator/agent.cpp" line="271"/>
         <source>Nothing to update</source>
         <translation>Нема поновлень</translation>
     </message>
     <message>
-        <location filename="../indicator/agent.cpp" line="296"/>
+        <location filename="../indicator/agent.cpp" line="275"/>
         <source>Problems with Dist-Upgrade</source>
         <translation>Помилки протягом dist-upgrade</translation>
     </message>
     <message>
-        <location filename="../indicator/agent.cpp" line="300"/>
+        <location filename="../indicator/agent.cpp" line="279"/>
         <source>Working...</source>
         <translation>Працюю...</translation>
     </message>
     <message>
-        <location filename="../indicator/agent.cpp" line="304"/>
+        <location filename="../indicator/agent.cpp" line="283"/>
         <source>Unknown status</source>
         <translation>Невідомий статус</translation>
     </message>
     <message>
-        <location filename="../indicator/agent.cpp" line="311"/>
+        <location filename="../indicator/agent.cpp" line="290"/>
         <source>Could not load the icon file %1</source>
         <translation>Не можу завантажити файл піктограми %1</translation>
     </message>
@@ -165,19 +165,19 @@ when you login?</source>
     </message>
     <message>
         <location filename="../indicator/agent.cpp" line="137"/>
-        <location filename="../indicator/agent.cpp" line="185"/>
-        <location filename="../indicator/agent.cpp" line="417"/>
-        <location filename="../indicator/agent.cpp" line="423"/>
+        <location filename="../indicator/agent.cpp" line="162"/>
+        <location filename="../indicator/agent.cpp" line="396"/>
+        <location filename="../indicator/agent.cpp" line="402"/>
         <source>Run upgrade process</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../indicator/agent.cpp" line="185"/>
+        <location filename="../indicator/agent.cpp" line="162"/>
         <source>No upgrade program found</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../indicator/agent.cpp" line="257"/>
+        <location filename="../indicator/agent.cpp" line="234"/>
         <source>This program make notification of updates.
 Copyright (C) 2003-2004 ALT Linux Team
 
@@ -185,43 +185,43 @@ Written by Stanislav Ievlev and Sergey V. Turchin</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../indicator/agent.cpp" line="265"/>
+        <location filename="../indicator/agent.cpp" line="241"/>
         <source>Should &lt;b&gt;%1&lt;/b&gt; start automatically 
 when you login?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../indicator/agent.cpp" line="266"/>
+        <location filename="../indicator/agent.cpp" line="242"/>
         <source>Exit program</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../indicator/agent.cpp" line="284"/>
+        <location filename="../indicator/agent.cpp" line="263"/>
         <source>Waiting...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../indicator/agent.cpp" line="310"/>
+        <location filename="../indicator/agent.cpp" line="289"/>
         <source>setting Icon</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../indicator/agent.cpp" line="411"/>
+        <location filename="../indicator/agent.cpp" line="390"/>
         <source>Failed to start upgrade program</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../indicator/agent.cpp" line="413"/>
+        <location filename="../indicator/agent.cpp" line="392"/>
         <source>Program crashed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../indicator/agent.cpp" line="415"/>
+        <location filename="../indicator/agent.cpp" line="394"/>
         <source>Execution of program failed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../indicator/agent.cpp" line="423"/>
+        <location filename="../indicator/agent.cpp" line="402"/>
         <source>child was exited with code %1</source>
         <translation type="unfinished">нащадок повернув код %1</translation>
     </message>
@@ -352,7 +352,7 @@ when you login?</source>
     </message>
     <message>
         <location filename="../indicator/config_dialog.ui" line="104"/>
-        <source>Format: command with arguments:/check/file/exists1,/check/file/exists2;command2:/path/1,/path/2,/path/3</source>
+        <source>Format: upgrade command:repo config command:/check/file/exists1,/check/file/exists2;command2:/path/1,/path/2,/path/3</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

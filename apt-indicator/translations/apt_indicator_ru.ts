@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
 <TS version="2.0" language="ru_RU">
-<defaultcodec></defaultcodec>
 <context>
     <name>@default</name>
     <message>
@@ -70,7 +69,7 @@
         <translation>&amp;Выход</translation>
     </message>
     <message>
-        <location filename="../indicator/agent.cpp" line="185"/>
+        <location filename="../indicator/agent.cpp" line="162"/>
         <source>No upgrade program found</source>
         <translation>Программа обновлений не найдена</translation>
     </message>
@@ -79,28 +78,28 @@
         <translation type="obsolete">Режим ожидания</translation>
     </message>
     <message>
-        <location filename="../indicator/agent.cpp" line="288"/>
-        <location filename="../indicator/agent.cpp" line="372"/>
+        <location filename="../indicator/agent.cpp" line="267"/>
+        <location filename="../indicator/agent.cpp" line="351"/>
         <source>There are updates for your system available...</source>
         <translation>Доступны обновления для вашей системы...</translation>
     </message>
     <message>
-        <location filename="../indicator/agent.cpp" line="292"/>
+        <location filename="../indicator/agent.cpp" line="271"/>
         <source>Nothing to update</source>
         <translation>Нет обновлений</translation>
     </message>
     <message>
-        <location filename="../indicator/agent.cpp" line="296"/>
+        <location filename="../indicator/agent.cpp" line="275"/>
         <source>Problems with Dist-Upgrade</source>
         <translation>Ошибки при проверке обновлений</translation>
     </message>
     <message>
-        <location filename="../indicator/agent.cpp" line="300"/>
+        <location filename="../indicator/agent.cpp" line="279"/>
         <source>Working...</source>
         <translation>В работе...</translation>
     </message>
     <message>
-        <location filename="../indicator/agent.cpp" line="304"/>
+        <location filename="../indicator/agent.cpp" line="283"/>
         <source>Unknown status</source>
         <translation>Неопределенный статус</translation>
     </message>
@@ -134,7 +133,7 @@
         <translation>Программа уже запущена</translation>
     </message>
     <message>
-        <location filename="../indicator/agent.cpp" line="311"/>
+        <location filename="../indicator/agent.cpp" line="290"/>
         <source>Could not load the icon file %1</source>
         <translation>Не могу загрузить файл пиктограммы - %1</translation>
     </message>
@@ -197,14 +196,14 @@ when you login?</source>
     </message>
     <message>
         <location filename="../indicator/agent.cpp" line="137"/>
-        <location filename="../indicator/agent.cpp" line="185"/>
-        <location filename="../indicator/agent.cpp" line="417"/>
-        <location filename="../indicator/agent.cpp" line="423"/>
+        <location filename="../indicator/agent.cpp" line="162"/>
+        <location filename="../indicator/agent.cpp" line="396"/>
+        <location filename="../indicator/agent.cpp" line="402"/>
         <source>Run upgrade process</source>
         <translation>Запустить процесс обновления</translation>
     </message>
     <message>
-        <location filename="../indicator/agent.cpp" line="257"/>
+        <location filename="../indicator/agent.cpp" line="234"/>
         <source>This program make notification of updates.
 Copyright (C) 2003-2004 ALT Linux Team
 
@@ -215,24 +214,24 @@ Copyright (C) 2003-2004 ALT Linux Team
 Авторы: Станислав Иевлев, Сергей В. Турчин</translation>
     </message>
     <message>
-        <location filename="../indicator/agent.cpp" line="265"/>
+        <location filename="../indicator/agent.cpp" line="241"/>
         <source>Should &lt;b&gt;%1&lt;/b&gt; start automatically 
 when you login?</source>
         <translation>Должен ли &lt;b&gt;%1&lt;/b&gt; запускаться автоматически 
 при входе в систему?</translation>
     </message>
     <message>
-        <location filename="../indicator/agent.cpp" line="266"/>
+        <location filename="../indicator/agent.cpp" line="242"/>
         <source>Exit program</source>
         <translation>Выход из программы</translation>
     </message>
     <message>
-        <location filename="../indicator/agent.cpp" line="284"/>
+        <location filename="../indicator/agent.cpp" line="263"/>
         <source>Waiting...</source>
         <translation>Режим ожидания...</translation>
     </message>
     <message>
-        <location filename="../indicator/agent.cpp" line="310"/>
+        <location filename="../indicator/agent.cpp" line="289"/>
         <source>setting Icon</source>
         <translation>установка пикторраммы</translation>
     </message>
@@ -250,22 +249,22 @@ when you login?</source>
         <translation type="obsolete">Программа обновления не указана в настройках</translation>
     </message>
     <message>
-        <location filename="../indicator/agent.cpp" line="411"/>
+        <location filename="../indicator/agent.cpp" line="390"/>
         <source>Failed to start upgrade program</source>
         <translation>Не удалось запустить программу</translation>
     </message>
     <message>
-        <location filename="../indicator/agent.cpp" line="413"/>
+        <location filename="../indicator/agent.cpp" line="392"/>
         <source>Program crashed</source>
         <translation>Программа упала</translation>
     </message>
     <message>
-        <location filename="../indicator/agent.cpp" line="415"/>
+        <location filename="../indicator/agent.cpp" line="394"/>
         <source>Execution of program failed</source>
         <translation>Не удалось выполнить программу</translation>
     </message>
     <message>
-        <location filename="../indicator/agent.cpp" line="423"/>
+        <location filename="../indicator/agent.cpp" line="402"/>
         <source>child was exited with code %1</source>
         <translation>дочерний процесс завершился с кодом %1</translation>
     </message>
@@ -396,8 +395,12 @@ when you login?</source>
     </message>
     <message>
         <location filename="../indicator/config_dialog.ui" line="104"/>
+        <source>Format: upgrade command:repo config command:/check/file/exists1,/check/file/exists2;command2:/path/1,/path/2,/path/3</source>
+        <translation>Формат: команда обновления:команда настройки репозиториев:/проверка/на/файл1,/проверка/на/файл2;команда2:репоконф2:/файл/1,/файл/2,/файл/3</translation>
+    </message>
+    <message>
         <source>Format: command with arguments:/check/file/exists1,/check/file/exists2;command2:/path/1,/path/2,/path/3</source>
-        <translation>Формат: команда с аргументами:/проверка/на/файл1,/проверка/на/файл2;команда2:/файл/1,/файл/2,/файл/3</translation>
+        <translation type="obsolete">Формат: команда с аргументами:/проверка/на/файл1,/проверка/на/файл2;команда2:/файл/1,/файл/2,/файл/3</translation>
     </message>
     <message>
         <source>Path to Synaptic</source>
