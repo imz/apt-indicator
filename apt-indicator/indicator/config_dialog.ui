@@ -91,7 +91,7 @@
         <property name="title">
          <string>Update program</string>
         </property>
-        <layout class="QGridLayout" name="gridLayout">
+        <layout class="QGridLayout" name="gridLayout_0">
          <item row="0" column="0">
           <widget class="QLineEdit" name="pathLineEdit">
            <property name="sizePolicy">
