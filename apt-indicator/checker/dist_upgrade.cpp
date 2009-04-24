@@ -307,7 +307,7 @@ void DistUpgrade::dist_upgrade()
 		}
 		if (show_broken_ && !lst_broken.isEmpty())
 		{
-			result_ += tr("<b>Following packages have unmet dependencies:</b><br/>\n");
+			result_ += QString("<b>%1:</b><br/>\n").arg(tr("Following packages have unmet dependencies"));
 			result_ += lst_broken.join(" ");
 			result_ += "<br/>";
 			status_ = Problem;
@@ -315,19 +315,19 @@ void DistUpgrade::dist_upgrade()
 		}
 		if (!lst_remove.isEmpty())
 		{
-			result_ += tr("\n<font color='red'><b>Following packages will be removed:</b></font><br/>\n");
+			result_ += QString("\n<font color='red'><b>%1:</b></font><br/>\n").arg(tr("Following packages will be removed"));
 			result_ += lst_remove.join(" ");
 			result_ += "<br/>";
 		}
 		if (!lst_install.isEmpty())
 		{
-			result_ += tr("\n<b>Following packages will be installed:</b><br/>\n");
+			result_ += QString("\n<b>%1:</b><br/>\n").arg(tr("Following packages will be installed"));
 			result_ += lst_install.join(" ");
 			result_ += "<br/>";
 		}
 		if (!lst_upgrade.isEmpty())
 		{
-			result_ += tr("\n<b>Following packages will be upgraded:</b><br/>\n");
+			result_ += QString("\n<b>%1:</b><br/>\n").arg(tr("Following packages will be upgraded"));
 			result_ += lst_upgrade.join(" ");
 			result_ += "<br/>";
 		}
