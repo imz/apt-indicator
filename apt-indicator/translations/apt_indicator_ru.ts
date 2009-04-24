@@ -59,17 +59,17 @@
         <translation>&amp;Проверить обновления</translation>
     </message>
     <message>
-        <location filename="../indicator/agent.cpp" line="51"/>
+        <location filename="../indicator/agent.cpp" line="52"/>
         <source>&amp;About</source>
         <translation>&amp;О программе</translation>
     </message>
     <message>
-        <location filename="../indicator/agent.cpp" line="53"/>
+        <location filename="../indicator/agent.cpp" line="54"/>
         <source>&amp;Quit</source>
         <translation>&amp;Выход</translation>
     </message>
     <message>
-        <location filename="../indicator/agent.cpp" line="162"/>
+        <location filename="../indicator/agent.cpp" line="163"/>
         <source>No upgrade program found</source>
         <translation>Программа обновлений не найдена</translation>
     </message>
@@ -78,28 +78,28 @@
         <translation type="obsolete">Режим ожидания</translation>
     </message>
     <message>
-        <location filename="../indicator/agent.cpp" line="267"/>
-        <location filename="../indicator/agent.cpp" line="351"/>
+        <location filename="../indicator/agent.cpp" line="279"/>
+        <location filename="../indicator/agent.cpp" line="363"/>
         <source>There are updates for your system available...</source>
         <translation>Доступны обновления для вашей системы...</translation>
     </message>
     <message>
-        <location filename="../indicator/agent.cpp" line="271"/>
+        <location filename="../indicator/agent.cpp" line="283"/>
         <source>Nothing to update</source>
         <translation>Нет обновлений</translation>
     </message>
     <message>
-        <location filename="../indicator/agent.cpp" line="275"/>
+        <location filename="../indicator/agent.cpp" line="287"/>
         <source>Problems with Dist-Upgrade</source>
         <translation>Ошибки при проверке обновлений</translation>
     </message>
     <message>
-        <location filename="../indicator/agent.cpp" line="279"/>
+        <location filename="../indicator/agent.cpp" line="291"/>
         <source>Working...</source>
         <translation>В работе...</translation>
     </message>
     <message>
-        <location filename="../indicator/agent.cpp" line="283"/>
+        <location filename="../indicator/agent.cpp" line="295"/>
         <source>Unknown status</source>
         <translation>Неопределенный статус</translation>
     </message>
@@ -114,7 +114,7 @@
         <translation>&amp;Детальная информация...</translation>
     </message>
     <message>
-        <location filename="../indicator/agent.cpp" line="110"/>
+        <location filename="../indicator/agent.cpp" line="111"/>
         <source>Nothing to update...</source>
         <translation>Обновлений нет...</translation>
     </message>
@@ -123,17 +123,17 @@
         <translation type="obsolete">Обновление в процессе...</translation>
     </message>
     <message>
-        <location filename="../indicator/agent.cpp" line="116"/>
+        <location filename="../indicator/agent.cpp" line="117"/>
         <source>No status info available</source>
         <translation>Нет информации о статусе</translation>
     </message>
     <message>
-        <location filename="../indicator/agent.cpp" line="137"/>
+        <location filename="../indicator/agent.cpp" line="138"/>
         <source>Program already running</source>
         <translation>Программа уже запущена</translation>
     </message>
     <message>
-        <location filename="../indicator/agent.cpp" line="290"/>
+        <location filename="../indicator/agent.cpp" line="302"/>
         <source>Could not load the icon file %1</source>
         <translation>Не могу загрузить файл пиктограммы - %1</translation>
     </message>
@@ -152,7 +152,7 @@ when you login?</source>
 при входе в систему?</translation>
     </message>
     <message>
-        <location filename="../indicator/agent.cpp" line="50"/>
+        <location filename="../indicator/agent.cpp" line="51"/>
         <source>&amp;Help</source>
         <translation>&amp;Помощь</translation>
     </message>
@@ -185,7 +185,7 @@ when you login?</source>
         <translation type="obsolete">Отчёт от</translation>
     </message>
     <message>
-        <location filename="../indicator/agent.cpp" line="113"/>
+        <location filename="../indicator/agent.cpp" line="114"/>
         <source>Checking in progress...</source>
         <translation>Идет проверка обновлений...</translation>
     </message>
@@ -195,15 +195,30 @@ when you login?</source>
         <translation>&amp;Настройки...</translation>
     </message>
     <message>
-        <location filename="../indicator/agent.cpp" line="137"/>
-        <location filename="../indicator/agent.cpp" line="162"/>
-        <location filename="../indicator/agent.cpp" line="396"/>
-        <location filename="../indicator/agent.cpp" line="402"/>
+        <location filename="../indicator/agent.cpp" line="49"/>
+        <source>&amp;Repository settings...</source>
+        <translation>Настройка &amp;репозиториев...</translation>
+    </message>
+    <message>
+        <location filename="../indicator/agent.cpp" line="138"/>
+        <location filename="../indicator/agent.cpp" line="163"/>
+        <location filename="../indicator/agent.cpp" line="408"/>
+        <location filename="../indicator/agent.cpp" line="414"/>
         <source>Run upgrade process</source>
         <translation>Запустить процесс обновления</translation>
     </message>
     <message>
-        <location filename="../indicator/agent.cpp" line="234"/>
+        <location filename="../indicator/agent.cpp" line="183"/>
+        <source>Repositories configuration</source>
+        <translation>Настройка репозиториев</translation>
+    </message>
+    <message>
+        <location filename="../indicator/agent.cpp" line="183"/>
+        <source>Failed to start &quot;%1&quot;</source>
+        <translation>Не удалось запустить &quot;%1&quot;</translation>
+    </message>
+    <message>
+        <location filename="../indicator/agent.cpp" line="246"/>
         <source>This program make notification of updates.
 Copyright (C) 2003-2004 ALT Linux Team
 
@@ -214,24 +229,24 @@ Copyright (C) 2003-2004 ALT Linux Team
 Авторы: Станислав Иевлев, Сергей В. Турчин</translation>
     </message>
     <message>
-        <location filename="../indicator/agent.cpp" line="241"/>
+        <location filename="../indicator/agent.cpp" line="253"/>
         <source>Should &lt;b&gt;%1&lt;/b&gt; start automatically 
 when you login?</source>
         <translation>Должен ли &lt;b&gt;%1&lt;/b&gt; запускаться автоматически 
 при входе в систему?</translation>
     </message>
     <message>
-        <location filename="../indicator/agent.cpp" line="242"/>
+        <location filename="../indicator/agent.cpp" line="254"/>
         <source>Exit program</source>
         <translation>Выход из программы</translation>
     </message>
     <message>
-        <location filename="../indicator/agent.cpp" line="263"/>
+        <location filename="../indicator/agent.cpp" line="275"/>
         <source>Waiting...</source>
         <translation>Режим ожидания...</translation>
     </message>
     <message>
-        <location filename="../indicator/agent.cpp" line="289"/>
+        <location filename="../indicator/agent.cpp" line="301"/>
         <source>setting Icon</source>
         <translation>установка пикторраммы</translation>
     </message>
@@ -240,7 +255,7 @@ when you login?</source>
         <translation type="obsolete">Обработка события</translation>
     </message>
     <message>
-        <location filename="../indicator/agent.cpp" line="101"/>
+        <location filename="../indicator/agent.cpp" line="102"/>
         <source>Report at %1 %2</source>
         <translation>Отчет за %1 %2</translation>
     </message>
@@ -249,22 +264,22 @@ when you login?</source>
         <translation type="obsolete">Программа обновления не указана в настройках</translation>
     </message>
     <message>
-        <location filename="../indicator/agent.cpp" line="390"/>
+        <location filename="../indicator/agent.cpp" line="402"/>
         <source>Failed to start upgrade program</source>
         <translation>Не удалось запустить программу</translation>
     </message>
     <message>
-        <location filename="../indicator/agent.cpp" line="392"/>
+        <location filename="../indicator/agent.cpp" line="404"/>
         <source>Program crashed</source>
         <translation>Программа упала</translation>
     </message>
     <message>
-        <location filename="../indicator/agent.cpp" line="394"/>
+        <location filename="../indicator/agent.cpp" line="406"/>
         <source>Execution of program failed</source>
         <translation>Не удалось выполнить программу</translation>
     </message>
     <message>
-        <location filename="../indicator/agent.cpp" line="402"/>
+        <location filename="../indicator/agent.cpp" line="414"/>
         <source>child was exited with code %1</source>
         <translation>дочерний процесс завершился с кодом %1</translation>
     </message>
