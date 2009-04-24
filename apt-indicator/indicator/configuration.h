@@ -16,7 +16,8 @@ class Configuration: public QObject
 {
 Q_OBJECT
 public:
-	enum Param { CheckInterval, UpgraderCommand, ShowBroken, IgnoreAptErrors, Autostart, PopupTray };
+	enum Param { CheckInterval, UpgraderProfile, ShowBroken, IgnoreAptErrors, Autostart, PopupTray };
+	enum Cmd { CmdUpgrader = 0, CmdRepos = 1 };
 
 	Configuration(QObject *);
 	~Configuration();
@@ -25,6 +26,7 @@ public:
 	void save();
 
 	void showDialog();
+	QString commandUprader(Cmd);
 
 	QString getString(Param);
 	bool getBool(Param);
@@ -45,7 +47,7 @@ private:
 
 	QMap<int,int> iperiods;
 
-	QString upgrader_command_;
+	QString upgrader_profile_;
 	int check_interval_;
 	bool show_broken_;
 	bool ignore_apt_errors_;

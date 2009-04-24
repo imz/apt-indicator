@@ -12,7 +12,7 @@ License: GPL
 #define PROGRAM_NAME "APT Indicator" /**< name of the program */
 #define PROGRAM_PKG_NAME "apt-indicator" /**< internal name of the program */
 #define DATADIR "/usr/share/apt-indicator" /**< default data dir */
-#define DEF_UPGRADER "synaptic --update-at-startup --dist-upgrade-mode --non-interactive:/usr/bin/synaptic;" /**< default system updating program */
+#define DEF_UPGRADER "synaptic --update-at-startup --dist-upgrade-mode --non-interactive:synaptic -r:/usr/bin/synaptic;" /**< default system updating program */
 
 #ifndef NDEBUG
 #define DEF_CHECK_INTERVAL 30 /**< default interval between checkings */

@@ -36,7 +36,7 @@ void Configuration::load()
     QSettings cfg(QSettings::IniFormat, QSettings::UserScope, "ALT_Linux", PROGRAM_PKG_NAME, this);
     cfg.setFallbacksEnabled(false);
     //cfg_.beginGroup("");
-    setParam(UpgraderCommand,    cfg.value("upgrader_command", DEF_UPGRADER).toString());
+    setParam(UpgraderProfile,    cfg.value("upgrader_profile", DEF_UPGRADER).toString());
     setParam(CheckInterval,   cfg.value("check_interval", DEF_CHECK_INTERVAL).toInt());
     setParam(ShowBroken,      cfg.value("show_broken", false).toBool());
     setParam(IgnoreAptErrors, cfg.value("ignore_apt_errors", false).toBool());
@@ -49,7 +49,7 @@ void Configuration::save()
     QSettings cfg(QSettings::IniFormat, QSettings::UserScope, "ALT_Linux", PROGRAM_PKG_NAME, this);
     cfg.setFallbacksEnabled(false);
     //cfg_.beginGroup("");
-    cfg.setValue("upgrader_command", getString(UpgraderCommand));
+    cfg.setValue("upgrader_profile", getString(UpgraderProfile));
     cfg.setValue("check_interval", getInt(CheckInterval));
     cfg.setValue("show_broken", getBool(ShowBroken));
     cfg.setValue("ignore_apt_errors", getBool(IgnoreAptErrors));
@@ -62,7 +62,7 @@ bool Configuration::setParam(Param param, const QString &value)
     bool changed = false;
     switch(param)
     {
-	case UpgraderCommand: { changed = getString(param) != value; upgrader_command_ = value; break; }
+	case UpgraderProfile: { changed = getString(param) != value; upgrader_profile_ = value; break; }
 	default: { changed = false; break; }
     }
     return changed;
@@ -97,8 +97,8 @@ QString Configuration::getString(Param param)
 {
     switch(param)
     {
-	case UpgraderCommand:
-	    return upgrader_command_;
+	case UpgraderProfile:
+	    return upgrader_profile_;
 	default:
 	    { qDebug("Configuration::getString(unknown)"); break; }
     }
@@ -166,7 +166,7 @@ void Configuration::showDialog()
 
 	cfgDlg.ui.timesSpinBox->setValue(per.time_);
 	cfgDlg.ui.periodComboBox->setCurrentIndex(per.period_);
-	cfgDlg.ui.pathLineEdit->setText(getString(UpgraderCommand));
+	cfgDlg.ui.pathLineEdit->setText(getString(UpgraderProfile));
 	cfgDlg.ui.showBrokenCheck->setChecked(getBool(ShowBroken));
 	cfgDlg.ui.ignoreErrors->setChecked(getBool(IgnoreAptErrors));
 	cfgDlg.ui.autostartCheck->setChecked(getBool(Autostart));
@@ -179,7 +179,7 @@ void Configuration::showDialog()
 	    per_new.period_ = cfgDlg.ui.periodComboBox->currentIndex();
 	    int chk_interval = toInterval(per_new);
 	    bool changed = false;
-	    changed = setParam(UpgraderCommand,    cfgDlg.ui.pathLineEdit->text()) || changed;
+	    changed = setParam(UpgraderProfile,    cfgDlg.ui.pathLineEdit->text()) || changed;
 	    changed = setParam(CheckInterval,   chk_interval) || changed;
 	    changed = setParam(ShowBroken,      cfgDlg.ui.showBrokenCheck->isChecked()) || changed;
 	    changed = setParam(IgnoreAptErrors, cfgDlg.ui.ignoreErrors->isChecked()) || changed;
@@ -187,5 +187,40 @@ void Configuration::showDialog()
 	    changed = setParam(PopupTray,       cfgDlg.ui.popupTrayCheck->isChecked()) || changed;
 	    if( changed )
 		save();
+	}
+}
+
+void Configuration::checkFilesExists(const QString &filepaths)
+{
+    QStringList check_paths = filepaths.split(",", QString::SkipEmptyParts);
+    foreach(QString path,check_paths)
+    {
+	QFileInfo finfo(path);
+	if(!finfo.exists())
+	    return false;
+    }
+    return true;
+}
+
+QString Configuration::commandUprader(Cmd cmd)
+{
+	QString command;
+	QStringList entries = getString(Configuration::UpgraderProfile).split(";", QString::SkipEmptyParts);
+	foreach(QString entry, entries)
+	{
+	    QStringList entry_paths = entry.split(":", QString::KeepEmptyParts);
+	    if( entry_paths.size() == 3 && !entry_paths[0].isEmpty() && !entry_paths[1].isEmpty() )
+	    {
+		bool check_exists = true;
+		QStringList check_paths = entry_paths[2].split(",", QString::SkipEmptyParts);
+		foreach(QString path,check_paths)
+		{
+		    QFileInfo finfo(path);
+		    if(!finfo.exists())
+			check_exists = false;
+		}
+		if( check_exists )
+		    return entry_paths[cmd];
+	    }
 	}
 }
