@@ -46,6 +46,7 @@ Agent::Agent( QObject *parent, const char *name , const QString &homedir, bool a
 	menu_->addAction( tr("D&etailed info..."), this, SLOT(doInfo()));
 	menu_->addSeparator();
 	menu_->addAction( tr("&Settings..."), this, SLOT(doConfigure()));
+	menu_->addAction( tr("&Repository settings..."), this, SLOT(doConfigureRepos()));
 	menu_->addSeparator();
 	menu_->addAction( tr("&Help"), this, SLOT(helpBrowser()));
 	menu_->addAction( tr("&About"), this, SLOT(aboutProgram()));
@@ -146,7 +147,7 @@ void Agent::doRun()
 
 	if (!upgrader_proc)
 	{
-		QStringList arguments(cfg_->commandUprader(CmdUpgrader).split(" ", QString::SkipEmptyParts));
+		QStringList arguments(cfg_->commandUprader(Configuration::CmdUpgrader).split(" ", QString::SkipEmptyParts));
 		QString program;
 		if( arguments.size() >= 1 )
 		    program = arguments.takeAt(0);
@@ -169,6 +170,17 @@ void Agent::doConfigure()
 {
 	cfg_->showDialog(); //run dialog
 	timer_.setInterval(cfg_->getInt(Configuration::CheckInterval)*1000); //then update change interval
+}
+
+void Agent::doConfigureRepos()
+{
+	QString command = cfg_->commandUprader(Configuration::CmdRepos);
+	QStringList arguments(command.split(" ", QString::SkipEmptyParts));
+	QString program;
+	if( arguments.size() >= 1 )
+	    program = arguments.takeAt(0);
+	if( !QProcess::startDetached(program, arguments) )
+	    QMessageBox::critical(0,tr("Repositories configuration"),  tr("Failed to start \"%1\"").arg(command), QMessageBox::Ok, Qt::NoButton);
 }
 
 void Agent::doCheck()

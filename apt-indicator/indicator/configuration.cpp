@@ -5,6 +5,8 @@ Sergey V Turchin <zerg@altlinux.org>
 License: GPL
 */
 
+#include <QFile>
+
 #include "configuration.h"
 #include "config_dialog.h"
 #include "config.h"
@@ -190,18 +192,6 @@ void Configuration::showDialog()
 	}
 }
 
-void Configuration::checkFilesExists(const QString &filepaths)
-{
-    QStringList check_paths = filepaths.split(",", QString::SkipEmptyParts);
-    foreach(QString path,check_paths)
-    {
-	QFileInfo finfo(path);
-	if(!finfo.exists())
-	    return false;
-    }
-    return true;
-}
-
 QString Configuration::commandUprader(Cmd cmd)
 {
 	QString command;
@@ -215,12 +205,12 @@ QString Configuration::commandUprader(Cmd cmd)
 		QStringList check_paths = entry_paths[2].split(",", QString::SkipEmptyParts);
 		foreach(QString path,check_paths)
 		{
-		    QFileInfo finfo(path);
-		    if(!finfo.exists())
+		    if(!QFile::exists(path))
 			check_exists = false;
 		}
 		if( check_exists )
-		    return entry_paths[cmd];
+		    command = entry_paths[cmd];
 	    }
 	}
+	return command;
 }
