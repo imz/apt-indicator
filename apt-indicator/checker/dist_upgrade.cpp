@@ -275,10 +275,10 @@ void DistUpgrade::dist_upgrade()
 
 	if (Cache->InstCount() != 0 || Cache->DelCount() != 0)
 	{ //we have some programs for upgrade
-		QString to_remove;
-		QString to_upgrade;
-		QString to_install;
-		QString broken;
+		QStringList lst_remove;
+		QStringList lst_upgrade;
+		QStringList lst_install;
+		QStringList lst_broken;
 
 		status_ = Danger; //we need upgrade
 
@@ -287,52 +287,48 @@ void DistUpgrade::dist_upgrade()
 
 			if (show_broken_ && (Cache[I].NowBroken() || Cache[I].InstBroken()))
 			{
-				broken += I.Name();
-				broken += " ";
+				lst_broken << I.Name();
 			}
 
 			//see details
 			if (Cache[I].Delete() == true)
 			{
-				to_remove += I.Name();
-				to_remove += " ";
+				lst_remove << I.Name();
 			}
 			if (Cache[I].NewInstall() == true)
 			{
-				to_install += I.Name();
-				to_install += " ";
+				lst_install << I.Name();
 			}
 
 			if (Cache[I].Upgrade() == true && Cache[I].NewInstall() == false)
 			{
-				to_upgrade += I.Name();
-				to_upgrade += " ";
+				lst_upgrade << I.Name();
 			}
 		}
-		if (!to_remove.isEmpty())
-		{
-			result_ += tr("\n<font color='red'><b>Following packages will be removed:</b></font><br/>\n");
-			result_ += to_remove;
-			result_ += "<br/>";
-		}
-		if (!to_install.isEmpty())
-		{
-			result_ += tr("\n<b>Following packages will be installed:</b><br/>\n");
-			result_ += to_install;
-			result_ += "<br/>";
-		}
-		if (show_broken_ && !broken.isEmpty())
+		if (show_broken_ && !lst_broken.isEmpty())
 		{
 			result_ += tr("<b>Following packages have unmet dependencies:</b><br/>\n");
-			result_ += broken;
+			result_ += lst_broken.join(" ");
 			result_ += "<br/>";
 			status_ = Problem;
 			return ;
 		}
-		if (!to_upgrade.isEmpty())
+		if (!lst_remove.isEmpty())
+		{
+			result_ += tr("\n<font color='red'><b>Following packages will be removed:</b></font><br/>\n");
+			result_ += lst_remove.join(" ");
+			result_ += "<br/>";
+		}
+		if (!lst_install.isEmpty())
+		{
+			result_ += tr("\n<b>Following packages will be installed:</b><br/>\n");
+			result_ += lst_install.join(" ");
+			result_ += "<br/>";
+		}
+		if (!lst_upgrade.isEmpty())
 		{
 			result_ += tr("\n<b>Following packages will be upgraded:</b><br/>\n");
-			result_ += to_upgrade;
+			result_ += lst_upgrade.join(" ");
 			result_ += "<br/>";
 		}
 	}
