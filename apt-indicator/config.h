@@ -9,8 +9,10 @@ License: GPL
 
 #define VERSION "0.1.7"
 
-#define PROGRAM_NAME "APT Indicator" /**< name of the program */
-#define PROGRAM_PKG_NAME "apt-indicator" /**< internal name of the program */
+#define PROGRAM_NAME "APT-Indicator" /**< name of the program */
+#define ORGANISATION_NAME "ALT Linux" /**< name of the organisation */
+#define ORGANISATION_DOMAIN "altlinux.org" /**< name of the organisation domain */
+
 #define DATADIR "/usr/share/apt-indicator" /**< default data dir */
 #define DEF_UPGRADER "synaptic --update-at-startup --dist-upgrade-mode --non-interactive:synaptic -r:/usr/bin/synaptic;" /**< default system updating program */
 

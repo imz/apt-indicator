@@ -35,7 +35,7 @@ Configuration::~Configuration()
 
 void Configuration::load()
 {
-    QSettings cfg(QSettings::IniFormat, QSettings::UserScope, "ALT_Linux", PROGRAM_PKG_NAME, this);
+    QSettings cfg(this);
     cfg.setFallbacksEnabled(false);
     //cfg_.beginGroup("");
     setParam(UpgraderProfile,    cfg.value("upgrader_profile", DEF_UPGRADER).toString());
@@ -48,7 +48,7 @@ void Configuration::load()
 
 void Configuration::save()
 {
-    QSettings cfg(QSettings::IniFormat, QSettings::UserScope, "ALT_Linux", PROGRAM_PKG_NAME, this);
+    QSettings cfg(this);
     cfg.setFallbacksEnabled(false);
     //cfg_.beginGroup("");
     cfg.setValue("upgrader_profile", getString(UpgraderProfile));

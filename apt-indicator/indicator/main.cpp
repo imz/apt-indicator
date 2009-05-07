@@ -13,6 +13,7 @@ License: GPL
 #include <QLibraryInfo>
 #include <QDebug>
 #include <QTextStream>
+#include <QDir>
 
 #include "agent.h"
 #include "../config.h"
@@ -87,6 +88,12 @@ int main( int argc, char **argv )
 	app.installTranslator( &qt_translator );
 	app.installTranslator( &translator );
 
+	QCoreApplication::setApplicationName(PROGRAM_NAME);
+	if(QString(ORGANISATION_DOMAIN).isEmpty())
+	    QCoreApplication::setOrganizationName(ORGANISATION_NAME);
+	else
+	    QCoreApplication::setOrganizationDomain(ORGANISATION_DOMAIN);
+	QSettings::setPath(QSettings::IniFormat, QSettings::UserScope, QDir::homePath()+"/.config");
 	Agent agent(0, PROGRAM_NAME, QString(getenv("HOME")), autostart );
 
 	return app.exec();
