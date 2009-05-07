@@ -10,6 +10,7 @@ License: GPL
 #define VERSION "0.1.7"
 
 #define PROGRAM_NAME "APT-Indicator" /**< name of the program */
+#define PROGRAM_NAME_BIN "apt-indicator" /**< binary name of the program */
 #define ORGANISATION_NAME "ALT Linux" /**< name of the organisation */
 #define ORGANISATION_DOMAIN "altlinux.org" /**< name of the organisation domain */
 

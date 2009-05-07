@@ -95,8 +95,6 @@ int main( int argc, char **argv )
 	}
     }
     if( startup_agent )
-    {
-        fprintf(stderr, "STARTUP AGENT\n");
-    }
+        execvp(PROGRAM_NAME_BIN"-agent");
     return 0;
 }
