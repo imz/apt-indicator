@@ -20,7 +20,7 @@ void usage(FILE *out)
     fprintf(out, " made notifications for users that newer packages are available\n");
     fprintf(out, "  -h, --help             display help screen\n");
     fprintf(out, "  -v, --version          display version information\n");
-    fprintf(out, "  -a, --autostart	       for running by Window Manager's autostart\n\n");
+    fprintf(out, "  -a, --autostart        for running by Window Manager's autostart\n\n");
     fprintf(out, "Report bugs to http://bugzilla.altlinux.ru\n");
 }
 
