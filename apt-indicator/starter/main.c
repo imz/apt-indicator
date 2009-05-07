@@ -81,8 +81,10 @@ int main( int argc, char **argv )
 	{
 	    while( !feof(cfg) )
 	    {
-		char buffer[1024];
-		char *line = fgets(buffer, 1024, cfg);
+		char buffer[512];
+		char *line;
+		memset(buffer, '\0', 512);
+		line = fgets(buffer, 511, cfg);
 		if( line )
 		{
 		    if( strncmp("autostart=false", line, 14) == 0)
