@@ -8,6 +8,8 @@ License: GPL
 #include <stdio.h>
 #include <getopt.h>
 #include <limits.h>
+#include <string.h>
+#include <stdlib.h>
 
 #include "../config.h"
 
@@ -29,6 +31,7 @@ int main( int argc, char **argv )
 {
 
 	int autostart = 0; /* run under autostart */
+	int startup_agent = 1;
 
 	/* process args */
 	while (1)
@@ -65,8 +68,33 @@ int main( int argc, char **argv )
 
     if( autostart )
     {
+	FILE *cfg;
 	char cfg_path[PATH_MAX];
+	strcat(cfg_path, getenv("HOME"));
+	strcat(cfg_path, "/.config/");
+	strcat(cfg_path, ORGANISATION_DOMAIN);
+	strcat(cfg_path, "/");
+	strcat(cfg_path, PROGRAM_NAME);
+	strcat(cfg_path, ".conf");
+	cfg = fopen(cfg_path, "r");
+	if( cfg )
+	{
+	    while( !feof(cfg) )
+	    {
+		char buffer[1024];
+		char *line = fgets(buffer, 1024, cfg);
+		if( line )
+		{
+		    if( strncmp("autostart=false", line, 14) == 0)
+			startup_agent = 0;
+		}
+	    }
+	    fclose(cfg);
+	}
     }
-
-	return 0;
+    if( startup_agent )
+    {
+        fprintf(stderr, "STARTUP AGENT\n");
+    }
+    return 0;
 }
