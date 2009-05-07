@@ -15,7 +15,7 @@ License: GPL
 #include <QLocale>
 
 #include "agent.h"
-#include "config.h"
+#include "../config.h"
 
 #include "help_browser.h"
 #include "info_window.h"

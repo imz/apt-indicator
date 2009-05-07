@@ -27,7 +27,7 @@ License: GPL
 #include <QTextStream>
 
 #include "dist_upgrade.h"
-#include "../indicator/config.h"
+#include "../config.h"
 
 #define DIST_UPGRADE_ASSERT(expr) \
 if ( (expr) ) \

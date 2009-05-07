@@ -13,7 +13,7 @@ UI_DIR = .uic
 SOURCES = main.cpp
 SOURCES += checker.cpp dist_upgrade.cpp
 
-HEADERS = ../indicator/config.h
+HEADERS = ../config.h
 HEADERS += checker.h dist_upgrade.h
 
 DATA = $$TARGET.pro

@@ -15,7 +15,7 @@ License: GPL
 #include <QTextStream>
 
 #include "agent.h"
-#include "config.h"
+#include "../config.h"
 
 extern const char *__progname;
 

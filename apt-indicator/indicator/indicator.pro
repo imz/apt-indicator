@@ -14,7 +14,7 @@ SOURCES = main.cpp
 SOURCES += agent.cpp configuration.cpp help_browser.cpp config_dialog.cpp
 SOURCES += info_window.cpp
 
-HEADERS = config.h
+HEADERS = ../config.h
 HEADERS += agent.h configuration.h help_browser.h config_dialog.h
 HEADERS += info_window.h
 

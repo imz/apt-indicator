@@ -4,7 +4,7 @@
 #include <QTextStream>
 #include <QStringList>
 
-#include "../indicator/config.h"
+#include "../config.h"
 #include "checker.h"
 
 Checker::Checker(QObject *parent):

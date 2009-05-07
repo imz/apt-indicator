@@ -12,7 +12,7 @@ License: GPL
 #include <QLocale>
 #include <QTranslator>
 
-#include "../indicator/config.h"
+#include "../config.h"
 #include "checker.h"
 
 int main( int argc, char **argv )

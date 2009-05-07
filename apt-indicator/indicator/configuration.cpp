@@ -9,7 +9,7 @@ License: GPL
 
 #include "configuration.h"
 #include "config_dialog.h"
-#include "config.h"
+#include "../config.h"
 
 Configuration::Configuration(QObject *parent):
     QObject(parent)

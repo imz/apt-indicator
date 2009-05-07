@@ -27,4 +27,7 @@ License: GPL
 #define EVENT_END_UPGRADE  1001
 #define EVENT_END_RUN  1002
 
+#define EXIT_SUCCESS 0
+#define EXIT_FAILURE 1
+
 #endif

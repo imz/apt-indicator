@@ -1,1 +1,1 @@
-apt-indicator/indicator/config.h
+apt-indicator/config.h
