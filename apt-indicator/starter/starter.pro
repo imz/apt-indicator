@@ -1,5 +1,5 @@
 
-TARGET=../apt-indicator-starter
+TARGET=../apt-indicator
 TEMPLATE = app
 QT -= gui core
 QMAKE_CFLAGS += -pedantic $(RPM_OPT_FLAGS)

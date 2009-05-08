@@ -20,12 +20,11 @@ License: GPL
 #include "help_browser.h"
 #include "info_window.h"
 
-Agent::Agent( QObject *parent, const char *name , const QString &homedir, bool autostart ):
+Agent::Agent( QObject *parent, const char *name , const QString &homedir):
 		QObject(parent),
 		homedir_(homedir),
 		cfg_(),
 		timer_(),
-		autostart_(autostart),
 		checker_proc(0),
 		upgrader_proc(0)
 {
@@ -54,7 +53,8 @@ Agent::Agent( QObject *parent, const char *name , const QString &homedir, bool a
 	menu_->addAction( tr("&Quit"), this, SLOT(exitProgram()));
 	tray_icon_->setContextMenu(menu_);
 
-	QTimer::singleShot(0, this, SLOT(startProgram()));
+	connect( &timer_, SIGNAL( timeout() ), this, SLOT( doCheck() ) );
+	timer_.start( CHECK_INTERVAL_FIRST*1000 );
 }
 
 Agent::~Agent()
@@ -65,20 +65,6 @@ Agent::~Agent()
         checker_proc->terminate();
     }
 }
-
-void Agent::startProgram()
-{
-	if (autostart_ && !cfg_->getBool(Configuration::Autostart))
-	{
-		QCoreApplication::quit();
-		return;
-	}
-
-	//connect timer with update method
-	connect( &timer_, SIGNAL( timeout() ), this, SLOT( doCheck() ) );
-	timer_.start( CHECK_INTERVAL_FIRST*1000 );
-}
-
 
 void Agent::doInfo()
 {

@@ -43,7 +43,7 @@ int main( int argc, char **argv )
 	else
 	    QCoreApplication::setOrganizationDomain(ORGANISATION_DOMAIN);
 	QSettings::setPath(QSettings::IniFormat, QSettings::UserScope, QDir::homePath()+"/.config");
-	Agent agent(0, PROGRAM_NAME, QString(getenv("HOME")), autostart );
+	Agent agent(0, PROGRAM_NAME, QString(getenv("HOME")));
 
 	return app.exec();
 }

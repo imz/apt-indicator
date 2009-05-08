@@ -1,2 +1,2 @@
-SUBDIRS += indicator checker
+SUBDIRS += starter agent checker
 TEMPLATE = subdirs

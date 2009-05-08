@@ -26,11 +26,10 @@ public:
 	enum UpgradeStatus {Nothing, Working, Normal, Danger, Problem, TryAgain};
 
 	explicit
-	Agent( QObject *parent = 0, const char *name = 0, const QString &homedir = "", bool autostart = false);
+	Agent( QObject *parent = 0, const char *name = 0, const QString &homedir = "");
 	~Agent();
 
 private slots:
-	void startProgram();
 	void helpBrowser();
 	void aboutProgram();
 	void exitProgram();

@@ -1,5 +1,5 @@
 
-TARGET=../apt-indicator
+TARGET=../apt-indicator-agent
 TEMPLATE = app
 QT += network
 QMAKE_CXXFLAGS += -pedantic $(RPM_OPT_FLAGS)
