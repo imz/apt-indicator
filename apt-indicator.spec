@@ -1,5 +1,5 @@
 Name: apt-indicator
-Version: 0.1.7
+Version: 0.1.8
 Release: alt1
 
 Summary: Applet for indication that newer packages are available
@@ -36,7 +36,7 @@ qmake-qt4 apt-indicator.pro
 %make 
 %make -C doc
 lrelease-qt4 checker/checker.pro
-lrelease-qt4 indicator/indicator.pro
+lrelease-qt4 agent/agent.pro
 help2man --output=apt-indicator.1 --no-info apt-indicator ||:
 
 %install
@@ -72,6 +72,9 @@ install -m644 pixmaps/* %buildroot/%_datadir/%name/pixmaps
 %_sysconfdir/xdg/autostart/apt-indicator.desktop
 
 %changelog
+* Fri May 08 2009 Sergey V Turchin <zerg at altlinux dot org> 0.1.8-alt1
+- move agent to separate process to facilitate autostart
+
 * Fri Apr 24 2009 Sergey V Turchin <zerg at altlinux dot org> 0.1.7-alt1
 - allow to start repositories configurator
 - minor usability improvements
