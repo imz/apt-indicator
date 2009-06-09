@@ -450,6 +450,7 @@ void Agent::onSleepHide()
 
 void Agent::onUnixSignal(int sig)
 {
+    //qDebug("Agent::onUnixSignal<%d>", sig);
     switch(sig)
     {
 	case SIGUSR1:

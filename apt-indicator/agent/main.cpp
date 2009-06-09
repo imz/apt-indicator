@@ -78,8 +78,8 @@ int main( int argc, char **argv )
 
 	Q_INIT_RESOURCE(pixmaps);
 	QApplication app( argc, argv );
-	app.watchUnixSignal(SIGUSR1, true);
 	app.setQuitOnLastWindowClosed(false);
+	app.watchUnixSignal(SIGUSR1, true);
 
 	QTranslator translator(&app);
 	QTranslator qt_translator(&app);
@@ -100,7 +100,7 @@ int main( int argc, char **argv )
 	    QCoreApplication::setOrganizationDomain(ORGANISATION_DOMAIN);
 	QSettings::setPath(QSettings::IniFormat, QSettings::UserScope, QDir::homePath()+"/.config");
 	Agent agent(0, PROGRAM_NAME, QString(getenv("HOME")));
-	agent.connect(QCoreApplication::instance(), SIGNAL(unixSignal(int)), &agent, SLOT(onUnixSignal(int)));
+	QObject::connect(QCoreApplication::instance(), SIGNAL(unixSignal(int)), &agent, SLOT(onUnixSignal(int)));
 
 	ret = app.exec();
     }
