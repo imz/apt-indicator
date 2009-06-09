@@ -5,6 +5,8 @@ Sergey V Turchin <zerg@altlinux.org>
 License: GPL
 */
 
+#include <sys/wait.h>
+
 #include <QMessageBox>
 #include <QTextCodec>
 #include <QImage>
@@ -443,5 +445,19 @@ void Agent::onSleepHide()
 	status_ = Nothing;
 	setTrayIcon();
 	tray_icon_->setVisible(false);
+    }
+}
+
+void Agent::onUnixSignal(int sig)
+{
+    switch(sig)
+    {
+	case SIGUSR1:
+	    {
+		tray_icon_->setVisible(true);
+		break;
+	    }
+	default:
+	    break;
     }
 }
