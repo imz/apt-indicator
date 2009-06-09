@@ -7,8 +7,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>473</width>
-    <height>412</height>
+    <width>457</width>
+    <height>434</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -142,6 +142,13 @@
           <widget class="QCheckBox" name="popupTrayCheck">
            <property name="text">
             <string>Popup system tray messages</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QCheckBox" name="hideWhenSleepCheck">
+           <property name="text">
+            <string>Hide system tray icon when do nothing</string>
            </property>
           </widget>
          </item>

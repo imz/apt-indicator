@@ -1,5 +1,5 @@
 Name: apt-indicator
-Version: 0.1.8
+Version: 0.1.9
 Release: alt1
 
 Summary: Applet for indication that newer packages are available
@@ -72,6 +72,9 @@ install -m644 pixmaps/* %buildroot/%_datadir/%name/pixmaps
 %_sysconfdir/xdg/autostart/apt-indicator.desktop
 
 %changelog
+* Tue Jun 09 2009 Sergey V Turchin <zerg at altlinux dot org> 0.1.9-alt1
+- hide system tray icon when do nothing
+
 * Fri May 08 2009 Sergey V Turchin <zerg at altlinux dot org> 0.1.8-alt1
 - move agent to separate process to facilitate autostart
 

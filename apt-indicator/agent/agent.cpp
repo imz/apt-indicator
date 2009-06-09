@@ -35,7 +35,7 @@ Agent::Agent( QObject *parent, const char *name , const QString &homedir):
 	cfg_ = new Configuration(this);
 	tray_icon_ = new QSystemTrayIcon(this);
 	setTrayIcon();
-	tray_icon_->show();
+	tray_icon_->setVisible(true);
 	connect(tray_icon_, SIGNAL(activated(QSystemTrayIcon::ActivationReason)), this, SLOT(onActivateSysTray(QSystemTrayIcon::ActivationReason)));
 	connect(tray_icon_, SIGNAL(messageClicked()), this, SLOT(onClickTrayMessage()));
 
@@ -281,6 +281,7 @@ void Agent::setTrayIcon()
 		tip = tr("Unknown status");
 	};
 
+
 	QPixmap pix;
 	if (!pix.load(iconname))
 	{
@@ -290,6 +291,8 @@ void Agent::setTrayIcon()
 		QCoreApplication::quit();
 	}
 
+	if( status_ != Nothing )
+	    tray_icon_->setVisible(true);
 	tray_icon_->setIcon(pix);
 	tray_icon_->setToolTip(tip);
 }
@@ -343,6 +346,12 @@ void Agent::onCheckerOutput()
 	    setTrayIcon();
 	    switch(status_)
 	    {
+		case Normal:
+		{
+		    if( cfg_->getInt(Configuration::CheckInterval) > 300 )
+			QTimer::singleShot(300000, this, SLOT(onSleepHide()));
+		    break;
+		}
 		case Danger:
 		{
 		    if( cfg_->getBool(Configuration::PopupTray) )
@@ -424,5 +433,15 @@ void Agent::onClickTrayMessage()
 	}
 	default:
 	    break;
+    }
+}
+
+void Agent::onSleepHide()
+{
+    if( status_ == Normal && cfg_->getBool(Configuration::HideWhenSleep) )
+    {
+	status_ = Nothing;
+	setTrayIcon();
+	tray_icon_->setVisible(false);
     }
 }

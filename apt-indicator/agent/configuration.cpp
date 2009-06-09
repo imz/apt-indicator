@@ -17,7 +17,9 @@ Configuration::Configuration(QObject *parent):
     check_interval_ = 0;
     show_broken_ = false;
     ignore_apt_errors_ = false;
-    autostart_ = false;
+    autostart_ = true;
+    popup_tray_ = true;
+    hide_when_sleep_ = true;
 
     iperiods[0] = 1;
     iperiods[1] = 60;
@@ -44,6 +46,7 @@ void Configuration::load()
     setParam(IgnoreAptErrors, cfg.value("ignore_apt_errors", false).toBool());
     setParam(Autostart,       cfg.value("autostart", true).toBool());
     setParam(PopupTray,       cfg.value("popup_systray", true).toBool());
+    setParam(HideWhenSleep,   cfg.value("hide_when_sleep", true).toBool());
 }
 
 void Configuration::save()
@@ -57,6 +60,7 @@ void Configuration::save()
     cfg.setValue("ignore_apt_errors", getBool(IgnoreAptErrors));
     cfg.setValue("autostart", getBool(Autostart));
     cfg.setValue("popup_systray", getBool(PopupTray));
+    cfg.setValue("hide_when_sleep", getBool(HideWhenSleep));
 }
 
 bool Configuration::setParam(Param param, const QString &value)
@@ -79,6 +83,7 @@ bool Configuration::setParam(Param param, bool value)
 	case IgnoreAptErrors: { changed = getBool(param) != value; ignore_apt_errors_ = value; break; }
 	case Autostart: { changed = getBool(param) != value; autostart_ = value; break; }
 	case PopupTray: { changed = getBool(param) != value; popup_tray_ = value; break; }
+	case HideWhenSleep: { changed = getBool(param) != value; hide_when_sleep_ = value; break; }
 	default: { changed = false; break; }
     }
     return changed;
@@ -131,6 +136,8 @@ bool Configuration::getBool(Param param)
 	    return autostart_;
 	case PopupTray:
 	    return popup_tray_;
+	case HideWhenSleep:
+	    return hide_when_sleep_;
 	default:
 	    { qDebug("Configuration::getBool(unknown)"); break; }
     }
@@ -173,6 +180,7 @@ void Configuration::showDialog()
 	cfgDlg.ui.ignoreErrors->setChecked(getBool(IgnoreAptErrors));
 	cfgDlg.ui.autostartCheck->setChecked(getBool(Autostart));
 	cfgDlg.ui.popupTrayCheck->setChecked(getBool(PopupTray));
+	cfgDlg.ui.hideWhenSleepCheck->setChecked(getBool(HideWhenSleep));
 
 	if ( cfgDlg.exec() == QDialog::Accepted )
 	{
@@ -187,6 +195,7 @@ void Configuration::showDialog()
 	    changed = setParam(IgnoreAptErrors, cfgDlg.ui.ignoreErrors->isChecked()) || changed;
 	    changed = setParam(Autostart,       cfgDlg.ui.autostartCheck->isChecked()) || changed;
 	    changed = setParam(PopupTray,       cfgDlg.ui.popupTrayCheck->isChecked()) || changed;
+	    changed = setParam(HideWhenSleep,       cfgDlg.ui.hideWhenSleepCheck->isChecked()) || changed;
 	    if( changed )
 		save();
 	}

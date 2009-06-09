@@ -45,6 +45,7 @@ private slots:
 	void onCheckerEnd(int, QProcess::ExitStatus);
 	void onCheckerEndError(QProcess::ProcessError);
 	void onCheckerOutput();
+	void onSleepHide();
 
 private:
 	void setTrayIcon();

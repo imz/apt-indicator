@@ -27,40 +27,58 @@
         <translation type="obsolete">&amp;Налаштування...</translation>
     </message>
     <message>
+        <location filename="../agent/agent.cpp" line="44"/>
         <source>Chec&amp;k for updates</source>
-        <translation type="obsolete">П&amp;еревірити поновлення</translation>
+        <translation type="unfinished">П&amp;еревірити поновлення</translation>
     </message>
     <message>
+        <location filename="../agent/agent.cpp" line="48"/>
+        <source>&amp;Repository settings...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../agent/agent.cpp" line="51"/>
         <source>&amp;About</source>
-        <translation type="obsolete">Пр&amp;о програму</translation>
+        <translation type="unfinished">Пр&amp;о програму</translation>
     </message>
     <message>
+        <location filename="../agent/agent.cpp" line="53"/>
         <source>&amp;Quit</source>
-        <translation type="obsolete">&amp;Вихід</translation>
+        <translation type="unfinished">&amp;Вихід</translation>
     </message>
     <message>
+        <location filename="../agent/agent.cpp" line="43"/>
         <source>&amp;Upgrade...</source>
-        <translation type="obsolete">&amp;Поновити...</translation>
+        <translation type="unfinished">&amp;Поновити...</translation>
     </message>
     <message>
+        <location filename="../agent/agent.cpp" line="45"/>
         <source>D&amp;etailed info...</source>
-        <translation type="obsolete">Де&amp;тальніше...</translation>
+        <translation type="unfinished">Де&amp;тальніше...</translation>
     </message>
     <message>
+        <location filename="../agent/agent.cpp" line="88"/>
+        <source>Report at %1 %2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../agent/agent.cpp" line="97"/>
         <source>Nothing to update...</source>
-        <translation type="obsolete">Нема поновлень...</translation>
+        <translation type="unfinished">Нема поновлень...</translation>
     </message>
     <message>
         <source>Updating in progress...</source>
         <translation type="obsolete">Виконується поновлення...</translation>
     </message>
     <message>
+        <location filename="../agent/agent.cpp" line="103"/>
         <source>No status info available</source>
-        <translation type="obsolete">Немає інформації про статус</translation>
+        <translation type="unfinished">Немає інформації про статус</translation>
     </message>
     <message>
+        <location filename="../agent/agent.cpp" line="124"/>
         <source>Program already running</source>
-        <translation type="obsolete">Програму вже запущено</translation>
+        <translation type="unfinished">Програму вже запущено</translation>
     </message>
     <message>
         <source>Should </source>
@@ -73,36 +91,44 @@ when you login?</source>
 при вході в систему?</translation>
     </message>
     <message>
+        <location filename="../agent/agent.cpp" line="265"/>
+        <location filename="../agent/agent.cpp" line="358"/>
         <source>There are updates for your system available...</source>
-        <translation type="obsolete">Наявні поновлення для вашої системи...</translation>
+        <translation type="unfinished">Наявні поновлення для вашої системи...</translation>
     </message>
     <message>
+        <location filename="../agent/agent.cpp" line="269"/>
         <source>Nothing to update</source>
-        <translation type="obsolete">Нема поновлень</translation>
+        <translation type="unfinished">Нема поновлень</translation>
     </message>
     <message>
+        <location filename="../agent/agent.cpp" line="273"/>
         <source>Problems with Dist-Upgrade</source>
-        <translation type="obsolete">Помилки протягом dist-upgrade</translation>
+        <translation type="unfinished">Помилки протягом dist-upgrade</translation>
     </message>
     <message>
+        <location filename="../agent/agent.cpp" line="277"/>
         <source>Working...</source>
-        <translation type="obsolete">Працюю...</translation>
+        <translation type="unfinished">Працюю...</translation>
     </message>
     <message>
+        <location filename="../agent/agent.cpp" line="281"/>
         <source>Unknown status</source>
-        <translation type="obsolete">Невідомий статус</translation>
+        <translation type="unfinished">Невідомий статус</translation>
     </message>
     <message>
+        <location filename="../agent/agent.cpp" line="289"/>
         <source>Could not load the icon file %1</source>
-        <translation type="obsolete">Не можу завантажити файл піктограми %1</translation>
+        <translation type="unfinished">Не можу завантажити файл піктограми %1</translation>
     </message>
     <message>
         <source>Unknown custom event type: %1</source>
         <translation type="obsolete">Невідомий тип події: %1</translation>
     </message>
     <message>
+        <location filename="../agent/agent.cpp" line="50"/>
         <source>&amp;Help</source>
-        <translation type="obsolete">&amp;Довідка</translation>
+        <translation type="unfinished">&amp;Довідка</translation>
     </message>
     <message>
         <source>Ok</source>
@@ -133,16 +159,86 @@ when you login?</source>
         <translation type="obsolete">Звіт на</translation>
     </message>
     <message>
+        <location filename="../agent/agent.cpp" line="100"/>
         <source>Checking in progress...</source>
-        <translation type="obsolete">Перевірка триває...</translation>
+        <translation type="unfinished">Перевірка триває...</translation>
     </message>
     <message>
+        <location filename="../agent/agent.cpp" line="47"/>
         <source>&amp;Settings...</source>
-        <translation type="obsolete">&amp;Налаштування...</translation>
+        <translation type="unfinished">&amp;Налаштування...</translation>
     </message>
     <message>
+        <location filename="../agent/agent.cpp" line="124"/>
+        <location filename="../agent/agent.cpp" line="149"/>
+        <location filename="../agent/agent.cpp" line="403"/>
+        <location filename="../agent/agent.cpp" line="409"/>
+        <source>Run upgrade process</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../agent/agent.cpp" line="149"/>
+        <source>No upgrade program found</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../agent/agent.cpp" line="169"/>
+        <source>Repositories configuration</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../agent/agent.cpp" line="169"/>
+        <source>Failed to start &quot;%1&quot;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../agent/agent.cpp" line="232"/>
+        <source>This program make notification of updates.
+Copyright (C) 2003-2004 ALT Linux Team
+
+Written by Stanislav Ievlev and Sergey V. Turchin</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../agent/agent.cpp" line="239"/>
+        <source>Should &lt;b&gt;%1&lt;/b&gt; start automatically 
+when you login?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../agent/agent.cpp" line="240"/>
+        <source>Exit program</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../agent/agent.cpp" line="261"/>
+        <source>Waiting...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../agent/agent.cpp" line="288"/>
+        <source>setting Icon</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../agent/agent.cpp" line="397"/>
+        <source>Failed to start upgrade program</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../agent/agent.cpp" line="399"/>
+        <source>Program crashed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../agent/agent.cpp" line="401"/>
+        <source>Execution of program failed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../agent/agent.cpp" line="409"/>
         <source>child was exited with code %1</source>
-        <translation type="obsolete">нащадок повернув код %1</translation>
+        <translation type="unfinished">нащадок повернув код %1</translation>
     </message>
 </context>
 <context>
@@ -204,8 +300,9 @@ when you login?</source>
         <translation type="obsolete">діалог вибору програми</translation>
     </message>
     <message>
+        <location filename="../agent/config_dialog.cpp" line="15"/>
         <source>Choose a program</source>
-        <translation type="obsolete">Оберіть програму</translation>
+        <translation type="unfinished">Оберіть програму</translation>
     </message>
     <message>
         <source>Advanced</source>
@@ -219,40 +316,59 @@ when you login?</source>
 <context>
     <name>ConfigDialogUI</name>
     <message>
+        <location filename="../agent/config_dialog.ui" line="15"/>
         <source>Configuration</source>
-        <translation type="obsolete">Налаштування</translation>
+        <translation type="unfinished">Налаштування</translation>
     </message>
     <message>
+        <location filename="../agent/config_dialog.ui" line="21"/>
         <source>Options</source>
-        <translation type="obsolete">Опції</translation>
+        <translation type="unfinished">Опції</translation>
     </message>
     <message>
+        <location filename="../agent/config_dialog.ui" line="27"/>
         <source>Check Interval</source>
-        <translation type="obsolete">Інтервал перевірки</translation>
+        <translation type="unfinished">Інтервал перевірки</translation>
     </message>
     <message>
+        <location filename="../agent/config_dialog.ui" line="56"/>
         <source>Seconds</source>
-        <translation type="obsolete">Секунд</translation>
+        <translation type="unfinished">Секунд</translation>
     </message>
     <message>
+        <location filename="../agent/config_dialog.ui" line="61"/>
         <source>Minutes</source>
-        <translation type="obsolete">Хвилин</translation>
+        <translation type="unfinished">Хвилин</translation>
     </message>
     <message>
+        <location filename="../agent/config_dialog.ui" line="66"/>
         <source>Hours</source>
-        <translation type="obsolete">Годин</translation>
+        <translation type="unfinished">Годин</translation>
     </message>
     <message>
+        <location filename="../agent/config_dialog.ui" line="71"/>
         <source>Days</source>
-        <translation type="obsolete">Діб</translation>
+        <translation type="unfinished">Діб</translation>
     </message>
     <message>
+        <location filename="../agent/config_dialog.ui" line="76"/>
         <source>Weeks</source>
-        <translation type="obsolete">Тижнів</translation>
+        <translation type="unfinished">Тижнів</translation>
     </message>
     <message>
+        <location filename="../agent/config_dialog.ui" line="81"/>
         <source>Months</source>
-        <translation type="obsolete">Місяців</translation>
+        <translation type="unfinished">Місяців</translation>
+    </message>
+    <message>
+        <location filename="../agent/config_dialog.ui" line="92"/>
+        <source>Update program</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../agent/config_dialog.ui" line="104"/>
+        <source>Format: upgrade command:repo config command:/check/file/exists1,/check/file/exists2;command2:/path/1,/path/2,/path/3</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Path to Synaptic</source>
@@ -263,16 +379,44 @@ when you login?</source>
         <translation type="obsolete">...</translation>
     </message>
     <message>
+        <location filename="../agent/config_dialog.ui" line="117"/>
         <source>Advanced</source>
-        <translation type="obsolete">Додатково</translation>
+        <translation type="unfinished">Додатково</translation>
     </message>
     <message>
+        <location filename="../agent/config_dialog.ui" line="123"/>
         <source>Be sensitive unmet dependecies</source>
-        <translation type="obsolete">Чутливість до порушених залежностей</translation>
+        <translation type="unfinished">Чутливість до порушених залежностей</translation>
     </message>
     <message>
+        <location filename="../agent/config_dialog.ui" line="130"/>
+        <source>Ignore dist-upgrade errors</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../agent/config_dialog.ui" line="137"/>
+        <source>Autostart</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../agent/config_dialog.ui" line="144"/>
+        <source>Popup system tray messages</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../agent/config_dialog.ui" line="151"/>
+        <source>Hide system tray icon when do nothing</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../agent/config_dialog.ui" line="174"/>
+        <source>Ok</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../agent/config_dialog.ui" line="194"/>
         <source>Cancel</source>
-        <translation type="obsolete">Відмінити</translation>
+        <translation type="unfinished">Відмінити</translation>
     </message>
 </context>
 <context>
@@ -423,20 +567,24 @@ when you login?</source>
 <context>
     <name>HelpBrowserUI</name>
     <message>
+        <location filename="../agent/help_browser.ui" line="17"/>
         <source>Help Browser</source>
-        <translation type="obsolete">Переглядач довідки</translation>
+        <translation type="unfinished">Переглядач довідки</translation>
     </message>
     <message>
+        <location filename="../agent/help_browser.ui" line="35"/>
         <source>Backward</source>
-        <translation type="obsolete">Назад</translation>
+        <translation type="unfinished">Назад</translation>
     </message>
     <message>
+        <location filename="../agent/help_browser.ui" line="67"/>
         <source>Forward</source>
-        <translation type="obsolete">Вперед</translation>
+        <translation type="unfinished">Вперед</translation>
     </message>
     <message>
+        <location filename="../agent/help_browser.ui" line="96"/>
         <source>Home</source>
-        <translation type="obsolete">Початок</translation>
+        <translation type="unfinished">Початок</translation>
     </message>
 </context>
 <context>
@@ -461,12 +609,14 @@ when you login?</source>
 <context>
     <name>InfoWindowUI</name>
     <message>
+        <location filename="../agent/info_window.ui" line="20"/>
         <source>Information Window</source>
-        <translation type="obsolete">Інформаційне вікно</translation>
+        <translation type="unfinished">Інформаційне вікно</translation>
     </message>
     <message>
+        <location filename="../agent/info_window.ui" line="65"/>
         <source>Upgrade</source>
-        <translation type="obsolete">Поновити</translation>
+        <translation type="unfinished">Поновити</translation>
     </message>
 </context>
 <context>

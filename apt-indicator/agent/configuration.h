@@ -16,7 +16,7 @@ class Configuration: public QObject
 {
 Q_OBJECT
 public:
-	enum Param { CheckInterval, UpgraderProfile, ShowBroken, IgnoreAptErrors, Autostart, PopupTray };
+	enum Param { CheckInterval, UpgraderProfile, ShowBroken, IgnoreAptErrors, Autostart, PopupTray, HideWhenSleep };
 	enum Cmd { CmdUpgrader = 0, CmdRepos = 1 };
 
 	Configuration(QObject *);
@@ -53,6 +53,7 @@ private:
 	bool ignore_apt_errors_;
 	bool autostart_;
 	bool popup_tray_;
+	bool hide_when_sleep_;
 };
 
 #endif
