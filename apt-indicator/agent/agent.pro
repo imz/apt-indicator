@@ -21,9 +21,9 @@ HEADERS += info_window.h
 FORMS = config_dialog.ui info_window.ui help_browser.ui
 
 TRANSLATIONS = \
-    ../translations/apt_indicator_ru.ts \
-    ../translations/apt_indicator_uk.ts \
-    ../translations/untranslated.ts
+    ../translations/apt_indicator_agent_ru.ts \
+    ../translations/apt_indicator_agent_uk.ts \
+    ../translations/untranslated_agent.ts
 
 DATA = $$TARGET.pro
 
@@ -33,5 +33,5 @@ target.path = /usr/bin/
 INSTALLS += target
 
 trans.path = /usr/share/$$TARGET/translations
-trans.files = translations/apt_indicator_*.qm
+trans.files = translations/apt_indicator_agent_*.qm
 INSTALLS += trans
