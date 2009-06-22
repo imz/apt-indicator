@@ -50,6 +50,7 @@ private slots:
 	void onCheckerOutput();
 	void onSleepHide();
 	void onUnixSignal(int);
+	void setTrayHidden();
 
 private:
 	void setTrayIcon();

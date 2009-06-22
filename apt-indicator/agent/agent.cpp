@@ -49,6 +49,7 @@ Agent::Agent( QObject *parent, const char *name , const QString &homedir):
 	menu_->addAction( tr("&Upgrade..."), this, SLOT(doRun()));
 	menu_->addAction( tr("Chec&k for updates"), this, SLOT(doCheck()));
 	menu_->addAction( tr("D&etailed info..."), this, SLOT(doInfo()));
+	menu_->addAction( tr("H&ide"), this, SLOT(setTrayHidden()));
 	menu_->addSeparator();
 	menu_->addAction( tr("&Settings..."), this, SLOT(doConfigure()));
 	menu_->addAction( tr("&Repository settings..."), this, SLOT(doConfigureRepos()));
@@ -459,6 +460,11 @@ void Agent::onSleepHide()
 void Agent::setTrayVisible(bool vis)
 {
     tray_icon_->setVisible(vis);
+}
+
+void Agent::setTrayHidden()
+{
+    setTrayVisible(false);
 }
 
 void Agent::onUnixSignal(int sig)
