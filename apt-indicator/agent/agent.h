@@ -29,6 +29,9 @@ public:
 	Agent( QObject *parent = 0, const char *name = 0, const QString &homedir = "");
 	~Agent();
 
+	static void unixSignalHandler(int);
+	void setTrayVisible(bool);
+
 private slots:
 	void helpBrowser();
 	void aboutProgram();

@@ -22,6 +22,8 @@ License: GPL
 #include "help_browser.h"
 #include "info_window.h"
 
+static Agent *__apt_indicator_agent = 0;
+
 Agent::Agent( QObject *parent, const char *name , const QString &homedir):
 		QObject(parent),
 		homedir_(homedir),
@@ -30,6 +32,8 @@ Agent::Agent( QObject *parent, const char *name , const QString &homedir):
 		checker_proc(0),
 		upgrader_proc(0)
 {
+	__apt_indicator_agent = this;
+
 	setObjectName(name);
 	last_report_time_ = QDateTime::currentDateTime();
 	status_ = Nothing;
@@ -37,7 +41,7 @@ Agent::Agent( QObject *parent, const char *name , const QString &homedir):
 	cfg_ = new Configuration(this);
 	tray_icon_ = new QSystemTrayIcon(this);
 	setTrayIcon();
-	tray_icon_->setVisible(true);
+	setTrayVisible(true);
 	connect(tray_icon_, SIGNAL(activated(QSystemTrayIcon::ActivationReason)), this, SLOT(onActivateSysTray(QSystemTrayIcon::ActivationReason)));
 	connect(tray_icon_, SIGNAL(messageClicked()), this, SLOT(onClickTrayMessage()));
 
@@ -294,7 +298,7 @@ void Agent::setTrayIcon()
 	}
 
 	if( status_ != Nothing )
-	    tray_icon_->setVisible(true);
+	    setTrayVisible(true);
 	tray_icon_->setIcon(pix);
 	tray_icon_->setToolTip(tip);
 }
@@ -350,8 +354,12 @@ void Agent::onCheckerOutput()
 	    {
 		case Normal:
 		{
+#ifndef NDEBUG
+		    QTimer::singleShot(7000, this, SLOT(onSleepHide()));
+#else
 		    if( cfg_->getInt(Configuration::CheckInterval) > 300 )
 			QTimer::singleShot(300000, this, SLOT(onSleepHide()));
+#endif
 		    break;
 		}
 		case Danger:
@@ -444,8 +452,13 @@ void Agent::onSleepHide()
     {
 	status_ = Nothing;
 	setTrayIcon();
-	tray_icon_->setVisible(false);
+	setTrayVisible(false);
     }
+}
+
+void Agent::setTrayVisible(bool vis)
+{
+    tray_icon_->setVisible(vis);
 }
 
 void Agent::onUnixSignal(int sig)
@@ -455,7 +468,22 @@ void Agent::onUnixSignal(int sig)
     {
 	case SIGUSR1:
 	    {
-		tray_icon_->setVisible(true);
+		setTrayVisible(true);
+		break;
+	    }
+	default:
+	    break;
+    }
+}
+
+void Agent::unixSignalHandler(int sig)
+{
+    switch(sig)
+    {
+	case SIGUSR1:
+	    {
+		if( __apt_indicator_agent )
+		    __apt_indicator_agent->setTrayVisible(true);
 		break;
 	    }
 	default:
