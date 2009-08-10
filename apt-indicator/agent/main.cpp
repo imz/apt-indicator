@@ -86,15 +86,6 @@ int main( int argc, char **argv )
 	Q_INIT_RESOURCE(pixmaps);
 	QApplication app( argc, argv );
 	app.setQuitOnLastWindowClosed(false);
-#if 0
-	app.watchUnixSignal(SIGUSR1, true);
-#else
-        struct sigaction sa;
-        sigemptyset(&(sa.sa_mask));
-        sa.sa_flags = 0;
-        sa.sa_handler = agentSignalHandler;
-        sigaction(SIGUSR1, &sa, 0);
-#endif
 
 	QTranslator translator(&app);
 	QTranslator qt_translator(&app);
@@ -116,9 +107,15 @@ int main( int argc, char **argv )
 	QSettings::setPath(QSettings::IniFormat, QSettings::UserScope, QDir::homePath()+"/.config");
 	Agent agent(0, PROGRAM_NAME, QString(getenv("HOME")));
 #if 0
+	app.watchUnixSignal(SIGUSR1, true);
 	QObject::connect(QCoreApplication::instance(), SIGNAL(unixSignal(int)), &agent, SLOT(onUnixSignal(int)));
 #else
-	QObject::connect(&agent, SIGNAL(unixSignal(int)), &agent, SLOT(onUnixSignal(int)));
+        struct sigaction sa;
+        sigemptyset(&(sa.sa_mask));
+        sa.sa_flags = 0;
+        sa.sa_handler = agentSignalHandler;
+        sigaction(SIGUSR1, &sa, 0);
+	//QObject::connect(&agent, SIGNAL(unixSignal(int)), &agent, SLOT(onUnixSignal(int)));
 #endif
 
 	ret = app.exec();
