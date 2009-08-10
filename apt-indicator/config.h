@@ -7,7 +7,7 @@ License: GPL
 #ifndef ALT_UPDATE_LOCAL_H
 #define ALT_UPDATE_LOCAL_H
 
-#define VERSION "0.1.10"
+#define VERSION "0.1.11"
 
 #define PROGRAM_NAME "APT-Indicator" /**< name of the program */
 #define PROGRAM_NAME_BIN "apt-indicator" /**< binary name of the program */

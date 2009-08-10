@@ -1,5 +1,5 @@
 Name: apt-indicator
-Version: 0.1.10
+Version: 0.1.11
 Release: alt1
 
 Summary: Applet for indication that newer packages are available
@@ -72,6 +72,9 @@ install -m644 pixmaps/* %buildroot/%_datadir/%name/pixmaps
 %_sysconfdir/xdg/autostart/apt-indicator.desktop
 
 %changelog
+* Mon Aug 10 2009 Sergey V Turchin <zerg at altlinux dot org> 0.1.11-alt1
+- fix detect running copy
+
 * Mon Jun 22 2009 Sergey V Turchin <zerg at altlinux dot org> 0.1.10-alt1
 - show tray icon when agent already started and icon hidden
 
