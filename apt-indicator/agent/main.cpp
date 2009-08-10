@@ -21,7 +21,7 @@ License: GPL
 extern const char *__progname;
 
 
-static void agentSignalHandler(int sig)
+static void agentSignalHandler(int)
 {
     Agent::unixSignalHandler(SIGUSR1);
 }
