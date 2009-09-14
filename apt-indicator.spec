@@ -1,6 +1,6 @@
 Name: apt-indicator
 Version: 0.1.11
-Release: alt1
+Release: alt2
 
 Summary: Applet for indication that newer packages are available
 License: GPL
@@ -50,7 +50,7 @@ mkdir -p %buildroot/%_man1dir/
 mkdir -p %buildroot/%_datadir/applications/
 install -m644 %name.desktop %buildroot/%_datadir/applications/%name.desktop
 
-for d in %_datadir/autostart %_sysconfdir/xdg/autostart
+for d in %_sysconfdir/xdg/autostart
 do
 mkdir -p %buildroot/$d/
 install -m644 %name.desktop %buildroot/$d/%name.desktop
@@ -62,16 +62,20 @@ ln -sf %_docdir/%name-%version/html %buildroot/%_datadir/%name/doc
 mkdir -p %buildroot/%_datadir/%name/pixmaps
 install -m644 pixmaps/* %buildroot/%_datadir/%name/pixmaps
 
+
 %files
 %doc doc/html doc/images NEWS ChangeLog TODO README
 %_bindir/*
 #%_man1dir/*
 %_datadir/%name
 %_datadir/applications/%name.desktop
-%_datadir/autostart/%name.desktop
 %_sysconfdir/xdg/autostart/apt-indicator.desktop
 
+
 %changelog
+* Mon Sep 14 2009 Sergey V Turchin <zerg at altlinux dot org> 0.1.11-alt2
+- remove /usr/share/autostart entry
+
 * Mon Aug 10 2009 Sergey V Turchin <zerg at altlinux dot org> 0.1.11-alt1
 - fix detect running copy
 
