@@ -14,201 +14,146 @@
   <property name="windowTitle">
    <string>Configuration</string>
   </property>
-  <layout class="QGridLayout">
-   <item row="0" column="0">
-    <widget class="QGroupBox" name="groupBox1">
+  <layout class="QVBoxLayout" name="verticalLayout_2">
+   <item>
+    <widget class="QGroupBox" name="groupBox3">
      <property name="title">
-      <string>Options</string>
+      <string>Check Interval</string>
      </property>
-     <layout class="QGridLayout" name="gridLayout_4">
-      <item row="0" column="0" colspan="5">
-       <widget class="QGroupBox" name="groupBox3">
-        <property name="title">
-         <string>Check Interval</string>
+     <layout class="QGridLayout" name="gridLayout_2">
+      <item row="0" column="0">
+       <widget class="QSpinBox" name="timesSpinBox">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
         </property>
-        <layout class="QGridLayout" name="gridLayout_2">
-         <item row="0" column="0">
-          <widget class="QSpinBox" name="timesSpinBox">
-           <property name="sizePolicy">
-            <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-             <horstretch>0</horstretch>
-             <verstretch>0</verstretch>
-            </sizepolicy>
-           </property>
-           <property name="minimum">
-            <number>1</number>
-           </property>
-           <property name="value">
-            <number>1</number>
-           </property>
-          </widget>
-         </item>
-         <item row="0" column="1">
-          <widget class="QComboBox" name="periodComboBox">
-           <property name="sizePolicy">
-            <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
-             <horstretch>0</horstretch>
-             <verstretch>0</verstretch>
-            </sizepolicy>
-           </property>
-           <item>
-            <property name="text">
-             <string>Seconds</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>Minutes</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>Hours</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>Days</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>Weeks</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>Months</string>
-            </property>
-           </item>
-          </widget>
-         </item>
-        </layout>
-       </widget>
-      </item>
-      <item row="1" column="0" colspan="5">
-       <widget class="QGroupBox" name="groupBox5">
-        <property name="title">
-         <string>Update program</string>
+        <property name="minimum">
+         <number>1</number>
         </property>
-        <layout class="QGridLayout" name="gridLayout_0">
-         <item row="0" column="0">
-          <widget class="QLineEdit" name="pathLineEdit">
-           <property name="sizePolicy">
-            <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-             <horstretch>0</horstretch>
-             <verstretch>0</verstretch>
-            </sizepolicy>
-           </property>
-           <property name="toolTip">
-            <string>Format: upgrade command:repo config command:/check/file/exists1,/check/file/exists2;command2:/path/1,/path/2,/path/3</string>
-           </property>
-           <property name="text">
-            <string/>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </widget>
-      </item>
-      <item row="2" column="0" colspan="5">
-       <widget class="QGroupBox" name="groupBox4">
-        <property name="title">
-         <string>Advanced</string>
-        </property>
-        <layout class="QVBoxLayout" name="verticalLayout">
-         <item>
-          <widget class="QCheckBox" name="showBrokenCheck">
-           <property name="text">
-            <string>Be sensitive unmet dependecies</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QCheckBox" name="ignoreErrors">
-           <property name="text">
-            <string>Ignore dist-upgrade errors</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QCheckBox" name="autostartCheck">
-           <property name="text">
-            <string>Autostart</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QCheckBox" name="popupTrayCheck">
-           <property name="text">
-            <string>Popup system tray messages</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QCheckBox" name="hideWhenSleepCheck">
-           <property name="text">
-            <string>Hide system tray icon when do nothing</string>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </widget>
-      </item>
-      <item row="3" column="0">
-       <spacer name="horizontalSpacer_2">
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>40</width>
-          <height>20</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
-      <item row="3" column="1">
-       <widget class="QPushButton" name="okButton">
-        <property name="text">
-         <string>Ok</string>
+        <property name="value">
+         <number>1</number>
         </property>
        </widget>
       </item>
-      <item row="3" column="2">
-       <spacer name="horizontalSpacer">
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
+      <item row="0" column="1">
+       <widget class="QComboBox" name="periodComboBox">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
         </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>40</width>
-          <height>20</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
-      <item row="3" column="3">
-       <widget class="QPushButton" name="cancelButton">
-        <property name="text">
-         <string>Cancel</string>
-        </property>
+        <item>
+         <property name="text">
+          <string>Seconds</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Minutes</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Hours</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Days</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Weeks</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Months</string>
+         </property>
+        </item>
        </widget>
-      </item>
-      <item row="3" column="4">
-       <spacer name="horizontalSpacer_3">
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>40</width>
-          <height>20</height>
-         </size>
-        </property>
-       </spacer>
       </item>
      </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QGroupBox" name="groupBox5">
+     <property name="title">
+      <string>Update program</string>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_0">
+      <item row="0" column="0">
+       <widget class="QLineEdit" name="pathLineEdit">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="toolTip">
+         <string>Format: upgrade command:repo config command:/check/file/exists1,/check/file/exists2;command2:/path/1,/path/2,/path/3</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QGroupBox" name="groupBox4">
+     <property name="title">
+      <string>Advanced</string>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout">
+      <item>
+       <widget class="QCheckBox" name="showBrokenCheck">
+        <property name="text">
+         <string>Be sensitive unmet dependecies</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QCheckBox" name="ignoreErrors">
+        <property name="text">
+         <string>Ignore dist-upgrade errors</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QCheckBox" name="autostartCheck">
+        <property name="text">
+         <string>Autostart</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QCheckBox" name="popupTrayCheck">
+        <property name="text">
+         <string>Popup system tray messages</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QCheckBox" name="hideWhenSleepCheck">
+        <property name="text">
+         <string>Hide system tray icon when do nothing</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QDialogButtonBox" name="buttonBox">
+     <property name="standardButtons">
+      <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
+     </property>
     </widget>
    </item>
   </layout>
@@ -221,40 +166,38 @@
   <tabstop>pathLineEdit</tabstop>
   <tabstop>showBrokenCheck</tabstop>
   <tabstop>ignoreErrors</tabstop>
-  <tabstop>okButton</tabstop>
-  <tabstop>cancelButton</tabstop>
  </tabstops>
  <resources/>
  <connections>
   <connection>
-   <sender>okButton</sender>
-   <signal>pressed()</signal>
+   <sender>buttonBox</sender>
+   <signal>accepted()</signal>
    <receiver>ConfigDialogUI</receiver>
    <slot>accept()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>20</x>
-     <y>20</y>
+     <x>228</x>
+     <y>417</y>
     </hint>
     <hint type="destinationlabel">
-     <x>20</x>
-     <y>20</y>
+     <x>228</x>
+     <y>216</y>
     </hint>
    </hints>
   </connection>
   <connection>
-   <sender>cancelButton</sender>
-   <signal>pressed()</signal>
+   <sender>buttonBox</sender>
+   <signal>rejected()</signal>
    <receiver>ConfigDialogUI</receiver>
    <slot>reject()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>20</x>
-     <y>20</y>
+     <x>228</x>
+     <y>417</y>
     </hint>
     <hint type="destinationlabel">
-     <x>20</x>
-     <y>20</y>
+     <x>228</x>
+     <y>216</y>
     </hint>
    </hints>
   </connection>
