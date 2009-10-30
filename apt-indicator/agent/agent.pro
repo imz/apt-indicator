@@ -12,11 +12,11 @@ UI_DIR = .uic
 
 SOURCES = main.cpp
 SOURCES += agent.cpp configuration.cpp help_browser.cpp config_dialog.cpp
-SOURCES += info_window.cpp
+SOURCES += info_window.cpp utils.cpp
 
 HEADERS = ../config.h
 HEADERS += agent.h configuration.h help_browser.h config_dialog.h
-HEADERS += info_window.h
+HEADERS += info_window.h utils.h
 
 FORMS = config_dialog.ui info_window.ui help_browser.ui
 

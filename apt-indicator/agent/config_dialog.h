@@ -3,17 +3,20 @@
 
 #include "ui_config_dialog.h"
 
-class ConfigDialog: public QDialog
+class Configuration;
+
+class ConfigDialog: public QDialog, private Ui::ConfigDialog
 {
 Q_OBJECT
 public:
-    ConfigDialog(QWidget*);
+    ConfigDialog(Configuration*);
+    ~ConfigDialog();
 
-public slots:
-    void fileSelect();
+private slots:
+    void onClick(QAbstractButton*);
 
-public:
-    Ui::ConfigDialogUI ui;
+private:
+    Configuration *cfg_;
 };
 
 #endif

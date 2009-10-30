@@ -144,61 +144,10 @@ bool Configuration::getBool(Param param)
     return false;
 }
 
-Configuration::update_period Configuration::toPeriod(int interval) const
-{
-	update_period per;
-	per.time_ = CHECK_INTERVAL_FIRST;
-	for (int i = iperiods.size() - 1; i >= 0; i--)
-		if ( iperiods[i] < interval)
-		{
-			per.time_ = interval / iperiods[i];
-			per.period_ = i;
-			break;
-		};
-	return per;
-}
-
-int Configuration::toInterval(const update_period& per) const
-{
-	int interval = per.time_ * iperiods[per.period_];
-	if ( interval < CHECK_INTERVAL_FIRST)
-		interval = CHECK_INTERVAL_FIRST;
-	if ( interval > INT_MAX / 1000)
-		interval = INT_MAX / 1000;
-	return interval;
-}
-
 void Configuration::showDialog()
 {
-	ConfigDialog cfgDlg(0);
-	update_period per = toPeriod(getInt(CheckInterval));
-
-	cfgDlg.ui.timesSpinBox->setValue(per.time_);
-	cfgDlg.ui.periodComboBox->setCurrentIndex(per.period_);
-	cfgDlg.ui.pathLineEdit->setText(getString(UpgraderProfile));
-	cfgDlg.ui.showBrokenCheck->setChecked(getBool(ShowBroken));
-	cfgDlg.ui.ignoreErrors->setChecked(getBool(IgnoreAptErrors));
-	cfgDlg.ui.autostartCheck->setChecked(getBool(Autostart));
-	cfgDlg.ui.popupTrayCheck->setChecked(getBool(PopupTray));
-	cfgDlg.ui.hideWhenSleepCheck->setChecked(getBool(HideWhenSleep));
-
-	if ( cfgDlg.exec() == QDialog::Accepted )
-	{
-	    update_period per_new;
-	    per_new.time_ = cfgDlg.ui.timesSpinBox->value();
-	    per_new.period_ = cfgDlg.ui.periodComboBox->currentIndex();
-	    int chk_interval = toInterval(per_new);
-	    bool changed = false;
-	    changed = setParam(UpgraderProfile,    cfgDlg.ui.pathLineEdit->text()) || changed;
-	    changed = setParam(CheckInterval,   chk_interval) || changed;
-	    changed = setParam(ShowBroken,      cfgDlg.ui.showBrokenCheck->isChecked()) || changed;
-	    changed = setParam(IgnoreAptErrors, cfgDlg.ui.ignoreErrors->isChecked()) || changed;
-	    changed = setParam(Autostart,       cfgDlg.ui.autostartCheck->isChecked()) || changed;
-	    changed = setParam(PopupTray,       cfgDlg.ui.popupTrayCheck->isChecked()) || changed;
-	    changed = setParam(HideWhenSleep,       cfgDlg.ui.hideWhenSleepCheck->isChecked()) || changed;
-	    if( changed )
-		save();
-	}
+	ConfigDialog cfgDlg(this);
+	cfgDlg.exec();
 }
 
 QString Configuration::commandUprader(Cmd cmd)

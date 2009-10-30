@@ -27,6 +27,7 @@ public:
 
 	void showDialog();
 	QString commandUprader(Cmd);
+	void setDefaults();
 
 	QString getString(Param);
 	bool getBool(Param);
@@ -36,14 +37,7 @@ public:
 	bool setParam(Param, int);
 
 private:
-	struct update_period
-	{
-		int time_; /**< how many times*/
-		int period_; /**< what period */
-	};
 
-	update_period toPeriod(int interval) const; /**< convert interval in sec's to period */
-	int toInterval(const update_period& per) const; /**< convert period to interval in sec's */
 
 	QMap<int,int> iperiods;
 
