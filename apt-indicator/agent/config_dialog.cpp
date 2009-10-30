@@ -1,6 +1,7 @@
 
 #include "utils.h"
 #include "configuration.h"
+#include "../config.h"
 
 #include "config_dialog.h"
 
@@ -10,21 +11,27 @@ ConfigDialog::ConfigDialog(Configuration *cfg):
     cfg_ = cfg;
     setupUi(this);
 
-    Utils::update_period per = Utils::intervalToPeriod(cfg_->getInt(Configuration::CheckInterval));
-    timesSpinBox->setValue(per.time_);
-    periodComboBox->setCurrentIndex(per.period_);
-    pathLineEdit->setText(cfg_->getString(Configuration::UpgraderProfile));
-    showBrokenCheck->setChecked(cfg_->getBool(Configuration::ShowBroken));
-    ignoreErrors->setChecked(cfg_->getBool(Configuration::IgnoreAptErrors));
-    autostartCheck->setChecked(cfg_->getBool(Configuration::Autostart));
-    popupTrayCheck->setChecked(cfg_->getBool(Configuration::PopupTray));
-    hideWhenSleepCheck->setChecked(cfg_->getBool(Configuration::HideWhenSleep));
 
     connect(buttonBox, SIGNAL(clicked(QAbstractButton*)), this, SLOT(onClick(QAbstractButton*)));
+
+    setUiValues();
 }
 
 ConfigDialog::~ConfigDialog()
 {}
+
+void ConfigDialog::setUiValues()
+{
+	    Utils::update_period per = Utils::intervalToPeriod(cfg_->getInt(Configuration::CheckInterval));
+	    timesSpinBox->setValue(per.time_);
+	    periodComboBox->setCurrentIndex(per.period_);
+	    pathLineEdit->setText(cfg_->getString(Configuration::UpgraderProfile));
+	    showBrokenCheck->setChecked(cfg_->getBool(Configuration::ShowBroken));
+	    ignoreErrors->setChecked(cfg_->getBool(Configuration::IgnoreAptErrors));
+	    autostartCheck->setChecked(cfg_->getBool(Configuration::Autostart));
+	    popupTrayCheck->setChecked(cfg_->getBool(Configuration::PopupTray));
+	    hideWhenSleepCheck->setChecked(cfg_->getBool(Configuration::HideWhenSleep));
+}
 
 void ConfigDialog::onClick(QAbstractButton *btn)
 {
@@ -33,6 +40,17 @@ void ConfigDialog::onClick(QAbstractButton *btn)
 	case QDialogButtonBox::RestoreDefaults:
 	{
 	    // set defaults
+	    bool changed = false;
+	    changed = cfg_->setParam(Configuration::UpgraderProfile, DEF_UPGRADER) || changed;
+	    changed = cfg_->setParam(Configuration::CheckInterval,   DEF_CHECK_INTERVAL) || changed;
+	    changed = cfg_->setParam(Configuration::ShowBroken,      DEF_SHOW_BROKEN) || changed;
+	    changed = cfg_->setParam(Configuration::IgnoreAptErrors, DEF_IGNORE_APT_ERRORS) || changed;
+	    changed = cfg_->setParam(Configuration::Autostart,       DEF_AUTOSTART) || changed;
+	    changed = cfg_->setParam(Configuration::PopupTray,       DEF_POPUP_TRAY) || changed;
+	    changed = cfg_->setParam(Configuration::HideWhenSleep,   DEF_HIDE_WHEN_SLEEP) || changed;
+	    if( changed )
+		cfg_->save();
+	    setUiValues();
 	    break;
 	}
 	case QDialogButtonBox::Ok:

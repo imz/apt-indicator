@@ -21,13 +21,6 @@ Configuration::Configuration(QObject *parent):
     popup_tray_ = true;
     hide_when_sleep_ = true;
 
-    iperiods[0] = 1;
-    iperiods[1] = 60;
-    iperiods[2] = 3600;
-    iperiods[3] = 86400;
-    iperiods[4] = 604800;
-    iperiods[5] = 2592000;
-
     load();
 }
 
@@ -42,11 +35,11 @@ void Configuration::load()
     //cfg_.beginGroup("");
     setParam(UpgraderProfile,    cfg.value("upgrader_profile", DEF_UPGRADER).toString());
     setParam(CheckInterval,   cfg.value("check_interval", DEF_CHECK_INTERVAL).toInt());
-    setParam(ShowBroken,      cfg.value("show_broken", false).toBool());
-    setParam(IgnoreAptErrors, cfg.value("ignore_apt_errors", false).toBool());
-    setParam(Autostart,       cfg.value("autostart", true).toBool());
-    setParam(PopupTray,       cfg.value("popup_systray", true).toBool());
-    setParam(HideWhenSleep,   cfg.value("hide_when_sleep", true).toBool());
+    setParam(ShowBroken,      cfg.value("show_broken", DEF_SHOW_BROKEN).toBool());
+    setParam(IgnoreAptErrors, cfg.value("ignore_apt_errors", DEF_IGNORE_APT_ERRORS).toBool());
+    setParam(Autostart,       cfg.value("autostart", DEF_AUTOSTART).toBool());
+    setParam(PopupTray,       cfg.value("popup_systray", DEF_POPUP_TRAY).toBool());
+    setParam(HideWhenSleep,   cfg.value("hide_when_sleep", DEF_HIDE_WHEN_SLEEP).toBool());
 }
 
 void Configuration::save()

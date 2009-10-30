@@ -15,13 +15,18 @@ License: GPL
 #define ORGANISATION_DOMAIN "altlinux.org" /**< name of the organisation domain */
 
 #define DATADIR "/usr/share/apt-indicator" /**< default data dir */
-#define DEF_UPGRADER "synaptic --update-at-startup --dist-upgrade-mode --non-interactive:synaptic -r:/usr/bin/synaptic;" /**< default system updating program */
 
+#define DEF_UPGRADER "synaptic --update-at-startup --dist-upgrade-mode --non-interactive:synaptic -r:/usr/bin/synaptic;" /**< default system updating program */
 #ifndef NDEBUG
 #define DEF_CHECK_INTERVAL 30 /**< default interval between checkings */
 #else
 #define DEF_CHECK_INTERVAL 86400 /**< default interval between checkings */
 #endif
+#define DEF_SHOW_BROKEN false
+#define DEF_IGNORE_APT_ERRORS false
+#define DEF_AUTOSTART true
+#define DEF_POPUP_TRAY true
+#define DEF_HIDE_WHEN_SLEEP true
 
 #define CHECK_INTERVAL_FIRST 5 /**< interval between program run and first check  */
 

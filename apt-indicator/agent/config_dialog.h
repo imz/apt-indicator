@@ -17,6 +17,8 @@ private slots:
 
 private:
     Configuration *cfg_;
+
+    void setUiValues();
 };
 
 #endif
