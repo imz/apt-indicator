@@ -19,6 +19,7 @@ Utils::update_period intervalToPeriod(int interval)
 
 	update_period per;
 	per.time_ = CHECK_INTERVAL_FIRST;
+	per.period_ = 86400;
 	for (int i = IPERIODS_SIZE - 1; i >= 0; i--)
 		if ( iperiods[i] < interval)
 		{
