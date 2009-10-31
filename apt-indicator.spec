@@ -1,6 +1,6 @@
 Name: apt-indicator
-Version: 0.1.11
-Release: alt2
+Version: 0.1.12
+Release: alt1
 
 Summary: Applet for indication that newer packages are available
 License: GPL
@@ -20,7 +20,7 @@ BuildRequires(pre): libqt4-devel
 BuildRequires: xorg-devel gcc-c++ libstdc++-devel
 BuildRequires: docbook-dtds docbook-style-xsl help2man libapt-devel
 BuildRequires: xml-common xsltproc
-BuildRequires: libdb4.4-devel
+#BuildRequires: libdb4.4-devel
 
 %description
 This package contains simple applet both for Gnome and KDE which
@@ -73,6 +73,10 @@ install -m644 pixmaps/* %buildroot/%_datadir/%name/pixmaps
 
 
 %changelog
+* Sat Oct 31 2009 Sergey V Turchin <zerg at altlinux dot org> 0.1.12-alt1
+- allow to start upgrade program separately
+- allow restore default settings
+
 * Mon Sep 14 2009 Sergey V Turchin <zerg at altlinux dot org> 0.1.11-alt2
 - remove /usr/share/autostart entry
 
