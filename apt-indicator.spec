@@ -1,6 +1,6 @@
 Name: apt-indicator
 Version: 0.1.12
-Release: alt0.1
+Release: alt1
 
 Summary: Applet for indication that newer packages are available
 License: GPL
