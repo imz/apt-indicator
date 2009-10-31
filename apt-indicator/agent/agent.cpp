@@ -46,7 +46,8 @@ Agent::Agent( QObject *parent, const char *name , const QString &homedir):
 	connect(tray_icon_, SIGNAL(messageClicked()), this, SLOT(onClickTrayMessage()));
 
 	menu_ = new QMenu();
-	menu_->addAction( tr("&Upgrade..."), this, SLOT(doRun()));
+	menu_->addAction( tr("&Upgrade automatically..."), this, SLOT(doRunAuto()));
+	menu_->addAction( tr("&Run upgrade program..."), this, SLOT(doRunPlain()));
 	menu_->addAction( tr("Chec&k for updates"), this, SLOT(doCheck()));
 	menu_->addAction( tr("D&etailed info..."), this, SLOT(doInfo()));
 	menu_->addAction( tr("H&ide"), this, SLOT(setTrayHidden()));
@@ -81,11 +82,14 @@ void Agent::doInfo()
 	info_window_ = 0;
 	return;
     }
-
-    info_window_ = new InfoWindow(0);
-    connect(info_window_->ui.upgradeButton, SIGNAL(pressed()), this, SLOT(doRun()));
-    updateInfoWindow();
-    info_window_->show();
+    else
+    {
+	info_window_ = new InfoWindow(0);
+	connect(info_window_, SIGNAL(upgradeAuto()), this, SLOT(doRunAuto()));
+	connect(info_window_, SIGNAL(upgradeNoauto()), this, SLOT(doRunPlain()));
+	updateInfoWindow();
+	info_window_->show();
+    }
 }
 
 void Agent::updateInfoWindow()
@@ -110,15 +114,25 @@ void Agent::updateInfoWindow()
 	    info_window_text = result_.isEmpty() ? tr("No status info available") : result_;
 	    break;
     }
-    info_window_->ui.infoText->setText(info_window_text);
+    info_window_->setText(info_window_text);
 
     if ( status_ != Danger && status_ != Problem )
-	info_window_->ui.upgradeButton->hide();
+	info_window_->setButtonsVisible(true); // FIXME
     else
-	info_window_->ui.upgradeButton->show();
+	info_window_->setButtonsVisible(true);
 }
 
-void Agent::doRun()
+void Agent::doRunAuto()
+{
+    doRun(true);
+}
+
+void Agent::doRunPlain()
+{
+    doRun(false);
+}
+
+void Agent::doRun(bool automatic)
 {
 	//stop all active works until we run synaptic program
 	if ( timer_.isActive() )
@@ -144,6 +158,8 @@ void Agent::doRun()
 		QString program;
 		if( arguments.size() >= 1 )
 		    program = arguments.takeAt(0);
+		if( !automatic )
+		    arguments.clear();
 		if( !program.isEmpty() )
 		{
 		    upgrader_proc = new QProcess(this);

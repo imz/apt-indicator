@@ -3,13 +3,19 @@
 
 #include <ui_info_window.h>
 
-class InfoWindow: public QDialog
+class InfoWindow: public QWidget, private Ui::InfoWindow
 {
+Q_OBJECT
 public:
     InfoWindow(QWidget *);
     ~InfoWindow();
 
-    Ui::InfoWindowUI ui;
+    void setText(const QString&);
+    void setButtonsVisible(bool);
+
+Q_SIGNALS:
+    void upgradeAuto();
+    void upgradeNoauto();
 };
 
 #endif
