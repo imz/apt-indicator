@@ -117,7 +117,7 @@ void Agent::updateInfoWindow()
     info_window_->setText(info_window_text);
 
     if ( status_ != Danger && status_ != Problem )
-	info_window_->setButtonsVisible(true); // FIXME
+	info_window_->setButtonsVisible(false);
     else
 	info_window_->setButtonsVisible(true);
 }
