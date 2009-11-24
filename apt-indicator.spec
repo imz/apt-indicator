@@ -73,8 +73,9 @@ install -m644 pixmaps/* %buildroot/%_datadir/%name/pixmaps
 
 
 %changelog
-* Sat Oct 31 2009 Sergey V Turchin <zerg at altlinux dot org> 0.1.12-alt1
-- allow to start upgrade program separately
+#- allow to start upgrade program separately
+
+* Tue Nov 24 2009 Sergey V Turchin <zerg at altlinux dot org> 0.1.12-alt1
 - allow restore default settings
 
 * Mon Sep 14 2009 Sergey V Turchin <zerg at altlinux dot org> 0.1.11-alt2
