@@ -1,5 +1,5 @@
 Name: apt-indicator
-Version: 0.1.12
+Version: 0.1.13
 Release: alt1
 
 Summary: Applet for indication that newer packages are available
@@ -74,6 +74,10 @@ install -m644 pixmaps/* %buildroot/%_datadir/%name/pixmaps
 
 %changelog
 #- allow to start upgrade program separately
+
+* Tue Dec 15 2009 Sergey V Turchin <zerg at altlinux dot org> 0.1.13-alt1
+- fix popup information window when closed
+- fix reset to default settings
 
 * Tue Nov 24 2009 Sergey V Turchin <zerg at altlinux dot org> 0.1.12-alt1
 - allow restore default settings
