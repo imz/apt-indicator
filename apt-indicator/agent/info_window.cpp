@@ -7,6 +7,7 @@ InfoWindow::InfoWindow(QWidget *parent):
     QWidget(parent)
 {
     setupUi(this);
+    setAttribute(Qt::WA_DeleteOnClose);
 
     QPushButton *btn_auto = buttonBox->addButton(tr("Automatic upgrade"), QDialogButtonBox::YesRole);
 //    QPushButton *btn_noauto = buttonBox->addButton(tr("Start upgrade program"), QDialogButtonBox::YesRole);

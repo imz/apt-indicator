@@ -14,10 +14,11 @@ License: GPL
 #include <QDateTime>
 #include <QProcess>
 #include <QDateTime>
+#include <QPointer>
+
 
 #include "configuration.h"
-
-class InfoWindow;//forward declaration
+#include "info_window.h"
 
 class Agent : public QObject
 {
@@ -63,7 +64,7 @@ private:
 	Configuration *cfg_;
 	UpgradeStatus status_; /**< semaphore: Are we have any files for update */
 
-	InfoWindow *info_window_; /**< information window */
+	QPointer<InfoWindow> info_window_; /**< information window */
 	QSystemTrayIcon *tray_icon_; /**< icon on the tray */
 	QTimer timer_; /**< update timer */
 	QString result_; /**< result in information window */

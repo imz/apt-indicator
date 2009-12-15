@@ -37,7 +37,6 @@ Agent::Agent( QObject *parent, const char *name , const QString &homedir):
 	setObjectName(name);
 	last_report_time_ = QDateTime::currentDateTime();
 	status_ = Nothing;
-	info_window_ = 0;
 	cfg_ = new Configuration(this);
 	tray_icon_ = new QSystemTrayIcon(this);
 	setTrayIcon();
@@ -78,8 +77,7 @@ void Agent::doInfo()
 {
     if( info_window_ )
     {
-	delete info_window_;
-	info_window_ = 0;
+	info_window_->deleteLater();
 	return;
     }
     else
