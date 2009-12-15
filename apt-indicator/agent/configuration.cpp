@@ -56,6 +56,11 @@ void Configuration::save()
     cfg.setValue("hide_when_sleep", getBool(HideWhenSleep));
 }
 
+bool Configuration::setParam(Param param, const char *value)
+{
+    setParam(param, QString(value));
+}
+
 bool Configuration::setParam(Param param, const QString &value)
 {
     bool changed = false;

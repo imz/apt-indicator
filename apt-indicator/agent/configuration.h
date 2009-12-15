@@ -32,6 +32,7 @@ public:
 	QString getString(Param);
 	bool getBool(Param);
 	int getInt(Param);
+	bool setParam(Param, const char*);
 	bool setParam(Param, const QString&);
 	bool setParam(Param, bool);
 	bool setParam(Param, int);
