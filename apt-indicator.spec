@@ -1,6 +1,6 @@
 Name: apt-indicator
 Version: 0.1.14
-Release: alt1
+Release: alt1.1
 
 Summary: Applet for indication that newer packages are available
 License: GPL
@@ -73,6 +73,10 @@ install -m644 pixmaps/* %buildroot/%_datadir/%name/pixmaps
 
 
 %changelog
+* Mon Dec 21 2009 Alexey I. Froloff <raorn@altlinux.org> 0.1.14-alt1.1
+- NMU:
+  + rebuilt with apt 0.5.15lorg2-alt31.1
+
 * Wed Dec 16 2009 Sergey V Turchin <zerg at altlinux dot org> 0.1.14-alt1
 - allow to start upgrade program separately (ALT#22078)
 
