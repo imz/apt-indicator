@@ -679,7 +679,7 @@ when you login?</source>
     <message>
         <location filename="../agent/info_window.cpp" line="12"/>
         <source>Automatic upgrade</source>
-        <translation>Автоматические обновление</translation>
+        <translation>Автоматическое обновление</translation>
     </message>
     <message>
         <location filename="../agent/info_window.cpp" line="13"/>
