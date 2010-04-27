@@ -77,12 +77,15 @@ void Agent::doInfo()
 {
     if( info_window_ )
     {
+	info_window_geometry_ = info_window_->geometry();
 	info_window_->deleteLater();
 	return;
     }
     else
     {
 	info_window_ = new InfoWindow(0);
+	if( !info_window_geometry_.isNull() )
+	    info_window_->setGeometry(info_window_geometry_);
 	connect(info_window_, SIGNAL(upgradeAuto()), this, SLOT(doRunAuto()));
 	connect(info_window_, SIGNAL(upgradeNoauto()), this, SLOT(doRunPlain()));
 	updateInfoWindow();
