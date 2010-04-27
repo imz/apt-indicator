@@ -58,7 +58,7 @@ void Configuration::save()
 
 bool Configuration::setParam(Param param, const char *value)
 {
-    setParam(param, QString(value));
+    return setParam(param, QString(value));
 }
 
 bool Configuration::setParam(Param param, const QString &value)
