@@ -2,7 +2,18 @@
 TARGET=../apt-indicator-checker
 TEMPLATE = app
 QT -= gui
-QMAKE_CXXFLAGS += -pedantic $(RPM_OPT_FLAGS)
+rpm_opt_flags = $$(RPM_OPT_FLAGS)
+CONFIG(release) {
+    isEmpty(rpm_opt_flags) {
+       QMAKE_CXXFLAGS += -O2
+    } else {
+       QMAKE_CXXFLAGS += $$rpm_opt_flags
+    }
+    QMAKE_CXXFLAGS += -DNDEBUG
+} else {
+    QMAKE_CXXFLAGS += -g -O0
+}
+QMAKE_CXXFLAGS += -pedantic
 LIBS += -lapt-pkg
 
 OBJECTS_DIR = .obj

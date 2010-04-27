@@ -29,11 +29,10 @@ made notifications for users that newer packages are available.
 
 %prep
 %setup -q -n %name-%version
-qmake-qt4 apt-indicator.pro
+qmake-qt4 "CONFIG += release"
 
 %build
-%add_optflags -DNDEBUG
-%make 
+%make
 %make -C doc
 lrelease-qt4 checker/checker.pro
 lrelease-qt4 agent/agent.pro

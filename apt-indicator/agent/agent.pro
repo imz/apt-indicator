@@ -2,8 +2,18 @@
 TARGET=../apt-indicator-agent
 TEMPLATE = app
 QT += network
-QMAKE_CXXFLAGS += -pedantic $(RPM_OPT_FLAGS)
-#LIBS += -lapt-pkg
+rpm_opt_flags = $$(RPM_OPT_FLAGS)
+CONFIG(release) {
+    isEmpty(rpm_opt_flags) {
+	QMAKE_CXXFLAGS += -O2
+    } else {
+	QMAKE_CXXFLAGS += $$rpm_opt_flags
+    }
+    QMAKE_CXXFLAGS += -DNDEBUG
+} else {
+    QMAKE_CXXFLAGS += -g -O0
+}
+QMAKE_CXXFLAGS += -pedantic
 
 OBJECTS_DIR = .obj
 MOC_DIR = .moc
