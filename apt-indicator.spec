@@ -76,6 +76,10 @@ install -m644 pixmaps/* %buildroot/%_datadir/%name/pixmaps
 - save information window geometry when hide
 - fix small bug in configurator
 
+* Mon Dec 21 2009 Alexey I. Froloff <raorn@altlinux.org> 0.1.14-alt1.1
+- NMU:
+  + rebuilt with apt 0.5.15lorg2-alt31.1
+
 * Wed Dec 16 2009 Sergey V Turchin <zerg at altlinux dot org> 0.1.14-alt0.M51.1
 - built for M51
 
