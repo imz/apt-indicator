@@ -28,7 +28,7 @@ License: GPL
 #define DEF_POPUP_TRAY true
 #define DEF_HIDE_WHEN_SLEEP true
 
-#define CHECK_INTERVAL_FIRST 5 /**< interval between program run and first check  */
+#define CHECK_INTERVAL_FIRST 60 /**< interval between program run and first check  */
 
 #define RETRY_INTERVAL 180 /**< interval between unsuccessful upgrades */
 
