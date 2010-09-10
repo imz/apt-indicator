@@ -1,5 +1,5 @@
 Name: apt-indicator
-Version: 0.1.15
+Version: 0.1.16
 Release: alt1
 
 Summary: Applet for indication that newer packages are available
@@ -72,6 +72,9 @@ install -m644 pixmaps/* %buildroot/%_datadir/%name/pixmaps
 
 
 %changelog
+* Fri Sep 10 2010 Sergey V Turchin <zerg at altlinux dot org> 0.1.16-alt1
+- increase initial check timeout to 60 sec
+
 * Tue Apr 27 2010 Sergey V Turchin <zerg at altlinux dot org> 0.1.15-alt1
 - save information window geometry when hide
 - fix small bug in configurator
