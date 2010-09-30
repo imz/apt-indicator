@@ -1,5 +1,5 @@
 Name: apt-indicator
-Version: 0.1.16
+Version: 0.1.17
 Release: alt1
 
 Summary: Applet for indication that newer packages are available
@@ -72,6 +72,9 @@ install -m644 pixmaps/* %buildroot/%_datadir/%name/pixmaps
 
 
 %changelog
+* Thu Sep 30 2010 Sergey V Turchin <zerg at altlinux dot org> 0.1.17-alt1
+- update pixmaps
+
 * Fri Sep 10 2010 Sergey V Turchin <zerg at altlinux dot org> 0.1.16-alt1
 - increase initial check timeout to 60 sec
 
