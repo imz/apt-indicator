@@ -1,5 +1,5 @@
 Name: apt-indicator
-Version: 0.1.17
+Version: 0.1.18
 Release: alt1
 
 Summary: Applet for indication that newer packages are available
@@ -72,6 +72,9 @@ install -m644 pixmaps/* %buildroot/%_datadir/%name/pixmaps
 
 
 %changelog
+* Fri Oct 01 2010 Sergey V Turchin <zerg at altlinux dot org> 0.1.18-alt1
+- update "working" pixmap
+
 * Thu Sep 30 2010 Sergey V Turchin <zerg at altlinux dot org> 0.1.17-alt1
 - update pixmaps
 
