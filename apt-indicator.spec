@@ -1,6 +1,6 @@
 Name: apt-indicator
 Version: 0.1.18
-Release: alt1
+Release: alt2
 
 Summary: Applet for indication that newer packages are available
 License: GPL
@@ -8,16 +8,13 @@ Group: System/Configuration/Packaging
 Url: http://apt-indicator.sourceforge.net/
 Packager: Sergey V Turchin <zerg@altlinux.org>
 
-Requires: libqt4-core >= %{get_version libqt4-core}
-
 Source: %name-%version.tar
 
 Provides: egg = %version-%release, alt-update = %version-%release
 Obsoletes: egg < %version-%release, alt-update < %version-%release
 Requires: synaptic-usermode
 
-BuildRequires(pre): libqt4-devel
-BuildRequires: xorg-devel gcc-c++ libstdc++-devel
+BuildRequires: gcc-c++ libstdc++-devel libqt4-devel
 BuildRequires: docbook-dtds docbook-style-xsl help2man libapt-devel
 BuildRequires: xml-common xsltproc
 #BuildRequires: libdb4.4-devel
@@ -72,6 +69,9 @@ install -m644 pixmaps/* %buildroot/%_datadir/%name/pixmaps
 
 
 %changelog
+* Wed Apr 20 2011 Sergey V Turchin <zerg at altlinux dot org> 0.1.18-alt2
+- fix build requires
+
 * Fri Oct 01 2010 Sergey V Turchin <zerg at altlinux dot org> 0.1.18-alt1
 - update "working" pixmap
 
