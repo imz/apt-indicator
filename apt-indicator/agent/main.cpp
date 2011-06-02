@@ -54,9 +54,9 @@ int main( int argc, char **argv )
 	    		qint64 line_len = cmdline_file.readLine(cmd_buf, sizeof(cmd_buf));
 	    		if( line_len > 0 )
 	    		{
-	    		    if( QString::fromLatin1(cmd_buf).trimmed().remove(QRegExp(".*/")).startsWith(PROGRAM_NAME_BIN"-agent") )
+	    		    if( QString::fromLatin1(cmd_buf).trimmed().remove(QRegExp(".*/")).startsWith(PROGRAM_NAME_BIN) )
 	    		    {
-				qWarning("apt-indicator-agent is already running at pid %d", pid);
+				qWarning(PROGRAM_NAME_BIN" is already running at pid %d", pid);
 	    			kill(pid, SIGUSR1);
 	    			is_running = true;
 	    		    }

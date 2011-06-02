@@ -1,6 +1,6 @@
 Name: apt-indicator
-Version: 0.1.18
-Release: alt2
+Version: 0.1.19
+Release: alt1
 
 Summary: Applet for indication that newer packages are available
 License: GPL
@@ -69,6 +69,9 @@ install -m644 pixmaps/* %buildroot/%_datadir/%name/pixmaps
 
 
 %changelog
+* Thu Jun 02 2011 Sergey V Turchin <zerg at altlinux dot org> 0.1.19-alt1
+- rename apt-indicator-agent process to avoid double startup (ALT#25692)
+
 * Wed Apr 20 2011 Sergey V Turchin <zerg at altlinux dot org> 0.1.18-alt2
 - fix build requires
 

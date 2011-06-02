@@ -97,7 +97,7 @@ int main( int argc, char **argv )
     }
     if( startup_agent )
     {
-        execlp(PROGRAM_NAME_BIN"-agent", PROGRAM_NAME_BIN"-agent", NULL);
+        execlp(PROGRAM_NAME_BIN"-agent", PROGRAM_NAME_BIN, NULL);
     }
     return 0;
 }
