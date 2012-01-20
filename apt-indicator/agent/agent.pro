@@ -20,11 +20,14 @@ MOC_DIR = .moc
 RCC_DIR = .rcc
 UI_DIR = .uic
 
-SOURCES = main.cpp
+SOURCES = qtlocalpeer.cpp qtlockedfile.cpp qtlockedfile_unix.cpp qtsingleapplication.cpp
+SOURCES += main.cpp
 SOURCES += agent.cpp configuration.cpp help_browser.cpp config_dialog.cpp
 SOURCES += info_window.cpp utils.cpp
 
-HEADERS = ../config.h
+
+HEADERS = qtlocalpeer.h qtlockedfile.h qtsingleapplication.h
+HEADERS += ../config.h
 HEADERS += agent.h configuration.h help_browser.h config_dialog.h
 HEADERS += info_window.h utils.h
 
