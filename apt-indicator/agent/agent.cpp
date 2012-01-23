@@ -22,8 +22,6 @@ License: GPL
 #include "help_browser.h"
 #include "info_window.h"
 
-static Agent *__apt_indicator_agent = 0;
-
 Agent::Agent( QObject *parent, const char *name , const QString &homedir):
 		QObject(parent),
 		homedir_(homedir),
@@ -32,8 +30,6 @@ Agent::Agent( QObject *parent, const char *name , const QString &homedir):
 		checker_proc(0),
 		upgrader_proc(0)
 {
-	__apt_indicator_agent = this;
-
 	setObjectName(name);
 	last_report_time_ = QDateTime::currentDateTime();
 	status_ = Nothing;
@@ -484,32 +480,8 @@ void Agent::setTrayHidden()
     setTrayVisible(false);
 }
 
-void Agent::onUnixSignal(int sig)
+void Agent::onMessageReceived(const QString &msg)
 {
-    //qDebug("Agent::onUnixSignal<%d>", sig);
-    switch(sig)
-    {
-	case SIGUSR1:
-	    {
-		setTrayVisible(true);
-		break;
-	    }
-	default:
-	    break;
-    }
-}
-
-void Agent::unixSignalHandler(int sig)
-{
-    switch(sig)
-    {
-	case SIGUSR1:
-	    {
-		if( __apt_indicator_agent )
-		    __apt_indicator_agent->setTrayVisible(true);
-		break;
-	    }
-	default:
-	    break;
-    }
+    if( msg == MSG_WAKEUP )
+	setTrayVisible(true);
 }

@@ -38,4 +38,6 @@ License: GPL
 #define EXIT_SUCCESS 0
 #define EXIT_FAILURE 1
 
+#define MSG_WAKEUP "WAKEUP"
+
 #endif

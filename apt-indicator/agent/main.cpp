@@ -5,99 +5,81 @@ Sergey V Turchin <zerg@altlinux.org>
 License: GPL
 */
 
-#include <csignal>
+#include <getopt.h>
 
-#include <QApplication>
+//#include <QApplication>
 #include <QTranslator>
 #include <QLocale>
 #include <QLibraryInfo>
 #include <QDebug>
 #include <QTextStream>
 #include <QDir>
+#include <QSettings>
+
+#include "qtsingleapplication.h"
 
 #include "agent.h"
 #include "../config.h"
 
 extern const char *__progname;
 
-
-static void agentSignalHandler(int)
+void usage(FILE *out)
 {
-    Agent::unixSignalHandler(SIGUSR1);
+    fprintf(out, "Usage: %s [-hva] [--help] [--version] [--autostart]\n", __progname);
+    fprintf(out, "This is a simple applet both for Gnome and KDE which\n");
+    fprintf(out, " made notifications for users that newer packages are available\n");
+    fprintf(out, "  -h, --help             display help screen\n");
+    fprintf(out, "  -v, --version          display version information\n");
+    fprintf(out, "  -a, --autostart        for running by Window Manager's autostart\n\n");
+    fprintf(out, "Report bugs to http://bugzilla.altlinux.ru\n");
 }
 
 
 int main( int argc, char **argv )
 {
-    bool is_running = false;
-    int ret = 0;
-    QString tmpdir(getenv("TMPDIR"));
-    if( tmpdir.isEmpty() )
-	tmpdir = "/tmp";
-    QString pidfile_path = QString("%1/apt-indicator-agent-%2.pid").arg(tmpdir).arg(getuid());
-    { // check agent is running
-	QFile pidfile(pidfile_path);
-	if( pidfile.open(QIODevice::ReadOnly) )
+    int ret = EXIT_SUCCESS;
+    bool autostarted = false;
+
+	/* process args */
+	while (true)
 	{
-	    char pid_buf[1024];
-	    qint64 line_len = pidfile.readLine(pid_buf, sizeof(pid_buf));
-	    if( line_len > 0 )
-	    {
-		int pid = QString::fromLatin1(pid_buf).trimmed().toInt();
-		if(pid > 0)
+		static struct option long_options[] =
+			{
+				{"help", no_argument, 0, 'h'},
+				{"version", no_argument, 0, 'v'},
+				{"autostart", no_argument, 0, 'a'},
+				{0, 0, 0, 0}
+			};
+		int c = getopt_long(argc, argv, "hva", long_options, NULL);
+		if (c == -1)
+			break;
+		switch (c)
 		{
-		    QString cmdline_path = QString("/proc/%1/cmdline").arg(pid);
-		    QFile cmdline_file(cmdline_path);
-		    if(cmdline_file.open(QIODevice::ReadOnly))
-		    {
-	    		char cmd_buf[1024];
-	    		qint64 line_len = cmdline_file.readLine(cmd_buf, sizeof(cmd_buf));
-	    		if( line_len > 0 )
-	    		{
-	    		    if( QString::fromLatin1(cmd_buf).trimmed().remove(QRegExp(".*/")).startsWith(PROGRAM_NAME_BIN) )
-	    		    {
-				qWarning(PROGRAM_NAME_BIN" is already running at pid %d", pid);
-	    			kill(pid, SIGUSR1);
-	    			is_running = true;
-	    		    }
-	    		}
-	    		cmdline_file.close();
-	    	    }
+		case 'h':
+			usage(stdout);
+			return EXIT_SUCCESS;
+			break;
+		case 'v':
+			qDebug("%s %s\n", __progname, VERSION);
+			qDebug("Written by Stanislav Ievlev and Sergey V Turchin\n");
+			qDebug("Copyright (C) 2003-2004 ALT Linux Team\n");
+			return (EXIT_SUCCESS);
+		case 'a':
+			autostarted = true;
+			break;
+		default:
+			usage(stderr);
+			return EXIT_FAILURE;
 		}
-	    }
-	    pidfile.close();
-	}
-    }
-
-    if( !is_running )
-    { // create pid file
-	QFile pidfile(pidfile_path);
-	if( pidfile.open(QIODevice::WriteOnly|QIODevice::Truncate) )
-	{
-	    QString write_line = QString("%1").arg(getpid());
-	    pidfile.write(write_line.toLocal8Bit());
-	    pidfile.close();
-	}
-	else
-	{
-	    qFatal("Unable to create pidfile %s", qPrintable(pidfile_path));
 	}
 
-	Q_INIT_RESOURCE(pixmaps);
-	QApplication app( argc, argv );
-	app.setQuitOnLastWindowClosed(false);
 
-	QTranslator translator(&app);
-	QTranslator qt_translator(&app);
-	QString lang = QLocale::system().name();
-#ifndef NDEBUG
-	translator.load( "apt_indicator_agent_" + lang, "./translations" );
-#else
-	translator.load( "apt_indicator_agent_" + lang, DATADIR"/translations" );
-#endif
-	qt_translator.load("qt_" + lang, QLibraryInfo::location(QLibraryInfo::TranslationsPath));
-	app.installTranslator( &qt_translator );
-	app.installTranslator( &translator );
+    Q_INIT_RESOURCE(pixmaps);
+    QtSingleApplication app( argc, argv );
+
+    if( !app.sendMessage(MSG_WAKEUP) )
+    {
+	bool startup_agent = true;
 
 	QCoreApplication::setApplicationName(PROGRAM_NAME);
 	if(QString(ORGANISATION_DOMAIN).isEmpty())
@@ -105,20 +87,35 @@ int main( int argc, char **argv )
 	else
 	    QCoreApplication::setOrganizationDomain(ORGANISATION_DOMAIN);
 	QSettings::setPath(QSettings::IniFormat, QSettings::UserScope, QDir::homePath()+"/.config");
-	Agent agent(0, PROGRAM_NAME, QString(getenv("HOME")));
-#if 0
-	app.watchUnixSignal(SIGUSR1, true);
-	QObject::connect(QCoreApplication::instance(), SIGNAL(unixSignal(int)), &agent, SLOT(onUnixSignal(int)));
-#else
-        struct sigaction sa;
-        sigemptyset(&(sa.sa_mask));
-        sa.sa_flags = 0;
-        sa.sa_handler = agentSignalHandler;
-        sigaction(SIGUSR1, &sa, 0);
-	//QObject::connect(&agent, SIGNAL(unixSignal(int)), &agent, SLOT(onUnixSignal(int)));
-#endif
 
-	ret = app.exec();
+	if( autostarted )
+	{ // check need start
+	    QSettings cfg(&app);
+	    startup_agent = cfg.value("autostart", DEF_AUTOSTART).toBool() != false;
+	}
+
+	if( startup_agent )
+	{
+	    QTranslator translator(&app);
+	    QTranslator qt_translator(&app);
+	    QString lang = QLocale::system().name();
+#ifndef NDEBUG
+	    translator.load( "apt_indicator_agent_" + lang, "./translations" );
+#else
+	    translator.load( "apt_indicator_agent_" + lang, DATADIR"/translations" );
+#endif
+	    qt_translator.load("qt_" + lang, QLibraryInfo::location(QLibraryInfo::TranslationsPath));
+	    app.installTranslator( &qt_translator );
+	    app.installTranslator( &translator );
+
+	    app.setQuitOnLastWindowClosed(false);
+
+	    Agent agent(0, PROGRAM_NAME, QString(getenv("HOME")));
+	    QObject::connect(&app, SIGNAL(messageReceived(const QString&)),
+		     &agent, SLOT(onMessageReceived(const QString&)));
+
+	    ret = app.exec();
+	}
     }
 
     return ret;

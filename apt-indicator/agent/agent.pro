@@ -1,5 +1,5 @@
 
-TARGET=../apt-indicator-agent
+TARGET=../apt-indicator
 TEMPLATE = app
 QT += network
 rpm_opt_flags = $$(RPM_OPT_FLAGS)

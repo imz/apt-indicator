@@ -1,2 +1,2 @@
-SUBDIRS += starter agent checker
+SUBDIRS += agent checker
 TEMPLATE = subdirs
