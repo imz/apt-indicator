@@ -363,7 +363,6 @@ void Agent::onCheckerOutput()
 	{
 	    last_report_time_ = QDateTime::currentDateTime();
 	    status_ = new_status;
-	    setTrayIcon();
 	    switch(status_)
 	    {
 		case Normal:
@@ -387,16 +386,24 @@ void Agent::onCheckerOutput()
 	    }
 	}
 	result_ = new_result.join("\n");
-	updateInfoWindow();
 	//qDebug("result<%d>: %s", new_result.size(), qPrintable(result_));
 }
 
 void Agent::onCheckerEnd(int exitCode, QProcess::ExitStatus exitState)
 {
     if( exitState == QProcess::NormalExit && exitCode != 0 )
+    {
+	status_ = Problem;
 	qWarning(PROGRAM_NAME ": checker was exited with code %d", exitCode);
+    }
     else if( exitState == QProcess::CrashExit )
+    {
+	status_ = Problem;
 	qWarning(PROGRAM_NAME ": checker crashed");
+	result_ = tr("Update checking program crashed");
+    }
+    setTrayIcon();
+    updateInfoWindow();
 }
 
 void Agent::onCheckerEndError(QProcess::ProcessError error)
@@ -406,7 +413,7 @@ void Agent::onCheckerEndError(QProcess::ProcessError error)
 	case QProcess::FailedToStart:
 	    qWarning(PROGRAM_NAME ": failed to start checking program");
 	case QProcess::Crashed:
-	    qWarning(PROGRAM_NAME ": checker crashed");
+	    qWarning(PROGRAM_NAME ": checking program crashed");
 	default:
 	    qWarning(PROGRAM_NAME ": execution of checking program failed");
     }
