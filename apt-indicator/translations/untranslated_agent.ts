@@ -4,105 +4,105 @@
 <context>
     <name>Agent</name>
     <message>
-        <location filename="../agent/agent.cpp" line="48"/>
+        <location filename="../agent/agent.cpp" line="44"/>
         <source>&amp;Upgrade automatically...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../agent/agent.cpp" line="49"/>
+        <location filename="../agent/agent.cpp" line="45"/>
         <source>&amp;Run upgrade program...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../agent/agent.cpp" line="50"/>
+        <location filename="../agent/agent.cpp" line="46"/>
         <source>Chec&amp;k for updates</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../agent/agent.cpp" line="51"/>
+        <location filename="../agent/agent.cpp" line="47"/>
         <source>D&amp;etailed info...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../agent/agent.cpp" line="52"/>
+        <location filename="../agent/agent.cpp" line="48"/>
         <source>H&amp;ide</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../agent/agent.cpp" line="54"/>
+        <location filename="../agent/agent.cpp" line="50"/>
         <source>&amp;Settings...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../agent/agent.cpp" line="55"/>
+        <location filename="../agent/agent.cpp" line="51"/>
         <source>&amp;Repository settings...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../agent/agent.cpp" line="57"/>
+        <location filename="../agent/agent.cpp" line="53"/>
         <source>&amp;Help</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../agent/agent.cpp" line="58"/>
+        <location filename="../agent/agent.cpp" line="54"/>
         <source>&amp;About</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../agent/agent.cpp" line="60"/>
+        <location filename="../agent/agent.cpp" line="56"/>
         <source>&amp;Quit</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../agent/agent.cpp" line="97"/>
+        <location filename="../agent/agent.cpp" line="96"/>
         <source>Report at %1 %2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../agent/agent.cpp" line="106"/>
+        <location filename="../agent/agent.cpp" line="105"/>
         <source>Nothing to update...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../agent/agent.cpp" line="109"/>
+        <location filename="../agent/agent.cpp" line="108"/>
         <source>Checking in progress...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../agent/agent.cpp" line="112"/>
+        <location filename="../agent/agent.cpp" line="111"/>
         <source>No status info available</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../agent/agent.cpp" line="143"/>
-        <location filename="../agent/agent.cpp" line="170"/>
-        <location filename="../agent/agent.cpp" line="428"/>
+        <location filename="../agent/agent.cpp" line="142"/>
+        <location filename="../agent/agent.cpp" line="169"/>
         <location filename="../agent/agent.cpp" line="434"/>
+        <location filename="../agent/agent.cpp" line="440"/>
         <source>Run upgrade process</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../agent/agent.cpp" line="143"/>
+        <location filename="../agent/agent.cpp" line="142"/>
         <source>Program already running</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../agent/agent.cpp" line="170"/>
+        <location filename="../agent/agent.cpp" line="169"/>
         <source>No upgrade program found</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../agent/agent.cpp" line="190"/>
+        <location filename="../agent/agent.cpp" line="189"/>
         <source>Repositories configuration</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../agent/agent.cpp" line="190"/>
+        <location filename="../agent/agent.cpp" line="189"/>
         <source>Failed to start &quot;%1&quot;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../agent/agent.cpp" line="253"/>
+        <location filename="../agent/agent.cpp" line="252"/>
         <source>This program make notification of updates.
 Copyright (C) 2003-2004 ALT Linux Team
 
@@ -110,74 +110,79 @@ Written by Stanislav Ievlev and Sergey V. Turchin</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../agent/agent.cpp" line="260"/>
+        <location filename="../agent/agent.cpp" line="259"/>
         <source>Should &lt;b&gt;%1&lt;/b&gt; start automatically 
 when you login?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../agent/agent.cpp" line="261"/>
+        <location filename="../agent/agent.cpp" line="260"/>
         <source>Exit program</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../agent/agent.cpp" line="282"/>
+        <location filename="../agent/agent.cpp" line="281"/>
         <source>Waiting...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../agent/agent.cpp" line="286"/>
-        <location filename="../agent/agent.cpp" line="383"/>
+        <location filename="../agent/agent.cpp" line="285"/>
+        <location filename="../agent/agent.cpp" line="381"/>
         <source>There are updates for your system available...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../agent/agent.cpp" line="290"/>
+        <location filename="../agent/agent.cpp" line="289"/>
         <source>Nothing to update</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../agent/agent.cpp" line="294"/>
+        <location filename="../agent/agent.cpp" line="293"/>
         <source>Problems with Dist-Upgrade</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../agent/agent.cpp" line="298"/>
+        <location filename="../agent/agent.cpp" line="297"/>
         <source>Working...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../agent/agent.cpp" line="302"/>
+        <location filename="../agent/agent.cpp" line="301"/>
         <source>Unknown status</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../agent/agent.cpp" line="309"/>
+        <location filename="../agent/agent.cpp" line="308"/>
         <source>setting Icon</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../agent/agent.cpp" line="310"/>
+        <location filename="../agent/agent.cpp" line="309"/>
         <source>Could not load the icon file %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../agent/agent.cpp" line="422"/>
+        <location filename="../agent/agent.cpp" line="403"/>
+        <source>Update checking program crashed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../agent/agent.cpp" line="428"/>
         <source>Failed to start upgrade program</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../agent/agent.cpp" line="424"/>
+        <location filename="../agent/agent.cpp" line="430"/>
         <source>Program crashed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../agent/agent.cpp" line="426"/>
+        <location filename="../agent/agent.cpp" line="432"/>
         <source>Execution of program failed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../agent/agent.cpp" line="434"/>
+        <location filename="../agent/agent.cpp" line="440"/>
         <source>child was exited with code %1</source>
         <translation type="unfinished"></translation>
     </message>
