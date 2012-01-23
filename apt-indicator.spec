@@ -1,5 +1,5 @@
 Name: apt-indicator
-Version: 0.1.19
+Version: 0.2.0
 Release: alt1
 
 Summary: Applet for indication that newer packages are available
@@ -60,7 +60,7 @@ install -m644 pixmaps/* %buildroot/%_datadir/%name/pixmaps
 
 
 %files
-%doc doc/html doc/images NEWS ChangeLog TODO README
+%doc doc/html doc/images NEWS TODO README
 %_bindir/*
 #%_man1dir/*
 %_datadir/%name
@@ -69,6 +69,10 @@ install -m644 pixmaps/* %buildroot/%_datadir/%name/pixmaps
 
 
 %changelog
+* Mon Jan 23 2012 Sergey V Turchin <zerg at altlinux dot org> 0.2.0-alt1
+- fix double startup
+- fix update systray status
+
 * Thu Jun 02 2011 Sergey V Turchin <zerg at altlinux dot org> 0.1.19-alt1
 - rename apt-indicator-agent process to avoid double startup (ALT#25692)
 
