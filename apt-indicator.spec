@@ -12,7 +12,7 @@ Source: %name-%version.tar
 
 Provides: egg = %version-%release, alt-update = %version-%release
 Obsoletes: egg < %version-%release, alt-update < %version-%release
-Requires: synaptic-usermode
+Requires: /usr/bin/xdg-su /usr/sbin/synaptic
 
 BuildRequires: gcc-c++ libstdc++-devel libqt4-devel
 BuildRequires: docbook-dtds docbook-style-xsl help2man libapt-devel
