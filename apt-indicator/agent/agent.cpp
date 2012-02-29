@@ -43,7 +43,7 @@ Agent::Agent( QObject *parent, const char *name , const QString &homedir):
 	menu_ = new QMenu();
 	menu_->addAction( tr("&Upgrade automatically..."), this, SLOT(doRunAuto()));
 	menu_->addAction( tr("&Run upgrade program..."), this, SLOT(doRunPlain()));
-	menu_->addAction( tr("Chec&k for updates"), this, SLOT(doCheck()));
+	menu_->addAction(QIcon(":/pixmaps/working.png"), tr("Chec&k for updates"), this, SLOT(doCheck()));
 	menu_->addAction( tr("D&etailed info..."), this, SLOT(doInfo()));
 	menu_->addAction( tr("H&ide"), this, SLOT(setTrayHidden()));
 	menu_->addSeparator();
