@@ -151,14 +151,22 @@ void Agent::doRun(bool automatic)
 
 	if (!upgrader_proc)
 	{
-		QStringList arguments(cfg_->commandUprader(Configuration::CmdUpgrader).split(" ", QString::SkipEmptyParts));
-		QString program;
-		if( arguments.size() >= 1 )
-		    program = arguments.takeAt(0);
-		if( !automatic )
-		    arguments.clear();
-		if( !program.isEmpty() )
+		QString program("xdg-su");
+		QStringList arguments;
+		QString cmd_upgrader_line(cfg_->commandUprader(Configuration::CmdUpgrader));
+		QString cmd_upgrader_program;
+		if( !cmd_upgrader_line.isEmpty() )
 		{
+		    cmd_upgrader_program = cmd_upgrader_line.split(" ", QString::SkipEmptyParts).first();
+		}
+		if( automatic )
+		    arguments << cmd_upgrader_line;
+		else
+		    arguments << cmd_upgrader_program;
+
+		if( !arguments.isEmpty() )
+		{
+		    arguments.prepend("-c");
 		    upgrader_proc = new QProcess(this);
 		    connect(upgrader_proc, SIGNAL(finished(int, QProcess::ExitStatus)), this, SLOT(onEndRun(int, QProcess::ExitStatus)));
 		    connect(upgrader_proc, SIGNAL(error(QProcess::ProcessError)), this, SLOT(onEndRunError(QProcess::ProcessError)));
@@ -180,13 +188,15 @@ void Agent::doConfigure()
 
 void Agent::doConfigureRepos()
 {
-	QString command = cfg_->commandUprader(Configuration::CmdRepos);
-	QStringList arguments(command.split(" ", QString::SkipEmptyParts));
-	QString program;
-	if( arguments.size() >= 1 )
-	    program = arguments.takeAt(0);
-	if( !QProcess::startDetached(program, arguments) )
-	    QMessageBox::critical(0,tr("Repositories configuration"),  tr("Failed to start \"%1\"").arg(command), QMessageBox::Ok, Qt::NoButton);
+	QString program("xdg-su");
+	QStringList arguments;
+	QString command_line = cfg_->commandUprader(Configuration::CmdRepos);
+	if( !command_line.isEmpty() )
+	{
+	    arguments << "-c" << command_line;
+	    if( !QProcess::startDetached(program, arguments) )
+		QMessageBox::critical(0,tr("Repositories configuration"),  tr("Failed to start \"%1\"").arg(command_line), QMessageBox::Ok, Qt::NoButton);
+	}
 }
 
 void Agent::doCheck()
