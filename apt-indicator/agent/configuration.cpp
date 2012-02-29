@@ -33,7 +33,7 @@ void Configuration::load()
     QSettings cfg(this);
     cfg.setFallbacksEnabled(false);
     //cfg_.beginGroup("");
-    setParam(UpgraderProfile,    cfg.value("upgrader_profile", DEF_UPGRADER).toString());
+    setParam(UpgraderProfile,    cfg.value("upgrader_profile2", DEF_UPGRADER).toString());
     setParam(CheckInterval,   cfg.value("check_interval", DEF_CHECK_INTERVAL).toInt());
     setParam(ShowBroken,      cfg.value("show_broken", DEF_SHOW_BROKEN).toBool());
     setParam(IgnoreAptErrors, cfg.value("ignore_apt_errors", DEF_IGNORE_APT_ERRORS).toBool());
@@ -47,7 +47,7 @@ void Configuration::save()
     QSettings cfg(this);
     cfg.setFallbacksEnabled(false);
     //cfg_.beginGroup("");
-    cfg.setValue("upgrader_profile", getString(UpgraderProfile));
+    cfg.setValue("upgrader_profile2", getString(UpgraderProfile));
     cfg.setValue("check_interval", getInt(CheckInterval));
     cfg.setValue("show_broken", getBool(ShowBroken));
     cfg.setValue("ignore_apt_errors", getBool(IgnoreAptErrors));
