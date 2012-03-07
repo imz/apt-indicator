@@ -20,7 +20,7 @@ License: GPL
  * @todo make kill at the end of thread
  * @repeat fetch lists until network stop
  */
-class DistUpgrade : public QThread
+class DistUpgrade : public QObject
 {
 Q_OBJECT
 public:
@@ -30,7 +30,7 @@ public:
 	explicit
 	DistUpgrade(QObject *parent, const QString &homedir, bool show_broken,bool ignore_errors);
 	virtual ~DistUpgrade();
-	virtual void run();
+	void start();
 
 	Status status() const; /**< read dist-upgrade status */
 	QString result() const; /**< read dist-upgrade results */
@@ -38,9 +38,6 @@ signals:
 	void endDistUpgrade();
 	
 private:
-	void doChild();
-	void doFather();
-
 	UpdateResult update();
 	void dist_upgrade();
 
@@ -49,9 +46,6 @@ private:
 	QString result_; /**< dist-upgrade result for Information window*/
 	bool show_broken_;
 	bool ignore_errors_;
-	pid_t child_pid_; /**< pid of the child process */
-
-	int pipes[2]; /**< connection pipes */
 };
 
 #endif

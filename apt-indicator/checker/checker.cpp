@@ -22,22 +22,17 @@ Checker::Checker(QObject *parent):
 	    ignore_errors = true;
     }
     dist_upgrade = new DistUpgrade(this, "", show_broken, ignore_errors);
-    connect(dist_upgrade, SIGNAL(endDistUpgrade()), this, SLOT(onEndDistUpgrade()));
     QTimer::singleShot(0, this, SLOT(startProgram()));
 }
 
 Checker::~Checker()
 {
-    dist_upgrade->wait();
 }
 
 void Checker::startProgram()
 {
     dist_upgrade->start();
-}
 
-void Checker::onEndDistUpgrade()
-{
     QString stat_str;
     switch( dist_upgrade->status() )
     {

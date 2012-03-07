@@ -14,7 +14,6 @@ public:
 
 public slots:
     void startProgram();
-    void onEndDistUpgrade();
 
 private:
     DistUpgrade *dist_upgrade;

@@ -115,11 +115,10 @@ if ( (expr) ) \
  * @todo use mkdir -p (make_path)
  */
 DistUpgrade::DistUpgrade(QObject *parent, const QString &homedir, bool broken,bool errors):
-		QThread(parent),
+		QObject(parent),
 		status_(Problem),     //problems by default
 		show_broken_(broken),
-		ignore_errors_(errors),
-		child_pid_(-1)
+		ignore_errors_(errors)
 {
 	if( !homedir.isEmpty() )
 	    workdir_ = homedir.toStdString();
@@ -132,7 +131,6 @@ DistUpgrade::DistUpgrade(QObject *parent, const QString &homedir, bool broken,bo
 
 DistUpgrade::~DistUpgrade()
 {
-    if (child_pid_ > 0) kill(child_pid_,SIGTERM);
 }
 
 DistUpgrade::Status DistUpgrade::status() const
@@ -341,120 +339,42 @@ void DistUpgrade::dist_upgrade()
 
 }
 
-//child's work
-void DistUpgrade::doChild()
-{
-	//close other end of the pipe
-	close(pipes[0]);
-
-	//lock
-	std::string lockfile = (workdir_.empty()) ? "/tmp/" : workdir_;
-	lockfile += ".agent_lock";
-
-	int fd = GetLock(lockfile);
-	if (fd < 0 )
-	{
-		result_ = tr("unable to get exclusive lock");
-		return ;
-	}
-
-	FileFd Lock(fd); //autoclose when exit this function
-
-	if (!pkgInitConfig(*_config) || !pkgInitSystem(*_config, _system))
-	{
-		result_ = tr("Problems with APT initialization");
-		return ;
-	}
-
-	switch( update() )
-	{
-	    case UpdTryAgain: { status_ = TryAgain; break; }
-	    case UpdProblem: { status_ = Problem; return; }
-	    case UpdNormal:
-	    default:
-		dist_upgrade(); //then dist-upgrade
-	}
-}
-
-/**
- * father's work
- * read messages from child
- */
-void DistUpgrade::doFather()
-{
-	char buf[BUFSIZ];
-
-	//close one end of the pipes
-	close(pipes[1]);
-	int n;
-	while ((n = TEMP_FAILURE_RETRY(read(pipes[0], buf, sizeof(buf) - 1 * sizeof(char)))) > 0 )
-	{
-		buf[n + 1] = '\000';
-		result_ += QString::fromLocal8Bit(buf); //append to result string
-		memset(buf, 0, sizeof(buf));
-	};
-	close(pipes[0]);
-}
-
 /**
  * fork subprocess for apt
  * we had to create child 'cause APT is suxx, cannot unlock rpm database if we use it read-only
  */
-void DistUpgrade::run()
+void DistUpgrade::start()
 {
+	int fd = -1;
 	do
 	{
-		DIST_UPGRADE_ASSERT(pipe(pipes) < 0); //create connection pipe
-		DIST_UPGRADE_ASSERT((child_pid_ = fork()) < 0) //fork subprocess
+	    //lock
+	    std::string lockfile = (workdir_.empty()) ? "/tmp/" : workdir_;
+	    lockfile += ".agent_lock";
 
-		if (!child_pid_) //run subprocess ...
-		{ //child
-			result_ = "";
-
-			nice(15); //low dist uprade process priority
-			doChild();
-
-			//send result to father, if we have
-			if (!result_.isEmpty())
-			{
-				FILE *f = fdopen(pipes[1], "w");
-				QTextStream s(f, QIODevice::WriteOnly);
-				s << result_;
-				s.flush();
-			}
-
-			close(pipes[1]);
-
-			//hack: when use exit() sometime child cannot exit (fork under thread problems)
-			_exit(status_); //return status to parent process
+	    if( fd < 0 )
+		fd = GetLock(lockfile);
+	    if (fd < 0 ) {
+		result_ = tr("unable to get exclusive lock");
+	    } else {
+		FileFd Lock(fd); //autoclose when exit this function
+		if (!pkgInitConfig(*_config) || !pkgInitSystem(*_config, _system)) {
+		    result_ = tr("Problems with APT initialization");
+		} else {
+		    switch( update() ) {
+			case UpdTryAgain: { status_ = TryAgain; break; }
+			case UpdProblem: { status_ = Problem; return; }
+			case UpdNormal:
+			default:
+			    dist_upgrade(); //then dist-upgrade
+		    }
 		}
-		else
-		{ //father
-			int	child_status;
+	    }
 
-			doFather(); //read pipes here
-
-			//wait when child finish it's work
-			DIST_UPGRADE_ASSERT(waitpid(child_pid_, &child_status, 0) != child_pid_);
-
-			//get status from child via exit code
-			if ((WIFEXITED (child_status)))
-				status_ = static_cast<Status>(WEXITSTATUS (child_status));
-
-			if (WIFSIGNALED (child_status))
-			{
-				result_ = QString(tr("child was terminated with signal %1")).arg(WTERMSIG (child_status));
-				status_ = Problem; //overwrite status
-			}
-			if (status_ != TryAgain)
-			{
-			    emit endDistUpgrade(); //send notification about end of work
-			    quit();
-			}
-			else
-				sleep(RETRY_INTERVAL); //wait for the next retry
-		
-			child_pid_ = -1; //child process doesn't exists at this point
+		if (status_ != TryAgain) {
+		    break;
+		} else {
+		    sleep(RETRY_INTERVAL); //wait for the next retry
 		}
 
 	}

@@ -17,6 +17,7 @@ License: GPL
 
 int main( int argc, char **argv )
 {
+	nice(15);
 
 	QCoreApplication app( argc, argv );
 	Checker checker;
