@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0">
+<TS version="2.0" language="uk">
 <context>
     <name>AboutDialog</name>
     <message>
@@ -80,33 +80,33 @@ when you login?</source>
 при вході в систему?</translation>
     </message>
     <message>
-        <location filename="../agent/agent.cpp" line="285"/>
-        <location filename="../agent/agent.cpp" line="381"/>
+        <location filename="../agent/agent.cpp" line="301"/>
+        <location filename="../agent/agent.cpp" line="397"/>
         <source>There are updates for your system available...</source>
         <translation>Наявні поновлення для вашої системи...</translation>
     </message>
     <message>
-        <location filename="../agent/agent.cpp" line="289"/>
+        <location filename="../agent/agent.cpp" line="305"/>
         <source>Nothing to update</source>
         <translation>Нема поновлень</translation>
     </message>
     <message>
-        <location filename="../agent/agent.cpp" line="293"/>
+        <location filename="../agent/agent.cpp" line="309"/>
         <source>Problems with Dist-Upgrade</source>
         <translation>Помилки протягом dist-upgrade</translation>
     </message>
     <message>
-        <location filename="../agent/agent.cpp" line="297"/>
+        <location filename="../agent/agent.cpp" line="313"/>
         <source>Working...</source>
         <translation>Працюю...</translation>
     </message>
     <message>
-        <location filename="../agent/agent.cpp" line="301"/>
+        <location filename="../agent/agent.cpp" line="317"/>
         <source>Unknown status</source>
         <translation>Невідомий статус</translation>
     </message>
     <message>
-        <location filename="../agent/agent.cpp" line="309"/>
+        <location filename="../agent/agent.cpp" line="325"/>
         <source>Could not load the icon file %1</source>
         <translation>Не можу завантажити файл піктограми %1</translation>
     </message>
@@ -184,29 +184,29 @@ when you login?</source>
     </message>
     <message>
         <location filename="../agent/agent.cpp" line="142"/>
-        <location filename="../agent/agent.cpp" line="169"/>
-        <location filename="../agent/agent.cpp" line="434"/>
-        <location filename="../agent/agent.cpp" line="440"/>
+        <location filename="../agent/agent.cpp" line="183"/>
+        <location filename="../agent/agent.cpp" line="450"/>
+        <location filename="../agent/agent.cpp" line="456"/>
         <source>Run upgrade process</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../agent/agent.cpp" line="169"/>
+        <location filename="../agent/agent.cpp" line="183"/>
         <source>No upgrade program found</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../agent/agent.cpp" line="189"/>
+        <location filename="../agent/agent.cpp" line="204"/>
         <source>Repositories configuration</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../agent/agent.cpp" line="189"/>
+        <location filename="../agent/agent.cpp" line="204"/>
         <source>Failed to start &quot;%1&quot;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../agent/agent.cpp" line="252"/>
+        <location filename="../agent/agent.cpp" line="268"/>
         <source>This program make notification of updates.
 Copyright (C) 2003-2004 ALT Linux Team
 
@@ -214,50 +214,54 @@ Written by Stanislav Ievlev and Sergey V. Turchin</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../agent/agent.cpp" line="259"/>
+        <location filename="../agent/agent.cpp" line="275"/>
         <source>Should &lt;b&gt;%1&lt;/b&gt; start automatically 
 when you login?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../agent/agent.cpp" line="260"/>
+        <location filename="../agent/agent.cpp" line="276"/>
         <source>Exit program</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../agent/agent.cpp" line="281"/>
+        <location filename="../agent/agent.cpp" line="297"/>
         <source>Waiting...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../agent/agent.cpp" line="308"/>
+        <location filename="../agent/agent.cpp" line="324"/>
         <source>setting Icon</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../agent/agent.cpp" line="403"/>
+        <location filename="../agent/agent.cpp" line="419"/>
         <source>Update checking program crashed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../agent/agent.cpp" line="428"/>
+        <location filename="../agent/agent.cpp" line="444"/>
         <source>Failed to start upgrade program</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../agent/agent.cpp" line="430"/>
+        <location filename="../agent/agent.cpp" line="446"/>
         <source>Program crashed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../agent/agent.cpp" line="432"/>
+        <location filename="../agent/agent.cpp" line="448"/>
         <source>Execution of program failed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../agent/agent.cpp" line="440"/>
+        <location filename="../agent/agent.cpp" line="456"/>
+        <source>&apos;%1&apos; was exited with code %2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>child was exited with code %1</source>
-        <translation type="unfinished">нащадок повернув код %1</translation>
+        <translation type="obsolete">нащадок повернув код %1</translation>
     </message>
 </context>
 <context>
