@@ -75,6 +75,7 @@ private:
 
 	QProcess *checker_proc;
 	QProcess *upgrader_proc;
+	QString upgrader_cmd;
 };
 
 #endif

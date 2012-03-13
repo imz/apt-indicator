@@ -160,9 +160,15 @@ void Agent::doRun(bool automatic)
 		    cmd_upgrader_program = cmd_upgrader_line.split(" ", QString::SkipEmptyParts).first();
 		}
 		if( automatic )
+		{
 		    arguments << cmd_upgrader_line;
+		    upgrader_cmd = "xdg-su -c " + cmd_upgrader_line;
+		}
 		else
+		{
 		    arguments << cmd_upgrader_program;
+		    upgrader_cmd = "xdg-su -c " + cmd_upgrader_program;
+		}
 
 		if( !arguments.isEmpty() )
 		{
@@ -447,7 +453,7 @@ void Agent::onEndRunError(QProcess::ProcessError error)
 void Agent::onEndRun(int exitCode, QProcess::ExitStatus exitState)
 {
     if( exitState == QProcess::NormalExit && exitCode != 0 ) {
-	QMessageBox::warning(0, tr("Run upgrade process"), tr("child was exited with code %1").arg(exitCode));
+	QMessageBox::warning(0, tr("Run upgrade process"), tr("'%1' was exited with code %2").arg(upgrader_cmd).arg(exitCode));
     } else {
 	if( info_window_ )
 	{
