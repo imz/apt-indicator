@@ -26,6 +26,7 @@ License: GPL
 #include <QCoreApplication>
 #include <QDir>
 #include <QTextStream>
+#include <QMap>
 
 #include "dist_upgrade.h"
 #include "../config.h"
