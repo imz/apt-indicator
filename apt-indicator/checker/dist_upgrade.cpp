@@ -21,6 +21,7 @@ License: GPL
 #include <apt-pkg/acquire.h>
 #include <apt-pkg/acquire-item.h>
 #include <apt-pkg/strutl.h>
+#include <apt-pkg/version.h>
 
 #include <QCoreApplication>
 #include <QDir>
@@ -273,6 +274,7 @@ void DistUpgrade::dist_upgrade()
 
 	if (Cache->InstCount() != 0 || Cache->DelCount() != 0)
 	{ //we have some programs for upgrade
+		QMap<QString,QStringList> lst_replace;
 		QStringList lst_remove;
 		QStringList lst_upgrade;
 		QStringList lst_install;
@@ -291,8 +293,26 @@ void DistUpgrade::dist_upgrade()
 			//see details
 			if (Cache[I].Delete() == true)
 			{
+        		    bool obsoleted = false;
+        		    QStringList by;
+        		    for( pkgCache::DepIterator D = I.RevDependsList(); D.end() == false; D++ )
+        		    {
+        			if( D->Type == pkgCache::Dep::Obsoletes &&
+            			    Cache[D.ParentPkg()].Install() &&
+            			    (pkgCache::Version*)D.ParentVer() == Cache[D.ParentPkg()].InstallVer &&
+            			    Cache->VS().CheckDep(I.CurrentVer().VerStr(), D) == true )
+        			{
+            			    if( !obsoleted )
+            				obsoleted = true;
+                		    by.append(D.ParentPkg().Name());
+        			}
+        		    }
+        		    if( obsoleted )
+				lst_replace[I.Name()] = by;
+        		    else
 				lst_remove << I.Name();
 			}
+
 			if (Cache[I].NewInstall() == true)
 			{
 				lst_install << I.Name();
@@ -317,6 +337,20 @@ void DistUpgrade::dist_upgrade()
 			result_ += QString("\n<font color='red'><b>%1:</b></font><br/>\n").arg(tr("Following packages will be removed"));
 			lst_remove.sort();
 			result_ += lst_remove.join(" ");
+			result_ += "<br/>";
+		}
+		if (!lst_replace.isEmpty())
+		{
+			result_ += QString("\n<b>%1:</b><br/>\n").arg(tr("Following packages will be replaced"));
+			QMapIterator<QString,QStringList> i(lst_replace);
+			while(i.hasNext())
+			{
+			    i.next();
+			    result_ += i.key();
+			    result_ += "(";
+			    result_ += i.value().join(",");
+			    result_ += ") ";
+			}
 			result_ += "<br/>";
 		}
 		if (!lst_install.isEmpty())
