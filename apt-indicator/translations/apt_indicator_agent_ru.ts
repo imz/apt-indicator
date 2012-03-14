@@ -272,11 +272,11 @@ when you login?</source>
     <message>
         <location filename="../agent/agent.cpp" line="456"/>
         <source>&lt;strong&gt;%1&lt;/strong&gt; was exited with code %2</source>
-        <translation>Выполнение &lt;strong&gt;%1&lt;/strong&gt; завершилось с кодом %1</translation>
+        <translation>Выполнение &lt;strong&gt;%1&lt;/strong&gt; завершилось с кодом %2</translation>
     </message>
     <message>
         <source>&apos;%1&apos; was exited with code %2</source>
-        <translation type="obsolete">Выполнение &apos;%1&apos; завершилось с кодом %1</translation>
+        <translation type="obsolete">Выполнение &apos;%1&apos; завершилось с кодом %2</translation>
     </message>
     <message>
         <source>Event processing</source>
