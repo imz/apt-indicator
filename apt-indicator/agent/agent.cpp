@@ -453,7 +453,7 @@ void Agent::onEndRunError(QProcess::ProcessError error)
 void Agent::onEndRun(int exitCode, QProcess::ExitStatus exitState)
 {
     if( exitState == QProcess::NormalExit && exitCode != 0 ) {
-	QMessageBox::warning(0, tr("Run upgrade process"), tr("'%1' was exited with code %2").arg(upgrader_cmd).arg(exitCode));
+	QMessageBox::warning(0, tr("Run upgrade process"), tr("<strong>%1</strong> was exited with code %2").arg(upgrader_cmd).arg(exitCode));
     } else {
 	if( info_window_ )
 	{
