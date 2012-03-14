@@ -272,7 +272,7 @@ void Agent::aboutProgram()
 
 void Agent::exitProgram()
 {
-	const QString message = tr("Should <b>%1</b> start automatically \nwhen you login?").arg(PROGRAM_NAME);
+	const QString message = tr("Should <strong>%1</strong> start automatically \nwhen you login?").arg(PROGRAM_NAME);
 	const int res = QMessageBox::information(0,tr("Exit program"),message,
 				QMessageBox::Yes|QMessageBox::No|QMessageBox::Cancel,
 				QMessageBox::Yes
