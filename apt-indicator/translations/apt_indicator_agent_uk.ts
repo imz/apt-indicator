@@ -256,7 +256,7 @@ when you login?</source>
     </message>
     <message>
         <location filename="../agent/agent.cpp" line="456"/>
-        <source>&apos;%1&apos; was exited with code %2</source>
+        <source>&lt;strong&gt;%1&lt;/strong&gt; was exited with code %2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
