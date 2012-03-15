@@ -215,7 +215,7 @@ Written by Stanislav Ievlev and Sergey V. Turchin</source>
     </message>
     <message>
         <location filename="../agent/agent.cpp" line="275"/>
-        <source>Should &lt;b&gt;%1&lt;/b&gt; start automatically 
+        <source>Should &lt;strong&gt;%1&lt;/strong&gt; start automatically 
 when you login?</source>
         <translation type="unfinished"></translation>
     </message>

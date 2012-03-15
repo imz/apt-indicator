@@ -401,78 +401,83 @@ when you login?</source>
         <translation type="obsolete">Не удалось загрузить либо проверить файлы версий для некоторых репозиториев </translation>
     </message>
     <message>
-        <location filename="../checker/dist_upgrade.cpp" line="156"/>
+        <location filename="../checker/dist_upgrade.cpp" line="158"/>
         <source>Unable to determine user&apos;s home: skip update stage.</source>
         <translation>Не удалось определить домашний каталог пользователя: пропуск секции update.</translation>
     </message>
     <message>
-        <location filename="../checker/dist_upgrade.cpp" line="186"/>
+        <location filename="../checker/dist_upgrade.cpp" line="188"/>
         <source>Failed to read sources lists.</source>
         <translation>Не удалось прочесть списки источников пакетов.</translation>
     </message>
     <message>
-        <location filename="../checker/dist_upgrade.cpp" line="196"/>
+        <location filename="../checker/dist_upgrade.cpp" line="198"/>
         <source>Failed to get package releases.</source>
         <translation>Не удалось получить файлы релизов.</translation>
     </message>
     <message>
-        <location filename="../checker/dist_upgrade.cpp" line="207"/>
+        <location filename="../checker/dist_upgrade.cpp" line="209"/>
         <source>Release files for some repositories could not be retrieved or authenticated.
 </source>
         <translation>Не удалось загрузить либо проверить файлы версий для некоторых репозиториев.
 </translation>
     </message>
     <message>
-        <location filename="../checker/dist_upgrade.cpp" line="214"/>
+        <location filename="../checker/dist_upgrade.cpp" line="216"/>
         <source>Failed to get package indexes</source>
         <translation>Не удалось получить файлы индексов</translation>
     </message>
     <message>
-        <location filename="../checker/dist_upgrade.cpp" line="220"/>
+        <location filename="../checker/dist_upgrade.cpp" line="222"/>
         <source>Failed to fetch packages information</source>
         <translation>Не удалось получить информацию о пакетах</translation>
     </message>
     <message>
-        <location filename="../checker/dist_upgrade.cpp" line="235"/>
+        <location filename="../checker/dist_upgrade.cpp" line="237"/>
         <source>Failed to fetch %1 %2
 </source>
         <translation>Failed to fetch %1 %2
 </translation>
     </message>
     <message>
-        <location filename="../checker/dist_upgrade.cpp" line="245"/>
+        <location filename="../checker/dist_upgrade.cpp" line="247"/>
         <source>nothing to clean
 </source>
         <translation>нет ничего для очистки
 </translation>
     </message>
     <message>
-        <location filename="../checker/dist_upgrade.cpp" line="254"/>
+        <location filename="../checker/dist_upgrade.cpp" line="256"/>
         <source>Failed to build package caches.</source>
         <translation>Не удалось построить кэши пакетов.</translation>
     </message>
     <message>
-        <location filename="../checker/dist_upgrade.cpp" line="270"/>
+        <location filename="../checker/dist_upgrade.cpp" line="272"/>
         <source>DistUpgrade failed. Please, check your APT system</source>
         <translation>Проверка обновлений прервана. Проверьте, пожалуйста, работу APT</translation>
     </message>
     <message>
-        <location filename="../checker/dist_upgrade.cpp" line="308"/>
+        <location filename="../checker/dist_upgrade.cpp" line="329"/>
         <source>Following packages have unmet dependencies</source>
         <translation>Следующие пакеты имеют неудовлетворенные зависимости</translation>
     </message>
     <message>
-        <location filename="../checker/dist_upgrade.cpp" line="317"/>
+        <location filename="../checker/dist_upgrade.cpp" line="338"/>
         <source>Following packages will be removed</source>
         <translation>Следующие пакеты будут удалены</translation>
     </message>
     <message>
-        <location filename="../checker/dist_upgrade.cpp" line="324"/>
+        <location filename="../checker/dist_upgrade.cpp" line="345"/>
+        <source>Following packages will be replaced</source>
+        <translation>Следующие пакеты будут заменены</translation>
+    </message>
+    <message>
+        <location filename="../checker/dist_upgrade.cpp" line="359"/>
         <source>Following packages will be installed</source>
         <translation>Следующие пакеты будут установлены</translation>
     </message>
     <message>
-        <location filename="../checker/dist_upgrade.cpp" line="331"/>
+        <location filename="../checker/dist_upgrade.cpp" line="366"/>
         <source>Following packages will be upgraded</source>
         <translation>Следующие пакеты будут обновлены</translation>
     </message>
@@ -521,12 +526,12 @@ when you login?</source>
 </translation>
     </message>
     <message>
-        <location filename="../checker/dist_upgrade.cpp" line="358"/>
+        <location filename="../checker/dist_upgrade.cpp" line="393"/>
         <source>unable to get exclusive lock</source>
         <translation>не удалось получить эксклюзивную блокировку</translation>
     </message>
     <message>
-        <location filename="../checker/dist_upgrade.cpp" line="362"/>
+        <location filename="../checker/dist_upgrade.cpp" line="397"/>
         <source>Problems with APT initialization</source>
         <translation>Проблемы с инициализацией APT</translation>
     </message>

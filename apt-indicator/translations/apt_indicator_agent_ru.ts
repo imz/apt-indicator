@@ -132,6 +132,13 @@
         <translation>Программа уже запущена</translation>
     </message>
     <message>
+        <location filename="../agent/agent.cpp" line="275"/>
+        <source>Should &lt;strong&gt;%1&lt;/strong&gt; start automatically 
+when you login?</source>
+        <translation>Должен ли &lt;strong&gt;%1&lt;/strong&gt; запускаться автоматически 
+при входе в систему?</translation>
+    </message>
+    <message>
         <location filename="../agent/agent.cpp" line="325"/>
         <source>Could not load the icon file %1</source>
         <translation>Не могу загрузить файл пиктограммы - %1</translation>
@@ -243,10 +250,9 @@ Copyright (C) 2003-2004 ALT Linux Team
 Авторы: Станислав Иевлев, Сергей В. Турчин</translation>
     </message>
     <message>
-        <location filename="../agent/agent.cpp" line="275"/>
         <source>Should &lt;b&gt;%1&lt;/b&gt; start automatically 
 when you login?</source>
-        <translation>Должен ли &lt;b&gt;%1&lt;/b&gt; запускаться автоматически 
+        <translation type="obsolete">Должен ли &lt;b&gt;%1&lt;/b&gt; запускаться автоматически 
 при входе в систему?</translation>
     </message>
     <message>
