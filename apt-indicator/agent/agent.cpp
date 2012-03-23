@@ -162,12 +162,12 @@ void Agent::doRun(bool automatic)
 		if( automatic )
 		{
 		    arguments << cmd_upgrader_line;
-		    upgrader_cmd = "xdg-su -c " + cmd_upgrader_line;
+		    upgrader_cmd = "xdg-su -c \"" + cmd_upgrader_line + "\"";
 		}
 		else
 		{
 		    arguments << cmd_upgrader_program;
-		    upgrader_cmd = "xdg-su -c " + cmd_upgrader_program;
+		    upgrader_cmd = "xdg-su -c \"" + cmd_upgrader_program + "\"";
 		}
 
 		if( !arguments.isEmpty() )
