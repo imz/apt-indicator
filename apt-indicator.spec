@@ -1,6 +1,6 @@
 Name: apt-indicator
 Version: 0.2.7
-Release: alt1
+Release: alt0.M60P.1
 
 Summary: Applet for indication that newer packages are available
 License: GPL
@@ -69,6 +69,9 @@ install -m644 pixmaps/* %buildroot/%_datadir/%name/pixmaps
 
 
 %changelog
+* Mon Mar 26 2012 Sergey V Turchin <zerg at altlinux dot org> 0.2.7-alt0.M60P.1
+- built for M60P
+
 * Mon Mar 26 2012 Sergey V Turchin <zerg at altlinux dot org> 0.2.7-alt1
 - warn correctly if assume a user's identity utility not found
 
