@@ -453,7 +453,11 @@ void Agent::onEndRunError(QProcess::ProcessError error)
 void Agent::onEndRun(int exitCode, QProcess::ExitStatus exitState)
 {
     if( exitState == QProcess::NormalExit && exitCode != 0 ) {
-	QMessageBox::warning(0, tr("Run upgrade process"), tr("<strong>%1</strong> was exited with code %2").arg(upgrader_cmd).arg(exitCode));
+	if( upgrader_cmd.startsWith("xdg-su ") && exitCode == 3 ) {
+	    QMessageBox::warning(0, tr("Run upgrade process"), tr("Assume a user's identity utility not found. Try to install <strong>%1</strong>.").arg("gksu"));
+	} else {
+	    QMessageBox::warning(0, tr("Run upgrade process"), tr("<strong>%1</strong> was exited with code %2").arg(upgrader_cmd).arg(exitCode));
+	}
     } else {
 	if( info_window_ )
 	{
