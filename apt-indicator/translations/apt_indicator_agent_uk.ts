@@ -186,7 +186,8 @@ when you login?</source>
         <location filename="../agent/agent.cpp" line="142"/>
         <location filename="../agent/agent.cpp" line="183"/>
         <location filename="../agent/agent.cpp" line="450"/>
-        <location filename="../agent/agent.cpp" line="456"/>
+        <location filename="../agent/agent.cpp" line="457"/>
+        <location filename="../agent/agent.cpp" line="459"/>
         <source>Run upgrade process</source>
         <translation type="unfinished"></translation>
     </message>
@@ -255,7 +256,12 @@ when you login?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../agent/agent.cpp" line="456"/>
+        <location filename="../agent/agent.cpp" line="457"/>
+        <source>Assume a user&apos;s identity utility not found. Try to install &lt;strong&gt;%1&lt;/strong&gt;.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../agent/agent.cpp" line="459"/>
         <source>&lt;strong&gt;%1&lt;/strong&gt; was exited with code %2</source>
         <translation type="unfinished"></translation>
     </message>
