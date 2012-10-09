@@ -58,6 +58,7 @@ static PProcessIdToSessionId pProcessIdToSessionId = 0;
 #if defined(Q_OS_UNIX)
 #include <time.h>
 #endif
+#include <unistd.h>
 
 namespace QtLP_Private {
 #include "qtlockedfile.cpp"

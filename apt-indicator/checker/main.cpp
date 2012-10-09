@@ -5,6 +5,8 @@ Sergey V Turchin <zerg@altlinux.org>
 License: GPL
 */
 
+#include "unistd.h"
+
 #include <QCoreApplication>
 #include <QLibraryInfo>
 #include <QDebug>
