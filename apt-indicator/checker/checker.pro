@@ -13,7 +13,7 @@ CONFIG(release) {
 } else {
     QMAKE_CXXFLAGS += -g -O0
 }
-QMAKE_CXXFLAGS += -pedantic
+QMAKE_CXXFLAGS += -pedantic -D_FILE_OFFSET_BITS=64
 LIBS += -lapt-pkg
 
 OBJECTS_DIR = .obj
