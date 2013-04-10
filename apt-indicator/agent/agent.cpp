@@ -215,8 +215,9 @@ void Agent::doCheck()
 	{
 		if(checker_proc->pid() == 0)
 		{ // checker finish work
-			delete checker_proc;
+			QProcess *dead_checker_proc = checker_proc;
 			checker_proc = 0;
+			delete dead_checker_proc;
 		}
 	}
 
