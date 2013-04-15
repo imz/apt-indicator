@@ -6,6 +6,7 @@ License: GPL
 */
 
 #include "unistd.h"
+#include <sys/syscall.h>
 
 #include <QCoreApplication>
 #include <QLibraryInfo>
@@ -17,9 +18,17 @@ License: GPL
 #include "../config.h"
 #include "checker.h"
 
+#define IOPRIO_CLASS_SHIFT      (13)
+#define IOPRIO_PRIO_MASK        ((1UL << IOPRIO_CLASS_SHIFT) - 1)
+
+#define IOPRIO_PRIO_CLASS(mask) ((mask) >> IOPRIO_CLASS_SHIFT)
+#define IOPRIO_PRIO_DATA(mask)  ((mask) & IOPRIO_PRIO_MASK)
+#define IOPRIO_PRIO_VALUE(class, data)  (((class) << IOPRIO_CLASS_SHIFT) | data)
+
 int main( int argc, char **argv )
 {
 	nice(15);
+	syscall(SYS_ioprio_set, 1, getpid(), IOPRIO_PRIO_VALUE(3, 7));
 
 	QCoreApplication app( argc, argv );
 	Checker checker;
