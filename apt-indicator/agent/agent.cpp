@@ -259,7 +259,7 @@ void Agent::helpBrowser()
 #endif
 	if (!QDir(help_path+country).exists("index.html")) country = "en";//default help is English
 	
-	help.ui.helpText->setSource(help_path+country+"/index.html");
+	help.ui.helpText->setSource(QString().append(help_path).append(country).append("/index.html"));
 	help.exec();
 }
 
