@@ -27,7 +27,7 @@ License: GPL
 
 int main( int argc, char **argv )
 {
-	nice(15);
+	nice(20);
 	syscall(SYS_ioprio_set, 1, getpid(), IOPRIO_PRIO_VALUE(3, 7));
 
 	QCoreApplication app( argc, argv );
