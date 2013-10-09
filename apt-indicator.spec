@@ -1,6 +1,6 @@
 Name: apt-indicator
 Version: 0.2.10
-Release: alt1
+Release: alt0.M70P.1
 
 Summary: Applet for indication that newer packages are available
 License: GPL
@@ -69,6 +69,9 @@ install -m644 pixmaps/* %buildroot/%_datadir/%name/pixmaps
 
 
 %changelog
+* Wed Oct 09 2013 Sergey V Turchin <zerg at altlinux dot org> 0.2.10-alt0.M70P.1
+- built for M70P
+
 * Wed Oct 09 2013 Sergey V Turchin <zerg at altlinux dot org> 0.2.10-alt1
 - minimize checker process priority
 
