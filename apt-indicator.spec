@@ -1,6 +1,6 @@
 Name: apt-indicator
-Version: 0.2.10
-Release: alt1.1.1.1
+Version: 0.2.11
+Release: alt1
 
 Summary: Applet for indication that newer packages are available
 License: GPL
@@ -69,6 +69,9 @@ install -m644 pixmaps/* %buildroot/%_datadir/%name/pixmaps
 
 
 %changelog
+* Tue Oct 13 2015 Sergey V Turchin <zerg at altlinux dot org> 0.2.11-alt1
+- fix system tray icon pixmap
+
 * Thu May 28 2015 Gleb F-Malinovskiy <glebfm@altlinux.org> 0.2.10-alt1.1.1.1
 - Rebuilt for:
  + libapt-pkg-libc6.9-6.so.5.
