@@ -1,7 +1,7 @@
 
 TARGET=../apt-indicator
 TEMPLATE = app
-QT += network
+QT += network widgets
 rpm_opt_flags = $$(RPM_OPT_FLAGS)
 CONFIG(release) {
     isEmpty(rpm_opt_flags) {
