@@ -77,7 +77,12 @@ int main( int argc, char **argv )
     Q_INIT_RESOURCE(pixmaps);
     QtSingleApplication app( argc, argv );
 
-    if( !app.sendMessage(MSG_WAKEUP) )
+    if( app.isRunning() )
+    {
+	app.sendMessage(MSG_WAKEUP, 0);
+	app.quit();
+	ret = 0;
+    } else
     {
 	bool startup_agent = true;
 
