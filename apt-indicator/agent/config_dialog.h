@@ -12,7 +12,7 @@ public:
     ConfigDialog(Configuration*);
     ~ConfigDialog();
 
-private slots:
+private Q_SLOTS:
     void onClick(QAbstractButton*);
 
 private:

@@ -32,10 +32,10 @@ public:
 
 	void setTrayVisible(bool);
 
-public slots:
+public Q_SLOTS:
 	void onMessageReceived(const QString&);
 
-private slots:
+private Q_SLOTS:
 	void helpBrowser();
 	void aboutProgram();
 	void exitProgram();

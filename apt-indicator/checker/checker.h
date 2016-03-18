@@ -12,7 +12,7 @@ public:
     Checker(QObject *parent = 0);
     ~Checker();
 
-public slots:
+public Q_SLOTS:
     void startProgram();
 
 private:

@@ -14,7 +14,7 @@ public:
 
     Ui::HelpBrowserUI ui;
 
-public slots:
+public Q_SLOTS:
     void execLink(const QUrl&);
 };
 
