@@ -37,8 +37,8 @@ Agent::Agent( QObject *parent, const char *name , const QString &homedir):
 	tray_icon_ = new QSystemTrayIcon(this);
 	setTrayIcon();
 	setTrayVisible(true);
-	connect(tray_icon_, SIGNAL(activated(QSystemTrayIcon::ActivationReason)), this, SLOT(onActivateSysTray(QSystemTrayIcon::ActivationReason)));
-	connect(tray_icon_, SIGNAL(messageClicked()), this, SLOT(onClickTrayMessage()));
+	connect(tray_icon_, &QSystemTrayIcon::activated, this, &Agent::onActivateSysTray);
+	connect(tray_icon_, &QSystemTrayIcon::messageClicked, this, &Agent::onClickTrayMessage);
 
 	menu_ = new QMenu();
 	menu_->addAction( tr("&Upgrade automatically..."), this, SLOT(doRunAuto()));
@@ -56,7 +56,7 @@ Agent::Agent( QObject *parent, const char *name , const QString &homedir):
 	menu_->addAction( tr("&Quit"), this, SLOT(exitProgram()));
 	tray_icon_->setContextMenu(menu_);
 
-	connect( &timer_, SIGNAL( timeout() ), this, SLOT( doCheck() ) );
+	connect( &timer_, &QTimer::timeout, this, &Agent::doCheck );
 	timer_.start( CHECK_INTERVAL_FIRST*1000 );
 }
 
@@ -82,8 +82,8 @@ void Agent::doInfo()
 	info_window_ = new InfoWindow(0);
 	if( !info_window_geometry_.isNull() )
 	    info_window_->setGeometry(info_window_geometry_);
-	connect(info_window_, SIGNAL(upgradeAuto()), this, SLOT(doRunAuto()));
-	connect(info_window_, SIGNAL(upgradeNoauto()), this, SLOT(doRunPlain()));
+	connect(info_window_, &InfoWindow::upgradeAuto, this, &Agent::doRunAuto);
+	connect(info_window_, &InfoWindow::upgradeNoauto, this, &Agent::doRunPlain);
 	updateInfoWindow();
 	info_window_->show();
     }
@@ -174,8 +174,8 @@ void Agent::doRun(bool automatic)
 		{
 		    arguments.prepend("-c");
 		    upgrader_proc = new QProcess(this);
-		    connect(upgrader_proc, SIGNAL(finished(int, QProcess::ExitStatus)), this, SLOT(onEndRun(int, QProcess::ExitStatus)));
-		    connect(upgrader_proc, SIGNAL(error(QProcess::ProcessError)), this, SLOT(onEndRunError(QProcess::ProcessError)));
+		    connect(upgrader_proc, (void (QProcess::*)(int,QProcess::ExitStatus))&QProcess::finished, this, &Agent::onEndRun);
+		    connect(upgrader_proc, (void (QProcess::*)(QProcess::ProcessError))&QProcess::error, this, &Agent::onEndRunError);
 		    upgrader_proc->start(program, arguments, QIODevice::ReadOnly);
 		}
 		else
@@ -230,9 +230,9 @@ void Agent::doCheck()
 		if( cfg_->getBool(Configuration::IgnoreAptErrors) )
 		    arguments << "--ignore-errors";
 		checker_proc = new QProcess(this);
-		connect(checker_proc, SIGNAL(finished(int, QProcess::ExitStatus)), this, SLOT(onCheckerEnd(int, QProcess::ExitStatus)));
-		connect(checker_proc, SIGNAL(error(QProcess::ProcessError)), this, SLOT(onCheckerEndError(QProcess::ProcessError)));
-		connect(checker_proc, SIGNAL(readyReadStandardOutput()), this, SLOT(onCheckerOutput()));
+		connect(checker_proc, (void (QProcess::*)(int,QProcess::ExitStatus))&QProcess::finished, this, &Agent::onCheckerEnd);
+		connect(checker_proc, (void (QProcess::*)(QProcess::ProcessError))&QProcess::error, this, &Agent::onCheckerEndError);
+		connect(checker_proc, &QProcess::readyReadStandardOutput, this, &Agent::onCheckerOutput);
 		status_ = Working; //change status
 		setTrayIcon();
 		checker_proc->start(program, arguments, QIODevice::ReadOnly); // and run checker

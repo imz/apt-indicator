@@ -116,8 +116,8 @@ int main( int argc, char **argv )
 	    app.setQuitOnLastWindowClosed(false);
 
 	    Agent agent(0, PROGRAM_NAME, QString(getenv("HOME")));
-	    QObject::connect(&app, SIGNAL(messageReceived(const QString&)),
-		     &agent, SLOT(onMessageReceived(const QString&)));
+	    QObject::connect(&app, &QtSingleApplication::messageReceived,
+		     &agent, &Agent::onMessageReceived);
 
 	    ret = app.exec();
 	}

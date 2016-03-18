@@ -12,7 +12,7 @@ ConfigDialog::ConfigDialog(Configuration *cfg):
     setupUi(this);
 
 
-    connect(buttonBox, SIGNAL(clicked(QAbstractButton*)), this, SLOT(onClick(QAbstractButton*)));
+    connect(buttonBox, &QDialogButtonBox::clicked, this, &ConfigDialog::onClick);
 
     setUiValues();
 }

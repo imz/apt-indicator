@@ -10,7 +10,7 @@ HelpBrowser::HelpBrowser(QWidget *parent):
     ui.setupUi(this);
     ui.helpText->setOpenLinks(true);
     ui.helpText->setOpenExternalLinks(false);
-    connect( ui.helpText, SIGNAL( anchorClicked(const QUrl&) ), this, SLOT( execLink( const QUrl& ) ) );
+    connect( ui.helpText, &QTextBrowser::anchorClicked, this, &HelpBrowser::execLink );
 }
 
 void HelpBrowser::execLink( const QUrl &url )

@@ -12,8 +12,8 @@ InfoWindow::InfoWindow(QWidget *parent):
     QPushButton *btn_auto = buttonBox->addButton(tr("Automatic upgrade"), QDialogButtonBox::YesRole);
     QPushButton *btn_noauto = buttonBox->addButton(tr("Run upgrade program"), QDialogButtonBox::YesRole);
 
-    connect(btn_auto, SIGNAL(clicked()), this, SIGNAL(upgradeAuto()));
-    connect(btn_noauto, SIGNAL(clicked()), this, SIGNAL(upgradeNoauto()));
+    connect(btn_auto, &QPushButton::clicked, this, &InfoWindow::upgradeAuto);
+    connect(btn_noauto, &QPushButton::clicked, this, &InfoWindow::upgradeNoauto);
 }
 
 InfoWindow::~InfoWindow()
