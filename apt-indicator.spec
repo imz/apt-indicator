@@ -14,7 +14,7 @@ Provides: egg = %version-%release, alt-update = %version-%release
 Obsoletes: egg < %version-%release, alt-update < %version-%release
 Requires: /usr/bin/xdg-su /usr/sbin/synaptic
 
-BuildRequires: gcc-c++ libstdc++-devel libqt4-devel
+BuildRequires: gcc-c++ libstdc++-devel qt5-base-devel
 BuildRequires: docbook-dtds docbook-style-xsl help2man libapt-devel
 BuildRequires: xml-common xsltproc
 #BuildRequires: libdb4.4-devel
@@ -26,7 +26,7 @@ made notifications for users that newer packages are available.
 
 %prep
 %setup -q -n %name-%version
-qmake-qt4 "CONFIG += release"
+%qmake_qt5 "CONFIG += release"
 
 %build
 %make
