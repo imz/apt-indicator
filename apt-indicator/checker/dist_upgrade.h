@@ -34,7 +34,7 @@ public:
 
 	Status status() const; /**< read dist-upgrade status */
 	QString result() const; /**< read dist-upgrade results */
-signals:
+Q_SIGNALS:
 	void endDistUpgrade();
 	
 private:
