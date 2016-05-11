@@ -27,7 +27,9 @@ License: GPL
 
 int main( int argc, char **argv )
 {
-	nice(20);
+	if( nice(20) == -1) {
+	   // qWarning("Unable to nice.");
+	}
 	syscall(SYS_ioprio_set, 1, getpid(), IOPRIO_PRIO_VALUE(3, 7));
 
 	QCoreApplication app( argc, argv );
