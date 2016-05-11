@@ -85,15 +85,16 @@ if ( (expr) ) \
 			pkgAcquireStatus::Stop();
 		}
 
-		virtual bool MediaChange(string Media, string Drive)
+		//virtual bool MediaChange(string Media, string Drive)
+		virtual bool MediaChange(string, string)
 		{
 			return false;
 		}
 
-		virtual void Fetch(pkgAcquire::ItemDesc &Itm)
+		virtual void Fetch(pkgAcquire::ItemDesc&)
 		{}
 
-		virtual void Fail(pkgAcquire::ItemDesc &Itm)
+		virtual void Fail(pkgAcquire::ItemDesc&)
 		{}
 		//do nothing
 	}
