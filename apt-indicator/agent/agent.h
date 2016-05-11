@@ -58,7 +58,7 @@ private Q_SLOTS:
 	void setTrayVisible();
 
 private:
-	void setTrayIcon();
+	void updateTrayIcon();
 	void updateInfoWindow();
 
 	QMenu *menu_;

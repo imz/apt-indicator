@@ -35,7 +35,6 @@ Agent::Agent( QObject *parent, const char *name , const QString &homedir):
 	status_ = Nothing;
 	cfg_ = new Configuration(this);
 	tray_icon_ = new QSystemTrayIcon(this);
-	setTrayIcon();
 	connect(tray_icon_, &QSystemTrayIcon::activated, this, &Agent::onActivateSysTray);
 	connect(tray_icon_, &QSystemTrayIcon::messageClicked, this, &Agent::onClickTrayMessage);
 
@@ -55,7 +54,7 @@ Agent::Agent( QObject *parent, const char *name , const QString &homedir):
 	menu_->addAction( tr("&Quit"), this, SLOT(exitProgram()));
 
 	tray_icon_->setContextMenu(menu_);
-	//setTrayVisible();
+	updateTrayIcon();
 
 	connect( &timer_, &QTimer::timeout, this, &Agent::doCheck );
 	timer_.start( CHECK_INTERVAL_FIRST*1000 );
@@ -235,7 +234,7 @@ void Agent::doCheck()
 		connect(checker_proc, (void (QProcess::*)(QProcess::ProcessError))&QProcess::error, this, &Agent::onCheckerEndError);
 		connect(checker_proc, &QProcess::readyReadStandardOutput, this, &Agent::onCheckerOutput);
 		status_ = Working; //change status
-		setTrayIcon();
+		updateTrayIcon();
 		checker_proc->start(program, arguments, QIODevice::ReadOnly); // and run checker
 	}
 
@@ -288,7 +287,7 @@ void Agent::exitProgram()
 	    QCoreApplication::quit();
 }
 
-void Agent::setTrayIcon()
+void Agent::updateTrayIcon()
 {
 	QString iconname;
 	QString	tip;
@@ -329,10 +328,11 @@ void Agent::setTrayIcon()
 		QCoreApplication::quit();
 	}
 
-	if( status_ != Nothing )
-	    setTrayVisible();
 	tray_icon_->setIcon(pix);
 	tray_icon_->setToolTip(tip);
+
+	if( status_ != Nothing )
+	    setTrayVisible();
 }
 
 void Agent::onCheckerOutput()
@@ -420,7 +420,7 @@ void Agent::onCheckerEnd(int exitCode, QProcess::ExitStatus exitState)
 	qWarning(PROGRAM_NAME ": checker crashed");
 	result_ = tr("Update checking program crashed");
     }
-    setTrayIcon();
+    updateTrayIcon();
     updateInfoWindow();
 }
 
@@ -494,8 +494,8 @@ void Agent::onSleepHide()
     if( status_ == Normal && cfg_->getBool(Configuration::HideWhenSleep) )
     {
 	status_ = Nothing;
-	setTrayIcon();
 	setTrayHidden();
+	updateTrayIcon();
     }
 }
 
