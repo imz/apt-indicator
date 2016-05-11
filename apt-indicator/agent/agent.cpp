@@ -36,7 +36,6 @@ Agent::Agent( QObject *parent, const char *name , const QString &homedir):
 	cfg_ = new Configuration(this);
 	tray_icon_ = new QSystemTrayIcon(this);
 	setTrayIcon();
-	setTrayVisible(true);
 	connect(tray_icon_, &QSystemTrayIcon::activated, this, &Agent::onActivateSysTray);
 	connect(tray_icon_, &QSystemTrayIcon::messageClicked, this, &Agent::onClickTrayMessage);
 
@@ -54,7 +53,9 @@ Agent::Agent( QObject *parent, const char *name , const QString &homedir):
 	menu_->addAction( tr("&About"), this, SLOT(aboutProgram()));
 	menu_->addSeparator();
 	menu_->addAction( tr("&Quit"), this, SLOT(exitProgram()));
+
 	tray_icon_->setContextMenu(menu_);
+	//setTrayVisible();
 
 	connect( &timer_, &QTimer::timeout, this, &Agent::doCheck );
 	timer_.start( CHECK_INTERVAL_FIRST*1000 );
@@ -329,7 +330,7 @@ void Agent::setTrayIcon()
 	}
 
 	if( status_ != Nothing )
-	    setTrayVisible(true);
+	    setTrayVisible();
 	tray_icon_->setIcon(pix);
 	tray_icon_->setToolTip(tip);
 }
@@ -494,22 +495,27 @@ void Agent::onSleepHide()
     {
 	status_ = Nothing;
 	setTrayIcon();
-	setTrayVisible(false);
+	setTrayHidden();
     }
 }
 
-void Agent::setTrayVisible(bool vis)
+void Agent::setTrayVisible()
 {
-    tray_icon_->setVisible(vis);
+    setTrayVisibility(true);
 }
 
 void Agent::setTrayHidden()
 {
-    setTrayVisible(false);
+    setTrayVisibility(false);
+}
+
+void Agent::setTrayVisibility(bool vis)
+{
+    tray_icon_->setVisible(vis);
 }
 
 void Agent::onMessageReceived(const QString &msg)
 {
     if( msg == MSG_WAKEUP )
-	setTrayVisible(true);
+	setTrayVisible();
 }

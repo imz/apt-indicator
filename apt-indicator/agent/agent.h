@@ -30,7 +30,7 @@ public:
 	Agent( QObject *parent = 0, const char *name = 0, const QString &homedir = "");
 	~Agent();
 
-	void setTrayVisible(bool);
+	void setTrayVisibility(bool);
 
 public Q_SLOTS:
 	void onMessageReceived(const QString&);
@@ -55,6 +55,7 @@ private Q_SLOTS:
 	void onCheckerOutput();
 	void onSleepHide();
 	void setTrayHidden();
+	void setTrayVisible();
 
 private:
 	void setTrayIcon();
