@@ -472,8 +472,13 @@ void Agent::onEndRun(int exitCode, QProcess::ExitStatus exitState)
 
 void Agent::onActivateSysTray(QSystemTrayIcon::ActivationReason reason)
 {
-    if( reason == QSystemTrayIcon::Trigger )
-	doInfo();
+    switch(reason)
+    {
+	case QSystemTrayIcon::Trigger:
+	    doInfo(); break;
+	default:
+	    break;
+    }
 }
 
 void Agent::onClickTrayMessage()
