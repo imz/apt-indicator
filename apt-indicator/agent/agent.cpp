@@ -34,6 +34,8 @@ Agent::Agent( QObject *parent, const char *name , const QString &homedir):
 	last_report_time_ = QDateTime::currentDateTime();
 	status_ = Nothing;
 	cfg_ = new Configuration(this);
+	if( !QSystemTrayIcon::isSystemTrayAvailable() )
+	    qWarning("No system tray available.");
 	tray_icon_ = new QSystemTrayIcon(this);
 	connect(tray_icon_, &QSystemTrayIcon::activated, this, &Agent::onActivateSysTray);
 	connect(tray_icon_, &QSystemTrayIcon::messageClicked, this, &Agent::onClickTrayMessage);
