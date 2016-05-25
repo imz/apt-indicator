@@ -22,6 +22,8 @@ License: GPL
 #include "help_browser.h"
 #include "info_window.h"
 
+extern const char *__progname;
+
 Agent::Agent( QObject *parent, const char *name , const QString &homedir):
 		QObject(parent),
 		homedir_(homedir),
@@ -35,7 +37,9 @@ Agent::Agent( QObject *parent, const char *name , const QString &homedir):
 	status_ = Nothing;
 	cfg_ = new Configuration(this);
 	if( !QSystemTrayIcon::isSystemTrayAvailable() )
-	    qWarning("No system tray available.");
+	{
+	    QMessageBox::warning(0, QLatin1String(__progname), tr("No system tray available."));
+	}
 	tray_icon_ = new QSystemTrayIcon(this);
 	connect(tray_icon_, &QSystemTrayIcon::activated, this, &Agent::onActivateSysTray);
 	connect(tray_icon_, &QSystemTrayIcon::messageClicked, this, &Agent::onClickTrayMessage);
