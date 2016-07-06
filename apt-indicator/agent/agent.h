@@ -60,6 +60,7 @@ private Q_SLOTS:
 private:
 	void updateTrayIcon();
 	void updateInfoWindow();
+	void setupContextMenu();
 
 	QMenu *menu_;
 	QString homedir_; /**< user's home directory */

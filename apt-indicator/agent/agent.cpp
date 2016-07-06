@@ -30,7 +30,8 @@ Agent::Agent( QObject *parent, const char *name , const QString &homedir):
 		cfg_(),
 		timer_(),
 		checker_proc(0),
-		upgrader_proc(0)
+		upgrader_proc(0),
+		menu_(0)
 {
 	setObjectName(name);
 	last_report_time_ = QDateTime::currentDateTime();
@@ -44,6 +45,26 @@ Agent::Agent( QObject *parent, const char *name , const QString &homedir):
 	connect(tray_icon_, &QSystemTrayIcon::activated, this, &Agent::onActivateSysTray);
 	connect(tray_icon_, &QSystemTrayIcon::messageClicked, this, &Agent::onClickTrayMessage);
 
+	setupContextMenu();
+	updateTrayIcon();
+
+	connect( &timer_, &QTimer::timeout, this, &Agent::doCheck );
+	timer_.start( CHECK_INTERVAL_FIRST*1000 );
+}
+
+Agent::~Agent()
+{
+    // terminate dist-upgrade process
+    if (checker_proc && checker_proc->pid() > 0)
+    {
+        checker_proc->terminate();
+    }
+}
+
+void Agent::setupContextMenu()
+{
+	if( menu_ )
+	    delete menu_;
 	menu_ = new QMenu();
 	menu_->addAction( tr("&Upgrade automatically..."), this, SLOT(doRunAuto()));
 	menu_->addAction( tr("&Run upgrade program..."), this, SLOT(doRunPlain()));
@@ -58,21 +79,7 @@ Agent::Agent( QObject *parent, const char *name , const QString &homedir):
 	menu_->addAction( tr("&About"), this, SLOT(aboutProgram()));
 	menu_->addSeparator();
 	menu_->addAction( tr("&Quit"), this, SLOT(exitProgram()));
-
 	tray_icon_->setContextMenu(menu_);
-	updateTrayIcon();
-
-	connect( &timer_, &QTimer::timeout, this, &Agent::doCheck );
-	timer_.start( CHECK_INTERVAL_FIRST*1000 );
-}
-
-Agent::~Agent()
-{
-    // terminate dist-upgrade process
-    if (checker_proc && checker_proc->pid() > 0)
-    {
-        checker_proc->terminate();
-    }
 }
 
 void Agent::doInfo()
@@ -523,6 +530,8 @@ void Agent::setTrayHidden()
 void Agent::setTrayVisibility(bool vis)
 {
     tray_icon_->setVisible(vis);
+    if(vis)
+	setupContextMenu(); // workaround against QDbusMenu problem
 }
 
 void Agent::onMessageReceived(const QString &msg)
