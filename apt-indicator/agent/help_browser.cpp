@@ -15,7 +15,7 @@ HelpBrowser::HelpBrowser(QWidget *parent):
 
 void HelpBrowser::execLink( const QUrl &url )
 {
-    if( url.scheme() == "file" )
+    if( url.scheme().isEmpty() || url.scheme() == "file" )
     {
 	ui.helpText->setSource(url);
     }

@@ -268,13 +268,15 @@ void Agent::helpBrowser()
 	QString country = (country_delim>0)?locale.left(country_delim):locale;
 
 #ifdef NDEBUG
-	const QString help_path = DATADIR"/doc/";
+	QString help_dir = DATADIR"/doc/";
 #else
-	const QString help_path = QDir::currentPath() + "/doc/html/";
+	QString help_dir = QDir::currentPath() + "/doc/html/";
 #endif
-	if (!QDir(help_path+country).exists("index.html")) country = "en";//default help is English
-	
-	help.ui.helpText->setSource(QString().append(help_path).append(country).append("/index.html"));
+	if (!QDir(help_dir+country).exists("index.html")) country = "en";//default help is English
+	help_dir.append(country);
+	help_dir.append(QLatin1String("/"));
+	help.ui.helpText->setSearchPaths(QStringList() << help_dir);
+	help.ui.helpText->setSource(QString().append(help_dir).append("index.html"));
 	help.exec();
 }
 
