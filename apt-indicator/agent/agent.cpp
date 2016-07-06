@@ -99,6 +99,7 @@ void Agent::doInfo()
 	connect(info_window_, &InfoWindow::upgradeNoauto, this, &Agent::doRunPlain);
 	updateInfoWindow();
 	info_window_->show();
+	info_window_->raise();
     }
 }
 
