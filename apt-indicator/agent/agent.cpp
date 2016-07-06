@@ -29,10 +29,11 @@ Agent::Agent( QObject *parent, const char *name , const QString &homedir):
 		homedir_(homedir),
 		cfg_(),
 		timer_(),
-		checker_proc(0),
-		upgrader_proc(0),
-		menu_(0)
+		checker_proc(0)
 {
+	menu_ = 0;
+	upgrader_proc = 0;
+
 	setObjectName(name);
 	last_report_time_ = QDateTime::currentDateTime();
 	status_ = Nothing;
