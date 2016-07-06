@@ -1,5 +1,5 @@
 Name: apt-indicator
-Version: 0.2.11
+Version: 0.3.0
 Release: alt1
 
 Summary: Applet for indication that newer packages are available
@@ -69,6 +69,9 @@ install -m644 pixmaps/* %buildroot/%_datadir/%name/pixmaps
 
 
 %changelog
+* Wed Jul 06 2016 Sergey V Turchin <zerg at altlinux dot org> 0.3.0-alt1
+- port to Qt5
+
 * Tue Oct 13 2015 Sergey V Turchin <zerg at altlinux dot org> 0.2.11-alt1
 - fix system tray icon pixmap
 
