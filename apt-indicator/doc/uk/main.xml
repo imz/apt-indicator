@@ -230,7 +230,7 @@ apt-indicator.trayicon.geometry: +1600+1200
 		  Усі повідомлення щодо знайдених помилок, а також побажання щодо
 		  роботи додатку надсилайте у систему відслідковування помилок
 		  &ALTCOMP; (Bug Tracking System) за адресою
-	    <emphasis><ulink url='http://bugzilla.altlinux.ru'>http://bugs.altlinux.ru</ulink></emphasis>
+	    <emphasis><ulink url='http://bugs.altlinux.org'>http://bugs.altlinux.org</ulink></emphasis>
 	</para>
   </section>
 </chapter>

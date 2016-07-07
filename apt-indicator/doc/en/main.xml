@@ -221,7 +221,7 @@ apt-indicator.trayicon.geometry: +1600+1200
 	<title>Bug reporting</title>
 	<para>
 	    All bug reports and ideas about this program send to &ALTCOMP;'s bug tracking system at
-	    <emphasis><ulink url='http://bugzilla.altlinux.ru'>http://bugs.altlinux.ru</ulink></emphasis>
+	    <emphasis><ulink url='http://bugs.altlinux.org'>http://bugs.altlinux.org</ulink></emphasis>
 	</para>
   </section>
 </chapter>
