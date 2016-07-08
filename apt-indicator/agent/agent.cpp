@@ -69,7 +69,7 @@ void Agent::setupContextMenu()
 	menu_ = new QMenu();
 	menu_->addAction( tr("&Upgrade automatically..."), this, SLOT(doRunAuto()));
 	menu_->addAction( tr("&Run upgrade program..."), this, SLOT(doRunPlain()));
-	menu_->addAction(QIcon(":/pixmaps/package-upgrade.png"), tr("Chec&k for updates"), this, SLOT(doCheck()));
+	menu_->addAction(QIcon::fromTheme("package-upgrade",QIcon(":/pixmaps/package-upgrade.png")), tr("Chec&k for updates"), this, SLOT(doCheck()));
 	menu_->addAction( tr("D&etailed info..."), this, SLOT(doInfo()));
 	menu_->addAction( tr("H&ide"), this, SLOT(setTrayHidden()));
 	menu_->addSeparator();
@@ -306,43 +306,44 @@ void Agent::exitProgram()
 
 void Agent::updateTrayIcon()
 {
+	QString iconname;
 	QString iconfile;
 	QString	tip;
 	switch (status_)
 	{
 	case Nothing:
+		iconname = "package-available";
 		iconfile = ":/pixmaps/package-available.png";
 		tip = tr("Waiting...");
 		break;
 	case Danger:
+		iconname = "package-installed-outdated";
 		iconfile = ":/pixmaps/package-installed-outdated.png";
 		tip = tr("There are updates for your system available...");
 		break;
 	case Normal:
+		iconname = "package-installed-updated";
 		iconfile = ":/pixmaps/package-installed-updated.png";
 		tip = tr("Nothing to update");
 		break;
 	case Problem:
+		iconname = "package-broken";
 		iconfile = ":/pixmaps/package-broken.png";
 		tip = tr("Problems with Dist-Upgrade");
 		break;
 	case Working:
+		iconname = "package-upgrade";
 		iconfile = ":/pixmaps/package-upgrade.png";
 		tip = tr("Working...");
 		break;
 	default:
+		iconname = "package-available";
 		iconfile = ":/pixmaps/package-available.png";
 		tip = tr("Unknown status");
 	};
 
 
-	QPixmap pix;
-	if (!pix.load(iconfile))
-	{
-	    qWarning(PROGRAM_NAME " Could not load the icon file %s", qPrintable(iconfile));
-	}
-
-	tray_icon_->setIcon(pix);
+	tray_icon_->setIcon(QIcon::fromTheme(iconname, QIcon(iconfile)));
 	tray_icon_->setToolTip(tip);
 
 	if( status_ != Nothing )
