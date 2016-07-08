@@ -5,7 +5,7 @@
 
 <!ENTITY ALTCOMP "<ulink url='http://www.altlinux.com'>ALT Linux</ulink>">
 <!ENTITY PROGRAM "<emphasis>APT Indicator</emphasis>">
-<!ENTITY PIXMAPSDIR "//usr/share/apt-indicator/pixmaps/">
+<!ENTITY PIXMAPSDIR "/usr/share/apt-indicator/pixmaps/">
 <!ENTITY SCREENSHOTSDIR "../../images/">
 
 ]>
@@ -48,11 +48,11 @@
 	</thead>
 	<tbody>
 	  <row>
-	    <entry><graphic fileref="&PIXMAPSDIR;normal.png"/></entry>
+	    <entry><graphic fileref="&PIXMAPSDIR;package-installed-updated.png"/></entry>
     	    <entry>There are no new packages available for your system</entry>
 	  </row>
 	  <row>
-	    <entry><graphic fileref="&PIXMAPSDIR;danger.png"/></entry>
+	    <entry><graphic fileref="&PIXMAPSDIR;package-installed-outdated.png"/></entry>
     	    <entry>
 		Some new packages available.
 		<emphasis>APT</emphasis> looks for security updates by default, 
@@ -62,7 +62,7 @@
 	    </entry>
 	  </row>
 	  <row>
-	    <entry><graphic fileref="&PIXMAPSDIR;problem.png"/></entry>
+	    <entry><graphic fileref="&PIXMAPSDIR;package-broken.png"/></entry>
     	    <entry>
 		Some problems in application or <emphasis>APT</emphasis>.
 		Click on icon, and you will see window with detailed problem description.
@@ -70,7 +70,7 @@
 	    </entry>
 	  </row>
 	  <row>
-	    <entry><graphic fileref="&PIXMAPSDIR;working.png"/></entry>
+	    <entry><graphic fileref="&PIXMAPSDIR;package-upgrade.png"/></entry>
     	    <entry>
 		Applet is receiving index files now. Work still in progress.
 	    </entry>

@@ -1,14 +1,14 @@
 <!DOCTYPE RCC><RCC version="1.0">
 <qresource>
-   <file>../pixmaps/backward.png</file>
-   <file>../pixmaps/forward.png</file>
-   <file>../pixmaps/exit.png</file>
-   <file>../pixmaps/home.png</file>
+   <file>../pixmaps/go-previous.png</file>
+   <file>../pixmaps/go-next.png</file>
+   <file>../pixmaps/application-exit.png</file>
+   <file>../pixmaps/go-home.png</file>
 
-   <file>../pixmaps/danger.png</file>
-   <file>../pixmaps/normal.png</file>
-   <file>../pixmaps/nothing.png</file>
-   <file>../pixmaps/problem.png</file>
-   <file>../pixmaps/working.png</file>
+   <file>../pixmaps/package-installed-outdated.png</file>
+   <file>../pixmaps/package-installed-updated.png</file>
+   <file>../pixmaps/package-available.png</file>
+   <file>../pixmaps/package-broken.png</file>
+   <file>../pixmaps/package-upgrade.png</file>
 </qresource>
 </RCC>

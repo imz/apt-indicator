@@ -39,7 +39,7 @@
      </property>
      <property name="icon" >
       <iconset resource="pixmaps.qrc" >
-       <normaloff>:/pixmaps/backward.png</normaloff>:/pixmaps/backward.png</iconset>
+       <normaloff>:/pixmaps/go-previous.png</normaloff>:/pixmaps/go-previous.png</iconset>
      </property>
      <property name="autoDefault" >
       <bool>false</bool>
@@ -71,7 +71,7 @@
      </property>
      <property name="icon" >
       <iconset resource="pixmaps.qrc" >
-       <normaloff>:/pixmaps/forward.png</normaloff>:/pixmaps/forward.png</iconset>
+       <normaloff>:/pixmaps/go-next.png</normaloff>:/pixmaps/go-next.png</iconset>
      </property>
      <property name="autoDefault" >
       <bool>false</bool>
@@ -100,7 +100,7 @@
      </property>
      <property name="icon" >
       <iconset resource="pixmaps.qrc" >
-       <normaloff>:/pixmaps/home.png</normaloff>:/pixmaps/home.png</iconset>
+       <normaloff>:/pixmaps/go-home.png</normaloff>:/pixmaps/go-home.png</iconset>
      </property>
      <property name="autoDefault" >
       <bool>false</bool>
