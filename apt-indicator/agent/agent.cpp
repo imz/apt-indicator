@@ -306,43 +306,40 @@ void Agent::exitProgram()
 
 void Agent::updateTrayIcon()
 {
-	QString iconname;
+	QString iconfile;
 	QString	tip;
 	switch (status_)
 	{
 	case Nothing:
-		iconname = ":/pixmaps/package-available.png";
+		iconfile = ":/pixmaps/package-available.png";
 		tip = tr("Waiting...");
 		break;
 	case Danger:
-		iconname = ":/pixmaps/package-installed-outdated.png";
+		iconfile = ":/pixmaps/package-installed-outdated.png";
 		tip = tr("There are updates for your system available...");
 		break;
 	case Normal:
-		iconname = ":/pixmaps/package-installed-updated.png";
+		iconfile = ":/pixmaps/package-installed-updated.png";
 		tip = tr("Nothing to update");
 		break;
 	case Problem:
-		iconname = ":/pixmaps/package-broken.png";
+		iconfile = ":/pixmaps/package-broken.png";
 		tip = tr("Problems with Dist-Upgrade");
 		break;
 	case Working:
-		iconname = ":/pixmaps/package-upgrade.png";
+		iconfile = ":/pixmaps/package-upgrade.png";
 		tip = tr("Working...");
 		break;
 	default:
-		iconname = ":/pixmaps/package-available.png";
+		iconfile = ":/pixmaps/package-available.png";
 		tip = tr("Unknown status");
 	};
 
 
 	QPixmap pix;
-	if (!pix.load(iconname))
+	if (!pix.load(iconfile))
 	{
-		QMessageBox::warning(0,tr("setting Icon"),
-			    	       QString(tr("Could not load the icon file %1")).arg(iconname),
-			    	       QMessageBox::Ok,Qt::NoButton);
-		QCoreApplication::quit();
+	    qWarning(PROGRAM_NAME " Could not load the icon file %s", qPrintable(iconfile));
 	}
 
 	tray_icon_->setIcon(pix);
