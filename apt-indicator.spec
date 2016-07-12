@@ -71,6 +71,7 @@ install -m644 pixmaps/* %buildroot/%_datadir/%name/pixmaps
 %changelog
 * Tue Jul 12 2016 Sergey V Turchin <zerg at altlinux dot org> 0.3.2-alt1
 - activate info window
+- don't show dialog when system tray not available
 
 * Fri Jul 08 2016 Sergey V Turchin <zerg at altlinux dot org> 0.3.1-alt1
 - prefer icons from current icon theme
