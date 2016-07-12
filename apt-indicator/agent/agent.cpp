@@ -41,7 +41,7 @@ Agent::Agent( QObject *parent, const char *name , const QString &homedir):
 	cfg_ = new Configuration(this);
 	if( !QSystemTrayIcon::isSystemTrayAvailable() )
 	{
-	    QMessageBox::warning(0, QLatin1String(__progname), tr("No system tray available."));
+	    qWarning("%s: No system tray available.", __progname);
 	}
 	tray_icon_ = new QSystemTrayIcon(this);
 	connect(tray_icon_, &QSystemTrayIcon::activated, this, &Agent::onActivateSysTray);
