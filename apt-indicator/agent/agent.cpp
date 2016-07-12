@@ -15,6 +15,7 @@ License: GPL
 #include <QDir>
 #include <QMenu>
 #include <QLocale>
+#include <QWindow>
 
 #include "agent.h"
 #include "../config.h"
@@ -100,8 +101,11 @@ void Agent::doInfo()
 	connect(info_window_, &InfoWindow::upgradeNoauto, this, &Agent::doRunPlain);
 	updateInfoWindow();
 	info_window_->show();
-	info_window_->raise();
-	info_window_->requestActivate();
+	QWindow *inf_win = info_window_->window()->windowHandle();
+	if( inf_win ) {
+	    inf_win->raise();
+	    inf_win->requestActivate();
+	}
     }
 }
 
