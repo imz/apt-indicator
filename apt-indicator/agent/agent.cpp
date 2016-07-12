@@ -101,6 +101,7 @@ void Agent::doInfo()
 	updateInfoWindow();
 	info_window_->show();
 	info_window_->raise();
+	info_window_->requestActivate();
     }
 }
 
