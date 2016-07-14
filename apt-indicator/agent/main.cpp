@@ -113,6 +113,7 @@ int main( int argc, char **argv )
 	    app.installTranslator( &qt_translator );
 	    app.installTranslator( &translator );
 
+	    app.setWindowIcon(QIcon::fromTheme("package-available",QIcon(":/pixmaps/package-available.png")));
 	    app.setQuitOnLastWindowClosed(false);
 
 	    Agent agent(0, PROGRAM_NAME, QString(getenv("HOME")));
