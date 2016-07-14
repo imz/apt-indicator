@@ -8,6 +8,13 @@ HelpBrowser::HelpBrowser(QWidget *parent):
     QDialog(parent)
 {
     ui.setupUi(this);
+    ui.backwardButton->setIcon(QIcon::fromTheme("go-previous",QIcon(":/pixmaps/go-previous.png")));
+    ui.backwardButton->setFlat(true);
+    ui.forwardButton->setIcon(QIcon::fromTheme("go-next",QIcon(":/pixmaps/go-next.png")));
+    ui.forwardButton->setFlat(true);
+    ui.homeButton->setIcon(QIcon::fromTheme("go-home",QIcon(":/pixmaps/go-home.png")));
+    ui.homeButton->setFlat(true);
+
     ui.helpText->setOpenLinks(true);
     ui.helpText->setOpenExternalLinks(false);
     connect( ui.helpText, &QTextBrowser::anchorClicked, this, &HelpBrowser::execLink );
