@@ -1,8 +1,9 @@
-<ui version="4.0" >
- <author>Sergey V Turchin &lt;zerg@altlinux.org></author>
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <author>Sergey V Turchin &lt;zerg@altlinux.org&gt;</author>
  <class>HelpBrowserUI</class>
- <widget class="QDialog" name="HelpBrowserUI" >
-  <property name="geometry" >
+ <widget class="QDialog" name="HelpBrowserUI">
+  <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
@@ -10,112 +11,112 @@
     <height>503</height>
    </rect>
   </property>
-  <property name="focusPolicy" >
+  <property name="focusPolicy">
    <enum>Qt::TabFocus</enum>
   </property>
-  <property name="windowTitle" >
+  <property name="windowTitle">
    <string>Help Browser</string>
   </property>
-  <layout class="QGridLayout" >
-   <item row="0" column="0" >
-    <widget class="QPushButton" name="backwardButton" >
-     <property name="minimumSize" >
+  <layout class="QGridLayout">
+   <item row="0" column="0">
+    <widget class="QPushButton" name="backwardButton">
+     <property name="minimumSize">
       <size>
        <width>31</width>
        <height>31</height>
       </size>
      </property>
-     <property name="maximumSize" >
+     <property name="maximumSize">
       <size>
        <width>31</width>
        <height>31</height>
       </size>
      </property>
-     <property name="toolTip" >
+     <property name="toolTip">
       <string>Backward</string>
      </property>
-     <property name="text" >
+     <property name="text">
       <string/>
      </property>
-     <property name="icon" >
-      <iconset resource="pixmaps.qrc" >
+     <property name="icon">
+      <iconset resource="pixmaps.qrc">
        <normaloff>:/pixmaps/go-previous.png</normaloff>:/pixmaps/go-previous.png</iconset>
      </property>
-     <property name="autoDefault" >
+     <property name="autoDefault">
       <bool>false</bool>
      </property>
-     <property name="flat" >
+     <property name="flat">
       <bool>false</bool>
      </property>
     </widget>
    </item>
-   <item row="0" column="1" >
-    <widget class="QPushButton" name="forwardButton" >
-     <property name="minimumSize" >
+   <item row="0" column="1">
+    <widget class="QPushButton" name="forwardButton">
+     <property name="minimumSize">
       <size>
        <width>31</width>
        <height>31</height>
       </size>
      </property>
-     <property name="maximumSize" >
+     <property name="maximumSize">
       <size>
        <width>31</width>
        <height>31</height>
       </size>
      </property>
-     <property name="toolTip" >
+     <property name="toolTip">
       <string>Forward</string>
      </property>
-     <property name="text" >
+     <property name="text">
       <string/>
      </property>
-     <property name="icon" >
-      <iconset resource="pixmaps.qrc" >
+     <property name="icon">
+      <iconset resource="pixmaps.qrc">
        <normaloff>:/pixmaps/go-next.png</normaloff>:/pixmaps/go-next.png</iconset>
      </property>
-     <property name="autoDefault" >
+     <property name="autoDefault">
       <bool>false</bool>
      </property>
     </widget>
    </item>
-   <item row="0" column="2" >
-    <widget class="QPushButton" name="homeButton" >
-     <property name="minimumSize" >
+   <item row="0" column="2">
+    <widget class="QPushButton" name="homeButton">
+     <property name="minimumSize">
       <size>
        <width>31</width>
        <height>31</height>
       </size>
      </property>
-     <property name="maximumSize" >
+     <property name="maximumSize">
       <size>
        <width>31</width>
        <height>31</height>
       </size>
      </property>
-     <property name="toolTip" >
+     <property name="toolTip">
       <string>Home</string>
      </property>
-     <property name="text" >
+     <property name="text">
       <string/>
      </property>
-     <property name="icon" >
-      <iconset resource="pixmaps.qrc" >
+     <property name="icon">
+      <iconset resource="pixmaps.qrc">
        <normaloff>:/pixmaps/go-home.png</normaloff>:/pixmaps/go-home.png</iconset>
      </property>
-     <property name="autoDefault" >
+     <property name="autoDefault">
       <bool>false</bool>
      </property>
     </widget>
    </item>
-   <item row="0" column="3" >
-    <spacer name="spacer4" >
-     <property name="orientation" >
+   <item row="0" column="3">
+    <spacer name="spacer4">
+     <property name="orientation">
       <enum>Qt::Horizontal</enum>
      </property>
-     <property name="sizeType" >
+     <property name="sizeType">
       <enum>QSizePolicy::Expanding</enum>
      </property>
-     <property name="sizeHint" stdset="0" >
+     <property name="sizeHint" stdset="0">
       <size>
        <width>425</width>
        <height>20</height>
@@ -123,15 +124,15 @@
      </property>
     </spacer>
    </item>
-   <item row="1" column="0" colspan="5" >
-    <widget class="QTextBrowser" name="helpText" />
+   <item row="1" column="0" colspan="5">
+    <widget class="QTextBrowser" name="helpText"/>
    </item>
   </layout>
  </widget>
- <layoutdefault spacing="6" margin="11" />
+ <layoutdefault spacing="6" margin="11"/>
  <pixmapfunction>QPixmap</pixmapfunction>
  <resources>
-  <include location="pixmaps.qrc" />
+  <include location="pixmaps.qrc"/>
  </resources>
  <connections>
   <connection>
@@ -140,11 +141,11 @@
    <receiver>helpText</receiver>
    <slot>backward()</slot>
    <hints>
-    <hint type="sourcelabel" >
+    <hint type="sourcelabel">
      <x>20</x>
      <y>20</y>
     </hint>
-    <hint type="destinationlabel" >
+    <hint type="destinationlabel">
      <x>20</x>
      <y>20</y>
     </hint>
@@ -156,11 +157,11 @@
    <receiver>helpText</receiver>
    <slot>home()</slot>
    <hints>
-    <hint type="sourcelabel" >
+    <hint type="sourcelabel">
      <x>20</x>
      <y>20</y>
     </hint>
-    <hint type="destinationlabel" >
+    <hint type="destinationlabel">
      <x>20</x>
      <y>20</y>
     </hint>
@@ -172,11 +173,11 @@
    <receiver>helpText</receiver>
    <slot>forward()</slot>
    <hints>
-    <hint type="sourcelabel" >
+    <hint type="sourcelabel">
      <x>54</x>
      <y>19</y>
     </hint>
-    <hint type="destinationlabel" >
+    <hint type="destinationlabel">
      <x>289</x>
      <y>268</y>
     </hint>
