@@ -7,7 +7,7 @@ License: GPL
 #ifndef ALT_UPDATE_LOCAL_H
 #define ALT_UPDATE_LOCAL_H
 
-#define VERSION "0.3.3"
+#define VERSION "0.3.4"
 
 #define PROGRAM_NAME "APT-Indicator" /**< name of the program */
 #define PROGRAM_NAME_BIN "apt-indicator" /**< binary name of the program */
@@ -20,7 +20,7 @@ License: GPL
 #ifndef NDEBUG
 #define DEF_CHECK_INTERVAL 30 /**< default interval between checkings */
 #else
-#define DEF_CHECK_INTERVAL 86400 /**< default interval between checkings */
+#define DEF_CHECK_INTERVAL 39600 /**< default interval between checkings */
 #endif
 #define DEF_SHOW_BROKEN false
 #define DEF_IGNORE_APT_ERRORS false
