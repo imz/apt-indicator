@@ -42,9 +42,6 @@ HelpBrowser::HelpBrowser(QWidget *parent):
 
 void HelpBrowser::loadIndex()
 {
-#if 0
-    ui.helpText->setSource(QString().append(help_dir).append("index.html"));
-#else
     QString helptext;
     QFile helpfile(QString().append(help_dir).append("index.html"));
     if( helpfile.open(QIODevice::ReadOnly) ) {
@@ -62,14 +59,12 @@ void HelpBrowser::loadIndex()
     } else {
 	qWarning("Unable ro read file: %s", qPrintable(helpfile.fileName()));
     }
-#endif
 }
 
 void HelpBrowser::execLink( const QUrl &url )
 {
     if( url.scheme().isEmpty() || url.scheme() == "file" )
     {
-	qWarning("HelpBrowser::execLink %s", qPrintable(url.toString()));
 	ui.helpText->setSource(url);
     }
     else
