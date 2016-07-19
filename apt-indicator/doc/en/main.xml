@@ -48,11 +48,11 @@
 	</thead>
 	<tbody>
 	  <row>
-	    <entry><graphic fileref="&PIXMAPSDIR;package-installed-updated.png"/></entry>
+	    <entry><graphic fileref="@PACKAGE_INSTALLED_UPDATED@"/></entry>
     	    <entry>There are no new packages available for your system</entry>
 	  </row>
 	  <row>
-	    <entry><graphic fileref="&PIXMAPSDIR;package-installed-outdated.png"/></entry>
+	    <entry><graphic fileref="@PACKAGE_INSTALLED_OUTDATED@"/></entry>
     	    <entry>
 		Some new packages available.
 		<emphasis>APT</emphasis> looks for security updates by default, 
@@ -62,7 +62,7 @@
 	    </entry>
 	  </row>
 	  <row>
-	    <entry><graphic fileref="&PIXMAPSDIR;package-broken.png"/></entry>
+	    <entry><graphic fileref="@PACKAGE_BROKEN@"/></entry>
     	    <entry>
 		Some problems in application or <emphasis>APT</emphasis>.
 		Click on icon, and you will see window with detailed problem description.
@@ -70,7 +70,7 @@
 	    </entry>
 	  </row>
 	  <row>
-	    <entry><graphic fileref="&PIXMAPSDIR;package-upgrade.png"/></entry>
+	    <entry><graphic fileref="@PACKAGE_UPGRADE@"/></entry>
     	    <entry>
 		Applet is receiving index files now. Work still in progress.
 	    </entry>
