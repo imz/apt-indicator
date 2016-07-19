@@ -2,7 +2,6 @@
 <qresource>
    <file>../pixmaps/go-previous.png</file>
    <file>../pixmaps/go-next.png</file>
-   <file>../pixmaps/application-exit.png</file>
    <file>../pixmaps/go-home.png</file>
 
    <file>../pixmaps/package-installed-outdated.png</file>
