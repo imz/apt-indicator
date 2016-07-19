@@ -265,23 +265,6 @@ void Agent::helpBrowser()
 {
 	HelpBrowser help(0);
 
-//	help.ui.helpText->mimeSourceFactory()->setExtensionType("html", "text/html;charset=UTF-8");
-//	help.ui.helpText->mimeSourceFactory()->setFilePath( "." );
-
-	const QString locale = QLocale::system().name();
-	const int country_delim = locale.indexOf('_');
-	QString country = (country_delim>0)?locale.left(country_delim):locale;
-
-#ifdef NDEBUG
-	QString help_dir = DATADIR"/doc/";
-#else
-	QString help_dir = QDir::currentPath() + "/doc/html/";
-#endif
-	if (!QDir(help_dir+country).exists("index.html")) country = "en";//default help is English
-	help_dir.append(country);
-	help_dir.append(QLatin1String("/"));
-	help.ui.helpText->setSearchPaths(QStringList() << help_dir);
-	help.ui.helpText->setSource(QString().append(help_dir).append("index.html"));
 	help.exec();
 }
 
