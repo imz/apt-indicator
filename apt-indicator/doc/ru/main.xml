@@ -49,11 +49,11 @@
 	</thead>
 	<tbody>
 	  <row>
-	    <entry><graphic fileref="@PACKAGE_INSTALLED_UPDATED@"/></entry>
+	    <entry><graphic fileref="IMG_PACKAGE_INSTALLED_UPDATED"/></entry>
     	    <entry>Доступных обновлений нет</entry>
 	  </row>
 	  <row>
-	    <entry><graphic fileref="@PACKAGE_INSTALLED_OUTDATED@"/></entry>
+	    <entry><graphic fileref="IMG_PACKAGE_INSTALLED_OUTDATED"/></entry>
     	    <entry>
 		Есть обновления для системы. По умолчанию все дистрибутивы &ALTCOMP;
 		настроены на обновления, связанные с исправлением ошибок безопасности (security updates)
@@ -63,14 +63,14 @@
 	    </entry>
 	  </row>
 	  <row>
-	    <entry><graphic fileref="@PACKAGE_BROKEN@"/></entry>
+	    <entry><graphic fileref="IMG_PACKAGE_BROKEN"/></entry>
     	    <entry>
 		Возникли какие-то проблемы в приложении или системе <emphasis>APT</emphasis>.
 		Однократный щелчок мыши по иконке выведет информационное окно с описанием проблемы.
 	    </entry>
 	  </row>
 	  <row>
-	    <entry><graphic fileref="@PACKAGE_UPGRADE@"/></entry>
+	    <entry><graphic fileref="IMG_PACKAGE_UPGRADE"/></entry>
     	    <entry>
 		В данный момент идёт получение списков обновлений.
 	    </entry>

@@ -48,11 +48,11 @@
 	</thead>
 	<tbody>
 	  <row>
-	    <entry><graphic fileref="@PACKAGE_INSTALLED_UPDATED@"/></entry>
+	    <entry><graphic fileref="IMG_PACKAGE_INSTALLED_UPDATED"/></entry>
     	    <entry>Досяжних поновлень нема</entry>
 	  </row>
 	  <row>
-	    <entry><graphic fileref="@PACKAGE_INSTALLED_OUTDATED@"/></entry>
+	    <entry><graphic fileref="IMG_PACKAGE_INSTALLED_OUTDATED"/></entry>
     	    <entry>
 		    Є поновлення для системи.  Типово усі дистрибутиви &ALTCOMP; налаштовані
 		    на поновлення, пов'язані із виправленням помилок безпеки (security updates), тому
@@ -62,14 +62,14 @@
 	    </entry>
 	  </row>
 	  <row>
-	    <entry><graphic fileref="@PACKAGE_BROKEN@"/></entry>
+	    <entry><graphic fileref="IMG_PACKAGE_BROKEN"/></entry>
     	    <entry>
 		    Виникли якісь проблеми у додатку або системі <emphasis>APT</emphasis>.
 		    Клацніть один раз на іконці, щоб побачити інформаційне вікно із описом проблеми.
 	    </entry>
 	  </row>
 	  <row>
-	    <entry><graphic fileref="@PACKAGE_UPGRADE@"/></entry>
+	    <entry><graphic fileref="IMG_PACKAGE_UPGRADE"/></entry>
     	    <entry>
 		    В даний момент іде отримання списків поновлень
 	    </entry>

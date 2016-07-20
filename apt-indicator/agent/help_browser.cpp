@@ -49,10 +49,10 @@ void HelpBrowser::loadIndex()
 	helpstream.setCodec("UTF-8");
 	helptext = helpstream.readAll();
 	QTextDocument *helpdoc = new QTextDocument(ui.helpText);
-	helpdoc->addResource(QTextDocument::ImageResource, QUrl("@PACKAGE_INSTALLED_UPDATED@"), QIcon::fromTheme("package-installed-updated",QIcon(":/pixmaps/package-installed-updated.png")).pixmap(22));
-	helpdoc->addResource(QTextDocument::ImageResource, QUrl("@PACKAGE_INSTALLED_OUTDATED@"), QIcon::fromTheme("package-installed-outdated",QIcon(":/pixmaps/package-installed-outdated.png")).pixmap(22));
-	helpdoc->addResource(QTextDocument::ImageResource, QUrl("@PACKAGE_BROKEN@"), QIcon::fromTheme("package-broken",QIcon(":/pixmaps/package-broken.png")).pixmap(22));
-	helpdoc->addResource(QTextDocument::ImageResource, QUrl("@PACKAGE_UPGRADE@"), QIcon::fromTheme("package-upgrade",QIcon(":/pixmaps/package-upgrade.png")).pixmap(22));
+	helpdoc->addResource(QTextDocument::ImageResource, QUrl("IMG_PACKAGE_INSTALLED_UPDATED"), QIcon::fromTheme("package-installed-updated",QIcon(":/pixmaps/package-installed-updated.png")).pixmap(22));
+	helpdoc->addResource(QTextDocument::ImageResource, QUrl("IMG_PACKAGE_INSTALLED_OUTDATED"), QIcon::fromTheme("package-installed-outdated",QIcon(":/pixmaps/package-installed-outdated.png")).pixmap(22));
+	helpdoc->addResource(QTextDocument::ImageResource, QUrl("IMG_PACKAGE_BROKEN"), QIcon::fromTheme("package-broken",QIcon(":/pixmaps/package-broken.png")).pixmap(22));
+	helpdoc->addResource(QTextDocument::ImageResource, QUrl("IMG_PACKAGE_UPGRADE"), QIcon::fromTheme("package-upgrade",QIcon(":/pixmaps/package-upgrade.png")).pixmap(22));
 	helpdoc->setHtml(helptext);
 	ui.helpText->setDocument(helpdoc);
 	helpfile.close();
