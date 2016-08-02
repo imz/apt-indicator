@@ -389,10 +389,10 @@ void Agent::onCheckerOutput()
 		case Normal:
 		{
 #ifndef NDEBUG
-		    QTimer::singleShot(7000, this, SLOT(onSleepHide()));
+		    QTimer::singleShot(7000, this, &Agent::onSleepHide);
 #else
 		    if( cfg_->getInt(Configuration::CheckInterval) > 300 )
-			QTimer::singleShot(300000, this, SLOT(onSleepHide()));
+			QTimer::singleShot(300000, this, &Agent::onSleepHide);
 #endif
 		    break;
 		}
@@ -502,7 +502,11 @@ void Agent::onSleepHide()
     if( status_ == Normal && cfg_->getBool(Configuration::HideWhenSleep) )
     {
 	status_ = Nothing;
-	setTrayHidden();
+	if( info_window_ && info_window_->isVisible() ) {
+	    QTimer::singleShot(60000, this, &Agent::onSleepHide);
+	} else {
+	    setTrayHidden();
+	}
 	updateTrayIcon();
     }
 }
