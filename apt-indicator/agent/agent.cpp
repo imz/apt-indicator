@@ -68,19 +68,19 @@ void Agent::setupContextMenu()
 	if( menu_ )
 	    delete menu_;
 	menu_ = new QMenu();
-	menu_->addAction( tr("&Upgrade automatically..."), this, SLOT(doRunAuto()));
-	menu_->addAction( tr("&Run upgrade program..."), this, SLOT(doRunPlain()));
-	menu_->addAction(QIcon::fromTheme("package-upgrade",QIcon(":/pixmaps/package-upgrade.png")), tr("Chec&k for updates"), this, SLOT(doCheck()));
-	menu_->addAction( tr("D&etailed info..."), this, SLOT(doInfo()));
-	menu_->addAction( tr("H&ide"), this, SLOT(setTrayHidden()));
+	menu_->addAction( tr("&Upgrade automatically..."), this, &Agent::doRunAuto);
+	menu_->addAction( tr("&Run upgrade program..."), this, &Agent::doRunPlain);
+	menu_->addAction(QIcon::fromTheme("package-upgrade",QIcon(":/pixmaps/package-upgrade.png")), tr("Chec&k for updates"), this, &Agent::doCheck);
+	menu_->addAction( tr("D&etailed info..."), this, &Agent::doInfo);
+	menu_->addAction( tr("H&ide"), this, &Agent::setTrayHidden);
 	menu_->addSeparator();
-	menu_->addAction( tr("&Settings..."), this, SLOT(doConfigure()));
-	menu_->addAction( tr("&Repository settings..."), this, SLOT(doConfigureRepos()));
+	menu_->addAction( tr("&Settings..."), this, &Agent::doConfigure);
+	menu_->addAction( tr("&Repository settings..."), this, &Agent::doConfigureRepos);
 	menu_->addSeparator();
-	menu_->addAction( tr("&Help"), this, SLOT(helpBrowser()));
-	menu_->addAction( tr("&About"), this, SLOT(aboutProgram()));
+	menu_->addAction( tr("&Help"), this, &Agent::helpBrowser);
+	menu_->addAction( tr("&About"), this, &Agent::aboutProgram);
 	menu_->addSeparator();
-	menu_->addAction( tr("&Quit"), this, SLOT(exitProgram()));
+	menu_->addAction( tr("&Quit"), this, &Agent::exitProgram);
 	tray_icon_->setContextMenu(menu_);
 }
 
