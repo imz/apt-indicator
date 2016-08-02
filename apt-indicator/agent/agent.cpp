@@ -502,7 +502,7 @@ void Agent::onSleepHide()
     if( status_ == Normal && cfg_->getBool(Configuration::HideWhenSleep) )
     {
 	status_ = Nothing;
-	if( info_window_ && info_window_->isVisible() ) {
+	if( (info_window_ && info_window_->isVisible()) || (menu_ && menu_->isVisible()) ) {
 	    QTimer::singleShot(60000, this, &Agent::onSleepHide);
 	} else {
 	    setTrayHidden();
