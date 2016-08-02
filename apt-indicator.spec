@@ -68,7 +68,7 @@ mkdir -p %buildroot/%_datadir/%name/pixmaps
 
 
 %changelog
-* Tue Jul 19 2016 Sergey V Turchin <zerg at altlinux dot org> 0.3.6-alt1
+* Tue Aug 02 2016 Sergey V Turchin <zerg at altlinux dot org> 0.3.6-alt1
 - don't package pixmaps
 - extend hide timer when app in use
 
