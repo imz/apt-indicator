@@ -36,16 +36,16 @@ Agent::Agent( QObject *parent, const char *name , const QString &homedir):
 	upgrader_proc = 0;
 
 	setObjectName(name);
-	last_report_time_ = QDateTime::currentDateTime();
+	m_last_report_time = QDateTime::currentDateTime();
 	status_ = Nothing;
 	cfg_ = new Configuration(this);
 	if( !QSystemTrayIcon::isSystemTrayAvailable() )
 	{
 	    qWarning("%s: No system tray available.", __progname);
 	}
-	tray_icon_ = new QSystemTrayIcon(this);
-	connect(tray_icon_, &QSystemTrayIcon::activated, this, &Agent::onActivateSysTray);
-	connect(tray_icon_, &QSystemTrayIcon::messageClicked, this, &Agent::onClickTrayMessage);
+	m_tray_icon = new QSystemTrayIcon(this);
+	connect(m_tray_icon, &QSystemTrayIcon::activated, this, &Agent::onActivateSysTray);
+	connect(m_tray_icon, &QSystemTrayIcon::messageClicked, this, &Agent::onClickTrayMessage);
 
 	setupContextMenu();
 	updateTrayIcon();
@@ -81,7 +81,7 @@ void Agent::setupContextMenu()
 	menu_->addAction( tr("&About"), this, &Agent::aboutProgram);
 	menu_->addSeparator();
 	menu_->addAction( tr("&Quit"), this, &Agent::exitProgram);
-	tray_icon_->setContextMenu(menu_);
+	m_tray_icon->setContextMenu(menu_);
 }
 
 void Agent::doInfo()
@@ -114,8 +114,8 @@ void Agent::updateInfoWindow()
     if( !m_info_window ) return;
 
     QString title = tr("Report at %1 %2")
-	.arg(last_report_time_.date().toString(Qt::LocalDate))
-	.arg(last_report_time_.time().toString(Qt::LocalDate));
+	.arg(m_last_report_time.date().toString(Qt::LocalDate))
+	.arg(m_last_report_time.time().toString(Qt::LocalDate));
     m_info_window->setWindowTitle(title);
 
     QString info_window_text;
@@ -331,8 +331,8 @@ void Agent::updateTrayIcon()
 	};
 
 
-	tray_icon_->setIcon(QIcon::fromTheme(iconname, QIcon(iconfile)));
-	tray_icon_->setToolTip(tip);
+	m_tray_icon->setIcon(QIcon::fromTheme(iconname, QIcon(iconfile)));
+	m_tray_icon->setToolTip(tip);
 
 	if( status_ != Nothing )
 	    setTrayVisible();
@@ -382,7 +382,7 @@ void Agent::onCheckerOutput()
 
 	if (status_ != new_status) //change icon if we need it
 	{
-	    last_report_time_ = QDateTime::currentDateTime();
+	    m_last_report_time = QDateTime::currentDateTime();
 	    status_ = new_status;
 	    switch(status_)
 	    {
@@ -399,7 +399,7 @@ void Agent::onCheckerOutput()
 		case Danger:
 		{
 		    if( cfg_->getBool(Configuration::PopupTray) )
-			tray_icon_->showMessage(PROGRAM_NAME, tr("There are updates for your system available..."), QSystemTrayIcon::Warning, 30000);
+			m_tray_icon->showMessage(PROGRAM_NAME, tr("There are updates for your system available..."), QSystemTrayIcon::Warning, 30000);
 		    break;
 		}
 		default:
@@ -523,7 +523,7 @@ void Agent::setTrayHidden()
 
 void Agent::setTrayVisibility(bool vis)
 {
-    tray_icon_->setVisible(vis);
+    m_tray_icon->setVisible(vis);
     if(vis)
 	setupContextMenu(); // workaround against QDbusMenu problem
 }
