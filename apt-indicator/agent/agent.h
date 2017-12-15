@@ -73,9 +73,9 @@ private:
 	QString m_result; /**< result in information window */
 	QDateTime m_last_report_time; /**< time of last report */
 
-	QProcess *checker_proc;
-	QProcess *upgrader_proc;
-	QString upgrader_cmd;
+	QProcess *m_checker_proc;
+	QProcess *m_upgrader_proc;
+	QString m_upgrader_cmd;
 };
 
 #endif

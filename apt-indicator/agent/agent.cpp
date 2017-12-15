@@ -29,10 +29,10 @@ Agent::Agent( QObject *parent, const char *name , const QString &homedir):
 		QObject(parent),
 		m_cfg(),
 		m_timer(),
-		checker_proc(0)
+		m_checker_proc(0)
 {
 	m_menu = 0;
-	upgrader_proc = 0;
+	m_upgrader_proc = 0;
 
 	setObjectName(name);
 	m_last_report_time = QDateTime::currentDateTime();
@@ -56,9 +56,9 @@ Agent::Agent( QObject *parent, const char *name , const QString &homedir):
 Agent::~Agent()
 {
     // terminate dist-upgrade process
-    if (checker_proc && checker_proc->pid() > 0)
+    if (m_checker_proc && m_checker_proc->pid() > 0)
     {
-        checker_proc->terminate();
+        m_checker_proc->terminate();
     }
 }
 
@@ -154,21 +154,21 @@ void Agent::doRun(bool automatic)
 	if ( m_timer.isActive() )
 		m_timer.stop();
 	
-	if (upgrader_proc)
+	if (m_upgrader_proc)
 	{
-		if(upgrader_proc->pid() > 0)
+		if(m_upgrader_proc->pid() > 0)
 		{
 			QMessageBox::information(0,tr("Run upgrade process"), tr("Program already running"));
 			return;
 		}
 		else
 		{
-			delete upgrader_proc;
-			upgrader_proc = 0;
+			delete m_upgrader_proc;
+			m_upgrader_proc = 0;
 		}
 	}
 
-	if (!upgrader_proc)
+	if (!m_upgrader_proc)
 	{
 		QString program("xdg-su");
 		QStringList arguments;
@@ -181,21 +181,21 @@ void Agent::doRun(bool automatic)
 		if( automatic )
 		{
 		    arguments << cmd_upgrader_line;
-		    upgrader_cmd = "xdg-su -c \"" + cmd_upgrader_line + "\"";
+		    m_upgrader_cmd = "xdg-su -c \"" + cmd_upgrader_line + "\"";
 		}
 		else
 		{
 		    arguments << cmd_upgrader_program;
-		    upgrader_cmd = "xdg-su -c \"" + cmd_upgrader_program + "\"";
+		    m_upgrader_cmd = "xdg-su -c \"" + cmd_upgrader_program + "\"";
 		}
 
 		if( !arguments.isEmpty() )
 		{
 		    arguments.prepend("-c");
-		    upgrader_proc = new QProcess(this);
-		    connect(upgrader_proc, (void (QProcess::*)(int,QProcess::ExitStatus))&QProcess::finished, this, &Agent::onEndRun);
-		    connect(upgrader_proc, (void (QProcess::*)(QProcess::ProcessError))&QProcess::error, this, &Agent::onEndRunError);
-		    upgrader_proc->start(program, arguments, QIODevice::ReadOnly);
+		    m_upgrader_proc = new QProcess(this);
+		    connect(m_upgrader_proc, (void (QProcess::*)(int,QProcess::ExitStatus))&QProcess::finished, this, &Agent::onEndRun);
+		    connect(m_upgrader_proc, (void (QProcess::*)(QProcess::ProcessError))&QProcess::error, this, &Agent::onEndRunError);
+		    m_upgrader_proc->start(program, arguments, QIODevice::ReadOnly);
 		}
 		else
 		{
@@ -230,17 +230,17 @@ void Agent::doCheck()
 		m_timer.stop(); //stop timer during this stage
 
 	//check if tread exist
-	if (checker_proc)
+	if (m_checker_proc)
 	{
-		if(checker_proc->pid() == 0)
+		if(m_checker_proc->pid() == 0)
 		{ // checker finish work
-			QProcess *dead_checker_proc = checker_proc;
-			checker_proc = 0;
+			QProcess *dead_checker_proc = m_checker_proc;
+			m_checker_proc = 0;
 			delete dead_checker_proc;
 		}
 	}
 
-	if (!checker_proc)
+	if (!m_checker_proc)
 	{
 		QString program(QApplication::instance()->applicationDirPath() + "/apt-indicator-checker");
 		QStringList arguments;
@@ -248,13 +248,13 @@ void Agent::doCheck()
 		    arguments << "--show-broken";
 		if( m_cfg->getBool(Configuration::IgnoreAptErrors) )
 		    arguments << "--ignore-errors";
-		checker_proc = new QProcess(this);
-		connect(checker_proc, (void (QProcess::*)(int,QProcess::ExitStatus))&QProcess::finished, this, &Agent::onCheckerEnd);
-		connect(checker_proc, (void (QProcess::*)(QProcess::ProcessError))&QProcess::error, this, &Agent::onCheckerEndError);
-		connect(checker_proc, &QProcess::readyReadStandardOutput, this, &Agent::onCheckerOutput);
+		m_checker_proc = new QProcess(this);
+		connect(m_checker_proc, (void (QProcess::*)(int,QProcess::ExitStatus))&QProcess::finished, this, &Agent::onCheckerEnd);
+		connect(m_checker_proc, (void (QProcess::*)(QProcess::ProcessError))&QProcess::error, this, &Agent::onCheckerEndError);
+		connect(m_checker_proc, &QProcess::readyReadStandardOutput, this, &Agent::onCheckerOutput);
 		m_status = Working; //change status
 		updateTrayIcon();
-		checker_proc->start(program, arguments, QIODevice::ReadOnly); // and run checker
+		m_checker_proc->start(program, arguments, QIODevice::ReadOnly); // and run checker
 	}
 
 	m_timer.start( m_cfg->getInt(Configuration::CheckInterval)*1000 );
@@ -339,14 +339,14 @@ void Agent::updateTrayIcon()
 
 void Agent::onCheckerOutput()
 {
-    if( !checker_proc ) return;
+    if( !m_checker_proc ) return;
 
 	UpgradeStatus new_status = m_status;
 	QStringList new_result;
 	int read_state = 0;
-	while( !checker_proc->atEnd() && checker_proc->canReadLine() )
+	while( !m_checker_proc->atEnd() && m_checker_proc->canReadLine() )
 	{
-	    QByteArray line = checker_proc->readLine();
+	    QByteArray line = m_checker_proc->readLine();
 	    line.truncate(line.size()-1);
 	    if(line == "CHECKER_STATUS") {
 		read_state = 1; continue;
@@ -457,10 +457,10 @@ void Agent::onEndRunError(QProcess::ProcessError error)
 void Agent::onEndRun(int exitCode, QProcess::ExitStatus exitState)
 {
     if( exitState == QProcess::NormalExit && exitCode != 0 ) {
-	if( upgrader_cmd.startsWith("xdg-su ") && exitCode == 3 ) {
+	if( m_upgrader_cmd.startsWith("xdg-su ") && exitCode == 3 ) {
 	    QMessageBox::warning(0, tr("Run upgrade process"), tr("Assume a user's identity utility not found. Try to install <strong>%1</strong>.").arg("gksu"));
 	} else {
-	    QMessageBox::warning(0, tr("Run upgrade process"), tr("<strong>%1</strong> was exited with code %2").arg(upgrader_cmd).arg(exitCode));
+	    QMessageBox::warning(0, tr("Run upgrade process"), tr("<strong>%1</strong> was exited with code %2").arg(m_upgrader_cmd).arg(exitCode));
 	}
     } else {
 	if( m_info_window )
