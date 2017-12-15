@@ -124,10 +124,10 @@ void Agent::updateInfoWindow()
 	    info_window_text = tr("Nothing to update...");
 	    break;
 	case Working:
-	    info_window_text = m_result.isEmpty() ? tr("Checking in progress...") : m_result;
+	    info_window_text = m_result_text.isEmpty() ? tr("Checking in progress...") : m_result_text;
 	    break;
 	default:
-	    info_window_text = m_result.isEmpty() ? tr("No status info available") : m_result;
+	    info_window_text = m_result_text.isEmpty() ? tr("No status info available") : m_result_text;
 	    break;
     }
     m_info_window->setText(info_window_text);
@@ -254,6 +254,7 @@ void Agent::doCheck()
 		connect(m_checker_proc, &QProcess::readyReadStandardOutput, this, &Agent::onCheckerOutput);
 		m_status = Working; //change status
 		updateTrayIcon();
+		m_result_text.clear();
 		m_checker_proc->start(program, arguments, QIODevice::ReadOnly); // and run checker
 	}
 
@@ -405,8 +406,8 @@ void Agent::onCheckerOutput()
 		    break;
 	    }
 	}
-	m_result = new_result.join("\n");
-	//qDebug("result<%d>: %s", new_result.size(), qPrintable(m_result));
+	m_result_text.append(new_result.join("\n"));
+	//qDebug("result<%d>: %s", new_result.size(), qPrintable(m_result_text));
 }
 
 void Agent::onCheckerEnd(int exitCode, QProcess::ExitStatus exitState)
@@ -420,7 +421,7 @@ void Agent::onCheckerEnd(int exitCode, QProcess::ExitStatus exitState)
     {
 	m_status = Problem;
 	qWarning(PROGRAM_NAME ": checker crashed");
-	m_result = tr("Update checking program crashed");
+	m_result_text = tr("Update checking program crashed");
     }
     updateTrayIcon();
     updateInfoWindow();

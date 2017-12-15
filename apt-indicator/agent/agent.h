@@ -70,7 +70,7 @@ private:
 	QRect m_infowindow_geometry;
 	QSystemTrayIcon *m_tray_icon; /**< icon on the tray */
 	QTimer m_timer; /**< update timer */
-	QString m_result; /**< result in information window */
+	QString m_result_text; /**< result in information window */
 	QDateTime m_last_report_time; /**< time of last report */
 
 	QProcess *m_checker_proc;
