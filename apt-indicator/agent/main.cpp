@@ -116,7 +116,7 @@ int main( int argc, char **argv )
 	    app.setWindowIcon(QIcon::fromTheme("package-available",QIcon(":/pixmaps/package-available.png")));
 	    app.setQuitOnLastWindowClosed(false);
 
-	    Agent agent(&app, PROGRAM_NAME, QString(getenv("HOME")));
+	    Agent agent(&app, PROGRAM_NAME);
 	    QObject::connect(&app, &QtSingleApplication::messageReceived,
 		     &agent, &Agent::onMessageReceived);
 

@@ -25,7 +25,7 @@ License: GPL
 
 extern const char *__progname;
 
-Agent::Agent( QObject *parent, const char *name , const QString &homedir):
+Agent::Agent( QObject *parent, const char *name):
 		QObject(parent),
 		m_cfg(),
 		m_timer(),
