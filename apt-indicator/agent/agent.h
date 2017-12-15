@@ -62,8 +62,7 @@ private:
 	void updateInfoWindow();
 	void setupContextMenu();
 
-	QMenu *menu_;
-	QString homedir_; /**< user's home directory */
+	QMenu *m_menu;
 	Configuration *cfg_;
 	UpgradeStatus status_; /**< semaphore: Are we have any files for update */
 

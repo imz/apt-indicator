@@ -27,12 +27,11 @@ extern const char *__progname;
 
 Agent::Agent( QObject *parent, const char *name , const QString &homedir):
 		QObject(parent),
-		homedir_(homedir),
 		cfg_(),
 		timer_(),
 		checker_proc(0)
 {
-	menu_ = 0;
+	m_menu = 0;
 	upgrader_proc = 0;
 
 	setObjectName(name);
@@ -65,23 +64,23 @@ Agent::~Agent()
 
 void Agent::setupContextMenu()
 {
-	if( menu_ )
-	    delete menu_;
-	menu_ = new QMenu();
-	menu_->addAction( tr("&Upgrade automatically..."), this, &Agent::doRunAuto);
-	menu_->addAction( tr("&Run upgrade program..."), this, &Agent::doRunPlain);
-	menu_->addAction(QIcon::fromTheme("package-upgrade",QIcon(":/pixmaps/package-upgrade.png")), tr("Chec&k for updates"), this, &Agent::doCheck);
-	menu_->addAction( tr("D&etailed info..."), this, &Agent::doInfo);
-	menu_->addAction( tr("H&ide"), this, &Agent::setTrayHidden);
-	menu_->addSeparator();
-	menu_->addAction( tr("&Settings..."), this, &Agent::doConfigure);
-	menu_->addAction( tr("&Repository settings..."), this, &Agent::doConfigureRepos);
-	menu_->addSeparator();
-	menu_->addAction( tr("&Help"), this, &Agent::helpBrowser);
-	menu_->addAction( tr("&About"), this, &Agent::aboutProgram);
-	menu_->addSeparator();
-	menu_->addAction( tr("&Quit"), this, &Agent::exitProgram);
-	m_tray_icon->setContextMenu(menu_);
+	if( m_menu )
+	    delete m_menu;
+	m_menu = new QMenu();
+	m_menu->addAction( tr("&Upgrade automatically..."), this, &Agent::doRunAuto);
+	m_menu->addAction( tr("&Run upgrade program..."), this, &Agent::doRunPlain);
+	m_menu->addAction(QIcon::fromTheme("package-upgrade",QIcon(":/pixmaps/package-upgrade.png")), tr("Chec&k for updates"), this, &Agent::doCheck);
+	m_menu->addAction( tr("D&etailed info..."), this, &Agent::doInfo);
+	m_menu->addAction( tr("H&ide"), this, &Agent::setTrayHidden);
+	m_menu->addSeparator();
+	m_menu->addAction( tr("&Settings..."), this, &Agent::doConfigure);
+	m_menu->addAction( tr("&Repository settings..."), this, &Agent::doConfigureRepos);
+	m_menu->addSeparator();
+	m_menu->addAction( tr("&Help"), this, &Agent::helpBrowser);
+	m_menu->addAction( tr("&About"), this, &Agent::aboutProgram);
+	m_menu->addSeparator();
+	m_menu->addAction( tr("&Quit"), this, &Agent::exitProgram);
+	m_tray_icon->setContextMenu(m_menu);
 }
 
 void Agent::doInfo()
@@ -501,7 +500,7 @@ void Agent::onSleepHide()
 {
     if( status_ == Normal && cfg_->getBool(Configuration::HideWhenSleep) )
     {
-	if( (m_info_window && m_info_window->isVisible()) || (menu_ && menu_->isVisible()) ) {
+	if( (m_info_window && m_info_window->isVisible()) || (m_menu && m_menu->isVisible()) ) {
 	    QTimer::singleShot(60000, this, &Agent::onSleepHide);
 	} else {
 	    status_ = Nothing;
