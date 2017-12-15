@@ -72,6 +72,7 @@ private:
 	QTimer m_timer; /**< update timer */
 	QString m_result_text; /**< result in information window */
 	QDateTime m_last_report_time; /**< time of last report */
+	int m_checker_read_state;
 
 	QProcess *m_checker_proc;
 	QProcess *m_upgrader_proc;

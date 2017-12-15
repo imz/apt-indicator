@@ -33,6 +33,7 @@ Agent::Agent( QObject *parent, const char *name , const QString &homedir):
 {
 	m_menu = 0;
 	m_upgrader_proc = 0;
+	m_checker_read_state = 0;
 
 	setObjectName(name);
 	m_last_report_time = QDateTime::currentDateTime();
@@ -255,6 +256,7 @@ void Agent::doCheck()
 		m_status = Working; //change status
 		updateTrayIcon();
 		m_result_text.clear();
+		m_checker_read_state = 0;
 		m_checker_proc->start(program, arguments, QIODevice::ReadOnly); // and run checker
 	}
 
@@ -344,17 +346,16 @@ void Agent::onCheckerOutput()
 
 	UpgradeStatus new_status = m_status;
 	QStringList new_result;
-	int read_state = 0;
 	while( !m_checker_proc->atEnd() && m_checker_proc->canReadLine() )
 	{
 	    QByteArray line = m_checker_proc->readLine();
 	    line.truncate(line.size()-1);
 	    if(line == "CHECKER_STATUS") {
-		read_state = 1; continue;
+		m_checker_read_state = 1; continue;
 	    } else if(line == "CHECKER_RESULT") {
-		read_state = 2; continue;
+		m_checker_read_state = 2; continue;
 	    }
-	    switch( read_state )
+	    switch( m_checker_read_state )
 	    {
 		case 1:
 		{
@@ -367,7 +368,7 @@ void Agent::onCheckerOutput()
 		    else
 			new_status = Problem;
 		    //qDebug("status: %s", line.data());
-		    read_state = 0;
+		    m_checker_read_state = 0;
 		    break;
 		}
 		case 2:
