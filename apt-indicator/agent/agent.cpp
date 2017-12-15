@@ -36,7 +36,7 @@ Agent::Agent( QObject *parent, const char *name , const QString &homedir):
 
 	setObjectName(name);
 	m_last_report_time = QDateTime::currentDateTime();
-	status_ = Nothing;
+	m_status = Nothing;
 	cfg_ = new Configuration(this);
 	if( !QSystemTrayIcon::isSystemTrayAvailable() )
 	{
@@ -118,7 +118,7 @@ void Agent::updateInfoWindow()
     m_info_window->setWindowTitle(title);
 
     QString info_window_text;
-    switch (status_)
+    switch (m_status)
     {
 	case Normal:
 	    info_window_text = tr("Nothing to update...");
@@ -132,7 +132,7 @@ void Agent::updateInfoWindow()
     }
     m_info_window->setText(info_window_text);
 
-    if ( status_ != Danger && status_ != Problem )
+    if ( m_status != Danger && m_status != Problem )
 	m_info_window->setButtonsVisible(false);
     else
 	m_info_window->setButtonsVisible(true);
@@ -252,7 +252,7 @@ void Agent::doCheck()
 		connect(checker_proc, (void (QProcess::*)(int,QProcess::ExitStatus))&QProcess::finished, this, &Agent::onCheckerEnd);
 		connect(checker_proc, (void (QProcess::*)(QProcess::ProcessError))&QProcess::error, this, &Agent::onCheckerEndError);
 		connect(checker_proc, &QProcess::readyReadStandardOutput, this, &Agent::onCheckerOutput);
-		status_ = Working; //change status
+		m_status = Working; //change status
 		updateTrayIcon();
 		checker_proc->start(program, arguments, QIODevice::ReadOnly); // and run checker
 	}
@@ -296,7 +296,7 @@ void Agent::updateTrayIcon()
 	QString iconname;
 	QString iconfile;
 	QString	tip;
-	switch (status_)
+	switch (m_status)
 	{
 	case Nothing:
 		iconname = "package-available";
@@ -333,7 +333,7 @@ void Agent::updateTrayIcon()
 	m_tray_icon->setIcon(QIcon::fromTheme(iconname, QIcon(iconfile)));
 	m_tray_icon->setToolTip(tip);
 
-	if( status_ != Nothing )
+	if( m_status != Nothing )
 	    setTrayVisible();
 }
 
@@ -341,7 +341,7 @@ void Agent::onCheckerOutput()
 {
     if( !checker_proc ) return;
 
-	UpgradeStatus new_status = status_;
+	UpgradeStatus new_status = m_status;
 	QStringList new_result;
 	int read_state = 0;
 	while( !checker_proc->atEnd() && checker_proc->canReadLine() )
@@ -379,11 +379,11 @@ void Agent::onCheckerOutput()
 	    }
 	}
 
-	if (status_ != new_status) //change icon if we need it
+	if (m_status != new_status) //change icon if we need it
 	{
 	    m_last_report_time = QDateTime::currentDateTime();
-	    status_ = new_status;
-	    switch(status_)
+	    m_status = new_status;
+	    switch(m_status)
 	    {
 		case Normal:
 		{
@@ -413,12 +413,12 @@ void Agent::onCheckerEnd(int exitCode, QProcess::ExitStatus exitState)
 {
     if( exitState == QProcess::NormalExit && exitCode != 0 )
     {
-	status_ = Problem;
+	m_status = Problem;
 	qWarning(PROGRAM_NAME ": checker was exited with code %d", exitCode);
     }
     else if( exitState == QProcess::CrashExit )
     {
-	status_ = Problem;
+	m_status = Problem;
 	qWarning(PROGRAM_NAME ": checker crashed");
 	result_ = tr("Update checking program crashed");
     }
@@ -485,7 +485,7 @@ void Agent::onActivateSysTray(QSystemTrayIcon::ActivationReason reason)
 
 void Agent::onClickTrayMessage()
 {
-    switch(status_)
+    switch(m_status)
     {
 	case Danger:
 	{
@@ -498,12 +498,12 @@ void Agent::onClickTrayMessage()
 
 void Agent::onSleepHide()
 {
-    if( status_ == Normal && cfg_->getBool(Configuration::HideWhenSleep) )
+    if( m_status == Normal && cfg_->getBool(Configuration::HideWhenSleep) )
     {
 	if( (m_info_window && m_info_window->isVisible()) || (m_menu && m_menu->isVisible()) ) {
 	    QTimer::singleShot(60000, this, &Agent::onSleepHide);
 	} else {
-	    status_ = Nothing;
+	    m_status = Nothing;
 	    setTrayHidden();
 	    updateTrayIcon();
 	}

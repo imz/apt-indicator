@@ -64,7 +64,7 @@ private:
 
 	QMenu *m_menu;
 	Configuration *cfg_;
-	UpgradeStatus status_; /**< semaphore: Are we have any files for update */
+	UpgradeStatus m_status; /**< semaphore: Are we have any files for update */
 
 	QPointer<InfoWindow> m_info_window; /**< information window */
 	QRect m_infowindow_geometry;
