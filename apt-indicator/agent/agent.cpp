@@ -98,7 +98,6 @@ void Agent::doInfo()
 	if( !m_infowindow_geometry.isNull() )
 	    m_info_window->setGeometry(m_infowindow_geometry);
 	connect(m_info_window.data(), &InfoWindow::upgradeAuto, this, &Agent::doRunAuto);
-	connect(m_info_window.data(), &InfoWindow::upgradeNoauto, this, &Agent::doRunPlain);
 	updateInfoWindow();
 	m_info_window->show();
 	QWindow *inf_win = m_info_window->window()->windowHandle();

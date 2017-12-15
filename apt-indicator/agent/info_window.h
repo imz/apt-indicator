@@ -15,7 +15,6 @@ public:
 
 Q_SIGNALS:
     void upgradeAuto();
-    void upgradeNoauto();
 };
 
 #endif

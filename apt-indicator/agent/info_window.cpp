@@ -10,10 +10,8 @@ InfoWindow::InfoWindow(QWidget *parent):
     setAttribute(Qt::WA_DeleteOnClose);
 
     QPushButton *btn_auto = buttonBox->addButton(tr("Automatic upgrade"), QDialogButtonBox::YesRole);
-    QPushButton *btn_noauto = buttonBox->addButton(tr("Run upgrade program"), QDialogButtonBox::YesRole);
 
     connect(btn_auto, &QPushButton::clicked, this, &InfoWindow::upgradeAuto);
-    connect(btn_noauto, &QPushButton::clicked, this, &InfoWindow::upgradeNoauto);
 }
 
 InfoWindow::~InfoWindow()
