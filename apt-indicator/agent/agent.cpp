@@ -86,22 +86,22 @@ void Agent::setupContextMenu()
 
 void Agent::doInfo()
 {
-    if( info_window_ )
+    if( m_info_window )
     {
-	info_window_geometry_ = info_window_->geometry();
-	info_window_->deleteLater();
+	m_infowindow_geometry = m_info_window->geometry();
+	m_info_window->deleteLater();
 	return;
     }
     else
     {
-	info_window_ = new InfoWindow(0);
-	if( !info_window_geometry_.isNull() )
-	    info_window_->setGeometry(info_window_geometry_);
-	connect(info_window_.data(), &InfoWindow::upgradeAuto, this, &Agent::doRunAuto);
-	connect(info_window_.data(), &InfoWindow::upgradeNoauto, this, &Agent::doRunPlain);
+	m_info_window = new InfoWindow(0);
+	if( !m_infowindow_geometry.isNull() )
+	    m_info_window->setGeometry(m_infowindow_geometry);
+	connect(m_info_window.data(), &InfoWindow::upgradeAuto, this, &Agent::doRunAuto);
+	connect(m_info_window.data(), &InfoWindow::upgradeNoauto, this, &Agent::doRunPlain);
 	updateInfoWindow();
-	info_window_->show();
-	QWindow *inf_win = info_window_->window()->windowHandle();
+	m_info_window->show();
+	QWindow *inf_win = m_info_window->window()->windowHandle();
 	if( inf_win ) {
 	    inf_win->raise();
 	    inf_win->requestActivate();
@@ -111,12 +111,12 @@ void Agent::doInfo()
 
 void Agent::updateInfoWindow()
 {
-    if( !info_window_ ) return;
+    if( !m_info_window ) return;
 
     QString title = tr("Report at %1 %2")
 	.arg(last_report_time_.date().toString(Qt::LocalDate))
 	.arg(last_report_time_.time().toString(Qt::LocalDate));
-    info_window_->setWindowTitle(title);
+    m_info_window->setWindowTitle(title);
 
     QString info_window_text;
     switch (status_)
@@ -131,12 +131,12 @@ void Agent::updateInfoWindow()
 	    info_window_text = result_.isEmpty() ? tr("No status info available") : result_;
 	    break;
     }
-    info_window_->setText(info_window_text);
+    m_info_window->setText(info_window_text);
 
     if ( status_ != Danger && status_ != Problem )
-	info_window_->setButtonsVisible(false);
+	m_info_window->setButtonsVisible(false);
     else
-	info_window_->setButtonsVisible(true);
+	m_info_window->setButtonsVisible(true);
 }
 
 void Agent::doRunAuto()
@@ -464,10 +464,10 @@ void Agent::onEndRun(int exitCode, QProcess::ExitStatus exitState)
 	    QMessageBox::warning(0, tr("Run upgrade process"), tr("<strong>%1</strong> was exited with code %2").arg(upgrader_cmd).arg(exitCode));
 	}
     } else {
-	if( info_window_ )
+	if( m_info_window )
 	{
-	    delete info_window_;
-	    info_window_ = 0;
+	    delete m_info_window;
+	    m_info_window = 0;
 	}
     }
     doCheck();
@@ -501,7 +501,7 @@ void Agent::onSleepHide()
 {
     if( status_ == Normal && cfg_->getBool(Configuration::HideWhenSleep) )
     {
-	if( (info_window_ && info_window_->isVisible()) || (menu_ && menu_->isVisible()) ) {
+	if( (m_info_window && m_info_window->isVisible()) || (menu_ && menu_->isVisible()) ) {
 	    QTimer::singleShot(60000, this, &Agent::onSleepHide);
 	} else {
 	    status_ = Nothing;

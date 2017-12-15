@@ -67,8 +67,8 @@ private:
 	Configuration *cfg_;
 	UpgradeStatus status_; /**< semaphore: Are we have any files for update */
 
-	QPointer<InfoWindow> info_window_; /**< information window */
-	QRect info_window_geometry_;
+	QPointer<InfoWindow> m_info_window; /**< information window */
+	QRect m_infowindow_geometry;
 	QSystemTrayIcon *tray_icon_; /**< icon on the tray */
 	QTimer timer_; /**< update timer */
 	QString result_; /**< result in information window */
