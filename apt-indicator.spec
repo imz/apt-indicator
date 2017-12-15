@@ -50,7 +50,7 @@ for d in %_sysconfdir/xdg/autostart
 do
 mkdir -p %buildroot/$d/
 install -m644 %name.desktop %buildroot/$d/%name.desktop
-sed -i 's|\(^Exec=.*\)|\1 --autostart|' %buildroot/$d/%name.desktop
+sed -i 's|\(^Exec=.*\)|\1 --autostarted|' %buildroot/$d/%name.desktop
 done
 
 # docs

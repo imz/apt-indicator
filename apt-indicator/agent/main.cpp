@@ -25,12 +25,12 @@ extern const char *__progname;
 
 void usage(FILE *out)
 {
-    fprintf(out, "Usage: %s [-hva] [--help] [--version] [--autostart]\n", __progname);
+    fprintf(out, "Usage: %s [-hva] [--help] [--version] [--autostarted]\n", __progname);
     fprintf(out, "This is a simple applet both for Gnome and KDE which\n");
     fprintf(out, " made notifications for users that newer packages are available\n");
     fprintf(out, "  -h, --help             display help screen\n");
     fprintf(out, "  -v, --version          display version information\n");
-    fprintf(out, "  -a, --autostart        for running by Window Manager's autostart\n\n");
+    fprintf(out, "  -a, --autostarted      for running by Desktop Environment's autostart\n\n");
     fprintf(out, "Report bugs to http://bugzilla.altlinux.ru\n");
 }
 
@@ -47,7 +47,7 @@ int main( int argc, char **argv )
 			{
 				{"help", no_argument, 0, 'h'},
 				{"version", no_argument, 0, 'v'},
-				{"autostart", no_argument, 0, 'a'},
+				{"autostarted", no_argument, 0, 'a'},
 				{0, 0, 0, 0}
 			};
 		int c = getopt_long(argc, argv, "hva", long_options, NULL);
