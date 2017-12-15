@@ -28,7 +28,7 @@ extern const char *__progname;
 Agent::Agent( QObject *parent, const char *name , const QString &homedir):
 		QObject(parent),
 		cfg_(),
-		timer_(),
+		m_timer(),
 		checker_proc(0)
 {
 	m_menu = 0;
@@ -49,8 +49,8 @@ Agent::Agent( QObject *parent, const char *name , const QString &homedir):
 	setupContextMenu();
 	updateTrayIcon();
 
-	connect( &timer_, &QTimer::timeout, this, &Agent::doCheck );
-	timer_.start( CHECK_INTERVAL_FIRST*1000 );
+	connect( &m_timer, &QTimer::timeout, this, &Agent::doCheck );
+	m_timer.start( CHECK_INTERVAL_FIRST*1000 );
 }
 
 Agent::~Agent()
@@ -124,10 +124,10 @@ void Agent::updateInfoWindow()
 	    info_window_text = tr("Nothing to update...");
 	    break;
 	case Working:
-	    info_window_text = result_.isEmpty() ? tr("Checking in progress...") : result_;
+	    info_window_text = m_result.isEmpty() ? tr("Checking in progress...") : m_result;
 	    break;
 	default:
-	    info_window_text = result_.isEmpty() ? tr("No status info available") : result_;
+	    info_window_text = m_result.isEmpty() ? tr("No status info available") : m_result;
 	    break;
     }
     m_info_window->setText(info_window_text);
@@ -151,8 +151,8 @@ void Agent::doRunPlain()
 void Agent::doRun(bool automatic)
 {
 	//stop all active works until we run synaptic program
-	if ( timer_.isActive() )
-		timer_.stop();
+	if ( m_timer.isActive() )
+		m_timer.stop();
 	
 	if (upgrader_proc)
 	{
@@ -208,7 +208,7 @@ void Agent::doRun(bool automatic)
 void Agent::doConfigure()
 {
 	cfg_->showDialog(); //run dialog
-	timer_.setInterval(cfg_->getInt(Configuration::CheckInterval)*1000); //then update change interval
+	m_timer.setInterval(cfg_->getInt(Configuration::CheckInterval)*1000); //then update change interval
 }
 
 void Agent::doConfigureRepos()
@@ -226,8 +226,8 @@ void Agent::doConfigureRepos()
 
 void Agent::doCheck()
 {
-	if ( timer_.isActive() )
-		timer_.stop(); //stop timer during this stage
+	if ( m_timer.isActive() )
+		m_timer.stop(); //stop timer during this stage
 
 	//check if tread exist
 	if (checker_proc)
@@ -257,7 +257,7 @@ void Agent::doCheck()
 		checker_proc->start(program, arguments, QIODevice::ReadOnly); // and run checker
 	}
 
-	timer_.start( cfg_->getInt(Configuration::CheckInterval)*1000 );
+	m_timer.start( cfg_->getInt(Configuration::CheckInterval)*1000 );
 }
 
 void Agent::helpBrowser()
@@ -405,8 +405,8 @@ void Agent::onCheckerOutput()
 		    break;
 	    }
 	}
-	result_ = new_result.join("\n");
-	//qDebug("result<%d>: %s", new_result.size(), qPrintable(result_));
+	m_result = new_result.join("\n");
+	//qDebug("result<%d>: %s", new_result.size(), qPrintable(m_result));
 }
 
 void Agent::onCheckerEnd(int exitCode, QProcess::ExitStatus exitState)
@@ -420,7 +420,7 @@ void Agent::onCheckerEnd(int exitCode, QProcess::ExitStatus exitState)
     {
 	m_status = Problem;
 	qWarning(PROGRAM_NAME ": checker crashed");
-	result_ = tr("Update checking program crashed");
+	m_result = tr("Update checking program crashed");
     }
     updateTrayIcon();
     updateInfoWindow();

@@ -69,8 +69,8 @@ private:
 	QPointer<InfoWindow> m_info_window; /**< information window */
 	QRect m_infowindow_geometry;
 	QSystemTrayIcon *m_tray_icon; /**< icon on the tray */
-	QTimer timer_; /**< update timer */
-	QString result_; /**< result in information window */
+	QTimer m_timer; /**< update timer */
+	QString m_result; /**< result in information window */
 	QDateTime m_last_report_time; /**< time of last report */
 
 	QProcess *checker_proc;
