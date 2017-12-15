@@ -27,7 +27,7 @@ extern const char *__progname;
 
 Agent::Agent( QObject *parent, const char *name , const QString &homedir):
 		QObject(parent),
-		cfg_(),
+		m_cfg(),
 		m_timer(),
 		checker_proc(0)
 {
@@ -37,7 +37,7 @@ Agent::Agent( QObject *parent, const char *name , const QString &homedir):
 	setObjectName(name);
 	m_last_report_time = QDateTime::currentDateTime();
 	m_status = Nothing;
-	cfg_ = new Configuration(this);
+	m_cfg = new Configuration(this);
 	if( !QSystemTrayIcon::isSystemTrayAvailable() )
 	{
 	    qWarning("%s: No system tray available.", __progname);
@@ -172,7 +172,7 @@ void Agent::doRun(bool automatic)
 	{
 		QString program("xdg-su");
 		QStringList arguments;
-		QString cmd_upgrader_line(cfg_->commandUprader(Configuration::CmdUpgrader));
+		QString cmd_upgrader_line(m_cfg->commandUprader(Configuration::CmdUpgrader));
 		QString cmd_upgrader_program;
 		if( !cmd_upgrader_line.isEmpty() )
 		{
@@ -207,15 +207,15 @@ void Agent::doRun(bool automatic)
 
 void Agent::doConfigure()
 {
-	cfg_->showDialog(); //run dialog
-	m_timer.setInterval(cfg_->getInt(Configuration::CheckInterval)*1000); //then update change interval
+	m_cfg->showDialog(); //run dialog
+	m_timer.setInterval(m_cfg->getInt(Configuration::CheckInterval)*1000); //then update change interval
 }
 
 void Agent::doConfigureRepos()
 {
 	QString program("xdg-su");
 	QStringList arguments;
-	QString command_line = cfg_->commandUprader(Configuration::CmdRepos);
+	QString command_line = m_cfg->commandUprader(Configuration::CmdRepos);
 	if( !command_line.isEmpty() )
 	{
 	    arguments << "-c" << command_line;
@@ -244,9 +244,9 @@ void Agent::doCheck()
 	{
 		QString program(QApplication::instance()->applicationDirPath() + "/apt-indicator-checker");
 		QStringList arguments;
-		if( cfg_->getBool(Configuration::ShowBroken) )
+		if( m_cfg->getBool(Configuration::ShowBroken) )
 		    arguments << "--show-broken";
-		if( cfg_->getBool(Configuration::IgnoreAptErrors) )
+		if( m_cfg->getBool(Configuration::IgnoreAptErrors) )
 		    arguments << "--ignore-errors";
 		checker_proc = new QProcess(this);
 		connect(checker_proc, (void (QProcess::*)(int,QProcess::ExitStatus))&QProcess::finished, this, &Agent::onCheckerEnd);
@@ -257,7 +257,7 @@ void Agent::doCheck()
 		checker_proc->start(program, arguments, QIODevice::ReadOnly); // and run checker
 	}
 
-	m_timer.start( cfg_->getInt(Configuration::CheckInterval)*1000 );
+	m_timer.start( m_cfg->getInt(Configuration::CheckInterval)*1000 );
 }
 
 void Agent::helpBrowser()
@@ -284,8 +284,8 @@ void Agent::exitProgram()
 				);
 	if( QMessageBox::Yes == res || QMessageBox::No == res )
 	{
-	    if( cfg_->setParam(Configuration::Autostart, QMessageBox::Yes == res) )
-		cfg_->save();
+	    if( m_cfg->setParam(Configuration::Autostart, QMessageBox::Yes == res) )
+		m_cfg->save();
 	}
 	if( QMessageBox::Cancel != res )
 	    QCoreApplication::quit();
@@ -390,14 +390,14 @@ void Agent::onCheckerOutput()
 #ifndef NDEBUG
 		    QTimer::singleShot(7000, this, &Agent::onSleepHide);
 #else
-		    if( cfg_->getInt(Configuration::CheckInterval) > 300 )
+		    if( m_cfg->getInt(Configuration::CheckInterval) > 300 )
 			QTimer::singleShot(300000, this, &Agent::onSleepHide);
 #endif
 		    break;
 		}
 		case Danger:
 		{
-		    if( cfg_->getBool(Configuration::PopupTray) )
+		    if( m_cfg->getBool(Configuration::PopupTray) )
 			m_tray_icon->showMessage(PROGRAM_NAME, tr("There are updates for your system available..."), QSystemTrayIcon::Warning, 30000);
 		    break;
 		}
@@ -498,7 +498,7 @@ void Agent::onClickTrayMessage()
 
 void Agent::onSleepHide()
 {
-    if( m_status == Normal && cfg_->getBool(Configuration::HideWhenSleep) )
+    if( m_status == Normal && m_cfg->getBool(Configuration::HideWhenSleep) )
     {
 	if( (m_info_window && m_info_window->isVisible()) || (m_menu && m_menu->isVisible()) ) {
 	    QTimer::singleShot(60000, this, &Agent::onSleepHide);

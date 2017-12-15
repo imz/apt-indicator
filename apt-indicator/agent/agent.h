@@ -63,7 +63,7 @@ private:
 	void setupContextMenu();
 
 	QMenu *m_menu;
-	Configuration *cfg_;
+	Configuration *m_cfg;
 	UpgradeStatus m_status; /**< semaphore: Are we have any files for update */
 
 	QPointer<InfoWindow> m_info_window; /**< information window */
