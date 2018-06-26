@@ -1,5 +1,5 @@
 Name: apt-indicator
-Version: 0.3.9
+Version: 0.3.10
 Release: alt1%ubt
 
 Summary: Applet for indication that newer packages are available
@@ -69,6 +69,9 @@ mkdir -p %buildroot/%_datadir/%name/pixmaps
 
 
 %changelog
+* Tue Jun 26 2018 Sergey V Turchin <zerg at altlinux dot org> 0.3.10-alt1%ubt
+- fix raise info window
+
 * Thu Jun 21 2018 Sergey V Turchin <zerg at altlinux dot org> 0.3.9-alt1%ubt
 - raise info window on second app startup if tray is already visible
 

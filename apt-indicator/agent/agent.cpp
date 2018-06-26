@@ -531,14 +531,18 @@ void Agent::setTrayVisibility(bool vis)
 void Agent::onMessageReceived(const QString &msg)
 {
     if( msg == MSG_WAKEUP ) {
-	if( m_tray_icon->isVisible() && !m_info_window ) {
-	    doInfo();
-	} else if( m_info_window ) {
+	if( m_tray_icon->isVisible() ) {
+	    if( !m_info_window ) {
+		doInfo();
+	    }
+	} else {
+	    setTrayVisible();
+	}
+	if( m_info_window ) {
 	    QWidget *wnd = m_info_window->window();
 	    wnd->setWindowState(wnd->windowState() & ~Qt::WindowMinimized);
 	    wnd->activateWindow();
 	    wnd->raise();
 	}
-	setTrayVisible();
     }
 }
