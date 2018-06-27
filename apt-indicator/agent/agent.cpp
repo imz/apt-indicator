@@ -25,7 +25,7 @@ License: GPL
 
 extern const char *__progname;
 
-Agent::Agent( QObject *parent, const char *name):
+Agent::Agent( QObject *parent, const char *name, bool autostarted):
 		QObject(parent),
 		m_cfg(),
 		m_timer(),
@@ -51,7 +51,7 @@ Agent::Agent( QObject *parent, const char *name):
 	updateTrayIcon();
 
 	connect( &m_timer, &QTimer::timeout, this, &Agent::doCheck );
-	m_timer.start( CHECK_INTERVAL_FIRST*1000 );
+	m_timer.start( (autostarted? CHECK_INTERVAL_FIRST: 0)*1000 );
 }
 
 Agent::~Agent()

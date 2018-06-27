@@ -27,7 +27,7 @@ public:
 	enum UpgradeStatus {Nothing, Working, Normal, Danger, Problem, TryAgain};
 
 	explicit
-	Agent( QObject *parent = 0, const char *name = 0);
+	Agent( QObject *parent = 0, const char *name = 0, bool autostarted = false);
 	~Agent();
 
 	void setTrayVisibility(bool);
