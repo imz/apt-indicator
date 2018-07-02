@@ -99,12 +99,7 @@ void Agent::doInfo()
 	    m_info_window->setGeometry(m_infowindow_geometry);
 	connect(m_info_window.data(), &InfoWindow::upgradeAuto, this, &Agent::doRunAuto);
 	updateInfoWindow();
-	m_info_window->show();
-	QWindow *inf_win = m_info_window->window()->windowHandle();
-	if( inf_win ) {
-	    inf_win->raise();
-	    inf_win->requestActivate();
-	}
+	m_info_window->raiseIt();
     }
 }
 
@@ -539,10 +534,7 @@ void Agent::onMessageReceived(const QString &msg)
 	    setTrayVisible();
 	}
 	if( m_info_window ) {
-	    QWidget *wnd = m_info_window->window();
-	    wnd->setWindowState(wnd->windowState() & ~Qt::WindowMinimized);
-	    wnd->activateWindow();
-	    wnd->raise();
+	    m_info_window->raiseIt();
 	}
     }
 }

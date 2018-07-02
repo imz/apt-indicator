@@ -27,3 +27,14 @@ void InfoWindow::setButtonsVisible(bool vis)
 {
     buttonBox->setVisible(vis);
 }
+
+void InfoWindow::raiseIt()
+{
+    QWidget *wnd = window();
+    if( wnd ) {
+	//wnd->hide();
+	wnd->showNormal();
+	wnd->activateWindow();
+	wnd->raise();
+    }
+}

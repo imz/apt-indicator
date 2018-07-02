@@ -12,6 +12,7 @@ public:
 
     void setText(const QString&);
     void setButtonsVisible(bool);
+    void raiseIt();
 
 Q_SIGNALS:
     void upgradeAuto();
