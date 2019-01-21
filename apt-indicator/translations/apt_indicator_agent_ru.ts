@@ -160,7 +160,7 @@ when you login?</source>
     <message>
         <location filename="../agent/agent.cpp" line="53"/>
         <source>&amp;Help</source>
-        <translation>&amp;Помощь</translation>
+        <translation>&amp;Справка</translation>
     </message>
     <message>
         <source>Ok</source>
@@ -172,7 +172,7 @@ when you login?</source>
     </message>
     <message>
         <source>Help Browser</source>
-        <translation type="obsolete">Обозреватель помощи</translation>
+        <translation type="obsolete">Обозреватель справки</translation>
     </message>
     <message>
         <source>Yes</source>
@@ -632,7 +632,7 @@ when you login?</source>
     <name>HelpBrowser</name>
     <message>
         <source>Help Browser</source>
-        <translation type="obsolete">Обозреватель помощи</translation>
+        <translation type="obsolete">Обозреватель справки</translation>
     </message>
     <message>
         <source>Backward</source>
