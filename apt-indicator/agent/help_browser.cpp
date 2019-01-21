@@ -11,11 +11,11 @@ HelpBrowser::HelpBrowser(QWidget *parent):
     QDialog(parent)
 {
     ui.setupUi(this);
-    ui.backwardButton->setIcon(QIcon::fromTheme("go-previous",QIcon(":/pixmaps/go-previous.png")));
+    ui.backwardButton->setIcon(QIcon(":/pixmaps/light/go-previous.svg"));
     ui.backwardButton->setFlat(true);
-    ui.forwardButton->setIcon(QIcon::fromTheme("go-next",QIcon(":/pixmaps/go-next.png")));
+    ui.forwardButton->setIcon(QIcon(":/pixmaps/light/go-next.svg"));
     ui.forwardButton->setFlat(true);
-    ui.homeButton->setIcon(QIcon::fromTheme("go-home",QIcon(":/pixmaps/go-home.png")));
+    ui.homeButton->setIcon(QIcon(":/pixmaps/light/go-home.svg"));
     ui.homeButton->setFlat(true);
 
     ui.helpText->setOpenLinks(true);
@@ -49,10 +49,10 @@ void HelpBrowser::loadIndex()
 	helpstream.setCodec("UTF-8");
 	helptext = helpstream.readAll();
 	QTextDocument *helpdoc = new QTextDocument(ui.helpText);
-	helpdoc->addResource(QTextDocument::ImageResource, QUrl("IMG_PACKAGE_INSTALLED_UPDATED"), QIcon::fromTheme("package-installed-updated",QIcon(":/pixmaps/package-installed-updated.png")).pixmap(22));
-	helpdoc->addResource(QTextDocument::ImageResource, QUrl("IMG_PACKAGE_INSTALLED_OUTDATED"), QIcon::fromTheme("package-installed-outdated",QIcon(":/pixmaps/package-installed-outdated.png")).pixmap(22));
-	helpdoc->addResource(QTextDocument::ImageResource, QUrl("IMG_PACKAGE_BROKEN"), QIcon::fromTheme("package-broken",QIcon(":/pixmaps/package-broken.png")).pixmap(22));
-	helpdoc->addResource(QTextDocument::ImageResource, QUrl("IMG_PACKAGE_UPGRADE"), QIcon::fromTheme("package-upgrade",QIcon(":/pixmaps/package-upgrade.png")).pixmap(22));
+	helpdoc->addResource(QTextDocument::ImageResource, QUrl("IMG_PACKAGE_INSTALLED_UPDATED"), QIcon(":/pixmaps/light/package-installed-updated.svg").pixmap(22));
+	helpdoc->addResource(QTextDocument::ImageResource, QUrl("IMG_PACKAGE_INSTALLED_OUTDATED"), QIcon(":/pixmaps/light/package-installed-outdated.svg").pixmap(22));
+	helpdoc->addResource(QTextDocument::ImageResource, QUrl("IMG_PACKAGE_BROKEN"), QIcon(":/pixmaps/light/package-broken.svg").pixmap(22));
+	helpdoc->addResource(QTextDocument::ImageResource, QUrl("IMG_PACKAGE_UPGRADE"), QIcon(":/pixmaps/light/package-upgrade.svg").pixmap(22));
 	helpdoc->setHtml(helptext);
 	ui.helpText->setDocument(helpdoc);
 	helpfile.close();

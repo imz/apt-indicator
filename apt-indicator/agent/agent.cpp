@@ -70,7 +70,7 @@ void Agent::setupContextMenu()
 	m_menu = new QMenu();
 	m_menu->addAction( tr("&Upgrade automatically..."), this, &Agent::doRunAuto);
 	m_menu->addAction( tr("&Run upgrade program..."), this, &Agent::doRunPlain);
-	m_menu->addAction(QIcon::fromTheme("package-upgrade",QIcon(":/pixmaps/package-upgrade.png")), tr("Chec&k for updates"), this, &Agent::doCheck);
+	m_menu->addAction(QIcon(":/pixmaps/light/package-upgrade.svg"), tr("Chec&k for updates"), this, &Agent::doCheck);
 	m_menu->addAction( tr("D&etailed info..."), this, &Agent::doInfo);
 	m_menu->addAction( tr("H&ide"), this, &Agent::setTrayHidden);
 	m_menu->addSeparator();
@@ -268,8 +268,8 @@ void Agent::aboutProgram()
 {
 	QMessageBox::about(0, QString(PROGRAM_NAME) + QString(" - ") + QString(VERSION),
 			    tr("This program make notification of updates.\n"
-			       "Copyright (C) 2003-2004 ALT Linux Team\n\n"
-			       "Written by Stanislav Ievlev and Sergey V. Turchin"));
+			       "Copyright (C) 2003-2019 ALT Linux Team\n\n"
+			       "Written by Stanislav Ievlev and Sergey V Turchin"));
 }
 
 void Agent::exitProgram()
@@ -297,37 +297,38 @@ void Agent::updateTrayIcon()
 	{
 	case Nothing:
 		iconname = "package-available";
-		iconfile = ":/pixmaps/package-available.png";
+		iconfile = ":/pixmaps/light/package-available.svg";
 		tip = tr("Waiting...");
 		break;
 	case Danger:
 		iconname = "package-installed-outdated";
-		iconfile = ":/pixmaps/package-installed-outdated.png";
+		iconfile = ":/pixmaps/light/package-installed-outdated.svg";
 		tip = tr("There are updates for your system available...");
 		break;
 	case Normal:
 		iconname = "package-installed-updated";
-		iconfile = ":/pixmaps/package-installed-updated.png";
+		iconfile = ":/pixmaps/light/package-installed-updated.svg";
 		tip = tr("Nothing to update");
 		break;
 	case Problem:
 		iconname = "package-broken";
-		iconfile = ":/pixmaps/package-broken.png";
+		iconfile = ":/pixmaps/light/package-broken.svg";
 		tip = tr("Problems with Dist-Upgrade");
 		break;
 	case Working:
 		iconname = "package-upgrade";
-		iconfile = ":/pixmaps/package-upgrade.png";
+		iconfile = ":/pixmaps/light/package-upgrade.svg";
 		tip = tr("Working...");
 		break;
 	default:
 		iconname = "package-available";
-		iconfile = ":/pixmaps/package-available.png";
+		iconfile = ":/pixmaps/light/package-available.svg";
 		tip = tr("Unknown status");
 	};
 
 
-	m_tray_icon->setIcon(QIcon::fromTheme(iconname, QIcon(iconfile)));
+	//m_tray_icon->setIcon(QIcon::fromTheme(iconname, QIcon(iconfile)));
+	m_tray_icon->setIcon(QIcon(iconfile).pixmap(32));
 	m_tray_icon->setToolTip(tip);
 
 	if( m_status != Nothing )

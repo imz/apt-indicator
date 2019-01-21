@@ -1,13 +1,13 @@
 <!DOCTYPE RCC><RCC version="1.0">
 <qresource>
-   <file>../pixmaps/go-previous.png</file>
-   <file>../pixmaps/go-next.png</file>
-   <file>../pixmaps/go-home.png</file>
+   <file>../pixmaps/light/go-previous.svg</file>
+   <file>../pixmaps/light/go-next.svg</file>
+   <file>../pixmaps/light/go-home.svg</file>
 
-   <file>../pixmaps/package-installed-outdated.png</file>
-   <file>../pixmaps/package-installed-updated.png</file>
-   <file>../pixmaps/package-available.png</file>
-   <file>../pixmaps/package-broken.png</file>
-   <file>../pixmaps/package-upgrade.png</file>
+   <file>../pixmaps/light/package-installed-outdated.svg</file>
+   <file>../pixmaps/light/package-installed-updated.svg</file>
+   <file>../pixmaps/light/package-available.svg</file>
+   <file>../pixmaps/light/package-broken.svg</file>
+   <file>../pixmaps/light/package-upgrade.svg</file>
 </qresource>
 </RCC>

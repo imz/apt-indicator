@@ -101,8 +101,8 @@ int main( int argc, char **argv )
 
 	if( startup_agent )
 	{
-	    QTranslator translator(&app);
 	    QTranslator qt_translator(&app);
+	    QTranslator translator(&app);
 	    QString lang = QLocale::system().name();
 #ifndef NDEBUG
 	    translator.load( "apt_indicator_agent_" + lang, "./translations" );
@@ -113,7 +113,7 @@ int main( int argc, char **argv )
 	    app.installTranslator( &qt_translator );
 	    app.installTranslator( &translator );
 
-	    app.setWindowIcon(QIcon::fromTheme("package-available",QIcon(":/pixmaps/package-available.png")));
+	    app.setWindowIcon(QIcon(":/pixmaps/light/package-available.svg"));
 	    app.setQuitOnLastWindowClosed(false);
 
 	    Agent agent(&app, PROGRAM_NAME, autostarted);
