@@ -62,7 +62,7 @@ int main( int argc, char **argv )
 		case 'v':
 			qDebug("%s %s\n", __progname, VERSION);
 			qDebug("Written by Stanislav Ievlev and Sergey V Turchin\n");
-			qDebug("Copyright (C) 2003-2004 ALT Linux Team\n");
+			qDebug("Copyright (C) 2003-2019 ALT Linux Team\n");
 			return (EXIT_SUCCESS);
 		case 'a':
 			autostarted = true;
