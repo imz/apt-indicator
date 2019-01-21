@@ -274,6 +274,7 @@ void Agent::aboutProgram()
 
 void Agent::exitProgram()
 {
+#if 0
 	const QString message = tr("Should <strong>%1</strong> start automatically \nwhen you login?").arg(PROGRAM_NAME);
 	const int res = QMessageBox::information(0,tr("Exit program"),message,
 				QMessageBox::Yes|QMessageBox::No|QMessageBox::Cancel,
@@ -285,6 +286,7 @@ void Agent::exitProgram()
 		m_cfg->save();
 	}
 	if( QMessageBox::Cancel != res )
+#endif
 	    QCoreApplication::quit();
 }
 

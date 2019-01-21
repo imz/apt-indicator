@@ -75,6 +75,7 @@ mkdir -p %buildroot/%_datadir/%name/pixmaps
 %changelog
 * Mon Jan 21 2019 Sergey V Turchin <zerg at altlinux dot org> 0.3.12-alt1
 - use only internal icons
+- don't show dialog at exit
 
 * Wed Jun 27 2018 Sergey V Turchin <zerg at altlinux dot org> 0.3.11-alt1%ubt
 - wait after startup only if autostarted
