@@ -104,12 +104,12 @@ int main( int argc, char **argv )
 	    QTranslator qt_translator(&app);
 	    QTranslator translator(&app);
 	    QString lang = QLocale::system().name();
+	    qt_translator.load("qt_" + lang, QLibraryInfo::location(QLibraryInfo::TranslationsPath));
 #ifndef NDEBUG
 	    translator.load( "apt_indicator_agent_" + lang, "./translations" );
 #else
 	    translator.load( "apt_indicator_agent_" + lang, DATADIR"/translations" );
 #endif
-	    qt_translator.load("qt_" + lang, QLibraryInfo::location(QLibraryInfo::TranslationsPath));
 	    app.installTranslator( &qt_translator );
 	    app.installTranslator( &translator );
 
