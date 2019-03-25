@@ -1,6 +1,6 @@
 Name: apt-indicator
 Version: 0.3.11
-Release: alt1%ubt
+Release: alt2.M80P.1
 
 Summary: Applet for indication that newer packages are available
 License: GPL
@@ -14,7 +14,6 @@ Provides: egg = %version-%release, alt-update = %version-%release
 Obsoletes: egg < %version-%release, alt-update < %version-%release
 Requires: /usr/bin/xdg-su /usr/sbin/synaptic
 
-BuildRequires(pre): rpm-build-ubt
 BuildRequires: gcc-c++ libstdc++-devel qt5-base-devel qt5-tools
 BuildRequires: docbook-dtds docbook-style-xsl help2man libapt-devel
 BuildRequires: xml-common xsltproc
@@ -69,19 +68,22 @@ mkdir -p %buildroot/%_datadir/%name/pixmaps
 
 
 %changelog
-* Wed Jun 27 2018 Sergey V Turchin <zerg at altlinux dot org> 0.3.11-alt1%ubt
+* Mon Mar 25 2019 Vladimir D. Seleznev <vseleznv@altlinux.org> 0.3.11-alt2.M80P.1
+- bump release without %%ubt
+
+* Wed Jun 27 2018 Sergey V Turchin <zerg at altlinux dot org> 0.3.11-alt1
 - wait after startup only if autostarted
 
-* Tue Jun 26 2018 Sergey V Turchin <zerg at altlinux dot org> 0.3.10-alt1%ubt
+* Tue Jun 26 2018 Sergey V Turchin <zerg at altlinux dot org> 0.3.10-alt1
 - fix raise info window
 
-* Thu Jun 21 2018 Sergey V Turchin <zerg at altlinux dot org> 0.3.9-alt1%ubt
+* Thu Jun 21 2018 Sergey V Turchin <zerg at altlinux dot org> 0.3.9-alt1
 - raise info window on second app startup if tray is already visible
 
-* Fri Dec 15 2017 Sergey V Turchin <zerg at altlinux dot org> 0.3.8-alt1%ubt
+* Fri Dec 15 2017 Sergey V Turchin <zerg at altlinux dot org> 0.3.8-alt1
 - remove "Run program" button from info window
 
-* Fri Dec 15 2017 Sergey V Turchin <zerg at altlinux dot org> 0.3.7-alt1%ubt
+* Fri Dec 15 2017 Sergey V Turchin <zerg at altlinux dot org> 0.3.7-alt1
 - fix retrive update checker info
 
 * Tue Nov 22 2016 Gleb F-Malinovskiy <glebfm@altlinux.org> 0.3.6-alt1.qa1
