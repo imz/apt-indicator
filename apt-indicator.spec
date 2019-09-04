@@ -31,9 +31,6 @@ made notifications for users that newer packages are available.
 %qmake_qt5 "CONFIG += release debug_info"
 
 %build
-%ifarch %e2k
-%add_optflags -std=c++14
-%endif
 %make
 %make -C doc
 lrelease-qt5 checker/checker.pro
