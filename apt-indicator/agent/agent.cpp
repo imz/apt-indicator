@@ -431,8 +431,10 @@ void Agent::onCheckerEndError(QProcess::ProcessError error)
     {
 	case QProcess::FailedToStart:
 	    qWarning(PROGRAM_NAME ": failed to start checking program");
+	    break;
 	case QProcess::Crashed:
 	    qWarning(PROGRAM_NAME ": checking program crashed");
+	    break;
 	default:
 	    qWarning(PROGRAM_NAME ": execution of checking program failed");
     }
@@ -445,8 +447,10 @@ void Agent::onEndRunError(QProcess::ProcessError error)
     {
 	case QProcess::FailedToStart:
 	    msg = tr("Failed to start upgrade program");
+	    break;
 	case QProcess::Crashed:
 	    msg = tr("Program crashed");
+	    break;
 	default:
 	    msg = tr("Execution of program failed");
     }
