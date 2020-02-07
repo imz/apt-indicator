@@ -31,7 +31,6 @@ Agent::Agent( QObject *parent, const char *name, bool autostarted):
 		m_timer(),
 		m_checker_proc(0)
 {
-	m_menu = 0;
 	m_upgrader_proc = 0;
 	m_checker_read_state = 0;
 
@@ -44,11 +43,14 @@ Agent::Agent( QObject *parent, const char *name, bool autostarted):
 	    qWarning("%s: No system tray available.", __progname);
 	}
 	m_tray_icon = new QSystemTrayIcon(this);
+	m_tray_icon->setContextMenu(new QMenu());
+	m_menu = m_tray_icon->contextMenu();
+
 	connect(m_tray_icon, &QSystemTrayIcon::activated, this, &Agent::onActivateSysTray);
 	connect(m_tray_icon, &QSystemTrayIcon::messageClicked, this, &Agent::onClickTrayMessage);
 
-	setupContextMenu();
 	updateTrayIcon();
+	setupContextMenu();
 
 	connect( &m_timer, &QTimer::timeout, this, &Agent::doCheck );
 	m_timer.start( (autostarted? CHECK_INTERVAL_FIRST: 0)*1000 );
@@ -65,14 +67,13 @@ Agent::~Agent()
 
 void Agent::setupContextMenu()
 {
-	if( m_menu )
-	    delete m_menu;
-	m_menu = new QMenu();
 	m_menu->addAction( tr("&Upgrade automatically..."), this, &Agent::doRunAuto);
 	m_menu->addAction( tr("&Run upgrade program..."), this, &Agent::doRunPlain);
 	m_menu->addAction(QIcon(":/pixmaps/light/package-upgrade.svg"), tr("Chec&k for updates"), this, &Agent::doCheck);
 	m_menu->addAction( tr("D&etailed info..."), this, &Agent::doInfo);
+#ifdef ALLOW_HIDE_SYSTRAY
 	m_menu->addAction( tr("H&ide"), this, &Agent::setTrayHidden);
+#endif
 	m_menu->addSeparator();
 	m_menu->addAction( tr("&Settings..."), this, &Agent::doConfigure);
 	m_menu->addAction( tr("&Repository settings..."), this, &Agent::doConfigureRepos);
@@ -81,7 +82,6 @@ void Agent::setupContextMenu()
 	m_menu->addAction( tr("&About"), this, &Agent::aboutProgram);
 	m_menu->addSeparator();
 	m_menu->addAction( tr("&Quit"), this, &Agent::exitProgram);
-	m_tray_icon->setContextMenu(m_menu);
 }
 
 void Agent::doInfo()
@@ -333,8 +333,12 @@ void Agent::updateTrayIcon()
 	m_tray_icon->setIcon(QIcon(iconfile).pixmap(32));
 	m_tray_icon->setToolTip(tip);
 
+#ifdef ALLOW_HIDE_SYSTRAY
 	if( m_status != Nothing )
 	    setTrayVisible();
+#else
+	m_tray_icon->show();
+#endif
 }
 
 void Agent::onCheckerOutput()
@@ -525,9 +529,9 @@ void Agent::setTrayHidden()
 
 void Agent::setTrayVisibility(bool vis)
 {
+#ifdef ALLOW_HIDE_SYSTRAY
     m_tray_icon->setVisible(vis);
-    if(vis)
-	setupContextMenu(); // workaround against QDbusMenu problem
+#endif
 }
 
 void Agent::onMessageReceived(const QString &msg)
