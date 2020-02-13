@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="ru">
+<TS version="2.1" language="ru">
 <context>
     <name>@default</name>
     <message>
@@ -54,22 +54,22 @@
         <translation type="obsolete">&amp;Настройка...</translation>
     </message>
     <message>
-        <location filename="../agent/agent.cpp" line="46"/>
+        <location filename="../agent/agent.cpp" line="72"/>
         <source>Chec&amp;k for updates</source>
         <translation>&amp;Проверить обновления</translation>
     </message>
     <message>
-        <location filename="../agent/agent.cpp" line="54"/>
+        <location filename="../agent/agent.cpp" line="82"/>
         <source>&amp;About</source>
         <translation>&amp;О программе</translation>
     </message>
     <message>
-        <location filename="../agent/agent.cpp" line="56"/>
+        <location filename="../agent/agent.cpp" line="84"/>
         <source>&amp;Quit</source>
         <translation>&amp;Выход</translation>
     </message>
     <message>
-        <location filename="../agent/agent.cpp" line="183"/>
+        <location filename="../agent/agent.cpp" line="197"/>
         <source>No upgrade program found</source>
         <translation>Программа обновлений не найдена</translation>
     </message>
@@ -78,28 +78,28 @@
         <translation type="obsolete">Режим ожидания</translation>
     </message>
     <message>
-        <location filename="../agent/agent.cpp" line="301"/>
-        <location filename="../agent/agent.cpp" line="397"/>
+        <location filename="../agent/agent.cpp" line="308"/>
+        <location filename="../agent/agent.cpp" line="404"/>
         <source>There are updates for your system available...</source>
         <translation>Доступны обновления для вашей системы...</translation>
     </message>
     <message>
-        <location filename="../agent/agent.cpp" line="305"/>
+        <location filename="../agent/agent.cpp" line="313"/>
         <source>Nothing to update</source>
         <translation>Нет обновлений</translation>
     </message>
     <message>
-        <location filename="../agent/agent.cpp" line="309"/>
+        <location filename="../agent/agent.cpp" line="318"/>
         <source>Problems with Dist-Upgrade</source>
         <translation>Ошибки при проверке обновлений</translation>
     </message>
     <message>
-        <location filename="../agent/agent.cpp" line="313"/>
+        <location filename="../agent/agent.cpp" line="323"/>
         <source>Working...</source>
         <translation>В работе...</translation>
     </message>
     <message>
-        <location filename="../agent/agent.cpp" line="317"/>
+        <location filename="../agent/agent.cpp" line="328"/>
         <source>Unknown status</source>
         <translation>Неопределенный статус</translation>
     </message>
@@ -108,12 +108,12 @@
         <translation type="obsolete">Об&amp;новить...</translation>
     </message>
     <message>
-        <location filename="../agent/agent.cpp" line="47"/>
+        <location filename="../agent/agent.cpp" line="73"/>
         <source>D&amp;etailed info...</source>
         <translation>&amp;Детальная информация...</translation>
     </message>
     <message>
-        <location filename="../agent/agent.cpp" line="105"/>
+        <location filename="../agent/agent.cpp" line="119"/>
         <source>Nothing to update...</source>
         <translation>Обновлений нет...</translation>
     </message>
@@ -122,26 +122,33 @@
         <translation type="obsolete">Обновление в процессе...</translation>
     </message>
     <message>
-        <location filename="../agent/agent.cpp" line="111"/>
+        <location filename="../agent/agent.cpp" line="125"/>
         <source>No status info available</source>
         <translation>Нет информации о статусе</translation>
     </message>
     <message>
-        <location filename="../agent/agent.cpp" line="142"/>
+        <location filename="../agent/agent.cpp" line="156"/>
         <source>Program already running</source>
         <translation>Программа уже запущена</translation>
     </message>
     <message>
-        <location filename="../agent/agent.cpp" line="275"/>
+        <location filename="../agent/agent.cpp" line="270"/>
+        <source>This program make notification of updates.
+Copyright (C) 2003-2019 ALT Linux Team
+
+Written by Stanislav Ievlev and Sergey V Turchin</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../agent/agent.cpp" line="278"/>
         <source>Should &lt;strong&gt;%1&lt;/strong&gt; start automatically 
 when you login?</source>
         <translation>Должен ли &lt;strong&gt;%1&lt;/strong&gt; запускаться автоматически 
 при входе в систему?</translation>
     </message>
     <message>
-        <location filename="../agent/agent.cpp" line="325"/>
         <source>Could not load the icon file %1</source>
-        <translation>Не могу загрузить файл пиктограммы - %1</translation>
+        <translation type="vanished">Не могу загрузить файл пиктограммы - %1</translation>
     </message>
     <message>
         <source>Unknown custom event type: %1</source>
@@ -158,7 +165,7 @@ when you login?</source>
 при входе в систему?</translation>
     </message>
     <message>
-        <location filename="../agent/agent.cpp" line="53"/>
+        <location filename="../agent/agent.cpp" line="81"/>
         <source>&amp;Help</source>
         <translation>&amp;Справка</translation>
     </message>
@@ -191,61 +198,60 @@ when you login?</source>
         <translation type="obsolete">Отчёт от</translation>
     </message>
     <message>
-        <location filename="../agent/agent.cpp" line="108"/>
+        <location filename="../agent/agent.cpp" line="122"/>
         <source>Checking in progress...</source>
         <translation>Идет проверка обновлений...</translation>
     </message>
     <message>
-        <location filename="../agent/agent.cpp" line="50"/>
+        <location filename="../agent/agent.cpp" line="78"/>
         <source>&amp;Settings...</source>
         <translation>&amp;Настройки...</translation>
     </message>
     <message>
-        <location filename="../agent/agent.cpp" line="44"/>
+        <location filename="../agent/agent.cpp" line="70"/>
         <source>&amp;Upgrade automatically...</source>
         <translation>&amp;Обновить автоматически...</translation>
     </message>
     <message>
-        <location filename="../agent/agent.cpp" line="45"/>
+        <location filename="../agent/agent.cpp" line="71"/>
         <source>&amp;Run upgrade program...</source>
         <translation>Запустить &amp;программу обновления...</translation>
     </message>
     <message>
-        <location filename="../agent/agent.cpp" line="48"/>
+        <location filename="../agent/agent.cpp" line="75"/>
         <source>H&amp;ide</source>
         <translation>С&amp;крыть</translation>
     </message>
     <message>
-        <location filename="../agent/agent.cpp" line="51"/>
+        <location filename="../agent/agent.cpp" line="79"/>
         <source>&amp;Repository settings...</source>
         <translation>Настройка &amp;репозиториев...</translation>
     </message>
     <message>
-        <location filename="../agent/agent.cpp" line="142"/>
-        <location filename="../agent/agent.cpp" line="183"/>
-        <location filename="../agent/agent.cpp" line="450"/>
-        <location filename="../agent/agent.cpp" line="457"/>
-        <location filename="../agent/agent.cpp" line="459"/>
+        <location filename="../agent/agent.cpp" line="156"/>
+        <location filename="../agent/agent.cpp" line="197"/>
+        <location filename="../agent/agent.cpp" line="461"/>
+        <location filename="../agent/agent.cpp" line="468"/>
+        <location filename="../agent/agent.cpp" line="470"/>
         <source>Run upgrade process</source>
         <translation>Запустить процесс обновления</translation>
     </message>
     <message>
-        <location filename="../agent/agent.cpp" line="204"/>
+        <location filename="../agent/agent.cpp" line="218"/>
         <source>Repositories configuration</source>
         <translation>Настройка репозиториев</translation>
     </message>
     <message>
-        <location filename="../agent/agent.cpp" line="204"/>
+        <location filename="../agent/agent.cpp" line="218"/>
         <source>Failed to start &quot;%1&quot;</source>
         <translation>Не удалось запустить &quot;%1&quot;</translation>
     </message>
     <message>
-        <location filename="../agent/agent.cpp" line="268"/>
         <source>This program make notification of updates.
 Copyright (C) 2003-2004 ALT Linux Team
 
 Written by Stanislav Ievlev and Sergey V. Turchin</source>
-        <translation>Эта программа оповещает о наличии обновлений.
+        <translation type="vanished">Эта программа оповещает о наличии обновлений.
 Copyright (C) 2003-2004 ALT Linux Team
 
 Авторы: Станислав Иевлев, Сергей В. Турчин</translation>
@@ -257,32 +263,31 @@ when you login?</source>
 при входе в систему?</translation>
     </message>
     <message>
-        <location filename="../agent/agent.cpp" line="276"/>
+        <location filename="../agent/agent.cpp" line="279"/>
         <source>Exit program</source>
         <translation>Выход из программы</translation>
     </message>
     <message>
-        <location filename="../agent/agent.cpp" line="297"/>
+        <location filename="../agent/agent.cpp" line="303"/>
         <source>Waiting...</source>
         <translation>Режим ожидания...</translation>
     </message>
     <message>
-        <location filename="../agent/agent.cpp" line="324"/>
         <source>setting Icon</source>
-        <translation>установка пикторраммы</translation>
+        <translation type="vanished">установка пикторраммы</translation>
     </message>
     <message>
-        <location filename="../agent/agent.cpp" line="419"/>
+        <location filename="../agent/agent.cpp" line="426"/>
         <source>Update checking program crashed</source>
         <translation>Программа проверки обновлений завершила работу аварийно</translation>
     </message>
     <message>
-        <location filename="../agent/agent.cpp" line="457"/>
+        <location filename="../agent/agent.cpp" line="468"/>
         <source>Assume a user&apos;s identity utility not found. Try to install &lt;strong&gt;%1&lt;/strong&gt;.</source>
         <translation>Утилита смены пользователя не найдена. Попробуйте установить&lt;strong&gt;%1&lt;/strong&gt;.</translation>
     </message>
     <message>
-        <location filename="../agent/agent.cpp" line="459"/>
+        <location filename="../agent/agent.cpp" line="470"/>
         <source>&lt;strong&gt;%1&lt;/strong&gt; was exited with code %2</source>
         <translation>Выполнение &lt;strong&gt;%1&lt;/strong&gt; завершилось с кодом %2</translation>
     </message>
@@ -295,7 +300,7 @@ when you login?</source>
         <translation type="obsolete">Обработка события</translation>
     </message>
     <message>
-        <location filename="../agent/agent.cpp" line="96"/>
+        <location filename="../agent/agent.cpp" line="110"/>
         <source>Report at %1 %2</source>
         <translation>Отчет за %1 %2</translation>
     </message>
@@ -304,17 +309,17 @@ when you login?</source>
         <translation type="obsolete">Программа обновления не указана в настройках</translation>
     </message>
     <message>
-        <location filename="../agent/agent.cpp" line="444"/>
+        <location filename="../agent/agent.cpp" line="453"/>
         <source>Failed to start upgrade program</source>
         <translation>Не удалось запустить программу</translation>
     </message>
     <message>
-        <location filename="../agent/agent.cpp" line="446"/>
+        <location filename="../agent/agent.cpp" line="456"/>
         <source>Program crashed</source>
         <translation>Программа упала</translation>
     </message>
     <message>
-        <location filename="../agent/agent.cpp" line="448"/>
+        <location filename="../agent/agent.cpp" line="459"/>
         <source>Execution of program failed</source>
         <translation>Не удалось выполнить программу</translation>
     </message>
@@ -666,22 +671,22 @@ when you login?</source>
 <context>
     <name>HelpBrowserUI</name>
     <message>
-        <location filename="../agent/help_browser.ui" line="17"/>
+        <location filename="../agent/help_browser.ui" line="18"/>
         <source>Help Browser</source>
         <translation>Браузер справки</translation>
     </message>
     <message>
-        <location filename="../agent/help_browser.ui" line="35"/>
+        <location filename="../agent/help_browser.ui" line="36"/>
         <source>Backward</source>
         <translation>Назад</translation>
     </message>
     <message>
-        <location filename="../agent/help_browser.ui" line="67"/>
+        <location filename="../agent/help_browser.ui" line="64"/>
         <source>Forward</source>
         <translation>Вперед</translation>
     </message>
     <message>
-        <location filename="../agent/help_browser.ui" line="96"/>
+        <location filename="../agent/help_browser.ui" line="89"/>
         <source>Home</source>
         <translation>К началу</translation>
     </message>
@@ -707,9 +712,8 @@ when you login?</source>
         <translation>Автоматическое обновление</translation>
     </message>
     <message>
-        <location filename="../agent/info_window.cpp" line="13"/>
         <source>Run upgrade program</source>
-        <translation>Запустить программу обновления</translation>
+        <translation type="vanished">Запустить программу обновления</translation>
     </message>
     <message>
         <source>Start upgrade program</source>
