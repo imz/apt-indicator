@@ -132,14 +132,6 @@
         <translation>Программа уже запущена</translation>
     </message>
     <message>
-        <location filename="../agent/agent.cpp" line="270"/>
-        <source>This program make notification of updates.
-Copyright (C) 2003-2019 ALT Linux Team
-
-Written by Stanislav Ievlev and Sergey V Turchin</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../agent/agent.cpp" line="278"/>
         <source>Should &lt;strong&gt;%1&lt;/strong&gt; start automatically 
 when you login?</source>
@@ -245,6 +237,24 @@ when you login?</source>
         <location filename="../agent/agent.cpp" line="218"/>
         <source>Failed to start &quot;%1&quot;</source>
         <translation>Не удалось запустить &quot;%1&quot;</translation>
+    </message>
+    <message>
+        <location filename="../agent/agent.cpp" line="270"/>
+        <source>This program make notification of updates.
+</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../agent/agent.cpp" line="271"/>
+        <source>Copyright (C) 2003-2019 ALT Linux Team
+
+</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../agent/agent.cpp" line="272"/>
+        <source>Written by Stanislav Ievlev and Sergey V Turchin</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>This program make notification of updates.

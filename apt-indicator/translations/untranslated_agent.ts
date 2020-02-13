@@ -105,9 +105,19 @@
     <message>
         <location filename="../agent/agent.cpp" line="270"/>
         <source>This program make notification of updates.
-Copyright (C) 2003-2019 ALT Linux Team
+</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../agent/agent.cpp" line="271"/>
+        <source>Copyright (C) 2003-2019 ALT Linux Team
 
-Written by Stanislav Ievlev and Sergey V Turchin</source>
+</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../agent/agent.cpp" line="272"/>
+        <source>Written by Stanislav Ievlev and Sergey V Turchin</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
