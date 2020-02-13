@@ -242,19 +242,22 @@ when you login?</source>
         <location filename="../agent/agent.cpp" line="270"/>
         <source>This program make notification of updates.
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Эта программа оповещает о наличии обновлений.
+</translation>
     </message>
     <message>
         <location filename="../agent/agent.cpp" line="271"/>
         <source>Copyright (C) 2003-2019 ALT Linux Team
 
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Copyright (C) 2003-2019 ALT Linux Team
+
+</translation>
     </message>
     <message>
         <location filename="../agent/agent.cpp" line="272"/>
         <source>Written by Stanislav Ievlev and Sergey V Turchin</source>
-        <translation type="unfinished"></translation>
+        <translation>Авторы Станислав Иевлев и Сергей В Турчин</translation>
     </message>
     <message>
         <source>This program make notification of updates.
