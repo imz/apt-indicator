@@ -267,9 +267,9 @@ void Agent::helpBrowser()
 void Agent::aboutProgram()
 {
 	QMessageBox::about(0, QString(PROGRAM_NAME) + QString(" - ") + QString(VERSION),
-			    tr("This program make notification of updates.\n"
-			       "Copyright (C) 2003-2019 ALT Linux Team\n\n"
-			       "Written by Stanislav Ievlev and Sergey V Turchin"));
+			    tr("This program make notification of updates.\n")
+			       + tr("Copyright (C) 2003-2019 ALT Linux Team\n\n")
+			       + tr("Written by Stanislav Ievlev and Sergey V Turchin"));
 }
 
 void Agent::exitProgram()
