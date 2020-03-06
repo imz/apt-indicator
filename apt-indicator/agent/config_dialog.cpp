@@ -10,6 +10,9 @@ ConfigDialog::ConfigDialog(Configuration *cfg):
 {
     cfg_ = cfg;
     setupUi(this);
+#ifndef ALLOW_HIDE_SYSTRAY
+	hideWhenSleepCheck->hide();
+#endif
 
 
     connect(buttonBox, &QDialogButtonBox::clicked, this, &ConfigDialog::onClick);
