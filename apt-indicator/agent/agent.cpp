@@ -188,8 +188,8 @@ void Agent::doRun(bool automatic)
 		{
 		    arguments.prepend("-c");
 		    m_upgrader_proc = new QProcess(this);
-		    connect(m_upgrader_proc, (void (QProcess::*)(int,QProcess::ExitStatus))&QProcess::finished, this, &Agent::onEndRun);
-		    connect(m_upgrader_proc, (void (QProcess::*)(QProcess::ProcessError))&QProcess::error, this, &Agent::onEndRunError);
+		    connect(m_upgrader_proc, QOverload<int, QProcess::ExitStatus>::of(&QProcess::finished), this, &Agent::onEndRun);
+		    connect(m_upgrader_proc, &QProcess::errorOccurred, this, &Agent::onEndRunError);
 		    m_upgrader_proc->start(program, arguments, QIODevice::ReadOnly);
 		}
 		else
@@ -244,8 +244,8 @@ void Agent::doCheck()
 		if( m_cfg->getBool(Configuration::IgnoreAptErrors) )
 		    arguments << "--ignore-errors";
 		m_checker_proc = new QProcess(this);
-		connect(m_checker_proc, (void (QProcess::*)(int,QProcess::ExitStatus))&QProcess::finished, this, &Agent::onCheckerEnd);
-		connect(m_checker_proc, (void (QProcess::*)(QProcess::ProcessError))&QProcess::error, this, &Agent::onCheckerEndError);
+		connect(m_checker_proc, QOverload<int, QProcess::ExitStatus>::of(&QProcess::finished), this, &Agent::onCheckerEnd);
+		connect(m_checker_proc, &QProcess::errorOccurred, this, &Agent::onCheckerEndError);
 		connect(m_checker_proc, &QProcess::readyReadStandardOutput, this, &Agent::onCheckerOutput);
 		m_status = Working; //change status
 		updateTrayIcon();
