@@ -108,8 +108,8 @@ void Agent::updateInfoWindow()
     if( !m_info_window ) return;
 
     QString title = tr("Report at %1 %2")
-	.arg(m_last_report_time.date().toString(Qt::LocalDate))
-	.arg(m_last_report_time.time().toString(Qt::LocalDate));
+	.arg(m_last_report_time.date().toString())
+	.arg(m_last_report_time.time().toString());
     m_info_window->setWindowTitle(title);
 
     QString info_window_text;
