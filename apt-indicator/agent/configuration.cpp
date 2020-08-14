@@ -151,14 +151,14 @@ void Configuration::showDialog()
 QString Configuration::commandUprader(Cmd cmd)
 {
 	QString command;
-	QStringList entries = getString(Configuration::UpgraderProfile).split(";", QString::SkipEmptyParts);
+	QStringList entries = getString(Configuration::UpgraderProfile).split(";", Qt::SkipEmptyParts);
 	foreach(QString entry, entries)
 	{
-	    QStringList entry_paths = entry.split(":", QString::KeepEmptyParts);
+	    QStringList entry_paths = entry.split(":", Qt::KeepEmptyParts);
 	    if( entry_paths.size() == 3 && !entry_paths[0].isEmpty() && !entry_paths[1].isEmpty() )
 	    {
 		bool check_exists = true;
-		QStringList check_paths = entry_paths[2].split(",", QString::SkipEmptyParts);
+		QStringList check_paths = entry_paths[2].split(",", Qt::SkipEmptyParts);
 		foreach(QString path,check_paths)
 		{
 		    if(!QFile::exists(path))

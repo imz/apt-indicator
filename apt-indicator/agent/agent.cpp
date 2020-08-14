@@ -171,7 +171,7 @@ void Agent::doRun(bool automatic)
 		QString cmd_upgrader_program;
 		if( !cmd_upgrader_line.isEmpty() )
 		{
-		    cmd_upgrader_program = cmd_upgrader_line.split(" ", QString::SkipEmptyParts).first();
+		    cmd_upgrader_program = cmd_upgrader_line.split(" ", Qt::SkipEmptyParts).first();
 		}
 		if( automatic )
 		{
