@@ -77,7 +77,7 @@ void HelpBrowser::execLink( const QUrl &url )
 	    qDebug("Try to open \"%s\" via %s", qPrintable(url.toString()), qPrintable(prog_command));
 
 	    QProcess *prog_proc = new QProcess(this);
-	    QStringList prog_args = prog_command.split(" ", Qt::SkipEmptyParts);
+	    QStringList prog_args = prog_command.split(" ", Qt_SkipEmptyParts);
 	    prog_args << url.toString() ;
 	    QString prog_name = prog_args.takeFirst();
 	    prog_proc->start(prog_name, prog_args);

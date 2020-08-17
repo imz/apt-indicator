@@ -7,6 +7,8 @@ License: GPL
 #ifndef ALT_UPDATE_LOCAL_H
 #define ALT_UPDATE_LOCAL_H
 
+#include <Qt>
+
 #define VERSION "0.3.17"
 
 #define PROGRAM_NAME "APT-Indicator" /**< name of the program */
@@ -39,5 +41,13 @@ License: GPL
 #define EXIT_FAILURE 1
 
 #define MSG_WAKEUP "WAKEUP"
+
+#if (QT_VERSION >= QT_VERSION_CHECK(5, 14, 0))
+#define Qt_SkipEmptyParts Qt::SkipEmptyParts
+#define Qt_KeepEmptyParts Qt::KeepEmptyParts
+#else
+#define Qt_SkipEmptyParts QString::SkipEmptyParts
+#define Qt_KeepEmptyParts QString::KeepEmptyParts
+#endif
 
 #endif
