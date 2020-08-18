@@ -60,7 +60,7 @@ int main( int argc, char **argv )
 			return EXIT_SUCCESS;
 			break;
 		case 'v':
-			qDebug("%s %s\n", __progname, VERSION);
+			qDebug("%s\n", __progname);
 			qDebug("Written by Stanislav Ievlev and Sergey V Turchin\n");
 			qDebug("Copyright (C) 2003-2019 ALT Linux Team\n");
 			return (EXIT_SUCCESS);
