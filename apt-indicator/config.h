@@ -9,7 +9,7 @@ License: GPL
 
 #include <Qt>
 
-#define VERSION "0.3.17"
+#define VERSION "0.3.18"
 
 #define PROGRAM_NAME "APT-Indicator" /**< name of the program */
 #define PROGRAM_NAME_BIN "apt-indicator" /**< binary name of the program */
