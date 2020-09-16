@@ -17,6 +17,9 @@ QMAKE_CXXFLAGS += -pedantic -D_FILE_OFFSET_BITS=64 -DQT_NO_CAST_TO_ASCII -DQT_US
 LIBS += -lapt-pkg
 CONFIG += c++11
 
+# To avoid some errors on APT API change:
+QMAKE_CXXFLAGS += -Werror=overloaded-virtual
+
 OBJECTS_DIR = .obj
 MOC_DIR = .moc
 RCC_DIR = .rcc
