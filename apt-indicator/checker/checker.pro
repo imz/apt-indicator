@@ -19,6 +19,10 @@ CONFIG += c++11
 
 # To avoid some errors on APT API change:
 QMAKE_CXXFLAGS += -Werror=overloaded-virtual
+# A style enforcement: always use the keyword, which helps to avoid API misuse
+!contains(QMAKE_HOST.arch, e2k) {
+    QMAKE_CXXFLAGS += -Werror=suggest-override
+}
 
 OBJECTS_DIR = .obj
 MOC_DIR = .moc
