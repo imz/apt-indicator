@@ -74,27 +74,27 @@ if ( (expr) ) \
 		AcqTextStatus(){}
 		virtual ~AcqTextStatus() {};
 
-		virtual void Start()
+		virtual void Start() override
 		{
 			pkgAcquireStatus::Start();
 			//std::cerr << "Starting lists fetching\n";
 		}
 
-		virtual void Stop()
+		virtual void Stop() override
 		{
 			pkgAcquireStatus::Stop();
 		}
 
 		//virtual bool MediaChange(string Media, string Drive)
-		virtual bool MediaChange(string, string)
+		virtual bool MediaChange(string, string) override
 		{
 			return false;
 		}
 
-		virtual void Fetch(pkgAcquire::ItemDesc&)
+		virtual void Fetch(pkgAcquire::ItemDesc&) override
 		{}
 
-		virtual void Fail(pkgAcquire::ItemDesc&)
+		virtual void Fail(pkgAcquire::ItemDesc&) override
 		{}
 		//do nothing
 	}
@@ -108,7 +108,7 @@ if ( (expr) ) \
 		{}
 		virtual ~OpTextStatus()
 		{}
-		virtual void Done()
+		virtual void Done() override
 		{ //do nothing
 		}
 	};
