@@ -1,6 +1,6 @@
 Name: apt-indicator
 Version: 0.3.11
-Release: alt2.M80P.1
+Release: alt2.M80P.2
 
 Summary: Applet for indication that newer packages are available
 License: GPL
@@ -71,6 +71,13 @@ mkdir -p %buildroot/%_datadir/%name/pixmaps
 
 
 %changelog
+* Fri Sep 18 2020 Ivan Zakharyaschev <imz@altlinux.org> 0.3.11-alt2.M80P.2
+- Just added some compiler flags (which don't change anything)
+  to be sure that APT API has not been used wrongly and will not be.
+  (Namely, to be sure that if a method override was intended, it would
+  actually be overriding and not hiding a virtual method and that it
+  would be marked "override" for future.)
+
 * Mon Mar 25 2019 Vladimir D. Seleznev <vseleznv@altlinux.org> 0.3.11-alt2.M80P.1
 - bump release without %%ubt
 
