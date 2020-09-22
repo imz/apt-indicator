@@ -26,6 +26,9 @@ made notifications for users that newer packages are available.
 
 %prep
 %setup -q -n %name-%version
+%ifarch %e2k
+%remove_optflags -Wno-error
+%endif
 %qmake_qt5 "CONFIG += release"
 
 %build
