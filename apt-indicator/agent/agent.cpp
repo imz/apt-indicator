@@ -59,7 +59,7 @@ Agent::Agent( QObject *parent, const char *name, bool autostarted):
 Agent::~Agent()
 {
     // terminate dist-upgrade process
-    if (m_checker_proc && m_checker_proc->pid() > 0)
+    if (m_checker_proc && m_checker_proc->processId() > 0)
     {
         m_checker_proc->terminate();
     }
@@ -151,7 +151,7 @@ void Agent::doRun(bool automatic)
 	
 	if (m_upgrader_proc)
 	{
-		if(m_upgrader_proc->pid() > 0)
+		if(m_upgrader_proc->processId() > 0)
 		{
 			QMessageBox::information(0,tr("Run upgrade process"), tr("Program already running"));
 			return;
@@ -227,7 +227,7 @@ void Agent::doCheck()
 	//check if tread exist
 	if (m_checker_proc)
 	{
-		if(m_checker_proc->pid() == 0)
+		if(m_checker_proc->processId() == 0)
 		{ // checker finish work
 			QProcess *dead_checker_proc = m_checker_proc;
 			m_checker_proc = 0;
