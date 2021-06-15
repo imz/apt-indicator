@@ -86,7 +86,7 @@ if ( (expr) ) \
 		}
 
 		//virtual bool MediaChange(string Media, string Drive)
-		virtual bool MediaChange(string, string) override
+		virtual bool MediaChange(const string &, const string &) override
 		{
 			return false;
 		}
