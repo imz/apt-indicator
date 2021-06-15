@@ -249,9 +249,9 @@ DistUpgrade::UpdateResult DistUpgrade::update()
 	}
 
 	// Prepare the cache
-	pkgCacheFile Cache;
+	pkgCacheFile Cache(false /* not WithLock */);
 	OpTextStatus Prog;
-	if( !Cache.BuildCaches(Prog, false) )
+	if( !Cache.BuildCaches(Prog) )
 	{
 	    APT_UPDATE_RESET;
 	    result_ = tr("Failed to build package caches.");
@@ -264,9 +264,9 @@ DistUpgrade::UpdateResult DistUpgrade::update()
 //apt-get dist-upgrade
 void DistUpgrade::dist_upgrade()
 {
-	pkgCacheFile Cache;
+	pkgCacheFile Cache(false /* not WithLock */);
 	OpTextStatus Prog;
-	Cache.Open(Prog, false);
+	Cache.Open(Prog);
 
 	if (pkgDistUpgrade(*Cache) == false && !ignore_errors_)
 	{
